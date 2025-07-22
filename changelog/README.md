@@ -1,5 +1,11 @@
 # Changelog
 
+## 25th July 2025
+
+* [CHM: Process group](../channel-manager-operations/reservations.md#process-group):
+  * Extended request object with new `booker` property.
+
+
 ## 29th May 2025
 
 * Further refinements to the partner journey, including [Your integration journey](../your-journey/README.md) and [Environments](../guidelines/environments.md). Documentation-only, no change to API.
