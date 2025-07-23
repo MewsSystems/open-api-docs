@@ -10,7 +10,7 @@ The operation supports creations, modifications, and partial or complete cancell
 `[ChannelManagerApiAddress]/processGroup`
 
 
-```javascript
+```json
 {
     "clientToken": "[Channel manager client token]",
     "connectionToken": "[Token of a concrete connection]",
@@ -46,8 +46,33 @@ The operation supports creations, modifications, and partial or complete cancell
         "loyaltyCode": "PG60972345",
         "loyaltyInfo": {
             "membershipId": "PG60972345",
-            "programCode": "BWR",
+            "programCode": "LoyalCustomers",
             "tierCode": "Gold"
+        }
+    },
+    "booker": {
+        "address": {
+          "addressLine1": "Some street 123",
+          "addressLine2": "Some other detail",
+          "city": "Some city",
+          "country": "US",
+          "latitude": 30,
+          "longitude": 20,
+          "region": "Some region",
+          "zip": "123 45"
+        },
+        "email": "jane@smith.com",
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "title": "Miss",
+        "nationalityCode": "UK",
+        "languageCode": "en-UK",
+        "telephone": "1-3526-88918",
+        "loyaltyCode": "PG654321",
+        "loyaltyInfo": {
+            "membershipId": "PG654321",
+            "programCode": "LoyalCustomers",
+            "tierCode": "Platinum"
         }
     },
     "sources": [
@@ -55,13 +80,13 @@ The operation supports creations, modifications, and partial or complete cancell
             "code": 1,
             "name": "Expedia",
             "type" : 0,
-            "isPrimary" true
+            "isPrimary": true
         },
         {
             "code": 2,
             "name": "ChoiceCRS",
             "type" : 0,
-            "isPrimary" false
+            "isPrimary": false
         }
     ],
     "company": {
@@ -146,7 +171,7 @@ The operation supports creations, modifications, and partial or complete cancell
                 {
                     "net": 97.2,
                     "gross": 120
-                },
+                }
             ],
             "ratePlanCode": "FF",
             "spaceTypeCode": "SGL",
@@ -155,6 +180,13 @@ The operation supports creations, modifications, and partial or complete cancell
             "totalAmount": {
                 "gross": 260,
                 "net": 208
+            },
+            "paymentCardData": {
+              "identifier": "12345678-1011-1213-1415-161718192021",
+              "expireDate": "1222",
+              "holderName": "John Smith",
+              "obfuscatedNumber": "41111*******1111",
+              "type": 1
             }
         },
         {
@@ -203,13 +235,6 @@ The operation supports creations, modifications, and partial or complete cancell
             "spaceTypeCode": "DBL",
             "state": 3,
             "to": "2020-05-09"
-        },
-        "paymentCardData": {
-            "identifier": "12345678-1011-1213-1415-161718192021"
-            "expireDate": "1222",
-            "holderName": "John Smith",
-            "obfuscatedNumber": "41111*******1111",
-            "type": 1
         }
     ],
     "totalAmount": {
@@ -231,7 +256,8 @@ The operation supports creations, modifications, and partial or complete cancell
 | `availabilityBlockConfirmationNumber` | `string` | optional | Unique identification of the availability block in the Mews. |
 | `currencyCode` | `string` | required \(exc. Cancellation\) | [ISO-4217](https://en.wikipedia.org/wiki/ISO_4217) three-letter currency code of all prices within the booking. |
 | `totalAmount` | [`Amount`](../mews-operations/reservations.md#amount) object | required \(exc. Cancellation\) | Total amount of the whole booking. |
-| `customer` | [`Customer`](../mews-operations/reservations.md#customer) object | required \(exc. Cancellation\) | Represents the main booker. Does not necessarily mean that the person arrives to the property. |
+| `customer` | [`Customer`](../mews-operations/reservations.md#customer) object | required \(exc. Cancellation\) | Represents the owner of the reservation - the main customer that arrives to the property. |
+| `booker` | [`Customer`](../mews-operations/reservations.md#customer) object | optional | Represents the person that booked and manages the reservation. Does not necessarily mean that the person arrives to the property. |
 | `sources` | [`Source`](../mews-operations/reservations.md#source) collection | optional | Represents the sources for the booking. |
 | `company` | [`Company`](../mews-operations/reservations.md#company) object | optional | Represents the company associated with the booking. |
 | `travelAgency` | [`Travel Agency`](../mews-operations/reservations.md#travel-agency) object | optional | Represents the travel agency associated with the booking. |
@@ -249,7 +275,7 @@ It is used to send confirmation of success as well as confirmation of failure.
 
 #### Confirmation of success:
 
-```javascript
+```json
 {
     "clientToken": "[Mews Client token]",
     "connectionToken": "[Token of a concrete connection]",
@@ -266,7 +292,7 @@ It is used to send confirmation of success as well as confirmation of failure.
 
 #### Confirmation of failure:
 
-```javascript
+```json
 {
     "clientToken": "[Mews Client token]",
     "connectionToken": "[Token of a concrete connection]",

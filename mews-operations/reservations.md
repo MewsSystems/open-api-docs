@@ -81,14 +81,14 @@ The third `reservation` definition shows the partial cancellation - canceling th
             "zip": "123 45"
         },
         "email": "adam@smith.com",
-            "firstName": "adam",
-            "lastName": "Arnold",
-            "title": "Mister",
-            "nationalityCode": "US",
-            "languageCode": "en-US",
-            "telephone": "1-5526-88918",
-            "loyaltyCode": "PG60982345",
-            "loyaltyInfo": {
+        "firstName": "adam",
+        "lastName": "Arnold",
+        "title": "Mister",
+        "nationalityCode": "US",
+        "languageCode": "en-US",
+        "telephone": "1-5526-88918",
+        "loyaltyCode": "PG60982345",
+        "loyaltyInfo": {
             "membershipId": "PG60972345",
                 "programCode": "BWR",
                 "tierCode": "Gold"
