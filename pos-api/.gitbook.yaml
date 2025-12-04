@@ -1,0 +1,12 @@
+root: ./
+
+redirects:
+  essential-guide: guidelines/README.md
+  essential-guide/features: guidelines/requests.md
+  essential-guide/authentication: guidelines/authentication.md
+  essential-guide/requests: guidelines/requests.md
+  essential-guide/responses: guidelines/responses.md
+  essential-guide/environments: guidelines/environments.md
+  essential-guide/relationships: guidelines/relationships.md
+  essential-guide/filtering: guidelines/filtering.md
+  essential-guide/sparse-fieldsets: guidelines/sparse-fieldsets.md

@@ -1,0 +1,23 @@
+source: https://pos.mews.com/api/v2/docs/openapi.yaml
+output: ../operations
+tags:
+  - Products
+  - Invoices
+  - Registers
+  - InvoiceItems
+  - Orders
+  - Bookings
+  - Customers
+  - Tables
+  - Webhook endpoints
+  - Areas
+  - PromoCodes
+  - ModifierSets
+  - Outlets
+  - RevenueCenters
+  - PaymentMethods
+  - ProductBundles
+  - Menus
+  - Events
+  - System
+  - Payments
