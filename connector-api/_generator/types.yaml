@@ -1,0 +1,2606 @@
+types:
+  profiledata:
+    file: _objects.md
+    anchor: profile-data
+  profiledatadiscriminator:
+    file: _objects.md
+    anchor: profiledatadiscriminator
+  enterpriseprofiledata:
+    file: _objects.md
+    anchor: enterprise-profile-data
+  limitation:
+    file: ../guidelines/pagination.md
+    anchor: limitation
+  timefilterinterval:
+    file: _objects.md
+    anchor: time-interval
+    titleOverride: Time interval
+  datetimeintervalutc:
+    file: _objects.md
+    anchor: time-interval
+    titleOverride: Time interval
+  activitystates:
+    file: _objects.md
+    anchor: activity-state
+    titleOverride: Activity state
+  stringupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+    titleOverride: String update value
+  booleanupdatevalue:
+    file: _objects.md
+    anchor: bool-update-value
+    titleOverride: Bool update value
+  booleannullableupdatevalue:
+    file: _objects.md
+    anchor: bool-update-value
+    titleOverride: Bool update value
+  decimalnullableupdatevalue:
+    file: _objects.md
+    anchor: number-update-value
+    titleOverride: Number update value
+  amount:
+    file: _objects.md
+    anchor: amount
+  amountparameters:
+    file: _objects.md
+    anchor: amount-parameters
+  extendedamountparameters:
+    file: _objects.md
+    anchor: amount-parameters
+  taxvalue:
+    file: _objects.md
+    anchor: tax-value
+  taxbreakdown:
+    file: _objects.md
+    anchor: tax-breakdown
+  taxbreakdownitem:
+    file: _objects.md
+    anchor: tax-breakdown-item
+  int32nullableupdatevalue:
+    file: _objects.md
+    anchor: number-update-value
+    titleOverride: Number update value
+  creditcardtypedecimalidictionary:
+    file: _objects.md
+    anchor: dictionary-of-numbers
+    titleOverride: Dictionary of numbers
+  resourceavailabilitymetrictypeint32ienumerableidictionary:
+    file: _objects.md
+    anchor: dictionary-of-integer-arrays
+    titleOverride: Dictionary of integer arrays
+  localizedstrings:
+    file: _objects.md
+    anchor: localized-text
+  dictionary:
+    file: _objects.md
+    anchor: dictionary
+  hybrididentifier:
+    file: _objects.md
+    anchor: hybrid-identifier
+    titleOverride: Hybrid identifier
+  datefilterinterval:
+    file: _objects.md
+    anchor: date-interval
+    titleOverride: Date interval
+  accountnoteresult:
+    file: accountnotes.md
+    anchor: accountnoteresult
+  accountnote:
+    file: accountnotes.md
+    anchor: account-note
+  accounttypeenum:
+    file: accounts.md
+    anchor: account-type
+  accountnoteclassificationenum:
+    file: accountnotes.md
+    anchor: account-note-classification
+  accountnotefilterparameters:
+    file: accountnotes.md
+    anchor: accountnotefilterparameters
+  accountnoteadditionresult:
+    file: accountnotes.md
+    anchor: accountnoteadditionresult
+  multipleaccountnoteaddparameters:
+    file: accountnotes.md
+    anchor: multipleaccountnoteaddparameters
+  accountnoteaddparameters:
+    file: accountnotes.md
+    anchor: account-note-parameters
+  accountnoteupdateresult:
+    file: accountnotes.md
+    anchor: accountnoteupdateresult
+  multipleaccountnoteupdateparameters:
+    file: accountnotes.md
+    anchor: multipleaccountnoteupdateparameters
+  accountnoteupdateparameters:
+    file: accountnotes.md
+    anchor: account-note-update-parameters
+  accountnoteupdateclassifications:
+    file: accountnotes.md
+    anchor: account-note-update-classifications
+  unit:
+    file: _objects.md
+    anchor: unit
+  multipleaccountnotedeleteparameters:
+    file: accountnotes.md
+    anchor: multipleaccountnotedeleteparameters
+  countryresult:
+    file: countries.md
+    anchor: countryresult
+  country:
+    file: countries.md
+    anchor: country
+  countrysubdivision:
+    file: countries.md
+    anchor: country-subdivision
+  countryrule:
+    file: countries.md
+    anchor: country-rules
+  countrygroup:
+    file: countries.md
+    anchor: country-group
+  parameters:
+    file: taxations.md
+    anchor: parameters
+  currencyresult:
+    file: currencies.md
+    anchor: currencyresult
+  currency:
+    file: currencies.md
+    anchor: currency
+  deviceresult:
+    file: devices.md
+    anchor: deviceresult
+  device:
+    file: devices.md
+    anchor: device
+  devicetypeenum:
+    file: devices.md
+    anchor: device-type
+  exchangerateresult:
+    file: exchangerates.md
+    anchor: exchangerateresult
+  exchangerate:
+    file: exchangerates.md
+    anchor: exchange-rate
+  currencyacceptancefilterparameters:
+    file: exchangerates.md
+    anchor: currencyacceptancefilterparameters
+  imageurlresult:
+    file: images.md
+    anchor: imageurlresult
+  imageurl:
+    file: images.md
+    anchor: image-url
+  imageurlparameters:
+    file: images.md
+    anchor: imageurlparameters
+  imagesizeparameters:
+    file: images.md
+    anchor: image-size-parameters
+  imageresizemodeenum:
+    file: images.md
+    anchor: image-resize-mode
+  orderitemresult:
+    file: orderitems.md
+    anchor: orderitemresult
+  orderitem:
+    file: orderitems.md
+    anchor: order-item
+  revenuetypeenum:
+    file: orderitems.md
+    anchor: revenue-type
+  orderitemtypeenum:
+    file: orderitems.md
+    anchor: order-item-type
+  orderitemoptions:
+    file: orderitems.md
+    anchor: order-item-options
+  orderitemdata:
+    file: orderitems.md
+    anchor: order-item-data
+  orderitemdatadiscriminatorenum:
+    file: orderitems.md
+    anchor: order-item-data-discriminator
+  orderitemrebatedata:
+    file: orderitems.md
+    anchor: rebate-data
+  orderitemproductdata:
+    file: orderitems.md
+    anchor: product-data
+  orderitemfilterparameters:
+    file: orderitems.md
+    anchor: orderitemfilterparameters
+  accountingstateenum:
+    file: orderitems.md
+    anchor: order-item-accounting-state
+  serviceresult:
+    file: services.md
+    anchor: serviceresult
+  service:
+    file: services.md
+    anchor: service
+  serviceoptions:
+    file: services.md
+    anchor: service-options
+  promotions:
+    file: services.md
+    anchor: promotions
+  servicedatadiscriminator:
+    file: services.md
+    anchor: service-data-discriminator
+  bookableservicedata:
+    file: services.md
+    anchor: bookable-service-data
+  timeunitperiodenum:
+    file: services.md
+    anchor: time-unit-period
+  additionalservicedata:
+    file: services.md
+    anchor: additional-service-data
+  servicefilterparameters:
+    file: services.md
+    anchor: servicefilterparameters
+  serviceavailabilityupdateparameters:
+    file: services.md
+    anchor: serviceavailabilityupdateparameters
+  serviceavailabilityupdatedata:
+    file: services.md
+    anchor: availability-update
+  paxcount:
+    file: services.md
+    anchor: paxcount
+  serviceavailabilityresult:
+    file: services.md
+    anchor: serviceavailabilityresult
+  categoryavailability:
+    file: services.md
+    anchor: resource-category-availability
+  serviceavailabilityfilterparameters:
+    file: services.md
+    anchor: serviceavailabilityfilterparameters
+  serviceavailabilityresultv20240122:
+    file: services.md
+    anchor: serviceavailabilityresultv20240122
+  resourcecategoryavailabilityv20240122:
+    file: services.md
+    anchor: resource-category-availability-ver-2024-01-22
+  serviceavailabilityfilterparametersv20240122:
+    file: services.md
+    anchor: serviceavailabilityfilterparametersv20240122
+  resourceavailabilitymetrictypeenum:
+    file: services.md
+    anchor: service-availability-metrics
+  servicedatacoproductofservicedatadiscriminator:
+    file: services.md
+    anchor: service-data
+  reservationserviceorderresult:
+    file: reservations.md
+    anchor: reservationserviceorderresult
+  reservation:
+    file: reservations.md
+    anchor: reservation-ver-2023-06-06
+  accounttype:
+    file: accounts.md
+    anchor: account-type
+  serviceorderstateenum:
+    file: reservations.md
+    anchor: service-order-state
+  serviceorderoriginenum:
+    file: reservations.md
+    anchor: service-order-origin
+  serviceordercommanderoriginenum:
+    file: reservations.md
+    anchor: commander-origin
+  serviceorderoptions:
+    file: reservations.md
+    anchor: service-order-options
+  serviceordercancellationreasonenum:
+    file: reservations.md
+    anchor: reservation-cancellation-reason
+  reservationpurposeenum:
+    file: reservations.md
+    anchor: reservation-purpose
+  reservationpersoncount:
+    file: reservations.md
+    anchor: age-category-parameters
+  reservationserviceorderfilterparameters:
+    file: reservations.md
+    anchor: reservationserviceorderfilterparameters
+  reservationresult:
+    file: reservations.md
+    anchor: reservationresult
+  reservationold:
+    file: reservations.md
+    anchor: reservation-ver-2017-04-12
+  cancellationreason:
+    file: reservations.md
+    anchor: cancellationreason
+  reservationoptions:
+    file: reservations.md
+    anchor: reservation-options
+  reservationgroupold:
+    file: reservations.md
+    anchor: reservation-groups-ver-2017-04-12
+  customer:
+    file: customers.md
+    anchor: customer
+  document:
+    file: customers.md
+    anchor: document
+  oldaddress:
+    file: configuration.md
+    anchor: address
+  product:
+    file: products.md
+    anchor: product
+  productoptions:
+    file: products.md
+    anchor: product-options
+  productclassifications:
+    file: products.md
+    anchor: product-classifications
+  extendedamount:
+    file: _objects.md
+    anchor: amount
+  productpricingcoproductofproductpricing:
+    file: products.md
+    anchor: product-pricing
+  productpricing:
+    file: products.md
+    anchor: product-pricing-data-discriminator
+  relativeproductprice:
+    file: products.md
+    anchor: relative-product-price
+  productconsumptionmoment:
+    file: products.md
+    anchor: productconsumptionmoment
+  resourceclassification:
+    file: resourcefeatures.md
+    anchor: resource-feature-classification
+  resourcecategoryassignment:
+    file: resourcecategories.md
+    anchor: resource-category-assignment
+  businesssegment:
+    file: businesssegments.md
+    anchor: business-segment
+  accountingitem:
+    file: accountingitems.md
+    anchor: accounting-item
+  orderitemold:
+    file: accountingitems.md
+    anchor: order-item
+  orderitemolddatacoproductoforderitemtypeold:
+    file: accountingitems.md
+    anchor: order-item-data
+  orderitemtypeold:
+    file: accountingitems.md
+    anchor: order-item-data-discriminator
+  rebateorderitemdata:
+    file: accountingitems.md
+    anchor: rebate-order-item-data
+  productorderitemdata:
+    file: accountingitem.md
+    anchor: product-order-item-data
+  ordernote:
+    file: serviceordernotes.md
+    anchor: service-order-note
+  company:
+    file: companies.md
+    anchor: company
+  companyoptions:
+    file: companies.md
+    anchor: company-options
+  creditrating:
+    file: companies.md
+    anchor: credit-rating
+  resourceaccesstoken:
+    file: resourceaccesstokens.md
+    anchor: resource-access-token
+  resourceaccesstokentype:
+    file: resourceaccesstokens.md
+    anchor: resource-access-token-type
+  resourceaccesstokenpermissions:
+    file: resourceaccesstokens.md
+    anchor: resource-access-token-permissions
+  reservationfilterparameters:
+    file: reservations.md
+    anchor: reservationfilterparameters
+  reservationtimefilter:
+    file: reservations.md
+    anchor: reservation-time-filter
+  serviceorderstateold:
+    file: reservations.md
+    anchor: service-order-state-ver-2017-04-12
+  reservationextent:
+    file: reservations.md
+    anchor: reservation-extent
+  accountingstate:
+    file: accountingitems.md
+    anchor: order-item-accounting-state
+  multiplereservationparameters:
+    file: reservations.md
+    anchor: multiplereservationparameters
+  reservationmultiplecustomerparameters:
+    file: reservations.md
+    anchor: reservationmultiplecustomerparameters
+  reservationconfirmationnumberparameters:
+    file: reservations.md
+    anchor: reservationconfirmationnumberparameters
+  reservationpricingresult:
+    file: reservations.md
+    anchor: reservationpricingresult
+  reservationprice:
+    file: reservations.md
+    anchor: reservation-price
+  currencyvalueold:
+    file: _objects.md
+    anchor: currency-value-ver-2018-06-07
+  reservationdataparameters:
+    file: reservations.md
+    anchor: reservationdataparameters
+  reservationdata:
+    file: reservations.md
+    anchor: reservation-parameters
+  serviceorderstate:
+    file: reservations.md
+    anchor: service-order-state
+  perunitpriceparameters:
+    file: reservations.md
+    anchor: time-unit-amount-parameters
+  productorderadditiondata:
+    file: orders.md
+    anchor: product-order-parameters
+  costparameters:
+    file: _deprecated.md
+    anchor: costparameters
+  resourceaccesstokenparameters:
+    file: reservations.md
+    anchor: resourceaccesstokenparameters
+  resourceaccesstokenpermissionsparameters:
+    file: reservations.md
+    anchor: resourceaccesstokenpermissionsparameters
+  reservationpurpose:
+    file: reservations.md
+    anchor: reservation-purpose
+  reservationadditionresult:
+    file: reservations.md
+    anchor: reservationadditionresult
+  addedreservation:
+    file: reservations.md
+    anchor: added-reservation
+  reservationadditionparameters:
+    file: reservations.md
+    anchor: reservationadditionparameters
+  multiplereservationupdateparameters:
+    file: reservations.md
+    anchor: reservation-updates
+  int32updatevalue:
+    file: _objects.md
+    anchor: integer-update-value
+    titleOverride: Integer update value
+  guidnullableupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+    titleOverride: String update value
+  guidupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+    titleOverride: String update value
+  reservationupdateoptionsparameters:
+    file: reservations.md
+    anchor: reservations-options-parameters-update-values
+  reservationupdateparameters:
+    file: reservations.md
+    anchor: reservation-updates
+  multiplereservationresult:
+    file: reservations.md
+    anchor: multiplereservationresult
+  confirmreservationparameters:
+    file: reservations.md
+    anchor: confirmreservationparameters
+  reservationstartparameters:
+    file: reservations.md
+    anchor: reservationstartparameters
+  reservationprocessingparameters:
+    file: reservations.md
+    anchor: reservationprocessingparameters
+  reservationcancellationparameters:
+    file: reservations.md
+    anchor: reservationcancellationparameters
+  reservationsupdatecustomerparameters:
+    file: reservations.md
+    anchor: reservationsupdatecustomerparameters
+  reservationupdateintervalparameters:
+    file: reservations.md
+    anchor: reservationupdateintervalparameters
+  addcompanionshipresult:
+    file: reservations.md
+    anchor: addcompanionshipresult
+  reservationcustomerparameters:
+    file: reservations.md
+    anchor: reservationcustomerparameters
+  addproductitemsresult:
+    file: reservations.md
+    anchor: addproductitemsresult
+  reservationproductparameters:
+    file: reservations.md
+    anchor: reservationproductparameters
+  reservationitemresult:
+    file: reservations.md
+    anchor: reservationitemresult
+  reservationitems:
+    file: reservations.md
+    anchor: reservation-items
+  reservationitemparameters:
+    file: reservations.md
+    anchor: reservationitemparameters
+  reservationqrcodedata:
+    file: reservations.md
+    anchor: reservation-qr-code-data
+  reservationupdatepersoncountparameters:
+    file: reservations.md
+    anchor: person-counts-update-value
+  reservationupdateperunitpriceparameters:
+    file: reservations.md
+    anchor: time-unit-amount-update-value
+  reservationoldorigin:
+    file: reservations.md
+    anchor: reservation-origin-ver-2017-04-12
+  cancellationpolicyresult:
+    file: cancellationpolicies.md
+    anchor: cancellationpolicyresult
+  cancellationpolicy:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy
+  cancellationpolicyapplicability:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-applicability
+  cancellationfeeextent:
+    file: cancellationpolicies.md
+    anchor: cancellation-fee-extent
+  currencyvalue:
+    file: _objects.md
+    anchor: currency-value-ver-2023-02-02
+  cancellationpolicyfilterparameters:
+    file: cancellationpolicies.md
+    anchor: cancellationpolicyfilterparameters
+  availabilityadjustmentresult:
+    file: availabilityadjustments.md
+    anchor: availabilityadjustmentresult
+  availabilityadjustment:
+    file: availabilityadjustments.md
+    anchor: availability-adjustment
+  activitystate:
+    file: _objects.md
+    anchor: activity-state
+  availabilityadjustmentparameters:
+    file: availabilityadjustments.md
+    anchor: availabilityadjustmentparameters
+  activitystateenum:
+    file: _objects.md
+    anchor: activity-state
+  voucherresult:
+    file: vouchers.md
+    anchor: voucherresult
+  voucher:
+    file: vouchers.md
+    anchor: voucher
+  vouchertypeenum:
+    file: vouchers.md
+    anchor: voucher-type
+  vouchercode:
+    file: vouchercodes.md
+    anchor: voucher-code
+  voucherassignment:
+    file: vouchers.md
+    anchor: voucher-assignment
+  voucherfilterparameters:
+    file: vouchers.md
+    anchor: voucherfilterparameters
+  voucherextent:
+    file: vouchers.md
+    anchor: voucher-extent
+  voucherwriteresult:
+    file: vouchers.md
+    anchor: voucherwriteresult
+  multiplevoucheraddparameters:
+    file: vouchers.md
+    anchor: multiplevoucheraddparameters
+  voucheraddparameters:
+    file: vouchers.md
+    anchor: voucher-parameters
+  multiplevoucherupdateparameters:
+    file: vouchers.md
+    anchor: multiplevoucherupdateparameters
+  voucherupdateparameters:
+    file: vouchers.md
+    anchor: vouchers-update-parameters
+  vouchertypeupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+  guidienumerableupdatevalue:
+    file: _object.md
+    anchor: array-of-strings-update-value
+  multiplevoucherdeleteparameters:
+    file: vouchers.md
+    anchor: multiplevoucherdeleteparameters
+  multiplereservationpurchaseordernumberparameters:
+    file: reservations.md
+    anchor: multiplereservationpurchaseordernumberparameters
+  sourceresult:
+    file: sources.md
+    anchor: sourceresult
+  source:
+    file: sources.md
+    anchor: source
+  sourcetype:
+    file: sources.md
+    anchor: source-type
+  sourcefilterparameters:
+    file: sources.md
+    anchor: sourcefilterparameters
+  vouchercoderesult:
+    file: vouchercodes.md
+    anchor: vouchercoderesult
+  multiplevouchercodeaddparameters:
+    file: vouchercodes.md
+    anchor: multiplevouchercodeaddparameters
+  vouchercodeaddparameters:
+    file: vouchercodes.md
+    anchor: voucher-code-parameters
+  multiplevouchercodedeleteparameters:
+    file: vouchercodes.md
+    anchor: multiplevouchercodedeleteparameters
+  vouchercodefilterparameters:
+    file: vouchercodes.md
+    anchor: vouchercodefilterparameters
+  vouchertype:
+    file: vouchers.md
+    anchor: vouchertype
+  outletitemresult:
+    file: outletitems.md
+    anchor: outletitemresult
+  outletitem:
+    file: outletitems.md
+    anchor: outlet-item
+  outletbill:
+    file: outletitems.md
+    anchor: outlet-bill
+  outletitemsfilterparameters:
+    file: outletitems.md
+    anchor: outletitemsfilterparameters
+  outletitemtype:
+    file: outletitems.md
+    anchor: outlet-item-type
+  companyresult:
+    file: companies.md
+    anchor: companyresult
+  companyaddparameters:
+    file: companies.md
+    anchor: companyaddparameters
+  companyoptionsparameters:
+    file: companies.md
+    anchor: company-options-parameters
+  creditratingparameters:
+    file: companies.md
+    anchor: credit-rating-parameters
+  addressparameters:
+    file: companies.md
+    anchor: address-parameters
+  companyupdateparameters:
+    file: companies.md
+    anchor: companyupdateparameters
+  companyoptionupdateparameters:
+    file: companies.md
+    anchor: company-update-options
+  creditratingupdateparameters:
+    file: companies.md
+    anchor: credit-rating-update-parameters
+  companyfilterparameters:
+    file: companies.md
+    anchor: companyfilterparameters
+  companytimefilter:
+    file: companies.md
+    anchor: company-time-filter
+  companyextent:
+    file: companies.md
+    anchor: company-extent
+  multiplecompanydeleteparameters:
+    file: companies.md
+    anchor: multiplecompanydeleteparameters
+  companynameparameters:
+    file: companies.md
+    anchor: companynameparameters
+  creditratingbasicenum:
+    file: companies.md
+    anchor: credit-rating-basic
+  creditratingbasicupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+  paymentitemold:
+    file: accountingitems.md
+    anchor: payment-item
+  paymentitemolddatacoproductofpaymenttype:
+    file: accountingitems.md
+    anchor: payment-item-data
+  paymenttype:
+    file: accountingitems.md
+    anchor: payment-item-data-discriminator
+  paymentcardpaymentdata:
+    file: accountingitems.md
+    anchor: credit-card-payment-item-data
+  invoicepaymentdata:
+    file: payments.md
+    anchor: invoice-payment-data
+  address:
+    file: addresses.md
+    anchor: account-address
+  title:
+    file: customers.md
+    anchor: title
+  billsresult:
+    file: bills.md
+    anchor: billsresult
+  bill:
+    file: bills.md
+    anchor: bill
+  billstate:
+    file: bills.md
+    anchor: bill-state
+  billtype:
+    file: bills.md
+    anchor: bill-type
+  billoptions:
+    file: bills.md
+    anchor: bill-options
+  billassigneedatacoproductofbillassigneedatadiscriminator:
+    file: bills.md
+    anchor: bill-assignee-data
+  billassigneedatadiscriminator:
+    file: bills.md
+    anchor: bill-associated-account-data-discriminator
+  billcompanydata:
+    file: bills.md
+    anchor: bill-company-data
+  billcustomerdata:
+    file: bills.md
+    anchor: bill-customer-data
+  billownerdatacoproductofbillassigneedatadiscriminator:
+    file: bills.md
+    anchor: bill-owner-data
+  billaccountdata:
+    file: bills.md
+    anchor: associated-account-bill-data
+  billenterprisedata:
+    file: bills.md
+    anchor: bill-enterprise-data
+  billcorrectionstateenum:
+    file: bills.md
+    anchor: bill-correction-state
+  billcorrectiontypeenum:
+    file: bills.md
+    anchor: bill-correction-type
+  billfilterparameters:
+    file: bills.md
+    anchor: billfilterparameters
+  billextent:
+    file: bills.md
+    anchor: bill-extent
+  billpdfresult:
+    file: bills.md
+    anchor: billpdfresult
+  billpdfresultresultcoproductofbillpdfresultdiscriminator:
+    file: bills.md
+    anchor: bill-pdf-result-discriminator
+  billpdfresultdiscriminator:
+    file: bills.md
+    anchor: bill-pdf-result-discriminator
+  billpdffile:
+    file: bills.md
+    anchor: bill-pdf-file
+  billprintevent:
+    file: bills.md
+    anchor: bill-print-event
+  billpdfparameters:
+    file: bills.md
+    anchor: billpdfparameters
+  billsaddresult:
+    file: bills.md
+    anchor: billsaddresult
+  multiplebilladdparameters:
+    file: bills.md
+    anchor: multiplebilladdparameters
+  billaddparameters:
+    file: bills.md
+    anchor: bill-parameters
+  billdeleteparameters:
+    file: bills.md
+    anchor: billdeleteparameters
+  billscloseresult:
+    file: bills.md
+    anchor: billscloseresult
+  billcloseparameters:
+    file: bills.md
+    anchor: billcloseparameters
+  billoptionsparameters:
+    file: bills.md
+    anchor: bill-options-parameters
+  billcloseaccountparameters:
+    file: bills.md
+    anchor: bill-close-account-parameters
+  exportaddresult:
+    file: exports.md
+    anchor: exportaddresult
+  export:
+    file: exports.md
+    anchor: export
+  exportstatus:
+    file: exports.md
+    anchor: export-status
+  exportentitytype:
+    file: exports.md
+    anchor: exported-entity-type
+  exportfileentry:
+    file: exports.md
+    anchor: export-file-entry
+  exportaddparameters:
+    file: exports.md
+    anchor: exportaddparameters
+  exportresult:
+    file: exports.md
+    anchor: exportresult
+  exportfilterparameters:
+    file: exports.md
+    anchor: export-filter-parameters
+  taskresult:
+    file: tasks.md
+    anchor: taskresult
+  task:
+    file: tasks.md
+    anchor: task
+  taskfilterparameters:
+    file: tasks.md
+    anchor: taskfilterparameters
+  addtaskresult:
+    file: tasks.md
+    anchor: addtaskresult
+  taskaddparameters:
+    file: tasks.md
+    anchor: taskaddparameters
+  companionshipaddresult:
+    file: reservations.md
+    anchor: companionshipaddresult
+  companionshipaddparameters:
+    file: reservations.md
+    anchor: companionshipaddparameters
+  companionshipdeleteparameters:
+    file: reservations.md
+    anchor: companionshipdeleteparameters
+  resourcecategoryresult:
+    file: resourcecategories.md
+    anchor: resourcecategoryresult
+  resourcecategoryfilterparameters:
+    file: resourcecategories.md
+    anchor: resourcecategoryfilterparameters
+  resourcecategoryassignmentresult:
+    file: resourcecategories.md
+    anchor: resourcecategoryassignmentresult
+  resourcecategoryassignmentfilterparameters:
+    file: resourcecategories.md
+    anchor: resourcecategoryassignmentfilterparameters
+  resourcecategoryimageassignmentresult:
+    file: resourcecategories.md
+    anchor: resourcecategoryimageassignmentresult
+  resourcecategoryimageassignment:
+    file: resourcecategories.md
+    anchor: resource-category-image-assignment
+  resourcecategoryimageassignmentfilterparameters:
+    file: resourcecategories.md
+    anchor: resourcecategoryimageassignmentfilterparameters
+  agecategoryresult:
+    file: agecategories.md
+    anchor: agecategoryresult
+  agecategory:
+    file: agecategories.md
+    anchor: age-category
+  agecategoryparameters:
+    file: agecategories.md
+    anchor: agecategoryparameters
+  agecategoryclassificationenum:
+    file: agecategories.md
+    anchor: age-category-classification
+  accountingcategoryresult:
+    file: accountingcategories.md
+    anchor: accountingcategoryresult
+  accountingcategory:
+    file: accountingcategories.md
+    anchor: accounting-category
+  accountingcategoryfilterparameters:
+    file: accountingcategories.md
+    anchor: accountingcategoryfilterparameters
+  accountingcategoryclassificationenum:
+    file: accountingcategories.md
+    anchor: accounting-category-classification
+  productpricingresult:
+    file: products.md
+    anchor: product-pricing-result
+  productagecategoryprice:
+    file: products.md
+    anchor: age-category-price
+  productpricingfilterparameters:
+    file: products.md
+    anchor: product-pricing-filter-parameters
+  productresult:
+    file: products.md
+    anchor: product-result
+  productchargingmodeenum:
+    file: products.md
+    anchor: product-charging-mode
+  productpostingenum:
+    file: products.md
+    anchor: product-posting
+  productpostingmodeenum:
+    file: products.md
+    anchor: product-posting-mode
+  productconsumptionmomentenum:
+    file: products.md
+    anchor: product-consumption-moment
+  productfilterparameters:
+    file: products.md
+    anchor: product-parameters
+  productdeleteparameters:
+    file: products.md
+    anchor: product-delete-parameters
+  addressresult:
+    file: addresses.md
+    anchor: addressresult
+  accountaddress:
+    file: addresses.md
+    anchor: account-address
+  addressfilterparameters:
+    file: addresses.md
+    anchor: addressfilterparameters
+  multipleaddressaddparameters:
+    file: addresses.md
+    anchor: multipleaddressaddparameters
+  addressaddparameters:
+    file: addresses.md
+    anchor: account-address-parameters
+  multipleaddressupdateparameters:
+    file: addresses.md
+    anchor: multipleaddressupdateparameters
+  addressupdateparameters:
+    file: addresses.md
+    anchor: account-address-update-parameters
+  addressdeleteparameters:
+    file: addresses.md
+    anchor: addressdeleteparameters
+  accountresult:
+    file: accounts.md
+    anchor: accountresult
+  account:
+    file: accounts.md
+    anchor: account
+  customeraccount:
+    file: accounts.md
+    anchor: customer
+  customeraccountoptions:
+    file: accounts.md
+    anchor: customer-options
+  customeraccountclassifications:
+    file: accounts.md
+    anchor: customer-classifications
+  legalentityidentifiers:
+    file: accounts.md
+    anchor: customer-legal-identifiers
+  companyaccount:
+    file: accounts.md
+    anchor: company
+  companyaccountclassifications:
+    file: accounts.md
+    anchor: company-classifications
+  companyaccountoptions:
+    file: accounts.md
+    anchor: company-options
+  multipleaccountupdateparameters:
+    file: accounts.md
+    anchor: multipleaccountupdateparameters
+  accountupdateparameters:
+    file: accounts.md
+    anchor: account-update-parameters
+  accountparameterdiscriminatorenum:
+    file: accounts.md
+    anchor: account-type-discriminator
+  accountcustomerupdateparameters:
+    file: accounts.md
+    anchor: customer-update-parameters
+  customeroptionupdateparameters:
+    file: accounts.md
+    anchor: customer-update-options
+  customerclassificationupdateparameters:
+    file: accounts.md
+    anchor: customer-update-classifications
+  legalentityidentifierupdateparameters:
+    file: accounts.md
+    anchor: customer-update-legal-entity-identifiers
+  accountcompanyupdateparameters:
+    file: accounts.md
+    anchor: company-update-parameters
+  companyclassificationupdateparameters:
+    file: accounts.md
+    anchor: company-update-classifications
+  creditratingbasic:
+    file: accounts.md
+    anchor: credit-rating-basic
+  multipleaccountmergeparameters:
+    file: accounts.md
+    anchor: multipleaccountmergeparameters
+  accountmergeparameter:
+    file: accounts.md
+    anchor: account-merge-parameters
+  mergeaccounttype:
+    file: accounts.md
+    anchor: account-merge-type
+  mergeaccounttypeenum:
+    file: accounts.md
+    anchor: account-merge-type
+  rategroupresult:
+    file: rategroups.md
+    anchor: rategroupresult
+  rategroup:
+    file: rategroups.md
+    anchor: rate-group
+  rategroupfilterparameters:
+    file: rategroups.md
+    anchor: rategroupfilterparameters
+  addressresultpage:
+    file: addresses.md
+    anchor: addressresultpage
+  cancellationpolicybyreservationresult:
+    file: cancellationpolicies.md
+    anchor: cancellationpolicybyreservationresult
+  cancellationpolicybyreservation:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-data-grouped-by-reservation
+  cancellationpolicyapplicabilityenum:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-applicability
+  cancellationfeeextentenum:
+    file: cancellationpolicies.md
+    anchor: cancellation-fee-extent
+  cancellationpolicybyreservationparameters:
+    file: cancellationpolicies.md
+    anchor: cancellationpolicybyreservationparameters
+  cancellationpolicydata:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-data
+  cancellationpolicybyrateresult:
+    file: cancellationpolicies.md
+    anchor: cancellationpolicybyrateresult
+  cancellationpolicybyrate:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-data-grouped-by-rate
+  cancellationpolicybyrateparameters:
+    file: cancellationpolicies.md
+    anchor: cancellationpolicybyrateparameters
+  configuration:
+    file: configuration.md
+    anchor: configuration
+  enterprise:
+    file: configuration.md
+    anchor: enterprise
+  pricingmodeenum:
+    file: configuration.md
+    anchor: pricing
+  currencyacceptance:
+    file: configuration.md
+    anchor: accepted-currency
+  accountingconfiguration:
+    file: configuration.md
+    anchor: accounting-configuration
+  surchargeconfiguration:
+    file: configuration.md
+    anchor: surcharging-fees-configuration
+  paymentcardstorage:
+    file: configuration.md
+    anchor: payment-card-storage
+  configurationfilterparameters:
+    file: configuration.md
+    anchor: configurationfilterparameters
+  restrictionadditionresult:
+    file: restrictions.md
+    anchor: restrictionadditionresult
+  addedrestriction:
+    file: restrictions.md
+    anchor: added-restriction
+  restriction:
+    file: restrictions.md
+    anchor: restriction
+  restrictionoriginenum:
+    file: restrictions.md
+    anchor: restriction-origin
+  restrictionconditions:
+    file: restrictions.md
+    anchor: restriction-condition
+  restrictiontypeenum:
+    file: restrictions.md
+    anchor: restriction-type
+  resourcecategorytypeenum:
+    file: restrictions.md
+    anchor: resource-category-type
+  hours:
+    file: restrictions.md
+    anchor: hours
+  restrictionexceptions:
+    file: restrictions.md
+    anchor: restriction-exception
+  addrestrictionparameters:
+    file: restrictions.md
+    anchor: addrestrictionparameters
+  restrictiondata:
+    file: restrictions.md
+    anchor: restriction-data
+  restrictionconditionsdata:
+    file: restrictions.md
+    anchor: restriction-condition-data
+  hoursparameters:
+    file: restrictions.md
+    anchor: hours-parameters
+  restrictionexceptionsdata:
+    file: restrictions.md
+    anchor: restriction-exception-data
+  deleterestrictionparameters:
+    file: restrictions.md
+    anchor: deleterestrictionparameters
+  setrestrictionparameters:
+    file: restrictions.md
+    anchor: setrestrictionparameters
+  restrictionsetdata:
+    file: restrictions.md
+    anchor: restriction-set-data
+  restrictiontype:
+    file: restrictions.md
+    anchor: restriction-type
+  daysparameters:
+    file: restrictions.md
+    anchor: days-parameters
+  clearrestrictionparameters:
+    file: restrictions.md
+    anchor: clearrestrictionparameters
+  restrictioncleardata:
+    file: restrictions.md
+    anchor: restriction-clear-data
+  restrictionresult:
+    file: restrictions.md
+    anchor: restrictionresult
+  restrictionfilterparameters:
+    file: restrictions.md
+    anchor: restrictionfilterparameters
+  restrictionorigin:
+    file: restrictions.md
+    anchor: restriction-origin
+  externalpaymenttypeenum:
+    file: payments.md
+    anchor: external-payment-type
+  sexenum:
+    file: customers.md
+    anchor: sex
+  identitydocumenttypeenum:
+    file: reservations.md
+    anchor: document-type
+  customerclassificationsenum:
+    file: customers.md
+    anchor: customer-classification
+  customeroptionsenum:
+    file: customers.md
+    anchor: customer-option
+  addaccountfileresult:
+    file: accounts.md
+    anchor: addaccountfileresult
+  accountfileparameters:
+    file: accounts.md
+    anchor: accountfileparameters
+  sourceassignmentresult:
+    file: sourceassignments.md
+    anchor: sourceassignmentresult
+  sourceassignment:
+    file: sourceassignments.md
+    anchor: source-assignment
+  sourceassignmentfilterparameters:
+    file: sourceassignments.md
+    anchor: sourceassignmentfilterparameters
+  customerresult:
+    file: customers.md
+    anchor: customerresult
+  sex:
+    file: customers.md
+    anchor: sex
+  identitydocument:
+    file: customers.md
+    anchor: identity-document
+  customerfilterparameters:
+    file: customers.md
+    anchor: customerfilterparameters
+  customerextent:
+    file: customers.md
+    anchor: customer-extent
+  customersearchresult:
+    file: customers.md
+    anchor: customersearchresult
+  chargeablecustomer:
+    file: customers.md
+    anchor: customer-search-result
+  customersearchparameters:
+    file: customers.md
+    anchor: customersearchparameters
+  customeritemresult:
+    file: customers.md
+    anchor: customeritemresult
+  customeritems:
+    file: customers.md
+    anchor: customer-items
+  customeritemparameters:
+    file: customers.md
+    anchor: customeritemparameters
+  customeraddparameters:
+    file: customers.md
+    anchor: customeraddparameters
+  documentparameters:
+    file: customers.md
+    anchor: identity-document-parameters
+  customerclassificationenum:
+    file: customers.md
+    anchor: customer-classification
+  customeroptionenum:
+    file: customers.md
+    anchor: customer-option
+  customerupdateparameters:
+    file: customers.md
+    anchor: customerupdateparameters
+  customermergeparameters:
+    file: customers.md
+    anchor: customermergeparameters
+  customerfileparameters:
+    file: customers.md
+    anchor: customerfileparameters
+  customeraddfileresult:
+    file: customers.md
+    anchor: customeraddfileresult
+  businesssegmentresult:
+    file: businesssegments.md
+    anchor: businesssegmentresult
+  businesssegmentfilterparameters:
+    file: businesssegments.md
+    anchor: businesssegmentfilterparameters
+  enterpriseresult:
+    file: enterprises.md
+    anchor: enterpriseresult
+  enterprisebase:
+    file: enterprises.md
+    anchor: enterprise
+  enterprisesubscription:
+    file: enterprises.md
+    anchor: enterprise-subscription
+  enterprisefilterparameters:
+    file: enterprises.md
+    anchor: enterprisefilterparameters
+  enterpriseportfolio:
+    file: enterprises.md
+    anchor: enterprise
+  serviceoverbookinglimitresult:
+    file: serviceoverbookinglimits.md
+    anchor: serviceoverbookinglimitresult
+  serviceoverbookinglimit:
+    file: serviceoverbookinglimits.md
+    anchor: service-overbooking-limit
+  serviceoverbookinglimitfilterparameters:
+    file: serviceoverbookinglimits.md
+    anchor: serviceoverbookinglimitfilterparameters
+  serviceoverbookinglimitsetparameters:
+    file: serviceoverbookinglimits.md
+    anchor: serviceoverbookinglimitsetparameters
+  serviceoverbookinglimitsetdata:
+    file: serviceoverbookinglimits.md
+    anchor: service-overbooking-limits-set-parameters
+  serviceoverbookinglimitclearparameters:
+    file: serviceoverbookinglimits.md
+    anchor: serviceoverbookinglimitclearparameters
+  serviceoverbookinglimitcleardata:
+    file: serviceoverbookinglimits.md
+    anchor: service-overbooking-limits-clear-parameters
+  assignedrateids:
+    file: vouchers.md
+    anchor: assigned-rate-ids
+  productpriceupdateparameters:
+    file: products.md
+    anchor: product-price-update-parameters
+  productpriceupdate:
+    file: products.md
+    anchor: product-price-update
+  paymentresult:
+    file: payments.md
+    anchor: paymentresult
+  payment:
+    file: payments.md
+    anchor: payment
+  paymentstateenum:
+    file: payments.md
+    anchor: payment-state
+  paymentdiscriminatorenum:
+    file: payments.md
+    anchor: payment-type
+  paymentkindenum:
+    file: payments.md
+    anchor: payment-kind
+  paymentdata:
+    file: payments.md
+    anchor: payment-data
+  paymentdatadiscriminatorenum:
+    file: payments.md
+    anchor: payment-data-discriminator
+  paymentcreditcarddata:
+    file: payments.md
+    anchor: credit-card-payment-data
+  creditcardtransaction:
+    file: payments.md
+    anchor: credit-card-transaction
+  paymentinvoicedata:
+    file: payments.md
+    anchor: invoice-payment-data
+  invoicepaymenttypeenum:
+    file: payments.md
+    anchor: invoice-payment-type
+  paymentexternaldata:
+    file: payments.md
+    anchor: external-payment-data
+  paymentghostdata:
+    file: payments.md
+    anchor: ghost-payment-data
+  paymentfilterparameters:
+    file: payments.md
+    anchor: paymentfilterparameters
+  paymentstate:
+    file: payments.md
+    anchor: payment-state
+  paymentrefundresult:
+    file: payments.md
+    anchor: paymentrefundresult
+  refundtypeenum:
+    file: payments.md
+    anchor: refund-type
+  paymentrefundparameters:
+    file: payments.md
+    anchor: paymentrefundparameters
+  addcreditcardresult:
+    file: payments.md
+    anchor: addcreditcardresult
+  creditcardpaymentparameters:
+    file: payments.md
+    anchor: creditcardpaymentparameters
+  creditcardparameters:
+    file: payments.md
+    anchor: credit-card-parameters
+  addexternalpaymentresult:
+    file: payments.md
+    anchor: addexternalpaymentresult
+  externalpaymentparameters:
+    file: payments.md
+    anchor: externalpaymentparameters
+  alternativepaymentresult:
+    file: payments.md
+    anchor: alternativepaymentresult
+  nextaction:
+    file: payments.md
+    anchor: alternative-payment-next-action
+  nextactiontypeenum:
+    file: payments.md
+    anchor: payment-next-action-discriminator
+  alternativepaymentparameters:
+    file: payments.md
+    anchor: alternativepaymentparameters
+  alternativepaymentmethoddeprecated:
+    file: payments.md
+    anchor: alternative-payment-methods
+  alternativepaymentsdata:
+    file: payments.md
+    anchor: alternative-payment-method-data
+  alternativepaymentmethodenum:
+    file: payments.md
+    anchor: alternative-payment-method-data-discriminator
+  sepadirectdebitdata:
+    file: payments.md
+    anchor: sepa-direct-debit-data
+  idealdata:
+    file: payments.md
+    anchor: ideal-data
+  identitydocumentresult:
+    file: identitydocuments.md
+    anchor: identitydocumentresult
+  identitydocumentv20241025:
+    file: identitydocuments.md
+    anchor: identity-document-ver-2024-10-25
+  identitydocumentfilterparameters:
+    file: identitydocuments.md
+    anchor: identitydocumentfilterparameters
+  identitydocumentdeleteparameters:
+    file: identitydocuments.md
+    anchor: identitydocumentdeleteparameters
+  identitydocumentclearparameters:
+    file: identitydocuments.md
+    anchor: identitydocumentclearparameters
+  identitydocumentwriteresult:
+    file: identitydocuments.md
+    anchor: identitydocumentwriteresult
+  multipleidentitydocumentupdateparameters:
+    file: identitydocuments.md
+    anchor: multiple-identity-document-update-parameters
+  identitydocumentupdateparameters:
+    file: identitydocuments.md
+    anchor: identity-document-update-parameters
+  identitydocumenttypeupdatevalue:
+    file: identitydocuments.md
+    anchor: identity-document-type-update-value
+  identitydocumentsaddparameters:
+    file: identitydocuments.md
+    anchor: identity-document-add-parameters
+  identitydocumentsadddata:
+    file: identitydocuments.md
+    anchor: identity-document-parameters
+  billsupdateresult:
+    file: bills.md
+    anchor: billsupdateresult
+  multiplebillsupdateparameters:
+    file: bills.md
+    anchor: multiplebillsupdateparameters
+  billupdateparameters:
+    file: bills.md
+    anchor: bill-update-parameters
+  associatedaccountidsupdate:
+    file: bills.md
+    anchor: associated-account-ids-update-parameters
+  sourceassignmentresultv20240920:
+    file: sourceassignments.md
+    anchor: sourceassignmentresultv20240920
+  sourceassignmentv20240920:
+    file: sourceassignments.md
+    anchor: source-assignments-ver-2024-09-20
+  sourceassignmentfilterparametersv20240920:
+    file: sourceassignments.md
+    anchor: sourceassignmentfilterparametersv20240920
+  serviceordernoteadditionresult:
+    file: serviceordernotes.md
+    anchor: serviceordernoteadditionresult
+  multipleserviceordernoteaddparameters:
+    file: serviceordernotes.md
+    anchor: multipleserviceordernoteaddparameters
+  serviceordernoteaddparameters:
+    file: serviceordernotes.md
+    anchor: service-order-note-parameters
+  serviceordernoteupdateresult:
+    file: serviceordernotes.md
+    anchor: serviceordernoteupdateresult
+  multipleserviceordernoteupdateparameters:
+    file: serviceordernotes.md
+    anchor: multipleserviceordernoteupdateparameters
+  serviceordernoteupdateparameters:
+    file: serviceordernotes.md
+    anchor: service-order-note-update-parameters
+  serviceordernoteresult:
+    file: serviceordernotes.md
+    anchor: serviceordernoteresult
+  serviceordernotefilterparameters:
+    file: serviceordernotes.md
+    anchor: serviceordernotefilterparameters
+  serviceordernotedeleteparameters:
+    file: serviceordernotes.md
+    anchor: serviceordernotedeleteparameters
+  ordernotetypeenum:
+    file: serviceordernotes.md
+    anchor: service-order-note-type
+  cashierresult:
+    file: cashiers.md
+    anchor: cashierresult
+  cashier:
+    file: cashiers.md
+    anchor: cashier
+  cashierparameters:
+    file: cashiers.md
+    anchor: cashierparameters
+  availabilityblockdeleteparameters:
+    file: availabilityblocks.md
+    anchor: availabilityblockdeleteparameters
+  availabilityblockresult:
+    file: availabilityblocks.md
+    anchor: availabilityblockresult
+  availabilityblock:
+    file: availabilityblocks.md
+    anchor: availability-block
+  availabilityblockstateenum:
+    file: availabilityblocks.md
+    anchor: availability-block-state
+  pickupdistributionenum:
+    file: availabilityblocks.md
+    anchor: pickup-distribution
+  releasestrategyenum:
+    file: availabilityblocks.md
+    anchor: release-strategy
+  availabilityblockparameters:
+    file: availabilityblocks.md
+    anchor: availabilityblockparameters
+  availabilityblockextent:
+    file: availabilityblocks.md
+    anchor: availability-block-extent
+  availabilityblockaddresult:
+    file: availabilityblocks.md
+    anchor: availabilityblockaddresult
+  multipleavailabilityblockaddparameters:
+    file: availabilityblocks.md
+    anchor: multipleavailabilityblockaddparameters
+  availabilityblockaddparameters:
+    file: availabilityblocks.md
+    anchor: availability-block-parameters
+  multipleavailabilityblockupdateparameters:
+    file: availabilityblocks.md
+    anchor: multipleavailabilityblockupdateparameters
+  availabilityblockupdateparameters:
+    file: availabilityblocks.md
+    anchor: availability-block-update-parameters
+  updatevaluecurrencyvalueold:
+    file: availabilityblocks.md
+    anchor: currency-value-ver-2018-06-07-update-value
+  releasestrategyupdatevalue:
+    file: availabilityblocks.md
+    anchor: release-strategy-update-value
+  financialdocumentpdftemplatetypeenum:
+    file: bills.md
+    anchor: bill-pdf-template-type
+  cashiertransactionresult:
+    file: cashiertransactions.md
+    anchor: cashiertransactionresult
+  cashiertransaction:
+    file: cashiertransactions.md
+    anchor: cashier-transaction
+  cashiertransactionparameters:
+    file: cashiertransactions.md
+    anchor: cashiertransactionparameters
+  cancelorderitemparameters:
+    file: orderitems.md
+    anchor: cancelorderitemparameters
+  taxexemptionreasontypeenum:
+    file: orderitems.md
+    anchor: tax-exemption-reason-type
+  disablecreditcardparameters:
+    file: creditcards.md
+    anchor: disablecreditcardparameters
+  reservationschannelmanagerdetailsresult:
+    file: reservations.md
+    anchor: reservation-channel-manager-details-result
+  channelmanagerdetails:
+    file: reservations.md
+    anchor: reservation-channel-manager-details
+  reservationschannelmanagerdetailsfilterparameters:
+    file: reservations.md
+    anchor: reservation-channel-manager-details-filter-parameters
+  devicecommandresult:
+    file: commands.md
+    anchor: devicecommandresult
+  devicecommand:
+    file: commands.md
+    anchor: command
+  devicecommandstateenum:
+    file: commands.md
+    anchor: command-state
+  devicecommandcreator:
+    file: commands.md
+    anchor: user
+  paymentterminalcommanddata:
+    file: commands.md
+    anchor: payment-terminal-command-data
+  paymentterminalcommandaccountdata:
+    file: commands.md
+    anchor: account-data-for-payment-terminal-command
+  paymentterminalcommandcustomerdata:
+    file: commands.md
+    anchor: customer-data-for-payment-terminal-command
+  paymentterminalcommandcompanydata:
+    file: commands.md
+    anchor: company-data-for-payment-terminal-command
+  printercommanddata:
+    file: commands.md
+    anchor: printer-command-data
+  keycuttercommanddata:
+    file: commands.md
+    anchor: key-cutter-command-data
+  fiscalmachinecommanddata:
+    file: commands.md
+    anchor: fiscal-machine-command-data
+  billfiscalmachinedata:
+    file: commands.md
+    anchor: fiscal-machine-data
+  billfiscalmachinedatadiscriminatorenum:
+    file: commands.md
+    anchor: fiscal-machine-data-discriminator
+  italianfiscalmachinedata:
+    file: commands.md
+    anchor: fiscal-machine-data-for-italian-fiscal-machine
+  billfiscalmachinepayloaddata:
+    file: commands.md
+    anchor: fiscal-machine-payload
+  fiscalmachinepayloaddatadiscriminatorenum:
+    file: commands.md
+    anchor: fiscal-machine-payload-discriminator
+  passportscannercommanddata:
+    file: commands.md
+    anchor: passport-scanner-command-data
+  devicecommandfilterparameters:
+    file: commands.md
+    anchor: devicecommandfilterparameters
+  getallactivecommandsparameters:
+    file: commands.md
+    anchor: getallactivecommandsparameters
+  devicecommandaddresult:
+    file: commands.md
+    anchor: devicecommandaddresult
+  printercommandparameters:
+    file: commands.md
+    anchor: printercommandparameters
+  keycuttercommandparameters:
+    file: commands.md
+    anchor: keycuttercommandparameters
+  paymentterminalcommandparameters:
+    file: commands.md
+    anchor: paymentterminalcommandparameters
+  paymentterminalcommandtypeenum:
+    file: commands.md
+    anchor: payment-type
+  devicecommandupdateparameters:
+    file: commands.md
+    anchor: devicecommandupdateparameters
+  departmentresult:
+    file: departments.md
+    anchor: departmentresult
+  department:
+    file: departments.md
+    anchor: department
+  departmentfilterparameters:
+    file: departments.md
+    anchor: departmentfilterparameters
+  billingautomationresult:
+    file: billingautomations.md
+    anchor: billing-automation-result
+  billingautomation:
+    file: billingautomations.md
+    anchor: billing-automation
+  companywithbillingautomationrelation:
+    file: billingautomations.md
+    anchor: company-with-billing-automation-relation
+  companyrelationsparameters:
+    file: billingautomations.md
+    anchor: company-with-relations-parameters
+  billingautomationprepaymentenum:
+    file: billingautomations.md
+    anchor: billing-automation-prepayment-type
+  billingautomationassignmenttargettypeenum:
+    file: billingautomations.md
+    anchor: billing-automation-assignment-target-type
+  billingautomationtriggertypeenum:
+    file: billingautomations.md
+    anchor: billing-automation-trigger-type
+  billingautomationbillaggregationtypeenum:
+    file: billingautomations.md
+    anchor: billing-automation-bill-aggregation-type
+  billingautomationorderitemconsumptionperiodtypeenum:
+    file: billingautomations.md
+    anchor: billing-automation-order-item-consumption-period-type
+  billingautomationassignment:
+    file: billingautomations.md
+    anchor: billing-automation-assignment
+  billingautomationitemtypesparameters:
+    file: billingautomations.md
+    anchor: billing-automation-item-types-parameters
+  billingautomationaccountingcategoryassignment:
+    file: billingautomations.md
+    anchor: billing-automation-accounting-category-assignment
+  accountingcategoryrouteditemtypes:
+    file: billingautomations.md
+    anchor: accounting-category-routed-item-types
+  billingautomationfilterparameters:
+    file: billingautomations.md
+    anchor: billing-automation-filter-parameters
+  billingautomationmodificationresult:
+    file: billingautomations.md
+    anchor: billing-automation-modification-result
+  multiplebillingautomationaddparameters:
+    file: billingautomations.md
+    anchor: multiple-billing-automation-add-parameters
+  billingautomationaddparameters:
+    file: billingautomations.md
+    anchor: billing-automation-add-parameters
+  billingautomationassignmentaddparameters:
+    file: billingautomations.md
+    anchor: billing-automation-assignment-add-parameters
+  multiplebillingautomationupdateparameters:
+    file: billingautomations.md
+    anchor: multiple-billing-automation-update-parameters
+  billingautomationupdateparameters:
+    file: billingautomations.md
+    anchor: billing-automation-update-parameters
+  companywithbillingautomationrelationienumerableupdatevalue:
+    file: billingautomations.md
+    anchor: company-with-billing-automation-relation-array-update-value
+  billingautomationprepaymentupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+    titleOverride: Billing automation prepayment update value
+  billingautomationassignmenttargettypeupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+    titleOverride: Billing automation assignment target type update value
+  billingautomationbillaggregationtypeupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+    titleOverride: Billing automation bill aggregation type update value
+  billingautomationorderitemconsumptionperiodtypeupdatevalue:
+    file: _objects.md
+    anchor: string-update-value
+    titleOverride: Billing automation order item consumption period type update value
+  billingautomationassignmentsupdateparameters:
+    file: billingautomations.md
+    anchor: billing-automation-assignments-update-parameters
+  billingautomationassignmentupdateparameters:
+    file: billingautomations.md
+    anchor: billing-automation-assignment-update-parameters
+  billingautomationitemtypesupdateparameters:
+    file: billingautomations.md
+    anchor: billing-automation-item-types-update-parameters
+  billingautomationaccountingcategoryassignmentienumerableupdatevalue:
+    file: billingautomations.md
+    anchor: billing-automation-accounting-category-assignment-array-update-value
+  billingautomationdeleteparameters:
+    file: billingautomations.md
+    anchor: billing-automation-delete-parameters
+  loyaltymembershipresult:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-result
+  loyaltymembership:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership
+  loyaltymembershipstate:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-state
+  loyaltymembershipfilterparameters:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-filter-parameters
+  multipleloyaltymembershipaddparameters:
+    file: loyaltymemberships.md
+    anchor: multipleloyaltymembershipaddparameters
+  loyaltymembershipaddparameters:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-parameters
+  multipleloyaltymembershipupdateparameters:
+    file: loyaltymemberships.md
+    anchor: multipleloyaltymembershipupdateparameters
+  loyaltymembershipupdateparameters:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-update-parameters
+  loyaltymembershipdeleteparameters:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-delete-parameters
+  loyaltymembershipstateenum:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-state
+  loyaltymembershipstateupdatevalue:
+    file: loyaltymemberships.md
+    anchor: loyalty-membership-state-update-value
+  decimalupdatevalue:
+    file: _objects.md
+    anchor: decimal-update-value
+  loyaltytierresult:
+    file: loyaltytiers.md
+    anchor: loyaltytierresult
+  loyaltytier:
+    file: loyaltytiers.md
+    anchor: loyalty-tier
+  loyaltytierfilterparameters:
+    file: loyaltytiers.md
+    anchor: loyaltytierfilterparameters
+  multipleloyaltytieraddparameters:
+    file: loyaltytiers.md
+    anchor: multipleloyaltytieraddparameters
+  loyaltytieraddparameters:
+    file: loyaltytiers.md
+    anchor: loyalty-tier-add-parameters
+  multipleloyaltytierupdateparameters:
+    file: loyaltytiers.md
+    anchor: multipleloyaltytierupdateparameters
+  loyaltytierupdateparameters:
+    file: loyaltytiers.md
+    anchor: loyalty-tier-update-parameters
+  loyaltytierdeleteparameters:
+    file: loyaltytiers.md
+    anchor: loyaltytierdeleteparameters
+  loyaltytierwriteresult:
+    file: loyaltytiers.md
+    anchor: loyaltytierwriteresult
+  producttypeenum:
+    file: orderitems.md
+    anchor: product-type
+  orderitemallowancediscountdata:
+    file: orderitems.md
+    anchor: allowance-discount-data
+  orderitemallowanceprofitsdata:
+    file: orderitems.md
+    anchor: allowance-profits-data
+  allowanceprofittypeenum:
+    file: orderitems.md
+    anchor: allowance-profit-type
+  fiscalMachineCommands_getAll-request:
+    file: commands.md
+    anchor: get-all-commands-filter-parameters
+  commandsgetallfilterbycommandidparameters:
+    file: commands.md
+    anchor: get-all-commands-by-unique-identifiers
+  commandsgetallfilterbystatesparameters:
+    file: commands.md
+    anchor: get-all-commands-by-device-identifiers-and-states
+  fiscalmachinecommanddatav20250623result:
+    file: commands.md
+    anchor: fiscalmachinecommanddatav20250623result
+  fiscalmachinecommanddatav20250623:
+    file: commands.md
+    anchor: fiscal-machine-command-data-ver-2025-06-23
+  billv20250623:
+    file: commands.md
+    anchor: bill-ver-2025-06-23
+  fiscalmachineadditionaldata:
+    file: commands.md
+    anchor: fiscalmachineadditionaldata
+  fiscalmachinedatadiscriminatorenum:
+    file: commands.md
+    anchor: fiscal-machine-data-discriminator
+  italianfiscalmachinedatav20250623:
+    file: commands.md
+    anchor: italian-fiscal-machine-data
+  italianfiscalmachinepayloadv20250623:
+    file: commands.md
+    anchor: italian-fiscal-machine-payload
+  multipleratecapacityoffsetupdateparameters:
+    file: rates.md
+    anchor: multipleratecapacityoffsetupdateparameters
+  ratecapacityoffsetupdateparameters:
+    file: rates.md
+    anchor: ratecapacityoffsetupdateparameters
+  rateresult:
+    file: rates.md
+    anchor: rate-result
+  rate:
+    file: rates.md
+    anchor: rate
+  ratetypeenum:
+    file: rates.md
+    anchor: rate-type
+  rategroupold:
+    file: rates.md
+    anchor: rate-group-ver-2017-04-12
+  raterestrictionresult:
+    file: rates.md
+    anchor: rate-restriction-result
+  daterestriction:
+    file: rates.md
+    anchor: date-restriction
+  earlinessrestriction:
+    file: rates.md
+    anchor: earliness-restriction
+  lengthrestriction:
+    file: rates.md
+    anchor: length-restriction
+  ratefilterparameters:
+    file: rates.md
+    anchor: rate-filter-parameters
+  rateextent:
+    file: rates.md
+    anchor: rate-extent
+  rateaddresult:
+    file: rates.md
+    anchor: rate-add-result
+  rateaddparameters:
+    file: rates.md
+    anchor: rate-add-parameters
+  rateadddata:
+    file: rates.md
+    anchor: rate-parameters
+  rateaddtypeenum:
+    file: rates.md
+    anchor: rate-add-type
+  ratepricingdiscriminatorenum:
+    file: rates.md
+    anchor: rate-pricing-discriminator
+  rateaddpricingdataparameters:
+    file: rates.md
+    anchor: rate-add-pricing-data-parameters
+  baseratepricingparameterswithoccupancyadjustments:
+    file: rates.md
+    anchor: base-rate-pricing-parameters-with-occupancy-adjustments
+  dependentratepricingparameters:
+    file: rates.md
+    anchor: dependent-rate-pricing-parameters
+  ratesetresult:
+    file: rates.md
+    anchor: rate-set-result
+  ratesetparameters:
+    file: rates.md
+    anchor: set-rates-parameters
+  ratesetdata:
+    file: rates.md
+    anchor: set-rate-parameters
+  ratesetpricingdataparameters:
+    file: rates.md
+    anchor: rate-set-pricing-data-parameters
+  baseratepricingwithoutadjustmentsparameters:
+    file: rates.md
+    anchor: base-rate-pricing-parameters-without-occupancy-adjustments
+  ratedeleteparameters:
+    file: rates.md
+    anchor: ratedeleteparameters
+  ratepricing:
+    file: rates.md
+    anchor: rate-pricing
+  categorypricing:
+    file: rates.md
+    anchor: resource-category-pricing
+  categoryadjustment:
+    file: rates.md
+    anchor: resource-category-adjustment
+  agecategoryadjustment:
+    file: rates.md
+    anchor: age-category-adjustment
+  agecategoryadjustmenttypeenum:
+    file: rates.md
+    anchor: age-category-adjustment-type
+  ratepricingfilterparameters:
+    file: rates.md
+    anchor: rate-pricing-filter-parameters
+  ratepriceupdateparameters:
+    file: rates.md
+    anchor: rate-price-update-parameters
+  ratepriceupdate:
+    file: rates.md
+    anchor: rate-price-update
+  rateforextent:
+    file: reservations.md
+    anchor: rate-for-extent
+  counterresult:
+    file: counters.md
+    anchor: counterresult
+  counter:
+    file: counters.md
+    anchor: counter
+  enterprisescopecounterdiscriminator:
+    file: counters.md
+    anchor: counter-type-discriminator
+  counterfilterparameters:
+    file: counters.md
+    anchor: counterfilterparameters
+  languageresult:
+    file: languages.md
+    anchor: languageresult
+  language:
+    file: languages.md
+    anchor: language
+  languagetextresult:
+    file: languages.md
+    anchor: languagetextresult
+  languagetexts:
+    file: languages.md
+    anchor: language-texts
+  languagetextparameters:
+    file: languages.md
+    anchor: languagetextparameters
+  productcategoryresult:
+    file: productcategories.md
+    anchor: productcategoryresult
+  productcategory:
+    file: productcategories.md
+    anchor: product-category
+  parentproductcategory:
+    file: productcategories.md
+    anchor: parent-product-category
+  productcategoryfilterparameters:
+    file: productcategories.md
+    anchor: productcategoryfilterparameters
+  preauthorizationresult:
+    file: preauthorizations.md
+    anchor: preauthorizationresult
+  preauthorization:
+    file: preauthorizations.md
+    anchor: preauthorization
+  preauthorizationstate:
+    file: preauthorizations.md
+    anchor: preauthorization-state
+  multiplecustomerparameters:
+    file: preauthorizations.md
+    anchor: multiplecustomerparameters
+  addoutletbillsresult:
+    file: outletbills.md
+    anchor: addoutletbillsresult
+  addoutletbillsparameters:
+    file: outletbills.md
+    anchor: addoutletbillsparameters
+  outletbillparameters:
+    file: outletbills.md
+    anchor: outlet-bill-parameters
+  outletitemparameters:
+    file: outletbills.md
+    anchor: outlet-item-parameters
+  taxenvironmentresult:
+    file: taxenvironments.md
+    anchor: taxenvironmentresult
+  taxenvironment:
+    file: taxenvironments.md
+    anchor: tax-environment
+  taxationresult:
+    file: taxations.md
+    anchor: taxationresult
+  taxation:
+    file: taxations.md
+    anchor: taxation
+  taxrate:
+    file: taxations.md
+    anchor: tax-rate
+  taxratestrategycoproductoftaxratestrategydiscriminator:
+    file: taxations.md
+    anchor: tax-rate-strategy
+  taxratestrategydiscriminator:
+    file: taxations.md
+    anchor: tax-rate-strategy-discriminator
+  relativetaxratestrategy:
+    file: taxations.md
+    anchor: relative-tax-rate-strategy-data
+  flattaxratestrategy:
+    file: taxations.md
+    anchor: flat-tax-rate-strategy-data
+  dependenttaxratestrategy:
+    file: taxations.md
+    anchor: dependent-tax-rate-strategy-data
+  paymentoriginenum:
+    file: payments.md
+    anchor: payment-origin
+  reservationgroupresult:
+    file: reservationgroups.md
+    anchor: reservationgroupresult
+  reservationgroup:
+    file: reservationgroups.md
+    anchor: reservation-group
+  reservationgroupfilterparameters:
+    file: reservationgroups.md
+    anchor: reservationgroupfilterparameters
+  exportstatusenum:
+    file: exports.md
+    anchor: export-status
+  exportentitytypeenum:
+    file: exports.md
+    anchor: exported-entity-type
+  exportscope:
+    file: exports.md
+    anchor: export-scope
+  exportdatafilters:
+    file: exports.md
+    anchor: export-data-filters
+  exportscopeselector:
+    file: exports.md
+    anchor: exportscopeselector
+  exportscopeparameters:
+    file: exports.md
+    anchor: export-scope-parameters
+  resourcefeatureclassification:
+    file: resourcefeatures.md
+    anchor: resource-feature-classification
+  resourcefeatureassignmentresult:
+    file: resourcefeatures.md
+    anchor: resourcefeatureassignmentresult
+  resourcefeatureassignment:
+    file: resourcefeatures.md
+    anchor: resource-feature-assignment
+  resourcefeatureassignmentfilterparameters:
+    file: resourcefeatures.md
+    anchor: resourcefeatureassignmentfilterparameters
+  resourcefeatureresult:
+    file: resourcefeatures.md
+    anchor: resourcefeatureresult
+  resourcefeature:
+    file: resourcefeatures.md
+    anchor: resource-feature
+  resourcefeaturefilterparameters:
+    file: resourcefeatures.md
+    anchor: resourcefeaturefilterparameters
+  productserviceorderresult:
+    file: productserviceorders.md
+    anchor: productserviceorderresult
+  serviceorder:
+    file: productserviceorders.md
+    anchor: product-service-order
+  productserviceorderfilterparameters:
+    file: productserviceorders.md
+    anchor: productserviceorderfilterparameters
+  companionshipresult:
+    file: companionships.md
+    anchor: companionshipresult
+  companionship:
+    file: companionships.md
+    anchor: companionship
+  companionshipfilterparameters:
+    file: companionships.md
+    anchor: companionshipfilterparameters
+  companionshipextent:
+    file: companionships.md
+    anchor: companionship-extent
+  creditcardresult:
+    file: creditcards.md
+    anchor: creditcardresult
+  creditcard:
+    file: creditcards.md
+    anchor: credit-card
+  creditcardstate:
+    file: creditcards.md
+    anchor: credit-card-state
+  creditcardkind:
+    file: creditcards.md
+    anchor: credit-card-kind
+  creditcardformat:
+    file: creditcards.md
+    anchor: credit-card-format
+  creditcardtype:
+    file: creditcards.md
+    anchor: credit-card-type
+  creditcardfilterparameters:
+    file: creditcards.md
+    anchor: creditcardfilterparameters
+  tokenizedcreditcardparameters:
+    file: creditcards.md
+    anchor: tokenizedcreditcardparameters
+  creditcarddata:
+    file: creditcards.md
+    anchor: credit-card-data
+  chargecreditcardresult:
+    file: creditcards.md
+    anchor: chargecreditcardresult
+  chargecreditcardparameters:
+    file: creditcards.md
+    anchor: creditcard-payment-data
+  messagethreadresult:
+    file: messagethreads.md
+    anchor: messagethreadresult
+  messagethread:
+    file: messagethreads.md
+    anchor: message-thread
+  messagethreadfilterparameters:
+    file: messagethreads.md
+    anchor: messagethreadfilterparameters
+  messagethreadaddparameters:
+    file: messagethreads.md
+    anchor: messagethreadaddparameters
+  messagethreadaddresult:
+    file: messagethreads.md
+    anchor: messagethreadaddresult
+  messageresult:
+    file: messages.md
+    anchor: messageresult
+  message:
+    file: messages.md
+    anchor: message
+  sendercoproduct:
+    file: messages.md
+    anchor: sender
+  senderdiscriminatorenum:
+    file: messages.md
+    anchor: sender-discriminator
+  messagefilterparameters:
+    file: messages.md
+    anchor: messagefilterparameters
+  addedmessageresult:
+    file: messages.md
+    anchor: addedmessageresult
+  addedmessage:
+    file: messages.md
+    anchor: added-message
+  multiplemessageaddparameters:
+    file: messages.md
+    anchor: multiplemessageaddparameters
+  messageaddparameters:
+    file: messages.md
+    anchor: message-parameters
+  orderadditionresult:
+    file: orders.md
+    anchor: orderadditionresult
+  orderadditionparameters:
+    file: orders.md
+    anchor: orderadditionparameters
+  orderadditionoptions:
+    file: orders.md
+    anchor: order-addition-options
+  orderitemadditiondata:
+    file: orders.md
+    anchor: item-parameters
+  loyaltyprogramresult:
+    file: loyaltyprograms.md
+    anchor: loyaltyprogramresult
+  loyaltyprogram:
+    file: loyaltyprograms.md
+    anchor: loyalty-program
+  loyaltyprogramtype:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-type
+  loyaltyprogramsubscription:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-subscription
+  loyaltyprogramfilterparameters:
+    file: loyaltyprograms.md
+    anchor: loyaltyprogramfilterparameters
+  loyaltyprogramadditionresult:
+    file: loyaltyprograms.md
+    anchor: loyaltyprogramadditionresult
+  multipleloyaltyprogramaddparameters:
+    file: loyaltyprograms.md
+    anchor: multipleloyaltyprogramaddparameters
+  loyaltyprogramaddparameters:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-parameters
+  loyaltyprogramupdateresult:
+    file: loyaltyprograms.md
+    anchor: loyaltyprogramupdateresult
+  multipleloyaltyprogramupdateparameters:
+    file: loyaltyprograms.md
+    anchor: multipleloyaltyprogramupdateparameters
+  loyaltyprogramupdateparameters:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-update-parameters
+  loyaltyprogramtypeupdatevalue:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-type-update-value
+  loyaltyprogramtypeenum:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-type
+  loyaltyprogramsubscriptionupdatevalue:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-subscription-update-value
+  loyaltyprogramsubscriptionenum:
+    file: loyaltyprograms.md
+    anchor: loyalty-program-subscription
+  loyaltyprogramdeleteparameters:
+    file: loyaltyprograms.md
+    anchor: loyaltyprogramdeleteparameters
+  resource:
+    file: resources.md
+    anchor: resource
+  resourcestate:
+    file: resources.md
+    anchor: resource-state
+  resourcedatacoproductofresourcedatadiscriminator:
+    file: resources.md
+    anchor: resource-data
+  resourcedatadiscriminator:
+    file: resources.md
+    anchor: resource-data-discriminator
+  spacedata:
+    file: resources.md
+    anchor: space-resource-data
+  resourcecategory:
+    file: resources.md
+    anchor: resource-category
+  resourcecategorytype:
+    file: resources.md
+    anchor: resource-category-type
+  resourceresult:
+    file: resources.md
+    anchor: resourceresult
+  resourcefilterparameters:
+    file: resources.md
+    anchor: resourcefilterparameters
+  resourceextent:
+    file: resources.md
+    anchor: resource-extent
+  multipleresourceupdateparameters:
+    file: resources.md
+    anchor: multipleresourceupdateparameters
+  resourceupdateparameters:
+    file: resources.md
+    anchor: resource-update
+  resourceupdateparametersdatacoproductofresourcedatadiscriminator:
+    file: resources.md
+    anchor: resource-data-update
+  spacedataupdateparameters:
+    file: resources.md
+    anchor: space-resource-data-update
+  resourcesoccupancystateresult:
+    file: resources.md
+    anchor: resourcesoccupancystateresult
+  resourcecategoryoccupancystate:
+    file: resources.md
+    anchor: resource-category-occupancy-state
+  resourceoccupancystate:
+    file: resources.md
+    anchor: resource-occupancy-state
+  occupancystateenum:
+    file: resources.md
+    anchor: occupancy-state
+  resourcesoccupancystatefilterparameters:
+    file: resources.md
+    anchor: resourcesoccupancystatefilterparameters
+  contractresult:
+    file: companycontracts.md
+    anchor: contractresult
+  travelagencycontract:
+    file: companycontracts.md
+    anchor: travel-agency-contract
+  travelagencycontractoptions:
+    file: companycontracts.md
+    anchor: travel-agency-contract-options
+  companycontractfilterparameters:
+    file: companycontracts.md
+    anchor: companycontractfilterparameters
+  contractadditionresult:
+    file: companycontracts.md
+    anchor: contractadditionresult
+  multiplecompanycontractaddparameters:
+    file: companycontracts.md
+    anchor: multiplecompanycontractaddparameters
+  travelagencycontractaddparameters:
+    file: companycontracts.md
+    anchor: travel-agency-contract-parameters
+  contractupdateresult:
+    file: companycontracts.md
+    anchor: contractupdateresult
+  multiplecompanycontractupdateparameters:
+    file: companycontracts.md
+    anchor: multiplecompanycontractupdateparameters
+  travelagencycontractupdateparameters:
+    file: companycontracts.md
+    anchor: travel-agency-contract-update-parameters
+  travelagencycontractoptionsparameters:
+    file: companycontracts.md
+    anchor: travel-agency-contract-update-options
+  multiplecompanycontractdeleteparameters:
+    file: companycontracts.md
+    anchor: multiplecompanycontractdeleteparameters
+  resourceaccesstokenresult:
+    file: resourceaccesstokens.md
+    anchor: resourceaccesstokenresult
+  resourceaccesstokenfilterparameters:
+    file: resourceaccesstokens.md
+    anchor: resourceaccesstokenfilterparameters
+  resourceaccesstokenadditionresult:
+    file: resourceaccesstokens.md
+    anchor: resourceaccesstokenadditionresult
+  multipleresourceaccesstokenparameters:
+    file: resourceaccesstokens.md
+    anchor: multipleresourceaccesstokenparameters
+  resourceaccesstokenupdateresult:
+    file: resourceaccesstokens.md
+    anchor: resourceaccesstokenupdateresult
+  multipleresourceaccesstokenupdateparameters:
+    file: resourceaccesstokens.md
+    anchor: multipleresourceaccesstokenupdateparameters
+  resourceaccesstokenupdateparameters:
+    file: resourceaccesstokens.md
+    anchor: resource-access-token-update
+  resourceaccesstokendeleteparameters:
+    file: resourceaccesstokens.md
+    anchor: resourceaccesstokendeleteparameters
+  resourceblockresult:
+    file: resourceblocks.md
+    anchor: resourceblockresult
+  resourceblock:
+    file: resourceblocks.md
+    anchor: resource-block
+  resourceblocktype:
+    file: resourceblocks.md
+    anchor: resource-block-type
+  resourceblockparameters:
+    file: resourceblocks.md
+    anchor: resource-block-parameters
+  resourceblockextent:
+    file: resourceblocks.md
+    anchor: resource-block-extent
+  resourceblockadditionresult:
+    file: resourceblocks.md
+    anchor: resourceblockadditionresult
+  multipleresourceblockaddparameters:
+    file: resourceblocks.md
+    anchor: multipleresourceblockaddparameters
+  resourceblockaddparameters:
+    file: resourceblocks.md
+    anchor: resource-block-parameters
+  resourceblockdeleteparameters:
+    file: resourceblocks.md
+    anchor: resourceblockdeleteparameters
+  paymentrequestresult:
+    file: paymentrequests.md
+    anchor: paymentrequestresult
+  paymentrequest:
+    file: paymentrequests.md
+    anchor: payment-request
+  paymentrequeststate:
+    file: paymentrequests.md
+    anchor: payment-request-state
+  paymentrequesttype:
+    file: paymentrequests.md
+    anchor: payment-request-type
+  paymentrequestreason:
+    file: paymentrequests.md
+    anchor: payment-request-reason
+  paymentrequestfilterparameters:
+    file: paymentrequests.md
+    anchor: paymentrequestfilterparameters
+  paymentrequestadditionresult:
+    file: paymentrequests.md
+    anchor: paymentrequestadditionresult
+  multiplepaymentrequestaddparameters:
+    file: paymentrequests.md
+    anchor: multiplepaymentrequestaddparameters
+  paymentrequestaddparameters:
+    file: paymentrequests.md
+    anchor: payment-request-parameters
+  paymentrequestcancellationresult:
+    file: paymentrequests.md
+    anchor: paymentrequestcancellationresult
+  multiplepaymentrequestcancelparameters:
+    file: paymentrequests.md
+    anchor: multiplepaymentrequestcancelparameters
+  accountingitemupdateresult:
+    file: accountingitems.md
+    anchor: accountingitemupdateresult
+  multipleaccountingitemsupdateparameters:
+    file: accountingitems.md
+    anchor: multipleaccountingitemsupdateparameters
+  accountingitemupdateparameters:
+    file: accountingitems.md
+    anchor: accounting-item-update
+  accountingitemresult:
+    file: accountingitems.md
+    anchor: accountingitemresult
+  accountingitemparameters:
+    file: accountingitems.md
+    anchor: accountingitemparameters
+  accountingitemextent:
+    file: accountingitems.md
+    anchor: accounting-item-extent
+  outletresult:
+    file: outlets.md
+    anchor: outletresult
+  outlet:
+    file: outlets.md
+    anchor: outlet
+  outletfilterparameters:
+    file: outlets.md
+    anchor: outletfilterparameters
+  ruleresult:
+    file: rules.md
+    anchor: ruleresult
+  rule:
+    file: rules.md
+    anchor: rule
+  ruleconditions:
+    file: rules.md
+    anchor: rule-conditions
+  rulecondition:
+    file: rules.md
+    anchor: rule-condition
+  ruleconditiontype:
+    file: rules.md
+    anchor: condition-type
+  ruleaction:
+    file: rules.md
+    anchor: rule-action
+  ruleactiondatacoproductofruleactiondiscriminator:
+    file: rules.md
+    anchor: rule-action-data
+  ruleactiondiscriminator:
+    file: rules.md
+    anchor: rule-action-discriminator
+  ruleactionproductdata:
+    file: rules.md
+    anchor: rule-action-product-data
+  ruleactiontype:
+    file: rules.md
+    anchor: product-action-type
+  rulefilterparameters:
+    file: rules.md
+    anchor: rulefilterparameters
+  ruleextent:
+    file: rules.md
+    anchor: rule-extent
+  routingruleresult:
+    file: routingrules.md
+    anchor: routingruleresult
+  routingrule:
+    file: routingrules.md
+    anchor: routing-rule
+  routingrulecompanyrelation:
+    file: routingrules.md
+    anchor: company-relation
+  routingruleapplicability:
+    file: routingrules.md
+    anchor: applicability
+  routingruleroutetype:
+    file: routingrules.md
+    anchor: route-type
+  routingrulestayitems:
+    file: routingrules.md
+    anchor: selected-stay-items
+  routingrulefilterparameters:
+    file: routingrules.md
+    anchor: routingrulefilterparameters
+  routingruleadditionresult:
+    file: routingrules.md
+    anchor: routingruleadditionresult
+  multipleroutingruleaddparameters:
+    file: routingrules.md
+    anchor: multipleroutingruleaddparameters
+  routingruleaddparameter:
+    file: routingrules.md
+    anchor: routing-rule-parameters
+  routingruleassignmenttargettype:
+    file: routingrules.md
+    anchor: assignment-target-type
+  routingrulestayitemsaddparameters:
+    file: routingrules.md
+    anchor: selected-stay-items-parameters
+  routingruleupdateresult:
+    file: routingrules.md
+    anchor: routingruleupdateresult
+  multipleroutingruleupdateparameters:
+    file: routingrules.md
+    anchor: multipleroutingruleupdateparameters
+  routingruleupdateparameters:
+    file: routingrules.md
+    anchor: routing-rule-update-parameters
+  routingrulestayitemsupdateparameters:
+    file: routingrules.md
+    anchor: selected-stay-items-update-parameters
+  routingruledeleteparameters:
+    file: routingrules.md
+    anchor: routingruledeleteparameters
+  tokenizedcreditcardaddparameters:
+    file: creditcards.md
+    anchor: tokenizedcreditcardaddparameters
+  servicedatadiscriminatorenum:
+    file: services.md
+    anchor: service-data-discriminator
+  paymentplanaddresult:
+    file: paymentplans.md
+    anchor: paymentplanaddresult
+  paymentplanaddparameters:
+    file: paymentplans.md
+    anchor: paymentplanaddparameters
+  paymentplanpaymentrequest:
+    file: paymentplans.md
+    anchor: payment-plan-payment-request
+  paymentmethodsenum:
+    file: paymentplans.md
+    anchor: available-payment-plan-payment-methods
+  paymentplanpaymentrequesttypeenum:
+    file: paymentplans.md
+    anchor: payment-plan-payment-request-type
+  ledgerbalanceresult:
+    file: ledgerbalances.md
+    anchor: ledgerbalanceresult
+  ledgerbalance:
+    file: ledgerbalances.md
+    anchor: ledger-balance
+  accountingledgertypeenum:
+    file: ledgerbalances.md
+    anchor: accounting-ledger-type
+  ledgerbalanceparameters:
+    file: ledgerbalances.md
+    anchor: ledgerbalanceparameters
+  accountingconfigurationoptionenum:
+    file: configuration.md
+    anchor: accounting-configuration-option
+  billstateenum:
+    file: bills.md
+    anchor: bill-state
+  billtypeenum:
+    file: bills.md
+    anchor: bill-type

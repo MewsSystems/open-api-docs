@@ -1,0 +1,3 @@
+source: https://api.mews.com/swagger/connector/swagger.yaml
+output: ../operations
+tags: []
