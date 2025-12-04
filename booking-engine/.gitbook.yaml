@@ -1,0 +1,7 @@
+root: ./
+
+redirects:
+  booking-engine-guide/booking-engine-widget/integrations: integrations/README.md
+  booking-engine-guide/booking-engine-widget/integrations/google-tag-manager: integrations/google-tag-manager.md
+  booking-engine-guide/booking-engine-widget/integrations/google-triggers-reference: integrations/google-triggers-reference.md
+  booking-engine-api/guidelines/authorization: booking-engine-api/guidelines/authentication.md
