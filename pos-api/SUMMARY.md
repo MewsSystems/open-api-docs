@@ -15,24 +15,18 @@
   * [Inventory management](use-cases/inventory.md)
   * [Table booking](use-cases/table-booking.md)
   * [Digital ordering](use-cases/digital_ordering.md)
-* [API Operations](operations/README.md)
-  * [Areas](operations/areas.md)
-  * [Bookings](operations/bookings.md)
-  * [Customers](operations/customers.md)
-  * [Invoices](operations/invoices.md)
-  * [Invoice Items](operations/invoiceitems.md)
-  * [Modifier Sets](operations/modifiersets.md)
-  * [Orders](operations/orders.md)
-  * [Outlets](operations/outlets.md)
-  * [Payments](operations/payments.md)
-  * [PaymentMethods](operations/paymentmethods.md)
-  * [Products](operations/products.md)
-  * [ProductBundles](operations/productbundles.md)
-  * [Promo Codes](operations/promocodes.md)
-  * [Registers](operations/registers.md)
-  * [Revenue Centers](operations/revenuecenters.md)
-  * [Tables](operations/tables.md)
-  * [Webhook Endpoints](operations/webhookendpoints.md)
+* [API Reference](api-reference/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: true
+      downloadLink: true
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: pos-api
+    ```
 * [API Events](events/README.md)
   * [Webhooks](events/webhooks.md)
   * [Webhook security](events/wh-security.md)

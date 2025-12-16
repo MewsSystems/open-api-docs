@@ -1,29 +1,32 @@
 # Digital ordering
 
-This use case is aimed at Digital Ordering Systems and it describes how to use the __Mews POS API__ to manage digital orders, including:
-  * Browsing the product catalog
-  * Creating and managing orders
-  * Processing payments
+This use case is aimed at Digital Ordering Systems and it describes how to use the **Mews POS API** to manage digital orders, including:
+
+* Browsing the product catalog
+* Creating and managing orders
+* Processing payments
 
 ## Contents
 
-* [Products endpoint polling to get availability updates](#products-endpoint-polling-to-get-availability-updates)
-* [Orders endpoint polling to get most recent order state changes](#orders-endpoint-polling-to-get-most-recent-order-state-changes)
+* [Products endpoint polling to get availability updates](digital_ordering.md#products-endpoint-polling-to-get-availability-updates)
+* [Orders endpoint polling to get most recent order state changes](digital_ordering.md#orders-endpoint-polling-to-get-most-recent-order-state-changes)
 
 ## Products endpoint polling to get availability updates
 
-Digital ordering systems need to stay synchronized with real-time product availability changes. Use the [Get products](../operations/products.md#get-products) endpoint with filtering and sparse fieldsets to efficiently poll for availability updates.
+Digital ordering systems need to stay synchronized with real-time product availability changes. Use the [Get products](/broken/pages/kXP6AdYRRWo5OaPjRzsD#get-products) endpoint with filtering and sparse fieldsets to efficiently poll for availability updates.
 
 ### Polling strategy
 
 Poll the products endpoint using the `updatedAtGteq` or `updatedAtGt` filters to retrieve only products that have been updated since your last check. Use sparse fieldsets to minimize bandwidth by requesting only the `isAvailable` field.
 
 #### Example request:
+
 ```
 GET https://api.pos.mews-demo.com/v1/products?filter[updatedAtGteq]=2025-03-12&fields[products]=isAvailable
 ```
 
 #### Example response:
+
 ```json
 {
   "data": [
@@ -45,21 +48,22 @@ GET https://api.pos.mews-demo.com/v1/products?filter[updatedAtGteq]=2025-03-12&f
 }
 ```
 
-
 ## Orders endpoint polling to get most recent order state changes
 
-Track order state changes in real-time by polling the [Get orders](../operations/orders.md#get-orders) endpoint with filtering and sparse fieldsets to monitor order lifecycle updates.
+Track order state changes in real-time by polling the [Get orders](/broken/pages/ZRocaBqQcRHp9x4ephdW#get-orders) endpoint with filtering and sparse fieldsets to monitor order lifecycle updates.
 
 ### Polling strategy
 
 Poll the orders endpoint using the `updatedAtGteq` or `updatedAtGt` filters to retrieve only orders that have been updated since your last check. Use sparse fieldsets to request only the `state` field for efficient bandwidth usage.
 
 #### Example request:
+
 ```
 GET https://api.pos.mews-demo.com/v1/orders?filter[updatedAtGteq]=2025-05-16&fields[orders]=state
 ```
 
 #### Example response:
+
 ```json
 {
   "data": [
@@ -85,14 +89,16 @@ GET https://api.pos.mews-demo.com/v1/orders?filter[updatedAtGteq]=2025-05-16&fie
 
 ### Polling strategy
 
-To retrieve the actual covers (guests seated) for a table, you have to poll the [Get orders](../operations/orders.md#get-orders) and include the `filter[tableIdEq]` query parameter.
+To retrieve the actual covers (guests seated) for a table, you have to poll the [Get orders](/broken/pages/ZRocaBqQcRHp9x4ephdW#get-orders) and include the `filter[tableIdEq]` query parameter.
 
 #### Example request:
+
 ```
 GET https://api.pos.mews-demo.com/v1/orders?filter[tableIdEq]=6d5e100c-5bf9-4781-85ec-cdf183e9486f
 ```
 
 #### Example response:
+
 ```json
 {
   "data": [
@@ -123,22 +129,19 @@ GET https://api.pos.mews-demo.com/v1/orders?filter[tableIdEq]=6d5e100c-5bf9-4781
 }
 ```
 
-
 ### Room charge
 
 #### Room Number Validation for Payments
 
 When creating a payment, the `room_charge` payment method is the only scenario in which a `roomNumber` value is permitted. This is because room-charge payments must be associated with a specific guest room for proper billing.
 
-If the payment method is anything other than `room_charge`, the `roomNumber` field must be omitted.
-Including a room number for non–room-charge payments causes the request to fail validation.
+If the payment method is anything other than `room_charge`, the `roomNumber` field must be omitted. Including a room number for non–room-charge payments causes the request to fail validation.
 
 #### Errors
 
 _Room number must be blank_
 
-`roomNumber` is only allowed when the payment method is room-service (e.g., room_charge).
-If `roomNumber` is provided with any other payment method, the request fails with HTTP 422 (Unprocessable Content).
+`roomNumber` is only allowed when the payment method is room-service (e.g., room\_charge). If `roomNumber` is provided with any other payment method, the request fails with HTTP 422 (Unprocessable Content).
 
 ```
 {
@@ -156,6 +159,4 @@ If `roomNumber` is provided with any other payment method, the request fails wit
 }
 ```
 
-
-__In short:__
-If the payment isn’t a room-charge payment, don’t send a room number.
+**In short:** If the payment isn’t a room-charge payment, don’t send a room number.
