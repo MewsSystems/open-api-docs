@@ -15,7 +15,7 @@
   * [Inventory management](use-cases/inventory.md)
   * [Table booking](use-cases/table-booking.md)
   * [Digital ordering](use-cases/digital_ordering.md)
-* [API Reference](api-reference/README.md)
+* [API Operations](api-operations/README.md)
   * ```yaml
     type: builtin:openapi
     props:
