@@ -1,5 +1,24 @@
 # Changelog
 
+## 20th January 2026
+* [Add payment requests](../operations/paymentrequests.md#add-payment-requests):
+  * Extended request object with `SendPaymentRequestEmails` parameter.
+* [Get all reservations (ver 2023-06-06)](../operations/reservations.md#get-all-reservations-ver-2023-06-06):
+  * Extended [Commander origin](../operations/reservations.md#commander-origin) with `RoomingList`.
+* [Get all taxations](../operations/taxations.md#get-all-taxations):
+* [Get all tax environments](../operations/taxenvironments.md#get-all-tax-environments):
+  * Updated examples. Documentation-only, no change to API.
+
+## 15th December 2025
+* [Get all availability blocks](../operations/availabilityblocks.md#get-all-availability-blocks):
+* [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks):
+* [Update availability blocks](../operations/availabilityblocks.md#update-availability-blocks):
+  * Extended [Availability block](../operations/availabilityblocks.md#availability-block) response object with `CanceledUtc`, `CancellationReason`, and `CancellationReasonDetail` parameters.
+* [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks):
+  * Clarified behavior of `PickupDistribution` parameter in [Availability block parameters](../operations/availabilityblocks.md#availability-block-parameters) request object. Documentation-only, no change to API.
+* [Get configuration](../operations/configuration.md#get-configuration):
+  * Extended [Accounting configuration option](../operations/configuration.md#accounting-configuration-option) with `SplitVatByClassificationOnBill` property.
+
 ## 2nd December 2025
 
 * [Get all customers](../operations/customers.md#get-all-customers):

@@ -157,7 +157,7 @@ Returns all reservations within scope of the Access Token, filtered according to
       "ScheduledEndUtc": "2023-04-25T12:00:00Z",
       "ActualEndUtc": null,
       "Purpose": "Leisure",
-      "QrCodeData": null,
+      "QrCodeData": "{\"Reservations\":[{\"Id\":\"0f515589-99b4-423d-b83a-b237009f0509\",\"GroupId\":\"94843f6f-3be3-481b-a1c7-06458774c3df\",\"CustomerId\":\"fadd5bb6-b428-45d5-94f8-fd0d89fece6d\"}]}",
       "PersonCounts": [
         {
           "AgeCategoryId": "1f67644f-052d-4863-acdf-ae1600c60ca0",
@@ -252,6 +252,7 @@ Returns all reservations within scope of the Access Token, filtered according to
 * `Website`
 * `Message`
 * `CallCenter`
+* `RoomingList`
 
 #### Service Order Options
 
@@ -580,6 +581,7 @@ Extent of data to be returned. E.g. it is possible to specify that together with
 * `CommanderWebsite` - From Mews Operations, via website.
 * `CommanderMessage` - From Mews Operations, via message person.
 * `CommanderCallCenter` - From Mews Operations, via call center.
+* `CommanderRoomingList` - From Mews Operations, via rooming list.
 
 #### Reservation purpose
 
