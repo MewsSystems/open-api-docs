@@ -22,7 +22,7 @@ Loyalty programs are set up in Mews at the above-property chain level. However, 
 
 Use [Add loyalty programs](../operations/loyaltyprograms.md#add-loyalty-programs) to create your loyalty programs in Mews. If using a normal, single enterprise Access Token, the programs will be created for the chain corresponding to the enterprise within scope of the Access Token. If using a multi-property [Portfolio Access Token](../guidelines/multi-property.md), you must specify the `ChainId`. The programs will then be created for the specified chain.
 
-To create a program, you must specify a program name, program code (used to match the loyalty on bookings such as those coming in to Mews from the [Mews Channel Manager API](https://mews-systems.gitbook.io/channel-manager-api)), type of program, and subscription model (`Free` or `Paid`). To see what loyalty programs are already set up, use [Get all loyalty programs](../operations/loyaltyprograms.md#get-all-loyalty-programs), which can be called with various filter parameters, depending on your requirements.
+To create a program, you must specify a program name, program code (used to match the loyalty on bookings such as those coming in to Mews from the [Mews Channel Manager API](/channel-manager-api)), type of program, and subscription model (`Free` or `Paid`). To see what loyalty programs are already set up, use [Get all loyalty programs](../operations/loyaltyprograms.md#get-all-loyalty-programs), which can be called with various filter parameters, depending on your requirements.
 
 | <div style="width:350px">'How to' use case</div> | API Operations |
 | :-- | :-- |

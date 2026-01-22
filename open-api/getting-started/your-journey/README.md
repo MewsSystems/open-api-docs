@@ -40,7 +40,7 @@ Once you've had a chance to familiarize yourself with the APIs and the process, 
 {% step %}
 ## Development
 
-When you've decided which API operations to use and how, you'll see each API has its own demo credentials for you to try them out, connecting to our demo servers. All of the information you need to start developing and testing is in the documentation. For example, if you're working with the Mews Connector API, the [guidelines](https://mews-systems.gitbook.io/connector-api/guidelines) include details of the [URLs and access credentials](https://mews-systems.gitbook.io/connector-api/guidelines/environments).
+When you've decided which API operations to use and how, you'll see each API has its own demo credentials for you to try them out, connecting to our demo servers. All of the information you need to start developing and testing is in the documentation. For example, if you're working with the Mews Connector API, the [guidelines](/connector-api/guidelines) include details of the [URLs and access credentials](/connector-api/guidelines/environments).
 {% endstep %}
 
 {% step %}
@@ -49,10 +49,10 @@ When you've decided which API operations to use and how, you'll see each API has
 When you are finished developing and testing, it's time to get certified! Complete the [certification form](https://mews.typeform.com/to/ehTUz7) and we'll send you further instructions by email. As part of the certification process, you will be asked for some details about your integration, such as the endpoints you will be using and the request message frequency. You can find more information about certification in the following resources:
 
 * **Connector API integrations**<br>
-  * API Documentation: [Certification](https://mews-systems.gitbook.io/connector-api/guidelines/certification)
+  * API Documentation: [Certification](/connector-api/guidelines/certification)
   * Mews Help: [Connector API Certification: What to expect](https://help.mews.com/s/article/connector-api-certification-what-to-expect?language=en_US)
 * **Channel Manager API integrations**<br>
-  * API Documentation: [Certification](https://mews-systems.gitbook.io/channel-manager-api/certification)
+  * API Documentation: [Certification](/channel-manager-api/certification)
   * Mews Help: [Channel API Certification: What to expect](https://help.mews.com/s/article/channel-api-certification-what-to-expect?language=en_US)
 {% endstep %}
 

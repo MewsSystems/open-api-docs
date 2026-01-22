@@ -46,7 +46,7 @@ Download the latest Android build of the Mews POS app from the following link. T
 
 ### Mews Operations (PMS)
 
-The Mews POS Demo environment is linked to a demo property `Styrn Hotel` in the Mews Operations (PMS) Demo environment, for testing connected property-level workflows. You can access the demo property via the [Mews Connector API](https://mews-systems.gitbook.io/connector-api) using these credentials:
+The Mews POS Demo environment is linked to a demo property `Styrn Hotel` in the Mews Operations (PMS) Demo environment, for testing connected property-level workflows. You can access the demo property via the [Mews Connector API](/connector-api) using these credentials:
 
 * **ClientToken** - `8F9296CEE7FF4FC3AD55AEB400EA916E-05652C5153CF2AEFC9A405BFF6E8912`
 * **AccessToken** - `87835B7178CC47A8A648B23300F17B30-8A5AEDDDC7E0B190879D788CA1A96A6`

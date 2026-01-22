@@ -1,6 +1,6 @@
 # Your integration journey
 
-For a general overview and step-by-step guide to the integration process for all **Mews Open API** integrations, see [Your journey with Mews](https://mews-systems.gitbook.io/open-api/your-journey). The content below focuses specifically on developing a **Mews Connector API** integration.
+For a general overview and step-by-step guide to the integration process for all **Mews Open API** integrations, see [Your journey with Mews](/open-api/your-journey). The content below focuses specifically on developing a **Mews Connector API** integration.
 
 ## Contents
 

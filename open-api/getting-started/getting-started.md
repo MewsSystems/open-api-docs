@@ -18,9 +18,9 @@ Take a look at [The Mews APIs](the-mews-apis.md) to see which is the API for you
 
 Each API includes a Guidelines section explaining how to use the API, including quick-start information for connecting to a Demo environment and getting results right away.
 
-* [Go straight to the Mews Connector API](https://mews-systems.gitbook.io/connector-api/)
-* [Go straight to the Mews Channel Manager API](https://mews-systems.gitbook.io/channel-manager-api/)
-* [Go straight to the Mews Booking Engine API](https://mews-systems.gitbook.io/booking-engine-guide/)
+* [Go straight to the Mews Connector API](/connector-api/)
+* [Go straight to the Mews Channel Manager API](/channel-manager-api/)
+* [Go straight to the Mews Booking Engine API](/booking-engine-guide/)
 
 ## Help with terminology
 

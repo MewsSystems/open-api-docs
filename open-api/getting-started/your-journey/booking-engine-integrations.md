@@ -11,13 +11,13 @@ If you have questions about the process, drop us a line to [partnersuccess@mews.
 
 ## Step 1: Exploration
 
-Explore the [Booking Engine Guide](https://mews-systems.gitbook.io/booking-engine-guide/) and familiarize yourself with the API guidelines and operations. Not sure if the API is the right option? See [Booking Engine Guide ways to integrate](https://mews-systems.gitbook.io/booking-engine-guide/faq/ways-to-integrate).
+Explore the [Booking Engine Guide](/booking-engine-guide/) and familiarize yourself with the API guidelines and operations. Not sure if the API is the right option? See [Booking Engine Guide ways to integrate](/booking-engine-guide/faq/ways-to-integrate).
 
 > Please note that connection to the Booking Engine API is only available to Mews customers with Enterprise packages.
 
 ## Step 2: Registration
 
-Once you're sure you want to develop against the API, please register your client name and other details with Mews, as described in [Booking Engine API authorization](https://mews-systems.gitbook.io/booking-engine-guide/booking-engine-api/guidelines/authorization). To do so, send an email to [support@mews.com](mailto:support@mews.com) like the following example. In the meantime, you can start working with the API straight away using the sample client name, as described in [Booking Engine API authorization](https://mews-systems.gitbook.io/booking-engine-guide/booking-engine-api/guidelines/authorization).
+Once you're sure you want to develop against the API, please register your client name and other details with Mews, as described in [Booking Engine API authorization](/booking-engine-guide/booking-engine-api/guidelines/authorization). To do so, send an email to [support@mews.com](mailto:support@mews.com) like the following example. In the meantime, you can start working with the API straight away using the sample client name, as described in [Booking Engine API authorization](/booking-engine-guide/booking-engine-api/guidelines/authorization).
 
 > #### Registration email
 >
@@ -31,7 +31,7 @@ Once you're sure you want to develop against the API, please register your clien
 
 ## Step 3: Development
 
-You can connect to our Demo environment to try out API operations, using your registered client name. Until your client name is registered, you can use the sample client name. All of the information you need to start developing and testing is in the [Booking Engine Guide](https://mews-systems.gitbook.io/booking-engine-guide/).
+You can connect to our Demo environment to try out API operations, using your registered client name. Until your client name is registered, you can use the sample client name. All of the information you need to start developing and testing is in the [Booking Engine Guide](/booking-engine-guide/).
 
 ## Step 4: Production
 

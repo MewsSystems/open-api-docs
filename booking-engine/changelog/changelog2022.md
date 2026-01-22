@@ -29,7 +29,7 @@
 
 ## 7th June 2022
 
-* General: Launch of __Mews Booking Engine Guide__ at new URL [https://mews-systems.gitbook.io/booking-engine-guide/](https://mews-systems.gitbook.io/booking-engine-guide/), based on the old Distributor Guide
+* General: Launch of __Mews Booking Engine Guide__ at new URL [/booking-engine-guide/](/booking-engine-guide/), based on the old Distributor Guide
   * Entire documentation re-structured and re-worded, for improved navigation and readability, and for consistency with other Mews APIs
   * Product re-branded from 'Distributor' to 'Mews Booking Engine'
   * No changes to API functionality

@@ -1,6 +1,6 @@
 # Mews POS API
 
-Welcome to the **Mews POS API**. This API supports use cases related to **Mews POS**. It can be used in conjunction with the [Mews Connector API](https://mews-systems.gitbook.io/connector-api) for a rich set of interactions with the **Mews Hospitality Cloud**.
+Welcome to the **Mews POS API**. This API supports use cases related to **Mews POS**. It can be used in conjunction with the [Mews Connector API](/connector-api) for a rich set of interactions with the **Mews Hospitality Cloud**.
 
 > #### Important Notice!
 >

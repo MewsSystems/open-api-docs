@@ -143,7 +143,7 @@ The list of accounting categories configured at a property is obtained using [Ge
 ## Walk-in bookings
 
 This section is relevant if your kiosk allows guests to create new reservations, rather than simply fetching existing reservations.
-The API supports operations to facilitate the process, but consider also looking at the [Mews Booking Engine API](https://mews-systems.gitbook.io/booking-engine-guide/booking-engine-api) which is optimized for this task.
+The API supports operations to facilitate the process, but consider also looking at the [Mews Booking Engine API](/booking-engine-guide/booking-engine-api) which is optimized for this task.
 
 Use [Get all resources](../operations/resources.md#get-all-resources) to map out the physical configuration of the property. This will give you the names and descriptions of different resource categories, including room types.
 

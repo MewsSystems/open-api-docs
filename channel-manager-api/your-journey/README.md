@@ -1,6 +1,6 @@
 # Your integration journey
 
-For a general overview and step-by-step guide to the integration process for all **Mews Open API** integrations, see [Your journey with Mews](https://mews-systems.gitbook.io/open-api/your-journey). This page provides guidance specific to integrating with the **Mews Channel Manager API**.
+For a general overview and step-by-step guide to the integration process for all **Mews Open API** integrations, see [Your journey with Mews](/open-api/your-journey). This page provides guidance specific to integrating with the **Mews Channel Manager API**.
 
 ## Step 1: Exploration
 
@@ -11,7 +11,7 @@ Before you begin, review the documentation to understand the available API Opera
 
 ## Step 2: Registration
 
-To register your integration, follow the process outlined in the main onboarding guide [Your journey with Mews](https://mews-systems.gitbook.io/open-api/your-journey).
+To register your integration, follow the process outlined in the main onboarding guide [Your journey with Mews](/open-api/your-journey).
 
 **Obtain your Client Token**: Once approved, you will receive a `Client Token` that uniquely identifies your application. This token remains the same across all properties but differs by environment (i.e. Demo vs. Production).
 

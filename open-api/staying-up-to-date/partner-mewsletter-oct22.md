@@ -30,7 +30,7 @@ Let's talk about deprecations! We realize this is important, especially as we co
 * Major breaking changes will have a 12-month deprecation period
 * All deprecations will be listed, complete with planned stoppage dates
 
-Talking of documentation, we now have a single landing page for the [**Mews Open API**](https://mews-systems.gitbook.io/open-api/) – this sits over our three individual APIs. Not sure which is the right one for you? This is the place to go.
+Talking of documentation, we now have a single landing page for the [**Mews Open API**](/open-api/) – this sits over our three individual APIs. Not sure which is the right one for you? This is the place to go.
 
 There is plenty more happening, so keep an eye on the **Changelogs** for new features! And as always, if you have questions, just get in touch!  Until next time...
 
