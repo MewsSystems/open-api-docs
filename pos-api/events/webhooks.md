@@ -1,6 +1,6 @@
 # Webhooks
 
-Webhooks provide a streamlined way to receive event notifications about various entities. Register your Webhook endpoints with Mews using API Operation [Create webhook endpoint](/broken/pages/ggnhYT4S5VDM3HN1SCwj#create-webhook-endpoint).
+Webhooks provide a streamlined way to receive event notifications about various entities. Register your Webhook endpoints with Mews using API Operation [Create webhook endpoint](/broken/pages/6257bc3536f189de821f1cecce0e519c108bb590#post-v1-webhook-endpoints).
 
 ## Key features
 

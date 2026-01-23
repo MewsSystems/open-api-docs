@@ -12,7 +12,7 @@ This use case is aimed at external Inventory Management Systems, and it describe
 
 ## Product synchronization
 
-In order to synchronize products with Mews POS, use the [Get products](/broken/pages/kXP6AdYRRWo5OaPjRzsD#get-products) endpoint `GET /v1/products`. You can call this API operation periodically to refresh the product catalogue and make sure it is in sync with your system. The product attributes in the response include, but are not limited to, name, description, [SKU](https://en.wikipedia.org/wiki/Stock_keeping_unit), barcode, and price information.
+In order to synchronize products with Mews POS, use the [Get products](/broken/pages/c57e0a38b35f65d385ac2c0962ef7f82557bb323#get-v1-products) endpoint `GET /v1/products`. You can call this API operation periodically to refresh the product catalogue and make sure it is in sync with your system. The product attributes in the response include, but are not limited to, name, description, [SKU](https://en.wikipedia.org/wiki/Stock_keeping_unit), barcode, and price information.
 
 #### Example request:
 
@@ -34,7 +34,7 @@ The response is paginated using cursor pagination. Use the `next` link to reques
 
 ## Fetching sales data
 
-Use the [Get invoices](/broken/pages/7VnohNzCNsSbrSYswA7i#get-invoices) endpoint `GET /v1/invoices` to fetch invoices, containing order item data. Invoice attributes in the response include a description field and information about amounts, including `tax`, `total`, `subtotal`, `discount` and `tipAmount`. See [Get invoices](/broken/pages/7VnohNzCNsSbrSYswA7i#get-invoices) for the full set of supported attributes.
+Use the [Get invoices](/broken/pages/300f0e98a8ffb32e66ba6e6ba0a21d088865a09d#get-v1-invoices) endpoint `GET /v1/invoices` to fetch invoices, containing order item data. Invoice attributes in the response include a description field and information about amounts, including `tax`, `total`, `subtotal`, `discount` and `tipAmount`. See [Get invoices](/broken/pages/300f0e98a8ffb32e66ba6e6ba0a21d088865a09d#get-v1-invoices) for the full set of supported attributes.
 
 #### Example request:
 

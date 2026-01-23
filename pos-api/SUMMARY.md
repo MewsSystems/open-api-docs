@@ -17,10 +17,10 @@
   * [Digital ordering](use-cases/digital_ordering.md)
 * [API Operations](operations/README.md)
   * ```yaml
-    type: builtin:openapi
     props:
       models: true
       downloadLink: true
+    type: builtin:openapi
     dependencies:
       spec:
         ref:

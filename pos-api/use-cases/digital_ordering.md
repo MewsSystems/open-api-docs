@@ -13,7 +13,7 @@ This use case is aimed at Digital Ordering Systems and it describes how to use t
 
 ## Products endpoint polling to get availability updates
 
-Digital ordering systems need to stay synchronized with real-time product availability changes. Use the [Get products](/broken/pages/kXP6AdYRRWo5OaPjRzsD#get-products) endpoint with filtering and sparse fieldsets to efficiently poll for availability updates.
+Digital ordering systems need to stay synchronized with real-time product availability changes. Use the [Get products](/broken/pages/c57e0a38b35f65d385ac2c0962ef7f82557bb323#get-v1-products) endpoint with filtering and sparse fieldsets to efficiently poll for availability updates.
 
 ### Polling strategy
 
@@ -50,7 +50,7 @@ GET https://api.pos.mews-demo.com/v1/products?filter[updatedAtGteq]=2025-03-12&f
 
 ## Orders endpoint polling to get most recent order state changes
 
-Track order state changes in real-time by polling the [Get orders](/broken/pages/ZRocaBqQcRHp9x4ephdW#get-orders) endpoint with filtering and sparse fieldsets to monitor order lifecycle updates.
+Track order state changes in real-time by polling the [Get orders](/broken/pages/1b43d5a28e934cd740fda20f46adae8112d806e1#get-v1-orders) endpoint with filtering and sparse fieldsets to monitor order lifecycle updates.
 
 ### Polling strategy
 
@@ -89,7 +89,7 @@ GET https://api.pos.mews-demo.com/v1/orders?filter[updatedAtGteq]=2025-05-16&fie
 
 ### Polling strategy
 
-To retrieve the actual covers (guests seated) for a table, you have to poll the [Get orders](/broken/pages/ZRocaBqQcRHp9x4ephdW#get-orders) and include the `filter[tableIdEq]` query parameter.
+To retrieve the actual covers (guests seated) for a table, you have to poll the [Get orders](/broken/pages/1b43d5a28e934cd740fda20f46adae8112d806e1#get-v1-orders) and include the `filter[tableIdEq]` query parameter.
 
 #### Example request:
 

@@ -23,7 +23,7 @@ You can check availability at the POS level by correlating active bookings with 
 
 ### 1. Get tables
 
-First call [Get tables](/broken/pages/VDDhVkgEEtFIvxsMYaDz#get-tables) to get information on restaurant tables, including table names and quantity of seats.
+First call [Get tables](/broken/pages/9f268cd0fadb340e2662c3d97c46c52c73f57963#get-v1-tables) to get information on restaurant tables, including table names and quantity of seats.
 
 #### Example request:
 
@@ -70,11 +70,11 @@ The response will tell you:
 * The party size
 * The external booking reference, if applicable
 
-See [Get bookings](/broken/pages/ohpr0xfYuZ2oOTqTLc9z#get-bookings) for a full list of supported fields.
+See [Get bookings](/broken/pages/965b5a69f26099d2269f97ee4f0b00adef55e861#get-v1-bookings) for a full list of supported fields.
 
 ## Making a table booking
 
-Once you have taken a customer booking, you can set up the booking in **Mews POS** using [Create booking](/broken/pages/ohpr0xfYuZ2oOTqTLc9z#create-booking). See the API Operation description for a full list of parameters. You must specify the following parameters as a minimum:
+Once you have taken a customer booking, you can set up the booking in **Mews POS** using [Create booking](/broken/pages/965b5a69f26099d2269f97ee4f0b00adef55e861#post-v1-bookings). See the API Operation description for a full list of parameters. You must specify the following parameters as a minimum:
 
 * Booking date and time
 * Party size
@@ -154,7 +154,7 @@ POST [PlatformAddress]/v1/bookings
 }
 ```
 
-To obtain the profile id, perform a customer look-up using [Get customers](/broken/pages/yOEqDjMHh4DWzOU4dFHr#get-customers) with either the `emailEq` or `fullNameEq` filter. Note that an exact match is required, so care is needed to ensure the search string is correct.
+To obtain the profile id, perform a customer look-up using [Get customers](/broken/pages/d8a1df3e49ade5477340b612dd9b08b1c9147a71#get-v1-customers) with either the `emailEq` or `fullNameEq` filter. Note that an exact match is required, so care is needed to ensure the search string is correct.
 
 #### Example request:
 
@@ -162,13 +162,13 @@ To obtain the profile id, perform a customer look-up using [Get customers](/brok
 GET [PlatformAddress]/v1/customers?filter[emailEq]=john.doe@mews.com
 ```
 
-If no customer profile exists for the customer, you can create one with [Create customer](/broken/pages/yOEqDjMHh4DWzOU4dFHr#create-customer).
+If no customer profile exists for the customer, you can create one with [Create customer](/broken/pages/d8a1df3e49ade5477340b612dd9b08b1c9147a71#post-v1-customers).
 
 ## Alternate flows
 
 ### Amending a table booking
 
-To amend an existing booking, use [Update booking](/broken/pages/ohpr0xfYuZ2oOTqTLc9z#update-booking). You can use this to update any booking parameters, including setting the booking status.
+To amend an existing booking, use [Update booking](/broken/pages/965b5a69f26099d2269f97ee4f0b00adef55e861#patch-v1-bookings-id). You can use this to update any booking parameters, including setting the booking status.
 
 #### Example request:
 
@@ -178,11 +178,11 @@ PATCH [PlatformAddress]/v1/bookings/31b14937-2524-491f-b0a0-dc0a739
 
 ### Canceling a table booking
 
-To cancel a booking, use [Update booking](/broken/pages/ohpr0xfYuZ2oOTqTLc9z#update-booking) and set the booking status to `Cancelled`.
+To cancel a booking, use [Update booking](/broken/pages/965b5a69f26099d2269f97ee4f0b00adef55e861#patch-v1-bookings-id) and set the booking status to `Cancelled`.
 
 ### Checking on bookings
 
-To check on the details of bookings, use [Get bookings](/broken/pages/ohpr0xfYuZ2oOTqTLc9z#get-bookings) (see [Checking availability](table-booking.md#checking-availability) above).
+To check on the details of bookings, use [Get bookings](/broken/pages/965b5a69f26099d2269f97ee4f0b00adef55e861#get-v1-bookings) (see [Checking availability](table-booking.md#checking-availability) above).
 
 ### Changing table assignment
 
@@ -264,7 +264,7 @@ _Is there a way to express customer preferences such as table preferences or die
 
 _Do you support a level of organization between restaurant and table?_
 
-* **Answer**: Yes, a table can be linked to an area and an area can be linked to one or more tables. To see all areas, use [Get areas](/broken/pages/dckTa5cg4F3uE8WswD98). When calling [Get areas](/broken/pages/dckTa5cg4F3uE8WswD98), you can use [the include query parameter](../guidelines/relationships.md#the-include-query-parameter) to also fetch information about related tables using the same API Operation. This can replace the call to [Get tables](/broken/pages/VDDhVkgEEtFIvxsMYaDz#get-tables) in Step 1 of [Checking availability](table-booking.md#checking-availability).
+* **Answer**: Yes, a table can be linked to an area and an area can be linked to one or more tables. To see all areas, use [Get areas](/broken/pages/112e7e97fccf40c9248a6f93f3e3bbcae6198d8d#get-v1-areas). When calling [Get areas](/broken/pages/112e7e97fccf40c9248a6f93f3e3bbcae6198d8d#get-v1-areas), you can use [the include query parameter](../guidelines/relationships.md#the-include-query-parameter) to also fetch information about related tables using the same API Operation. This can replace the call to [Get tables](/broken/pages/9f268cd0fadb340e2662c3d97c46c52c73f57963#get-v1-tables) in Step 1 of [Checking availability](table-booking.md#checking-availability).
 
 ## Additional help
 

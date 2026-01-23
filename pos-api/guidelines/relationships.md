@@ -13,13 +13,15 @@ A relationship’s name is given by its individual relationship key. The value o
 
 ## The include query parameter
 
-The API client can request the inclusion of related resources in the response, using the `include` query parameter with comma separated values `?include=relatedResourceA,relatedResourceB`. For example, a request to the [Invoices](/broken/pages/7VnohNzCNsSbrSYswA7i) endpoint with `?include=register,invoiceItems` will generate a response that includes the related register and invoice items data for each invoice.
+The API client can request the inclusion of related resources in the response, using the `include` query parameter with comma separated values `?include=relatedResourceA,relatedResourceB`. For example, a request to the [Invoices](/broken/pages/300f0e98a8ffb32e66ba6e6ba0a21d088865a09d#get-v1-invoices) endpoint with `?include=register,invoiceItems` will generate a response that includes the related register and invoice items data for each invoice.
 
 ### Example request and response
 
 In the example request, we will query the `/invoices` endpoint with include parameters:
 
-`GET` `[PlatformAddress]/v1/invoices?include=invoiceItems,user,register`
+```
+GET [PlatformAddress]/v1/invoices?include=invoiceItems,user,register
+```
 
 #### Response
 
