@@ -12,7 +12,7 @@ The **Mews Open API** is in fact a family of three APIs. Each API operates indep
 
 ## What do you want to achieve?
 
-Take a look at [The Mews APIs](the-mews-apis.md) to see which is the API for you. The documentation for each API includes examples of common use cases for that API, or you can find an overview of all of them in [Use Cases](/broken/pages/MJwQvFPVBro8nQ0WvpCR).
+Take a look at [The Mews APIs](the-mews-apis.md) to see which is the API for you. The documentation for each API includes examples of common use cases for that API, or you can find an overview of all of them in [Use Cases](../use-cases/).
 
 ## Getting stuck in
 

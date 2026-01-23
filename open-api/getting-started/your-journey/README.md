@@ -23,7 +23,7 @@ Booking Engine API integrations are the exception as they do not need to be cert
 {% step %}
 ## Exploration
 
-First find out [which of our APIs you should be using](../the-mews-apis.md). If you're not sure, take a look at the [use cases](/broken/pages/MJwQvFPVBro8nQ0WvpCR) for suggestions. Each API has its own body of documentation, so you'll want to familiarize yourself with the guidelines and operations for the API you'll be using.
+First find out [which of our APIs you should be using](../the-mews-apis.md). If you're not sure, take a look at the [use cases](../use-cases) for suggestions. Each API has its own body of documentation, so you'll want to familiarize yourself with the guidelines and operations for the API you'll be using.
 {% endstep %}
 
 {% step %}
