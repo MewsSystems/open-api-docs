@@ -1,18 +1,18 @@
 # Inventory management
 
-This use case is aimed at external Inventory Management Systems, and it describes how to use the **Mews POS API** to managing inventory across multiple point-of-sale locations or outlets.
+This use case is aimed at external Inventory Management Systems, and it describes how to use the __Mews POS API__ to managing inventory across multiple point-of-sale locations or outlets.
 
 ## Contents
 
-* [Product synchronization](inventory.md#product-synchronization)
-* [Fetching sales data](inventory.md#fetching-sales-data)
-* [Fetching the location or outlet](inventory.md#fetching-the-location-or-outlet)
-* [Frequently Asked Questions](inventory.md#frequently-asked-questions)
-* [Additional help](inventory.md#additional-help)
+* [Product synchronization](#product-synchronization)
+* [Fetching sales data](#fetching-sales-data)
+* [Fetching the location or outlet](#fetching-the-location-or-outlet)
+* [Frequently Asked Questions](#frequently-asked-questions)
+* [Additional help](#additional-help)
 
 ## Product synchronization
 
-In order to synchronize products with Mews POS, use the [Get products](/broken/pages/c57e0a38b35f65d385ac2c0962ef7f82557bb323#get-v1-products) endpoint `GET /v1/products`. You can call this API operation periodically to refresh the product catalogue and make sure it is in sync with your system. The product attributes in the response include, but are not limited to, name, description, [SKU](https://en.wikipedia.org/wiki/Stock_keeping_unit), barcode, and price information.
+In order to synchronize products with Mews POS, use the [Get products](../operations/products.md#get-products) endpoint `GET /v1/products`. You can call this API operation periodically to refresh the product catalogue and make sure it is in sync with your system. The product attributes in the response include, but are not limited to, name, description, [SKU](https://en.wikipedia.org/wiki/Stock_keeping_unit), barcode, and price information.
 
 #### Example request:
 
@@ -34,7 +34,7 @@ The response is paginated using cursor pagination. Use the `next` link to reques
 
 ## Fetching sales data
 
-Use the [Get invoices](/broken/pages/300f0e98a8ffb32e66ba6e6ba0a21d088865a09d#get-v1-invoices) endpoint `GET /v1/invoices` to fetch invoices, containing order item data. Invoice attributes in the response include a description field and information about amounts, including `tax`, `total`, `subtotal`, `discount` and `tipAmount`. See [Get invoices](/broken/pages/300f0e98a8ffb32e66ba6e6ba0a21d088865a09d#get-v1-invoices) for the full set of supported attributes.
+Use the [Get invoices](../operations/invoices.md#get-invoices) endpoint `GET /v1/invoices` to fetch invoices, containing order item data. Invoice attributes in the response include a description field and information about amounts, including `tax`, `total`, `subtotal`, `discount` and `tipAmount`. See [Get invoices](../operations/invoices.md#get-invoices) for the full set of supported attributes.
 
 #### Example request:
 
@@ -52,10 +52,10 @@ GET [PlatformAddress]/v1/invoices?filter%createdAtGt%5D=2024-07-25T16%3A29%3A35%
 
 Linked to the invoice entity are:
 
-* **user** – the customer
-* **register** – the cash register or outlet terminal used for the transaction
-* **invoiceItems** – an array of invoice order items
-* **originalInvoice** – normally null, but may link to an original invoice in cases of refunds
+* __user__ – the customer
+* __register__ – the cash register or outlet terminal used for the transaction
+* __invoiceItems__ – an array of invoice order items
+* __originalInvoice__ – normally null, but may link to an original invoice in cases of refunds
 
 These can be selectively included in the response by using the same request but specifying the relevant include query parameters, as per [Essential guide > Relationships](../essential-guide/relationships.md). Item attributes include, but are not limited to, `productName`, `quantity`, `total` and amount breakdowns for tax and discounts. Use the register `self` link to obtain the full register information, including outlet name.
 
@@ -183,7 +183,7 @@ The response is paginated using cursor pagination. Use the `next` link to reques
 
 ## Fetching the location or outlet
 
-It is helpful to first understand the domain entities and their relationships. POS locations, such as a named bar or restaurant, are called **outlets** in Mews POS. POS terminals or cash registers are called **registers**. **Invoices** are linked to a register, which is the terminal used for making the financial transaction.
+It is helpful to first understand the domain entities and their relationships. POS locations, such as a named bar or restaurant, are called __outlets__ in Mews POS. POS terminals or cash registers are called __registers__. __Invoices__ are linked to a register, which is the terminal used for making the financial transaction.
 
 * So the entity relationship is `Venue` –> `Outlet` –> `Register` –> `Invoice`
 
@@ -214,41 +214,36 @@ GET [PlatformAddress]/v1/registers/eef23c03-49b9-432b-b1a3-955ea1501557?include=
 
 ## Frequently Asked Questions
 
-* [How do you represent returns and cancellations?](inventory.md#how-do-you-represent-returns-and-cancellations)
-* [How do you represent waste?](inventory.md#how-do-you-represent-waste)
-* [How do you represent modifiers and add-ons?](inventory.md#how-do-you-represent-modifiers-and-add-ons)
-* [How do you represent combo deals?](inventory.md#how-do-you-represent-combo-deals)
+* [How do you represent returns and cancellations?](#how-do-you-represent-returns-and-cancellations)
+* [How do you represent waste?](#how-do-you-represent-waste)
+* [How do you represent modifiers and add-ons?](#how-do-you-represent-modifiers-and-add-ons)
+* [How do you represent combo deals?](#how-do-you-represent-combo-deals)
 
 ### How do you represent returns and cancellations?
-
 _How do you represent returns and cancellations, e.g. wrong order, or customer changed their mind?_
 
-* **Answer**: We represent refunds by having an `invoice` relationship to an `originalInvoice` object. It means that all invoices that have this relationship are actually refunds and not "real" invoices. For the original invoice, follow the `originalInvoice` relationship.
+* __Answer__: We represent refunds by having an `invoice` relationship to an `originalInvoice` object. It means that all invoices that have this relationship are actually refunds and not "real" invoices. For the original invoice, follow the `originalInvoice` relationship.
 
 ### How do you represent waste?
-
 _How do you represent waste, e.g. a dropped plate in the kitchen, or a spoiled item?_
 
-* **Answer**: We currently don't have any specific provision for waste.
+* __Answer__: We currently don't have any specific provision for waste.
 
 ### How do you represent modifiers and add-ons?
-
 _How do you represent modifiers and add-ons, e.g. extra cheese, no tomatoes?_
 
-* **Answer**: We use invoice item modifiers for this. Invoice items are related to an `invoice` resource, and this has a relationship of its own to the invoice item modifiers which you'll get if you _include_ invoice items in the response – see [Essential guide > Relationships](../essential-guide/relationships.md).
+* __Answer__: We use invoice item modifiers for this. Invoice items are related to an `invoice` resource, and this has a relationship of its own to the invoice item modifiers which you'll get if you _include_ invoice items in the response – see [Essential guide > Relationships](../essential-guide/relationships.md).
 
 ### How do you represent combo deals?
-
 _How do you represent menu items and combo deals, e.g. Lunch combo Burger+Cola+Fries?_
 
-* **Answer**: In addition to product variants, **Mews POS** supports product bundles, which could be used for combo deals. Product variants are supported in relation to the `product` resource. Product bundles are not currently supported in the API, but will be added shortly.
+* __Answer__: In addition to product variants, __Mews POS__ supports product bundles, which could be used for combo deals. Product variants are supported in relation to the `product` resource. Product bundles are not currently supported in the API, but will be added shortly.
 
 ## Additional help
 
-You may find these additional resources helpful when working with **Mews POS** in the demo environment:
+You may find these additional resources helpful when working with __Mews POS__ in the demo environment:
 
 > **Help Guides**:
->
 > * [Adding product variants in Mews POS](https://help.mews.com/s/article/adding-product-variants-in-the-mews-pos?language=en_US)
 > * [How to create a product modifier in Mews POS](https://help.mews.com/s/article/creating-a-modifier?language=en_US)
 > * [Managing product modifiers in Mews POS](https://help.mews.com/s/article/managing-product-modifiers-in-the-mews-pos?language=en_US)
