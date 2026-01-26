@@ -79,8 +79,8 @@ Unexpected error on the Mews side. This may be due to a software fault. If such 
 
 In case of any error, the returned JSON object describes the error and has the following properties:
 
-| Property    | Type   | Contract | Description                                                                                                                                                                                         |
-| ----------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Message`   | string | required | Description of the error.                                                                                                                                                                           |
-| `RequestId` | string | optional | Unique identifier of the request. You can provide this unique identifier when communicating with [partnersuccess@mews.com](mailto:partnersuccess@mews.com) for quick identification of the request. |
-| `Details`   | string | optional | Additional details about the error \(request, headers, server stack trace, inner exceptions etc.\). Only available on development environment.                                                      |
+| Property | Type | Contract | Description |
+| --- | --- | --- | --- |
+| `Message` | string | required | Description of the error. |
+| `RequestId` | string | optional | Unique identifier of the request. You can provide this unique identifier when communicating with [partnersuccess@mews.com](mailto:partnersuccess@mews.com) for quick identification of the request.|
+| `Details` | string | optional | Additional details about the error \(request, headers, server stack trace, inner exceptions etc.\). Only available on development environment. |
