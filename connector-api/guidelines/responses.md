@@ -19,61 +19,63 @@ Success response, the content is empty. Clients can opt-in to receive this respo
 
 ### 400 Bad request
 
-Error caused by the client app, e.g. in case of malformed request or invalid identifier of a resource. In most cases, such an error signifies a bug in the client app \(consumer of the API\).
+The request is invalid or cannot be processed due to a client-side error, such as malformed input or an invalid resource identifier. In most cases, this response indicates an issue in the client application.
 
 **Troubleshooting:**
-
-- **Invalid {Parameter}**, provided resource you are referencing doesn't exists or is in invalid state for given endpoint (e.g. closing already closed bill). [Contact support](../contact-support/README.md) in case you're unable to find, what is wrong with the request.
-- **Invalid JSON**, provided request body is not in valid JSON format. Server follows strict JSON formatting that does not allow things like trailing comma after the last bracket or field. You might use any online JSON validator tool that stricly follows formatting rules to quickly find the issue.
+- **Invalid {Parameter}**. The referenced resource does not exist or is in an invalid state for the given endpoint (for example, attempting to close a bill that is already closed). If you are unable to identify the issue in the request, [Contact support](../contact-support/README.md).
+- **Invalid JSON**. The request body is not valid JSON. The API enforces strict JSON formatting and does not allow issues such as trailing commas after the last field or bracket. Use a JSON validator that strictly follows the JSON specification to identify formatting errors.
 
 ### 401 Forbidden
 
-Error caused by usage of invalid `ClientToken` or `AccessToken`, or you may not have the necessary permission to use the endpoint.
+The request could not be authorized due to invalid or expired credentials, or because the client does not have sufficient permissions to access the endpoint.
 
 **Troubleshooting:**
-
-- **Invalid or expired credentials**, either `ClientToken` or `AccessToken` is incorrect or expired, see [Authentication](../guidelines/authentication.md) for more information about these. Another explenations might be the enterprise was deleted/disabled from Mews or integration is disabled.
-- **Lack of permissions** to use given operation, begin certification process for permissions updates to use new endpoint.
+- The provided `ClientToken` or `AccessToken` is invalid or has expired, see [Authentication](../guidelines/authentication.md) for more information. Another explenations might be the enterprise was deleted/disabled from Mews or integration is disabled.
+- The client does not have permission to perform the requested operation. [Contact support](../contact-support/README.md) to start or update the certification process to request access to the required endpoint.
 
 ### 403 Forbidden
 
-Server error that should be reported to the end user of the client app. Happens for example when the server-side validation fails or when a business-logic check is violated.
+An error returned by the server that should be surfaced to the end user of the client application. This typically occurs when server-side validation fails or a business-logic rule is violated.
 
 **Troubleshooting:**
-
-- **Report response message to the property** for them to cross-check their settings in MeMews with the action they tried to complete for them to make a decision on which should change.s
+- Report response message to the property for them to cross-check their settings in MeMews with the action they tried to complete for them to make a decision on which should change.
 
 ### 404 Not found
 
 The server cannot find the resource requested by the client app. Verify the URL and request method.
 
 **Troubleshooting:**
-
-- **URL case sensitive**, make sure the URL of the endpoint matches operation's URL exactly, including case sensitive characters and not sending multiple slashes in sequence.
+- Make sure the URL of the endpoint matches operation's URL exactly, including case sensitive characters and not sending multiple slashes in sequence.
 
 ### 408 Request Timeout
 
 Error caused by heavy request that takes too long to process (typically tens of seconds). To get around this, request data in smaller batches. For more information, see [Request timeouts](../guidelines/requests.md#request-timeouts).
 
 **Troubleshooting:**
-
 - Make sure you're following all of our [Best practices](../guidelines/best-practices.md), otherwise we would not be able to resolve the timeouts. Contact Partner Success in case you're consistently recieveing timeouts.
 
 ### 409 Conflict
 
 The request cannot be completed because the data has changed.
 
-**Troubleshooting**
-
+**Troubleshooting:**
 - Refresh data on the client and resubmit the request.
 
 ### 429 Too Many Requests
 
 Error caused by too many requests sent in a given amount of time. Response contains `Retry-After` header indicating how long the user agent should wait before making a follow-up request. For more information, see [Request limits](../guidelines/requests.md#request-limits).
 
+**Troubleshooting:**
+- Review our [Best practices](../guidelines/best-practices.md) and don't query for unchanging data often.
+- Use `Retry-After` when to make next API request, avoiding making more requests that would be rate limited.
+- Avoid sudden burst of API requests and distribute API calls more in time when possible.
+
 ### 500 Internal Server Error and other 5xx response codes
 
 Unexpected error on the Mews side. This may be due to a software fault. If such a situation occurs, the error will be logged and the development team notified.
+
+**Troubleshooting:**
+- Mews is automatically notified, retry operation or [Contact support](../contact-support/README.md) if issue still persist.
 
 ## Error response details
 
@@ -82,5 +84,5 @@ In case of any error, the returned JSON object describes the error and has the f
 | Property | Type | Contract | Description |
 | --- | --- | --- | --- |
 | `Message` | string | required | Description of the error. |
-| `RequestId` | string | optional | Unique identifier of the request. You can provide this unique identifier when communicating with [partnersuccess@mews.com](mailto:partnersuccess@mews.com) for quick identification of the request.|
+| `RequestId` | string | optional | Unique identifier of the request. Provide this unique identifier when [contacting support](../contact-support/README.md) for quick identification of the request.|
 | `Details` | string | optional | Additional details about the error \(request, headers, server stack trace, inner exceptions etc.\). Only available on development environment. |
