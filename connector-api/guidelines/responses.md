@@ -52,7 +52,7 @@ The server cannot find the resource requested by the client app. Verify the URL 
 Error caused by heavy request that takes too long to process (typically tens of seconds). To get around this, request data in smaller batches. For more information, see [Request timeouts](../guidelines/requests.md#request-timeouts).
 
 **Troubleshooting:**
-- Make sure you're following all of our [Best practices](../guidelines/best-practices.md), otherwise we would not be able to resolve the timeouts. Contact Partner Success in case you're consistently recieveing timeouts.
+- Make sure you're following all of our [Best practices](../guidelines/best-practices.md), otherwise we will not be able to resolve the timeouts. Contact Partner Success in case you're consistently recieveing timeouts.
 
 ### 409 Conflict
 
