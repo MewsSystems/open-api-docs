@@ -2,12 +2,12 @@
 
 ## Content-type
 
-The API responds with `Content-Type` set to `application/json`, and with JSON content in the body. In case of a 204 response (see [Request minimal response](requests.md#request-minimal-response)), the `Content-Type` header is _not_ set and the response body is empty.
+The API responds with `Content-Type` set to `application/json`, and with JSON content in the body. In case of a 204 response (see [Request minimal response](../guidelines/requests.md#request-minimal-response)), the `Content-Type` header is _not_ set and the response body is empty.
 
 ## Response codes
 
-In case of success, the HTTP status code is normally 200 and the content contains the result according to the nature of the request. The client may opt-in to instead receive HTTP status code 204 in certain circumstances, see [Request minimal response](requests.md#request-minimal-response). In case of error, there are multiple HTTP status codes for different types of errors.
-Every response contains `Request-Id` header with unique identifation of the request, that can be used to [Contact support](/connector-api/contact-support/README.md).
+In case of success, the HTTP status code is normally 200 and the content contains the result according to the nature of the request. The client may opt-in to instead receive HTTP status code 204 in certain circumstances, see [Request minimal response](../guidelines/requests.md#request-minimal-response). In case of error, there are multiple HTTP status codes for different types of errors.
+Every response contains `Request-Id` header with unique identifation of the request, that can be used to [Contact support](../contact-support/README.md).
 
 ### 200 OK
 
@@ -15,7 +15,7 @@ Success response. The content contains the result according to the nature of the
 
 ### 204 No Content
 
-Success response, the content is empty. Clients can opt-in to receive this response code, see [Request minimal response](requests.md#request-minimal-response).
+Success response, the content is empty. Clients can opt-in to receive this response code, see [Request minimal response](../guidelines/requests.md#request-minimal-response).
 
 ### 400 Bad request
 
@@ -23,7 +23,7 @@ Error caused by the client app, e.g. in case of malformed request or invalid ide
 
 **Troubleshooting:**
 
-- **Invalid {Parameter}**, provided resource you are referencing doesn't exists or is in invalid state for given endpoint (e.g. closing already closed bill). [Contact support](/guidelines/how-to-contact-partner-success.md) in case you're unable to find, what is wrong with the request.
+- **Invalid {Parameter}**, provided resource you are referencing doesn't exists or is in invalid state for given endpoint (e.g. closing already closed bill). [Contact support](../contact-support/README.md) in case you're unable to find, what is wrong with the request.
 - **Invalid JSON**, provided request body is not in valid JSON format. Server follows strict JSON formatting that does not allow things like trailing comma after the last bracket or field. You might use any online JSON validator tool that stricly follows formatting rules to quickly find the issue.
 
 ### 401 Forbidden
@@ -32,7 +32,7 @@ Error caused by usage of invalid `ClientToken` or `AccessToken`, or you may not 
 
 **Troubleshooting:**
 
-- **Invalid or expired credentials**, either `ClientToken` or `AccessToken` is incorrect or expired, see [Authentication](/guidelines/authentication.md) for more information about these. Another explenations might be the enterprise was deleted/disabled from Mews or integration is disabled.
+- **Invalid or expired credentials**, either `ClientToken` or `AccessToken` is incorrect or expired, see [Authentication](../guidelines/authentication.md) for more information about these. Another explenations might be the enterprise was deleted/disabled from Mews or integration is disabled.
 - **Lack of permissions** to use given operation, begin certification process for permissions updates to use new endpoint.
 
 ### 403 Forbidden
@@ -53,11 +53,11 @@ The server cannot find the resource requested by the client app. Verify the URL 
 
 ### 408 Request Timeout
 
-Error caused by heavy request that takes too long to process (typically tens of seconds). To get around this, request data in smaller batches. For more information, see [Request timeouts](requests.md#request-timeouts).
+Error caused by heavy request that takes too long to process (typically tens of seconds). To get around this, request data in smaller batches. For more information, see [Request timeouts](../guidelines/requests.md#request-timeouts).
 
 **Troubleshooting:**
 
-- Make sure you're following all of our [Best practices](/guidelines/best-practices.md), otherwise we would not be able to resolve the timeouts. Contact Partner Success in case you're consistently recieveing timeouts.
+- Make sure you're following all of our [Best practices](../guidelines/best-practices.md), otherwise we would not be able to resolve the timeouts. Contact Partner Success in case you're consistently recieveing timeouts.
 
 ### 409 Conflict
 
@@ -65,11 +65,11 @@ The request cannot be completed because the data has changed.
 
 **Troubleshooting**
 
-- Try refreshing the data on the client and resubmitting the request.
+- Refresh data on the client and resubmit the request.
 
 ### 429 Too Many Requests
 
-Error caused by too many requests sent in a given amount of time. Response contains `Retry-After` header indicating how long the user agent should wait before making a follow-up request. For more information, see [Request limits](requests.md#request-limits).
+Error caused by too many requests sent in a given amount of time. Response contains `Retry-After` header indicating how long the user agent should wait before making a follow-up request. For more information, see [Request limits](../guidelines/requests.md#request-limits).
 
 ### 500 Internal Server Error and other 5xx response codes
 
