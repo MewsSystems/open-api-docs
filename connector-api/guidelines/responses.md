@@ -46,7 +46,7 @@ An error returned by the server that should be surfaced to the end user of the c
 The server cannot find the resource requested by the client app. Verify the URL and request method.
 
 #### Common errors
-- Make sure the URL of the endpoint matches operation's URL exactly, including case sensitive characters and not sending multiple slashes in sequence.
+- Make sure the URL of the endpoint matches operation's URL exactly, including case sensitive characters, and there are no extraneous slash characters.
 
 ### 408 Request Timeout
 

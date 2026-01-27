@@ -15,8 +15,6 @@ To help us investigate and respond as quickly as possible, please include the fo
   Avoid sending screenshots or document files (for example Word or PDF files).
 - Do not send full `ClientToken`, `AccessToken`, or any other sensitive information (e.g. guests' personal data in request payload). Partner success will never ask for this information.
 
-If you have any questions or encounter issues, contact partner success at [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
-
 ## Contact
 
 Contact the Partner Success team at [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
