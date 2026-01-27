@@ -9,7 +9,7 @@ This guide is intended to assist API users to migrate away from the obsolete API
 > * **Migration timeline** – When do you plan to complete your migration?
 > * **Feature parity** – Is there any missing functionality preventing your transition?
 >
-> After consulting the details in this Migration Guide, please take a moment to fill out this [short survey](https://mews.typeform.com/to/izhRLSFg) and share your feedback. If you need further assistance or would like to discuss your migration plans, please contact our Technical Partnerships team at <partnersuccess@mews.com>.
+> After consulting the details in this Migration Guide, please take a moment to fill out this [short survey](https://mews.typeform.com/to/izhRLSFg) and share your feedback. If you need further assistance or would like to discuss your migration plans, please [Contact support](../contact-support/README.md).
 
 ## Contents
 
