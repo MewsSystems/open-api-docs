@@ -7,7 +7,7 @@ The API responds with `Content-Type` set to `application/json`, and with JSON co
 ## Response codes
 
 In case of success, the HTTP status code is normally 200 and the content contains the result according to the nature of the request. The client may opt-in to instead receive HTTP status code 204 in certain circumstances, see [Request minimal response](../guidelines/requests.md#request-minimal-response). In case of error, there are multiple HTTP status codes for different types of errors.
-Every response contains `Request-Id` header with unique identifation of the request, that can be used to [Contact support](../contact-support/README.md).
+Every response contains `Request-Id` header with unique identification of the request, that can be used when [contacting the support](../contact-support/README.md).
 
 ### 200 OK
 
