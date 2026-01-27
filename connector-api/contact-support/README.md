@@ -4,7 +4,7 @@ Before reaching out, make sure you are following all our [Best practices](../gui
 
 To help us investigate and respond as quickly as possible, include the following information:
 
-- The `RequestId` included in the [Error response details](../guidelines/responses.md#error-response-details) of the API response.
+- Full API response body including the `RequestId` property in the [Error response details](../guidelines/responses.md#error-response-details).
 - The request body you are sending or the response you are receiving, provided in JSON format.
   Avoid sending screenshots or document files (for example, Word or PDF files).
 - Do not send unobscured `ClientToken`, `AccessToken`, or any other sensitive information. Partner success will never ask for this information.
