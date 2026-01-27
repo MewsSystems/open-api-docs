@@ -75,7 +75,7 @@ Error caused by too many requests sent in a given amount of time. Response conta
 Unexpected error on the Mews side. This may be due to a software fault. If such a situation occurs, the error will be logged and the development team notified.
 
 **Troubleshooting:**
-- Mews is automatically notified, retry operation or [Contact support](../contact-support/README.md) if issue still persist.
+- Retry the operation or [Contact support](../contact-support/README.md) if the issue persists.
 
 ## Error response details
 
