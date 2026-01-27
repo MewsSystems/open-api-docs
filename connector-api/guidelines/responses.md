@@ -21,46 +21,41 @@ Success response, the content is empty. Clients can opt-in to receive this respo
 
 The request is invalid or cannot be processed due to a client-side error, such as malformed input or an invalid resource identifier. In most cases, this response indicates an issue in the client application.
 
-#### Common errors
+`Invalid {Parameter}`: The referenced resource does not exist or is in an invalid state for the given endpoint (for example, attempting to close a bill that is already closed). If you are unable to identify the issue in the request, [contact support](../contact-support/README.md).
 
-- `Invalid {Parameter}`: The referenced resource does not exist or is in an invalid state for the given endpoint (for example, attempting to close a bill that is already closed). If you are unable to identify the issue in the request, [Contact support](../contact-support/README.md).
-- `Invalid JSON`: The request body is not valid JSON. The API enforces strict JSON formatting and does not allow issues such as trailing commas after the last field or bracket. Use a JSON validator that strictly follows the JSON specification to identify formatting errors.
+`Invalid JSON`: The request body is not valid JSON. The API enforces strict JSON formatting and does not allow issues such as trailing commas after the last field or bracket. Use a JSON validator that strictly follows the JSON specification to identify formatting errors.
 
 ### 401 Forbidden
 
 The request could not be authorized due to invalid or expired credentials, or because the client does not have sufficient permissions to access the endpoint.
 
-#### Common errors
-- The provided `ClientToken` or `AccessToken` is invalid or has expired, see [Authentication](../guidelines/authentication.md) for more information. Another cause might be the enterprise has been disabled in Mews or the integration is disabled either for the enterprise or in Mews.
-- The client does not have permission to perform the requested operation. [Contact support](../contact-support/README.md) to start or update the certification process to request access to the required endpoint.
+The provided `ClientToken` or `AccessToken` is invalid or has expired, see [Authentication](../guidelines/authentication.md) for more information. Another cause might be the enterprise has been disabled in Mews or the integration is disabled either for the enterprise or in Mews.
+
+The client does not have permission to perform the requested operation. [Contact support](../contact-support/README.md) to start or update the certification process to request access to the required endpoint.
 
 ### 403 Forbidden
 
 An error returned by the server that should be surfaced to the end user of the client application. This typically occurs when server-side validation fails or a business-logic rule is violated.
 
-#### Common errors
-- Report the response message to the enterprise to cross-check their settings in Mews with the action they tried to complete. They should make a decision on which version should change.
+Report the response message to the enterprise to cross-check their settings in Mews with the action they tried to complete. They should make a decision on which version should change.
 
 ### 404 Not found
 
 The server cannot find the resource requested by the client app. Verify the URL and request method.
 
-#### Common errors
-- Make sure the URL of the endpoint matches operation's URL exactly, including case sensitive characters, and there are no extraneous slash characters.
+Make sure the URL of the endpoint matches operation's URL exactly, including case sensitive characters, and there are no extraneous slash characters.
 
 ### 408 Request Timeout
 
 Error caused by heavy request that takes too long to process (typically tens of seconds). To get around this, request data in smaller batches. For more information, see [Request timeouts](../guidelines/requests.md#request-timeouts).
 
-#### Common errors
-- Make sure you're following all of our [Best practices](../guidelines/best-practices.md), otherwise we will not be able to resolve the timeouts. Contact Partner Success in case you're consistently recieveing timeouts.
+Make sure you're following all of our [Best practices](../guidelines/best-practices.md), otherwise we will not be able to resolve the timeouts. Contact Partner Success in case you're consistently recieveing timeouts.
 
 ### 409 Conflict
 
 The request cannot be completed because the data has changed.
 
-#### Common errors
-- Refresh data on the client and resubmit the request.
+Refresh data on the client and resubmit the request.
 
 ### 413 Content Too Large
 
@@ -70,15 +65,13 @@ The request body is too large. Try reducing the amount and size of request param
 
 Error caused by too many requests sent in a given amount of time. Response contains `Retry-After` header indicating how long the user agent should wait before making a follow-up request. For more information, see [Request limits](../guidelines/requests.md#request-limits).
 
-#### Common errors
-- Follow the suggestions in [Request limits](../guidelines/requests.md#request-limits).
+Follow the suggestions in [Request limits](../guidelines/requests.md#request-limits).
 
 ### 500 Internal Server Error and other 5xx response codes
 
 Unexpected error on the Mews side. This may be due to a software fault. If such a situation occurs, the error will be logged and the development team notified.
 
-#### Common errors
-- Retry the operation or [Contact support](../contact-support/README.md) if the issue persists.
+Retry the operation or [contact support](../contact-support/README.md) if the issue persists.
 
 ## Error response details
 
