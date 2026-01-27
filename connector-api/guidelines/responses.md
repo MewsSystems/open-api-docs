@@ -21,7 +21,7 @@ Success response, the content is empty. Clients can opt-in to receive this respo
 
 The request is invalid or cannot be processed due to a client-side error, such as malformed input or an invalid resource identifier. In most cases, this response indicates an issue in the client application.
 
-`Invalid {Parameter}`: The referenced resource does not exist or is in an invalid state for the given endpoint (for example, attempting to close a bill that is already closed). If you are unable to identify the issue in the request, [Contact support](../contact-support/README.md).
+`Invalid {Parameter}`: The referenced resource does not exist or is in an invalid state for the given endpoint (for example, attempting to close a bill that is already closed). If you are unable to identify the issue in the request, [contact support](../contact-support/README.md).
 
 `Invalid JSON`: The request body is not valid JSON. The API enforces strict JSON formatting and does not allow issues such as trailing commas after the last field or bracket. Use a JSON validator that strictly follows the JSON specification to identify formatting errors.
 
@@ -67,7 +67,7 @@ Follow the suggestions in [Request limits](../guidelines/requests.md#request-lim
 
 Unexpected error on the Mews side. This may be due to a software fault. If such a situation occurs, the error will be logged and the development team notified.
 
-Retry the operation or [Contact support](../contact-support/README.md) if the issue persists.
+Retry the operation or [contact support](../contact-support/README.md) if the issue persists.
 
 ## Error response details
 
