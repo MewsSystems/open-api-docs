@@ -11,7 +11,7 @@ If you are experiencing a problem with the API, we recommend first reviewing the
 To help us investigate and respond as quickly as possible, please include the following details when reporting an issue:
 
 - Full API response body including the `RequestId` property in the [Error response details](../guidelines/responses.md#error-response-details).
-- The request body you are sending or the response you are receiving, provided in JSON format, with `ClientToken` and `AccessToken` values redacted (e.g. replaced with empty string or leaving just a few characters).
+- The request body you are sending and the response you are receiving, provided in JSON format, with `ClientToken` and `AccessToken` values redacted (e.g. replaced with empty string or leaving just a few characters).
   Avoid sending screenshots or document files (for example Word or PDF files).
 - Do not send full `ClientToken`, `AccessToken`, or any other sensitive information (e.g. guests' personal data in request payload). Partner success will never ask for this information.
 
