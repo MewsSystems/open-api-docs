@@ -62,6 +62,10 @@ The request cannot be completed because the data has changed.
 #### Common errors
 - Refresh data on the client and resubmit the request.
 
+### 413 Content Too Large
+
+The request payload exceeded the limit. 
+
 ### 429 Too Many Requests
 
 Error caused by too many requests sent in a given amount of time. Response contains `Retry-After` header indicating how long the user agent should wait before making a follow-up request. For more information, see [Request limits](../guidelines/requests.md#request-limits).
