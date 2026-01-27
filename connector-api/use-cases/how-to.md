@@ -2,7 +2,7 @@
 
 This page summarises all of our 'how to' use cases, together with the main use cases in which they are referenced. Search here for the task you want to perform with the API, it will take you to the appropriate API Operation or API Operations, and also link to higher level use cases for context and further information.
 
-> **Can't find what you're looking for?** 'How to' use cases are expressed in common terminology, but often different terms are used to mean the same thing. Try searching using alternative terms. We created the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US) to explain the particular terminology used in Mews. If you still can't find what you're looking for, [let us know](mailto:partnersuccess@mews.com).
+> **Can't find what you're looking for?** 'How to' use cases are expressed in common terminology, but often different terms are used to mean the same thing. Try searching using alternative terms. We created the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US) to explain the particular terminology used in Mews. If you still can't find what you're looking for, [contact support](../contact-support/README.md).
 
 ## Configuration
 

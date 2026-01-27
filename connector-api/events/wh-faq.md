@@ -20,7 +20,7 @@
 
 ## How do I register a Webhook with Mews?
 
-Email [partnersuccess@mews.com] with details of your Webhook endpoint URL.
+[Contact support](../contact-support/README.md) with details of your Webhook endpoint URL.
 
 ## Are there special considerations for setting up a Webhook server?
 
@@ -36,7 +36,7 @@ To confirm that a request to your Webhook endpoint originates from Mews, we can 
 
 ![Webhook authentication](../.gitbook/assets/webhook-auth.png)
 
-To use this authentication, send us the token you wish to use via [partnersuccess@mews.com].
+To use this authentication, send us the token you wish to use via [contact support](../contact-support/README.md).
 The token should be kept secret and not shared with anyone except Mews.
 
 ## How should the server respond to a Webhook request?
@@ -79,7 +79,7 @@ See [When are Webhooks generated?](../events/communicate.md#when-are-webhooks-ge
 
 ## Can I see what Webhooks are configured?
 
-Webhooks are set up in the system administration, please contact [partnersuccess@mews.com] for information about what Webhooks are configured on the system for your application.
+Webhooks are set up in the system administration, please [contact support](../contact-support/README.md) for information about what Webhooks are configured on the system for your application.
 
 ## Can I set up multiple Webhooks?
 
@@ -93,7 +93,7 @@ If pushing the updates to the on-premise solution is difficult then the solution
 
 ## Is it possible to disable sending some messages to Webhooks?
 
-Yes. Event messages are configured for each integration, please contact [partnersuccess@mews.com] with your requirements and they can configure only the messages you want to receive.
+Yes. Event messages are configured for each integration, please [contact support](../contact-support/README.md) with your requirements and they can configure only the messages you want to receive.
 
 ## Can you give me a specific use case for Webhooks?
 
@@ -110,5 +110,3 @@ This number is a system parameter, currently in the order of hundreds, but Mews 
 The list of supported events is always under review and may be extended in future.
 If there is a system event that you are particularly interested in, please submit your request via the Mews [Product Ideas Forum](https://feedback.mews.com/).
 We can't provide any guarantees, but we are very interested to know what kind of features our customers and partners are requesting.
-
-[partnersuccess@mews.com]: mailto:partnersuccess@mews.com
