@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Mews Open API](README.md)
+* [Mews Open API](README.md "Overview")
 
 ## Getting started
 

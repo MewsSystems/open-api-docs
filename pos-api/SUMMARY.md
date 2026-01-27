@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Mews POS API](README.md)
+* [Mews POS API](README.md "Overview")
 * [Getting started](getting-started/README.md)
 * [Usage guidelines](guidelines/README.md)
   * [Authentication](guidelines/authentication.md)
