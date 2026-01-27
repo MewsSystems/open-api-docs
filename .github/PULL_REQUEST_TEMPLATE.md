@@ -1,16 +1,16 @@
-### Summary
+## Summary
 
-* Summarise the changes here in bullet points
+<!-- Summarise the changes. Include Jira reference if relevant. -->
 
-### Checklist
+## Checklist
 
 - [ ] Documentation follows the [Style Guide](https://mews.atlassian.net/wiki/x/KJAoCw)
-- [ ] JSON examples updated
-- [ ] Properties in JSON examples in same order as in property tables
-- [ ] Changelog dated the day when PR merged
 - [ ] Changelog accurately describes all changes
+- [ ] All hyperlinks tested
+- [ ] SUMMARY.md updated if new pages added
+
+### API
+
 - [ ] Changelog highlights the affected endpoints or operations
 - [ ] Changelog highlights any deprecations
-- [ ] All hyperlinks tested
 - [ ] Deprecation Table updated if any deprecations
-- [ ] SUMMARY.md updated if new pages added
