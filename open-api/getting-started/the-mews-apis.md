@@ -19,21 +19,29 @@ And each API is hosted as a public GitHub repository.
 
 This API is a general-purpose API that gives access to data and services in Mews Operations. The API supports many use cases, including Kiosk, Point Of Sale, Reservations Data, Upselling and Events Management, to name just a few. We encourage you to explore the API and innovate new solutions for our customers!
 
-* For the full documentation, see [Mews Connector API](https://mews-systems.gitbook.io/connector-api/)
+{% content-ref url="https://app.gitbook.com/s/8QGgEdFlLPx3GworPLr8/" %}
+[Mews Connector API](https://app.gitbook.com/s/8QGgEdFlLPx3GworPLr8/)
+{% endcontent-ref %}
 
 ## Mews Channel Manager API
 
 This API is for Channel Managers and other distribution channels to fetch availability, rates and inventory data, and make reservations.
 
-* For the full documentation, see [Mews Channel Manager API](https://mews-systems.gitbook.io/channel-manager-api/)
+{% content-ref url="https://app.gitbook.com/s/BRKhVN3KmDvpkFzJQmT5/" %}
+[Mews Channel Manager API](https://app.gitbook.com/s/BRKhVN3KmDvpkFzJQmT5/)
+{% endcontent-ref %}
 
 ## Mews Booking Engine API
 
 This API is for booking engines to enable guests to create reservations directly in Mews. Please note that for custom booking engine solutions, connected properties will need a Mews Enterprise subscription.
 
-* For the full documentation, see [Mews Booking Engine API](https://mews-systems.gitbook.io/booking-engine-guide/)
+{% content-ref url="https://app.gitbook.com/o/-L8h68VsCrKuC0pX9qyf/s/NQLFOBK71zKQNjl5UEnW/" %}
+[Booking Engine Guide](https://app.gitbook.com/o/-L8h68VsCrKuC0pX9qyf/s/NQLFOBK71zKQNjl5UEnW/)
+{% endcontent-ref %}
 
-> **Important:** The Mews Booking Engine API is designed to be consumed directly by front-end clients. It is unsuitable for continuous polling by a single server due to its built-in anti-scraping protection and such requests can fail. For server to server communication, please refer to the [Mews Connector API](https://mews-systems.gitbook.io/connector-api/).
+{% hint style="warning" %}
+**Important:** The Mews Booking Engine API is designed to be consumed directly by front-end clients. It is unsuitable for continuous polling by a single server due to its built-in anti-scraping protection and such requests can fail. For server to server communication, please refer to the [Mews Connector API](https://app.gitbook.com/o/-L8h68VsCrKuC0pX9qyf/s/8QGgEdFlLPx3GworPLr8/).
+{% endhint %}
 
 ## Which API to use?
 

@@ -2,7 +2,7 @@
 
 The **Mews Open API** is a powerful tool that enables you to easily connect your hospitality software into Mews and become part of our ecosystem of integrated solutions. Use the **Mews Open API** to fetch data, make bookings, adjust rates, post charges, upsell products, and do a myriad of other things.
 
-We take the 'open' part very seriously, which is why we make it as easy as possible to connect and why we are always trying to remove barriers to successful adoption. All the documentation is compact and straightforward and publicly hosted on [GitHub](https://github.com/MewsSystems), and we provide a Demo environment for developers so you can start coding and testing straight away.
+We take the 'open' part very seriously, which is why we make it as easy as possible to connect and why we are always trying to remove barriers to successful adoption. All the documentation is publicly hosted on [GitHub](https://github.com/MewsSystems/open-api-docs), and we provide a Demo environment for developers so you can start coding and testing straight away.
 
 ## A family of APIs
 
