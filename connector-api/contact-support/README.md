@@ -1,6 +1,6 @@
 # Contact support
 
-You can reach out for **any reason** — technical issues, questions about behavior, clarification of documentation, or general guidance on integrations.
+Partner Success team is ready to help you with any questions about API behavior, clarification of documentation, technical troubleshooting, and general guidance on integrations.
 
 ## Technical issues
 
