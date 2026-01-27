@@ -67,9 +67,7 @@ The request cannot be completed because the data has changed.
 Error caused by too many requests sent in a given amount of time. Response contains `Retry-After` header indicating how long the user agent should wait before making a follow-up request. For more information, see [Request limits](../guidelines/requests.md#request-limits).
 
 #### Common errors
-- Review our [Best practices](../guidelines/best-practices.md) and don't query for unchanging data often.
-- Use `Retry-After` when to make next API request, avoiding making more requests that would be rate limited.
-- Avoid sudden burst of API requests and distribute API calls more in time when possible.
+- Follow the suggestions in [Request limits](../guidelines/requests.md#request-limits).
 
 ### 500 Internal Server Error and other 5xx response codes
 
