@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Mews Connector API](README.md)
+* [Mews Connector API](README.md "Overview")
 * [Getting started](getting-started/README.md)
 * [Usage guidelines](guidelines/README.md)
   * [Authentication](guidelines/authentication.md)
@@ -20,7 +20,7 @@
   * [Accounting](use-cases/accounting.md)
   * [Customer loyalty](use-cases/loyalty.md)
   * [Customer management](use-cases/customer-management.md)
-  * [Customer messaging](use-cases/messaging.md)  
+  * [Customer messaging](use-cases/messaging.md)
   * [Data export](use-cases/data-export.md)
   * [Device integration](use-cases/device-integration.md)
   * [Events](use-cases/events.md)
@@ -95,7 +95,7 @@
   * [Resource categories](operations/resourcecategories.md)
   * [Resource features](operations/resourcefeatures.md)
   * [Restrictions](operations/restrictions.md)
-  * [~~Routing rules~~](operations/routingrules.md)
+  * [Routing rules](operations/routingrules.md)
   * [Rules](operations/rules.md)
   * [Service order notes](operations/serviceordernotes.md)
   * [Service overbooking limits](operations/serviceoverbookinglimits.md)
