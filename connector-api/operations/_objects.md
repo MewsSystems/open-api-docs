@@ -24,7 +24,7 @@ When a time interval is used for **filtering** (for example in parameters such a
   
   In other words, the start is inclusive and the end is exclusive.
 
-> **Note:** When designing integrations (especially accounting or incremental syncs), make sure your time ranges take this inclusive Start / exclusive End behavior into account so that no records at the boundaries are unintentionally omitted.
+Make sure your integration takes inclusive Start / exclusive End behavior of time intervals into account so that no records at the boundaries are omitted.
 
 ```javascript
 {
