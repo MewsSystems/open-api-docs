@@ -64,7 +64,7 @@ The request cannot be completed because the data has changed.
 
 ### 413 Content Too Large
 
-The request payload exceeded the limit. 
+The request body is too large. Try reducing the amount and size of request parameters (for example, by splitting the payload to multiple requests). In case of binary file upload, consider reducing the resolution of photos and scanned documents.
 
 ### 429 Too Many Requests
 
