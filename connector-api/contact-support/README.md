@@ -19,4 +19,4 @@ If you have any questions or encounter issues, contact partner success at [partn
 
 ## Contact
 
-Contact Partner Success at [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
+Contact the Partner Success team at [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
