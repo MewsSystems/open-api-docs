@@ -15,4 +15,4 @@ If you have any questions or encounter issues, reach out to us at [partnersucces
 > ### Changes to this API
 > * For the history of changes, see the [Changelog](changelog/README.md).
 > * For important information on deprecations, see [Deprecations](deprecations/README.md).
-> * To track changes and updates, follow the [GitHub repository](https://github.com/MewsSystems/gitbook-channel-manager-api/tree/master).
+> * To track changes and updates, follow the [GitHub repository](https://github.com/MewsSystems/open-api-docs).

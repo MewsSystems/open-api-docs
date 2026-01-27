@@ -50,7 +50,7 @@ You can find the Mews City ID in __Mews Operations__:
 
 ## Where can I get Age Category ID?
 
-You can find the AgeCategory ID in **Mews Operations**:
+You can find the Age Category ID in **Mews Operations**:
 
 * Start on the **Dashboard** (the main screen).
 * In the left-hand menu, select **Settings** -> **Services**.
@@ -59,4 +59,4 @@ You can find the AgeCategory ID in **Mews Operations**:
 * Select the age category you want.
 * In the URL there is an ID at the end, right after `/Detail/`. This is the age category ID. It has the format `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`.
 
-![ageCategoryId](https://github.com/MewsSystems/gitbook-booking-engine/assets/22661032/8d69a7ad-d641-4021-b9f1-788c9bb07df0)
+![Age category ID in Mews Operations highlighted as URL path](../.gitbook/assets/commander-age-category-id.png)

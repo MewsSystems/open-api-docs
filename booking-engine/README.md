@@ -18,4 +18,4 @@ If you need further assistance, or have any questions or special requests, pleas
 > ### Changes to this Guide
 > * For the history of changes to the Guide, see the [Changelog](changelog/README.md)
 > * For important information on deprecations in the API, see [Deprecations](booking-engine-api/deprecations/README.md)
-> * To track changes and updates to any part of the Guide, you can follow the [GitHub repository](https://github.com/MewsSystems/gitbook-booking-engine/tree/master)
+> * To track changes and updates to any part of the Guide, you can follow the [GitHub repository](https://github.com/MewsSystems/open-api-docs)
