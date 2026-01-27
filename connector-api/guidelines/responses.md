@@ -2,7 +2,7 @@
 
 ## Content-type
 
-The API responds with `Content-Type` set to `application/json`, and with JSON content in the body. In case of a 204 response (see [Request minimal response](../guidelines/requests.md#request-minimal-response)), the `Content-Type` header is _not_ set and the response body is empty.
+The API responds with `Content-Type` set to `application/json`, and with JSON content in the body. In case of a 204 response (see [Request minimal response](requests.md#request-minimal-response)), the `Content-Type` header is _not_ set and the response body is empty.
 
 ## Response codes
 
