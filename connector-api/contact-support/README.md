@@ -1,8 +1,14 @@
 # Contact support
 
-Before reaching out, make sure you are following all our [Best practices](../guidelines/best-practices.md), and review the [Response troubleshooting](../guidelines/responses.md) section, as many common issues can be resolved there.
+You can reach out for **any reason** — technical issues, questions about behavior, clarification of documentation, or general guidance on integrations.
 
-To help us investigate and respond as quickly as possible, include the following information:
+## Technical issues
+
+If you are experiencing a problem with the API, we recommend first reviewing the following resources, as many common issues can be resolved there:
+- [Best practices](../guidelines/best-practices.md)
+- [Response troubleshooting](../guidelines/responses.md)
+
+To help us investigate and respond as quickly as possible, please include the following details when reporting an issue:
 
 - Full API response body including the `RequestId` property in the [Error response details](../guidelines/responses.md#error-response-details).
 - The request body you are sending or the response you are receiving, provided in JSON format, with `ClientToken` and `AccessToken` values redacted (e.g. replaced with empty string or leaving just a few characters).
@@ -10,3 +16,7 @@ To help us investigate and respond as quickly as possible, include the following
 - Do not send full `ClientToken`, `AccessToken`, or any other sensitive information (e.g. guests' personal data in request payload). Partner success will never ask for this information.
 
 If you have any questions or encounter issues, contact partner success at [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
+
+## Contact
+
+Contact Partner Success at [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
