@@ -19,5 +19,5 @@ Not sure which option is right for you? See [the-mews-apis.md](getting-started/t
 {% hint style="info" %}
 **Changes to the documentation**
 
-To track changes and updates to this documentation, you can follow the [GitHub repository](https://github.com/MewsSystems/gitbook-open-api/tree/master). For the individual APIs, we maintain Changelog and Deprecations pages.
+To track changes and updates to this documentation, you can follow the [GitHub repository](https://github.com/MewsSystems/open-api-docs). For the individual APIs, we maintain Changelog and Deprecations pages.
 {% endhint %}

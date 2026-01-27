@@ -12,7 +12,7 @@ If you have any questions or you encounter issues, please reach out to us at [pa
 > ### Changes to this API
 > * For the history of changes to the API, see the [Changelog](changelog/README.md)
 > * For important information on deprecations, see [Deprecations](deprecations/README.md)
-> * To track changes and updates, you can follow the [GitHub repository](https://github.com/MewsSystems/gitbook-pos-api/tree/main)
+> * To track changes and updates, you can follow the [GitHub repository](https://github.com/MewsSystems/open-api-docs)
 
 > ### OpenAPI definition
 > We maintain an [OpenAPI definition](https://api.mews.com/pos/v1/docs/openapi.yaml) for the __Mews POS API__. You can use this to build out client applications using third party tools.

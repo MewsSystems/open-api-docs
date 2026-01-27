@@ -16,7 +16,7 @@ If you have any questions or you encounter issues, please [contact support](cont
 
 * For the history of changes to the API, see the [Changelog](changelog/).
 * For important information on deprecations, see [Deprecations](deprecations/).
-* To track changes and updates, you can follow the [GitHub repository](https://github.com/MewsSystems/gitbook-connector-api/tree/master).
+* To track changes and updates, you can follow the [GitHub repository](https://github.com/MewsSystems/open-api-docs).
 
 {% hint style="info" %}
 ### OpenAPI definition
