@@ -38,7 +38,7 @@ The request could not be authorized due to invalid or expired credentials, or be
 An error returned by the server that should be surfaced to the end user of the client application. This typically occurs when server-side validation fails or a business-logic rule is violated.
 
 **Troubleshooting:**
-- Report response message to the property for them to cross-check their settings in MeMews with the action they tried to complete for them to make a decision on which should change.
+- Report the response message to the enterprise to cross-check their settings in Mews with the action they tried to complete. They should make a decision on which version should change.
 
 ### 404 Not found
 
