@@ -30,7 +30,7 @@ The request is invalid or cannot be processed due to a client-side error, such a
 The request could not be authorized due to invalid or expired credentials, or because the client does not have sufficient permissions to access the endpoint.
 
 **Troubleshooting:**
-- The provided `ClientToken` or `AccessToken` is invalid or has expired, see [Authentication](../guidelines/authentication.md) for more information. Another explenations might be the enterprise was deleted/disabled from Mews or integration is disabled.
+- The provided `ClientToken` or `AccessToken` is invalid or has expired, see [Authentication](../guidelines/authentication.md) for more information. Another cause might be the enterprise has been disabled in Mews or the integration is disabled either for the enterprise or in Mews.
 - The client does not have permission to perform the requested operation. [Contact support](../contact-support/README.md) to start or update the certification process to request access to the required endpoint.
 
 ### 403 Forbidden
