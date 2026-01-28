@@ -2,7 +2,7 @@
 
 This is some advice on best practices for using the API, regardless of your particular use case. Follow this advice for less errors and better performance.
 
-- **Use RequestId** every failed API request have `RequestId` in the property in the [Error response details](../guidelines/responses.md#error-response-details), we highly recommend include this information in your observability solution. Provide this value when [contacting support](../contact-support/README.md).
+- **Use RequestId**<br>Every failed API request has `RequestId` property in the [Error response details](../guidelines/responses.md#error-response-details). We highly recommend to include this information in your observability solution. Provide this value when [contacting support](../contact-support/README.md).
 
 - **Handling HTTP status codes**<br>Follow our recommendations on handling each [response code](responses.md#response-codes) and how to resolve most common issues.
 
