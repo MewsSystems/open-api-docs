@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Mews Channel Manager API](README.md)
+* [Mews Channel Manager API](README.md "Overview")
 * [Usage guidelines](guidelines/README.md)
   * [Authentication](guidelines/authentication.md)
   * [Requests](guidelines/requests.md)
