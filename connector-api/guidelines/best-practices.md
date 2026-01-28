@@ -2,8 +2,9 @@
 
 This is some advice on best practices for using the API, regardless of your particular use case. Follow this advice for less errors and better performance.
 
-- **4xx HTTP status codes**<br>Follow our recommendations on handling each 4xx [response code](responses.md#response-codes).
-If you receive a 400 response with an 'Invalid {Parameter}' message, one possible explanation is that the resource you are referencing doesn't exist - check with the enterprise for confirmation.
+- **Use RequestId**<br>Every failed API request has `RequestId` property in the [Error response details](../guidelines/responses.md#error-response-details). We highly recommend to include this information in your observability solution. Provide this value when [contacting support](../contact-support/README.md).
+
+- **Handling HTTP status codes**<br>Follow our recommendations on handling each [response code](responses.md#response-codes) and how to resolve most common issues.
 
 - **Webhooks instead of polling**<br>Instead of periodically polling for updates using a 'get' operation, use [Webhooks](../events/README.md) instead and subscribe to updates.
 [Contact support](../contact-support/README.md) if a Webhook for an event is not supported . For more information, see [Ways to communicate](../events/communicate.md).
