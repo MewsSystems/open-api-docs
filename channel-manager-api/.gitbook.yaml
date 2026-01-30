@@ -3,3 +3,7 @@ root: ./
 redirects:
   mews-operations/operations: mews-operations/README.md
   channel-manager-operations/operations: channel-manager-operations/README.md
+  mews-operations/operations/reservations: mews-operations/reservations.md
+  mews-operations/operations/inventory: mews-operations/inventory.md
+  mews-operations/operations/configuration: mews-operations/configuration.md
+  certification: your-journey/certification.md
