@@ -241,6 +241,13 @@
 
 Updates specified accounting items. You can use this operation to assign an accounting item to a different account or bill. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
+**State Restrictions**: Only accounting items in specific states can be moved:
+- **Order items**: Must be in `Open` state
+- **Payment items**: Must be in `Open` or `Pending` state
+
+Attempting to move items in other states (e.g., `Closed`, `Inactive`, `Charged`, `Failed`, `Canceled`) will result in an "Invalid AccountingItemId" error.
+
+
 ### Request
 
 `[PlatformAddress]/api/connector/v1/accountingItems/update`
