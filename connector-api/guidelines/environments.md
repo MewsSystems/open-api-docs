@@ -67,11 +67,10 @@ The credentials below will connect with a demo enterprise configured for Net pri
 ### Mews Operations credentials
 
 Partners can request access to __Mews Operations__ for a dedicated Demo Property by following these steps:
-1. Fill in the [Become a Mews Partner Form](https://www.mews.com/en/partners/new-partnerships).
-2. An automated email will be sent to your email address to reset your password to log in into the Demo Property.
-3. Reset the password.
+1. Fill in the [Become a Mews Partner Form](https://www.mews.com/en/partners/new-partnerships)
+2. An automated email will be sent to your email address to reset your password to log in into the Demo Property
+3. Reset the password
 4. Now, you can successfully log in into the Demo Property through [demo environment of Mews Operations](https://app.mews-demo.com).
-5. You will be automatically opted in to both the [Gross Pricing](../guidelines/environments.md#api-tokens-gross-pricing-environment) and [Net Pricing](../guidelines/environments.md#api-tokens-net-pricing-environment) Demo Environment properties. If needed, you can opt out of either Gross or Net Demo Environment individually and remain integrated with only one Environment.
 
 ### Request limits
 
