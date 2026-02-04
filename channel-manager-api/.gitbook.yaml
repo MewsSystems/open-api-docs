@@ -7,3 +7,6 @@ redirects:
   mews-operations/operations/inventory: mews-operations/inventory.md
   mews-operations/operations/configuration: mews-operations/configuration.md
   certification: your-journey/certification.md
+  channels: use-cases/channels.md
+  channel-manager-operations/operations/inventory: channel-manager-operations/inventory.md
+  channel-manager-api: channel-manager-operations/README.md
