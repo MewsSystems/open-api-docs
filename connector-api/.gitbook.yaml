@@ -10,3 +10,4 @@ redirects:
   webhooks/wh-faq: events/wh-faq.md
   websockets: events/websockets.md
   operations/spaces: operations/resources.md
+  operations/integrations: operations/commands.md
