@@ -315,7 +315,9 @@ This ordering guidance reflects the recommendation that partners should bulk upd
 
 ## Example migration scenarios
 
-### Scenario 1: Simple minimum length-of-stay (MinLOS) restriction
+<details>
+
+<summary>Scenario 1: Simple minimum length-of-stay (MinLOS) restriction</summary>
 
 **Goal:** For rate `{R}` in service `{S}`, set MinLOS = 2 on Fridays to Sundays for March and April.
 
@@ -352,7 +354,11 @@ This ordering guidance reflects the recommendation that partners should bulk upd
 
 This creates the desired MinLOS rule. You do not track any external IDs; the combination of rate, date range, and parameters is the identifier.
 
-### Scenario 2: Change MinLOS while keeping close-to-stay
+</details>
+
+<details>
+
+<summary>Scenario 2: Change MinLOS while keeping close-to-stay</summary>
 
 **Goal:** Remove MinLOS for July while keeping close-to-stay for the same dates.
 
@@ -368,6 +374,8 @@ This creates the desired MinLOS rule. You do not track any external IDs; the com
 3. Send only set, no clear.
 
 The merging algorithm will adjust underlying entities to match your new desired state; you never need to delete a restriction.
+
+</details>
 
 ## Known limitations and considerations
 
