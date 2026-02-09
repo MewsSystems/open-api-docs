@@ -35,12 +35,19 @@ Important differences:
 
 ## Migration steps
 
-1. **Check your usage of [Add restrictions] and [Delete restrictions].**
-   - Identify all call sites, batch jobs, and workflows that:
-     - Create restrictions (especially day-by-day updates or separate minimum length-of-stay and open/close rules).
-     - Delete restrictions using `RestrictionIds` or `ExternalIdentifier`.
+{% stepper %}
+{% step %}
 
-2. **Design your data model around a desired restriction state.**
+### Check your usage of [Add restrictions] and [Delete restrictions]
+
+- Identify all call sites, batch jobs, and workflows that:
+  - Create restrictions (especially day-by-day updates or separate minimum length-of-stay and open/close rules).
+  - Delete restrictions using `RestrictionIds` or `ExternalIdentifier`.
+
+{% endstep %}
+{% step %}
+
+### Design your data model around a desired restriction state
 
 - Model restrictions as rules over:
   - Service (`ServiceId`)
@@ -50,25 +57,42 @@ Important differences:
   - Days of week (`Days` flags)
   - Exceptions (`MinAdvance`, `MaxAdvance`, `MinLength`, `MaxLength`, `MinPrice`, `MaxPrice`)
 
-3. **Replace [Add restrictions] calls with [Set restrictions] calls.**
+{% endstep %}
+{% step %}
+
+### Replace [Add restrictions] calls with [Set restrictions] calls
 
 - Convert the legacy Restrictions/Conditions/Exceptions payload into `Data[]` entries:
   - Map type, rate, category, dates, length, and price into [Restriction set data] fields.
   - Update days of week from an array of strings to a structured [Days parameters] object with boolean flags.
 - Use broader ranges and merged rules where possible instead of day-by-day updates.
 
-4. **Replace [Delete restrictions] plus ID or ExternalIdentifier logic with [Clear restrictions] and [Set restrictions].**
-   - For intervals that should have **no restrictions at all**, call [Clear restrictions] with the appropriate conditions and date range.
-   - For cases where you previously removed one type of restriction (for example minimum length-of-stay) while keeping others (for example close-to-stay), do not clear by ID. Instead, compute the new desired set of restrictions and call [Set restrictions].
+{% endstep %}
+{% step %}
 
-5. **Implement batching and ordering best practices.**
-   - Group updates by **Service + Rate (+ ResourceCategory)** and use date ranges.
-   - Respect the maximum `Data` batch size of 1000 items in a single request.
+### Replace [Delete restrictions] plus ID or ExternalIdentifier logic with [Clear restrictions] and [Set restrictions]
 
-6. **Adjust validation, error handling, and monitoring.**
+- For intervals that should have **no restrictions at all**, call [Clear restrictions] with the appropriate conditions and date range.
+- For cases where you previously removed one type of restriction (for example minimum length-of-stay) while keeping others (for example close-to-stay), do not clear by ID. Instead, compute the new desired set of restrictions and call [Set restrictions].
+
+{% endstep %}
+{% step %}
+
+### Implement batching and ordering best practices
+
+- Group updates by **Service + Rate (+ ResourceCategory)** and use date ranges.
+- Respect the maximum `Data` batch size of 1000 items in a single request.
+
+{% endstep %}
+{% step %}
+
+### Adjust validation, error handling, and monitoring
 
 - Expect stricter validation of `StartUtc` and `EndUtc` than in [Add restrictions]. See [Datetimes].
 - Update logs and dashboards to track usage of [Set restrictions] and [Clear restrictions] instead of the deprecated operations.
+
+{% endstep %}
+{% endstepper %}
 
 ## Operations mapping and payload differences
 
