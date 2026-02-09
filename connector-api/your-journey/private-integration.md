@@ -27,7 +27,7 @@ Please make the necessary tests in demo and then [contact support][Contact suppo
 
 ### Our integration is currently private but we would now like to be listed in the Mews Marketplace. Can we modify this and if so how?
 
-[Contact support] letting us know you would like to go public and let us know of any changes to your integration profile (description, images…)
+[Contact support] letting us know you would like to go public and let us know of any changes to your integration profile (description, images…).
 
 ### I am confused by the wording in Mews, is there a cheat sheet for what certain words mean in the system?
 
