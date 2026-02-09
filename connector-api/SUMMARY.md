@@ -116,6 +116,7 @@
 * [Your integration journey](your-journey/README.md)
   * [Certification](your-journey/certification.md)
 * [Deprecations](deprecations/README.md)
+  * [Migration guide: Restrictions (add/delete to set/clear)](deprecations/migration-guide-restrictions-set-clear.md)
   * [Migration guide: Get all reservations](deprecations/migration-guide-get-reservations.md)
 * [Changelog](changelog/README.md)
   * [Changelog 2024](changelog/changelog2024.md)
