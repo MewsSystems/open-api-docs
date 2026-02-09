@@ -41,7 +41,7 @@ In the context of General Webhooks, the terms Added and Updated describe differe
 * **Updated** – This indicates any change to an entity, including modifications to its fields or properties; it also encompasses the creation of a new entity, as creating an entity is considered a change to its lifecycle state.
 * **Added** – This specifically refers to the initial creation of an entity at the start of its lifecycle; it represents a subset of Updated events, as every Added event is inherently also an Updated event.
 
-### Important considerations
+## Important considerations
 
 ### Asynchronous processing
 

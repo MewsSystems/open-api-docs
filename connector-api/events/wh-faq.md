@@ -14,8 +14,6 @@ The server must respond in a timely manner (within 5 seconds).
 
 To confirm that a request to your Webhook endpoint originates from Mews, we can add a shared secret token to the URL, as follows:
 
-### Figure 1: Webhook Authentication
-
 ![Webhook authentication](../.gitbook/assets/webhook-auth.png)
 
 To use this authentication, send us the token you wish to use via [contact support](../contact-support/). The token should be kept secret and not shared with anyone except Mews.

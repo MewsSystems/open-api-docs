@@ -14,9 +14,11 @@ This is an older form of Webhook, which only supports events related to changes 
 | Integration | `IntegrationDeleted`       | Event triggered when a integration is deleted                              |
 | Integration | `IntegrationApiKeyCreated` | Event triggered when an integration API key (`AccessToken`) is regenerated |
 
-> #### Terminology
->
-> An _Integration_ refers to the unique connection between an _Enterprise_ or _Property_ (i.e. Mews customer) and an API client (i.e. Mews partner), corresponding to a unique _Access Token_. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+{% hint style="info" %}
+#### Terminology
+
+An _Integration_ refers to the unique connection between an _Enterprise_ or _Property_ (i.e. Mews customer) and an API client (i.e. Mews partner), corresponding to a unique _Access Token_. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+{% endhint %}
 
 ## Request body
 
