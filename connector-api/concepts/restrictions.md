@@ -60,13 +60,13 @@ When using [Set restrictions], if a specified restriction already exists with th
 
 The conditions specified in [Set restrictions] and [Clear restrictions] must be met exactly. For example:
 
-- A bookable service has two restrictions A and B. Restriction A applies to resource category C1 and rate R1. Restriction B applies to resource category C1 and to all rates. If [Clear restrictions] is called, specifying a restriction condition of resource category C1 but with no rate specified (this defaults to _all_ rates), then only Restriction B is cleared, not Restriction A.
+> A bookable service has two restrictions A and B. Restriction A applies to resource category C1 and rate R1. Restriction B applies to resource category C1 and to all rates. If [Clear restrictions] is called, specifying a restriction condition of resource category C1 but with no rate specified (this defaults to _all_ rates), then only Restriction B is cleared, not Restriction A.
 
 ## Time interval splicing
 
 The time interval for a specified restriction does not need to correspond to an existing restriction in the system, instead the API uses a splicing algorithm to work out how to divide up any existing restrictions to meet the specified time interval. For example:
 
-- An existing restriction in the system A applies from 5th January to 25th January. As usual, time intervals are inclusive, meaning that the time interval includes both the 5th January and the 25th January. If the [Clear restrictions] operation is called, specifying a restriction time interval of 10th January to 20th January, i.e. within the original restriction A, then the time interval of restriction A is split into three separate intervals. The original restriction A is deleted, and in its place new restriction B is created for the period of time from 5th January to 9th January inclusive, and new restriction C is created for the period of time from 21st January to 25th January. Thus the period 10th January to 20th January has been cleared, but without affecting other time periods.
+> An existing restriction in the system A applies from 5th January to 25th January. As usual, time intervals are inclusive, meaning that the time interval includes both the 5th January and the 25th January. If the [Clear restrictions] operation is called, specifying a restriction time interval of 10th January to 20th January, i.e. within the original restriction A, then the time interval of restriction A is split into three separate intervals. The original restriction A is deleted, and in its place new restriction B is created for the period of time from 5th January to 9th January inclusive, and new restriction C is created for the period of time from 21st January to 25th January. Thus the period 10th January to 20th January has been cleared, but without affecting other time periods.
 
 ## Scope of restrictions
 
