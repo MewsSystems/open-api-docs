@@ -1,5 +1,9 @@
 # Glossary
 
+This file mirrors the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+
+---
+
 This glossary lists the terms used within the **Mews Open API** and explains their meaning. The terms are presented in alphabetical order.
 
 # A <a href="#A_section" id="A_section"></a>
