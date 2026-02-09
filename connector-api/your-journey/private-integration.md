@@ -21,28 +21,46 @@ Once the integration profile is created in the production environment, you will 
 
 ## FAQs
 
-### We need access to more endpoints than we originally thought, how do we go about getting access to additional permissions post certification?
+<details>
+<summary>We need access to more endpoints than we originally thought, how do we go about getting access to additional permissions post certification?</summary>
 
 Please make the necessary tests in demo and then [contact support][Contact support] letting us know which you need enabled.
 
-### Our integration is currently private but we would now like to be listed in the Mews Marketplace. Can we modify this and if so how?
+</details>
+
+<details>
+<summary>Our integration is currently private but we would now like to be listed in the Mews Marketplace. Can we modify this and if so how?</summary>
 
 [Contact support] letting us know you would like to go public and let us know of any changes to your integration profile (description, images…).
 
-### I am confused by the wording in Mews, is there a cheat sheet for what certain words mean in the system?
+</details>
+
+<details>
+<summary>I am confused by the wording in Mews, is there a cheat sheet for what certain words mean in the system?</summary>
 
 Yes, please see [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
 
-### What is required by a property to have a private integration?
+</details>
+
+<details>
+<summary>What is required by a property to have a private integration?</summary>
 
 A property must have the Connectivty Add-on as part of their subscription or be on the Enterprise package. They can verify their current subscription by contacting their Client Success Manager.
 
-### Can a partner configure multiple webhook endpoints per integration?
+</details>
+
+<details>
+<summary>Can a partner configure multiple webhook endpoints per integration?</summary>
 
 No — there can only be one Webhook URL per integration client; partners should route by Enterprise ID inside their handler.
 
-### How long do integrations take to go live?
+</details>
+
+<details>
+<summary>How long do integrations take to go live?</summary>
 
 This is entirely up to you! Once all endpoints are tested and a certification time is booked, the team can have you live within 24 hours of that certification if there are no issues.
+
+</details>
 
 [Contact support]: ../contact-support/README.md
