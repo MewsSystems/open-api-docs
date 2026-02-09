@@ -1,6 +1,6 @@
 # Restrictions
 
-An explanation of the algorithms used to support [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions).
+An explanation of the algorithms used to support [Set restrictions] and [Clear restrictions].
 
 ## What are restrictions?
 
@@ -21,19 +21,19 @@ Restrictions give **Mews** customers more control over their reservations, by pr
 
 ## Restrictions in the API
 
-To retrieve information about restrictions, use [Get all restrictions](../operations/restrictions.md#get-all-restrictions). To add and remove restrictions, use [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions) respectively.
+To retrieve information about restrictions, use [Get all restrictions]. To add and remove restrictions, use [Set restrictions] and [Clear restrictions] respectively.
 
 | <div style="width:350px">'How to' use case</div> | API Operations                                                             |
 | :----------------------------------------------- | :------------------------------------------------------------------------- |
-| How to get service restrictions                  | [Get all restrictions](../operations/restrictions.md#get-all-restrictions) |
-| How to add service restrictions                  | [Set restrictions](../operations/restrictions.md#set-restrictions)         |
-| How to remove service restrictions               | [Clear restrictions](../operations/restrictions.md#clear-restrictions)     |
+| How to get service restrictions                  | [Get all restrictions] |
+| How to add service restrictions                  | [Set restrictions]         |
+| How to remove service restrictions               | [Clear restrictions]     |
 
 {% hint style="warning" %}
 
 ### Restrictions operations
 
-Older operations [Add restrictions](../operations/restrictions.md#add-restrictions) and [Delete restrictions](../operations/restrictions.md#delete-restrictions) are deprecated. They are replaced by the more efficient [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions).
+Older operations [Add restrictions] and [Delete restrictions] are deprecated. They are replaced by the more efficient [Set restrictions] and [Clear restrictions].
 
 Refer to the documentation for the individual operations for an explanation of the workings of these operations. Do not mix them, use _Add restrictions_ with _Delete restrictions_, or _Set restrictions_ with _Clear restrictions_. Note that as an API user you can only set and clear your own restrictions, independently of restrictions set within the user interface of **Mews Operations**, or indeed by other API users.
 
@@ -41,13 +41,13 @@ Refer to the documentation for the individual operations for an explanation of t
 
 ## Set restrictions and Clear restrictions
 
-When using old API operation [Add restrictions](../operations/restrictions.md#add-restrictions), if consecutive restrictions are sent with the same conditions and exceptions, no attempt is made by the system to merge the duplicate or overlapping restrictions. This means that there can be a large number of restrictions created per service, leading to sub-optimal performance. A quota limit of 150,000 was introduced. However, to mitigate the issue, API users are encouraged to migrate to new operation [Set restrictions](../operations/restrictions.md#set-restrictions) instead. For improved efficiency, [Set restrictions](../operations/restrictions.md#set-restrictions) merges multiple similar restrictions into a single restriction. Its sibling operation [Clear restrictions](../operations/restrictions.md#clear-restrictions) uses a splicing algorithm to work out how to divide up any existing restrictions to meet the specified time interval.
+When using old API operation [Add restrictions], if consecutive restrictions are sent with the same conditions and exceptions, no attempt is made by the system to merge the duplicate or overlapping restrictions. This means that there can be a large number of restrictions created per service, leading to sub-optimal performance. A quota limit of 150,000 was introduced. However, to mitigate the issue, API users are encouraged to migrate to new operation [Set restrictions] instead. For improved efficiency, [Set restrictions] merges multiple similar restrictions into a single restriction. Its sibling operation [Clear restrictions] uses a splicing algorithm to work out how to divide up any existing restrictions to meet the specified time interval.
 
-The following sections explain the algorithms used by these operations in more detail. These algorithms only apply to [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions).
+The following sections explain the algorithms used by these operations in more detail. These algorithms only apply to [Set restrictions] and [Clear restrictions].
 
 ## Merging algorithm
 
-When using [Set restrictions](../operations/restrictions.md#set-restrictions), if a specified restriction already exists with the same conditions, or if multiple specified restrictions match in all properties but differ in time interval and follow each other chronologically, a merging algorithm is applied to combine them. This reduces the overall number of restrictions and improves system performance. The merging algorithm is as follows:
+When using [Set restrictions], if a specified restriction already exists with the same conditions, or if multiple specified restrictions match in all properties but differ in time interval and follow each other chronologically, a merging algorithm is applied to combine them. This reduces the overall number of restrictions and improves system performance. The merging algorithm is as follows:
 
 - If the exceptions of the new restriction match the old restriction:
   - If the new interval is longer than the old one, a new restriction is created joining the two intervals.
@@ -58,15 +58,15 @@ When using [Set restrictions](../operations/restrictions.md#set-restrictions), i
 
 ## Matching conditions
 
-The conditions specified in [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions) must be met exactly. For example:
+The conditions specified in [Set restrictions] and [Clear restrictions] must be met exactly. For example:
 
-- A bookable service has two restrictions A and B. Restriction A applies to resource category C1 and rate R1. Restriction B applies to resource category C1 and to all rates. If [Clear restrictions](../operations/restrictions.md#clear-restrictions) is called, specifying a restriction condition of resource category C1 but with no rate specified (this defaults to _all_ rates), then only Restriction B is cleared, not Restriction A.
+- A bookable service has two restrictions A and B. Restriction A applies to resource category C1 and rate R1. Restriction B applies to resource category C1 and to all rates. If [Clear restrictions] is called, specifying a restriction condition of resource category C1 but with no rate specified (this defaults to _all_ rates), then only Restriction B is cleared, not Restriction A.
 
 ## Time interval splicing
 
 The time interval for a specified restriction does not need to correspond to an existing restriction in the system, instead the API uses a splicing algorithm to work out how to divide up any existing restrictions to meet the specified time interval. For example:
 
-- An existing restriction in the system A applies from 5th January to 25th January. As usual, time intervals are inclusive, meaning that the time interval includes both the 5th January and the 25th January. If the [Clear restrictions](../operations/restrictions.md#clear-restrictions) operation is called, specifying a restriction time interval of 10th January to 20th January, i.e. within the original restriction A, then the time interval of restriction A is split into three separate intervals. The original restriction A is deleted, and in its place new restriction B is created for the period of time from 5th January to 9th January inclusive, and new restriction C is created for the period of time from 21st January to 25th January. Thus the period 10th January to 20th January has been cleared, but without affecting other time periods.
+- An existing restriction in the system A applies from 5th January to 25th January. As usual, time intervals are inclusive, meaning that the time interval includes both the 5th January and the 25th January. If the [Clear restrictions] operation is called, specifying a restriction time interval of 10th January to 20th January, i.e. within the original restriction A, then the time interval of restriction A is split into three separate intervals. The original restriction A is deleted, and in its place new restriction B is created for the period of time from 5th January to 9th January inclusive, and new restriction C is created for the period of time from 21st January to 25th January. Thus the period 10th January to 20th January has been cleared, but without affecting other time periods.
 
 ## Scope of restrictions
 
@@ -76,5 +76,11 @@ Only restrictions created through the API are affected by these operations, _not
 
 ### Single third-party integration per enterprise
 
-We assume that only one third-party integration manages restrictions for a given enterprise or property. All restrictions set up in an enterprise are created either by the enterprise itself through the **Mews Operation** user interface, or uniquely by a single integration through the API. These two sources can be identified using the `Origin` field in requests and responses to [Get all restrictions](../operations/restrictions.md#get-all-restrictions).
+We assume that only one third-party integration manages restrictions for a given enterprise or property. All restrictions set up in an enterprise are created either by the enterprise itself through the **Mews Operation** user interface, or uniquely by a single integration through the API. These two sources can be identified using the `Origin` field in requests and responses to [Get all restrictions].
 {% endhint %}
+
+[Get all restrictions]: ../operations/restrictions.md#get-all-restrictions
+[Set restrictions]: ../operations/restrictions.md#set-restrictions
+[Clear restrictions]: ../operations/restrictions.md#clear-restrictions
+[Add restrictions]: ../operations/restrictions.md#add-restrictions
+[Delete restrictions]: ../operations/restrictions.md#delete-restrictions
