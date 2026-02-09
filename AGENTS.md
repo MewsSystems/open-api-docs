@@ -2,7 +2,7 @@
 
 ## Purpose of the repository
 
-This repository contains the source documentation for **Mews Open APIs**. The public documentation is hosted at <https://docs.mews.com/> and is published using [GitBook](https://www.gitbook.com/). The GitBook site consists of multiple spaces published from a single monorepo:
+This repository contains the source documentation for **Mews Open API**. The public documentation is hosted at <https://docs.mews.com/> and is published using [GitBook](https://www.gitbook.com/). The GitBook site consists of multiple spaces published from a single monorepo:
 
 - **Open API** ([open-api/](open-api/)) – Landing site
 - **Booking Engine** ([booking-engine/](booking-engine/))
