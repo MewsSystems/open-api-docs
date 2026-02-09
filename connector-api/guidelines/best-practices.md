@@ -24,3 +24,11 @@ If there is no support for a filter you'd benefit from, [contact support](../con
   - business segments
   - configuration
   - taxes
+
+- **Graceful degradation and resiliency**<br>Assume that API calls can be slow, fail, or be throttled (e.g. timeouts, [5xx](responses.md#response-codes), [429](responses.md#429-too-many-requests)). Degrade only the affected feature (e.g. availability refresh), not the whole product. Prefer idempotent, retryable operations; fail fast in interactive flows and retry in the background with exponential backoff. See [Request limits](requests.md#request-limits).
+
+- **High-traffic endpoints (availability, restrictions, pricing)**<br>Do not call get-all style endpoints on every page view, refresh, or keystroke. Cache responses (e.g. 30–60 seconds for search-like data), filter to the minimal scope, use [pagination](pagination.md), and apply client-side rate limiting and exponential backoff when you see increased latency or errors.
+
+- **Respect shared capacity**<br>The API is multi-tenant: your traffic shares capacity with other properties and partners. Implement rate limiting and backoff, monitor your call volume, and stay within documented limits. If your usage will change significantly, coordinate with Mews in advance.
+
+- **Planned campaigns and traffic spikes**<br>Before activities that will generate substantially higher traffic (e.g. marketing campaigns, bulk operations), inform Mews via your partner contact or [contact support](../contact-support/README.md) with the planned time window, expected traffic multiplier, and affected endpoints. Ensure your integration uses caching and has backoff, rate limiting, and circuit breakers in place.
