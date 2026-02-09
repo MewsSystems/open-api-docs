@@ -74,7 +74,7 @@ Example property description:
 ### 5. Terminology and naming
 
 - Use **Mews product names** correctly and consistently (e.g. **Mews Open API**, **Mews Connector API**). See [CONTRIBUTING.md](CONTRIBUTING.md).
-- Align with the **Open API glossary** and existing docs:
+- Align with the [Open API glossary](glossary.md) and existing docs:
   - Use the same term for the same concept across the documentation.
   - Do not introduce synonyms (e.g. don't mix "enterprise", "property", and "hotel" for the same entity).
 - Use **"API operation"** (or just "operation") in documentation for public consumers. Reserve "endpoint" or "URL" for technical details where needed.

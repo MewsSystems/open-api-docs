@@ -17,13 +17,13 @@ Key entities are referenced with inline code (single backticks), for example `re
 
 - **API Operations, not Endpoints** – Individual API operations are called API Operations or just Operations, as opposed to Functions or Endpoints.
 - **API Operation names** – Normally, API Operations are referred to using a common language name, e.g. "Add reservation", rather than using the URL name, e.g. `reservation/add`. Whichever convention is used, it must be used consistently across the individual API.
-- **Terminology** – The master source for product terminology is the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US). Use the same term for the same concept; do not introduce synonyms (e.g. don't mix "enterprise", "property", and "hotel" for the same entity). Reserve "endpoint" or "URL" for technical details where needed.
+- **Terminology** – The master source for product terminology is the [Mews Glossary for Open API users](glossary.md). Use the same term for the same concept; do not introduce synonyms (e.g. don't mix "enterprise", "property", and "hotel" for the same entity). Reserve "endpoint" or "URL" for technical details where needed.
 
 ### Tone of voice
 
 - When writing or editing API documentation, use **clear, neutral, factual** language; prioritize **clarity, correctness, and consistency**.
 - Assume the reader is a **developer integrating with Mews** who is busy and often skimming.
-- Follow **existing Mews Open API patterns**; and align with the **glossary** and terminology above.
+- Follow **existing Mews Open API patterns**; and align with the glossary and terminology above.
 - Be **concise**:
   - Remove filler words ("basically", "actually", "really", "in order to" → "to").
   - Avoid words that downplay difficulty or assume something is obvious, such as "just", "simply", "obviously", "of course", "clearly", "easy", "everyone knows", and similar.
