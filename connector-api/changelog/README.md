@@ -1,8 +1,8 @@
 # Changelog
 
-## 9th Feburary 2026
+## 9th February 2026
 
-* Added [Migration guide: Restrictions (add/delete to set/clear)](migration-guide-restrictions-set-clear.md). Documentation-only. No change to API.
+* Added [Migration guide: Restrictions (add/delete to set/clear)](../deprecations/migration-guide-restrictions-set-clear.md). Documentation-only. No change to API.
 
 ## 20th January 2026
 * [Add payment requests](../operations/paymentrequests.md#add-payment-requests):

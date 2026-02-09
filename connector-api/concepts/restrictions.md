@@ -76,7 +76,7 @@ Only restrictions created through the API are affected by these operations, _not
 
 ### Single third-party integration per enterprise
 
-We assume that only one third-party integration manages restrictions for a given enterprise or property. All restrictions set up in an enterprise are created either by the enterprise itself through the **Mews Operation** user interface, or uniquely by a single integration through the API. These two sources can be identified using the `Origin` field in requests and responses to [Get all restrictions].
+We assume that only one third-party integration manages restrictions for a given enterprise or property. All restrictions set up in an enterprise are created either by the enterprise itself through the **Mews Operations** user interface, or uniquely by a single integration through the API. These two sources can be identified using the `Origin` field in requests and responses to [Get all restrictions].
 {% endhint %}
 
 [Get all restrictions]: ../operations/restrictions.md#get-all-restrictions
