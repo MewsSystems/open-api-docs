@@ -82,7 +82,8 @@ function absoluteMdLinksToRelative(markdown, fileName) {
 
   return markdown.replace(regexMdLinks, (fullMatch, linkText, linkHref) => {
     if (
-      !linkHref.startsWith('https://mews-systems.gitbook.io/connector-api/')
+      !linkHref.startsWith('https://mews-systems.gitbook.io/connector-api/') &&
+      !linkHref.startsWith('https://docs.mews.com/connector-api/')
     ) {
       return fullMatch;
     }
