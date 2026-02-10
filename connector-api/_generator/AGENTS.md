@@ -5,7 +5,6 @@
 This is an OpenAPI Spec to Markdown documentation generator for the Mews Connector API. It reads an OpenAPI/Swagger specification and generates structured Markdown files for API operations, organized by tags.
 
 ## Common Commands
-/e
 ```bash
 # Install dependencies
 npm install
