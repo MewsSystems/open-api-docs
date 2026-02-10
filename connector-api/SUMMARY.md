@@ -107,6 +107,7 @@
   * [Taxations](operations/taxations.md)
   * [Vouchers](operations/vouchers.md)
   * [Voucher codes](operations/vouchercodes.md)
+  * [Discontinued operations](operations/discontinued.md)
 * [API Events](events/README.md)
   * [Ways to communicate](events/communicate.md)
   * [General Webhooks](events/wh-general.md)
