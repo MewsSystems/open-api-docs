@@ -51,8 +51,8 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `Client` | string | required | Name and version of the client application. |
 | `ChainIds` | array of string | optional, max 1000 items | Unique identifiers of `Chain`. If not specified, the operation returns data for all chains within scope of the Access Token. |
 | `MotherCompanyIds` | array of string | optional, max 1000 items | Unique identifiers of mother `Company`. |
-| `CreatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months |  |
-| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months |  |
+| `CreatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the companies were created. |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the companies were updated. |
 | `Ids` | array of string | optional, max 1000 items | Unique identifiers of [Companies](companies.md#company). |
 | `ExternalIdentifiers` | array of string | optional, max 1000 items | Identifiers of [Company](companies.md#company) from external system. |
 | `Names` | array of string | optional, max 1000 items | Names of [Companies](companies.md#company). |

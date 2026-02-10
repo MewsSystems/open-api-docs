@@ -64,7 +64,7 @@ Returns all rate vouchers filtered by [Service](services.md#service), voucher co
 | `CompanyIds` | array of string | optional, max 1000 items | Unique identifiers of the companies. |
 | `VoucherCodeValues` | array of string | optional, max 1000 items | Value of voucher codes used by customers. |
 | `ActivityStates` | array of [Activity state](_objects.md#activity-state) | optional | Whether to return only active, only deleted, or both types of record. If not specified, both active and deleted records will be returned. |
-| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months |  |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the vouchers were updated. |
 | `ExternalIdentifiers` | array of string | optional, max 1000 items | Identifiers of [Voucher](vouchers.md#voucher) from external systems. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
