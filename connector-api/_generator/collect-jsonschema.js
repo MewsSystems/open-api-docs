@@ -1,5 +1,3 @@
-import { getSchemaId, hasProperties, log } from './utils.js';
-import { pickComposedSchema } from './jsonschema.js';
 import { collectSchemas } from './collect-schemas.js';
 
 /**
