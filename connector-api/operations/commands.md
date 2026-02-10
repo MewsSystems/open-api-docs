@@ -51,7 +51,7 @@ Filter commands by their unique identifiers.
 | `Client` | string | required | Name and version of the client application. |
 | `CommandIds` | array of string | required, max 1000 items | Unique identifiers of the commands to filter by. |
 | `EnterpriseIds` | array,null | required, max 1000 items | Unique identifiers of the Enterprises. If not specified, the operation returns data for all enterprises within scope of the Access Token. |
-| `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned. |
+| `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
 #### Get all commands by device identifiers and states
 Filter commands by the unique identifiers of `Device` and states, with optional filtering by update interval.
@@ -65,7 +65,7 @@ Filter commands by the unique identifiers of `Device` and states, with optional 
 | `States` | array of [Command state](commands.md#command-state) | required | States of the commands to filter by. |
 | `UpdatedUtc` | [Time interval](_objects.md#time-interval) | required, max length 3 months | Interval in which the commands were updated. |
 | `EnterpriseIds` | array,null | required, max 1000 items | Unique identifiers of the Enterprises. If not specified, the operation returns data for all enterprises within scope of the Access Token. |
-| `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned. |
+| `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
 ### Response
 
