@@ -4,10 +4,10 @@
 
 ## Checklist
 
-- [ ] Documentation follows the [Style Guide](https://mews.atlassian.net/wiki/x/KJAoCw)
+- [ ] Documentation follows the [contribution guidelines](https://github.com/MewsSystems/open-api-docs/blob/main/CONTRIBUTING.md)
 - [ ] Changelog accurately describes all changes
 - [ ] All hyperlinks tested
-- [ ] SUMMARY.md updated if new pages added
+- [ ] `SUMMARY.md` updated if new pages added
 
 ### API
 
