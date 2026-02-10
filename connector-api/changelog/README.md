@@ -1,6 +1,6 @@
 # Changelog
 
-## 9th February 2026
+## 10th February 2026
 
 * Added [Migration guide: Restrictions (add/delete to set/clear)](../deprecations/migration-guide-restrictions-set-clear.md). Documentation-only. No change to API.
 
