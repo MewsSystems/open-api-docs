@@ -1,5 +1,9 @@
 # Changelog
 
+## 10th February 2026
+
+* Added [Migration guide: Restrictions (add/delete to set/clear)](../deprecations/migration-guide-restrictions-set-clear.md). Documentation-only. No change to API.
+
 ## 20th January 2026
 * [Add payment requests](../operations/paymentrequests.md#add-payment-requests):
   * Extended request object with `SendPaymentRequestEmails` parameter.
@@ -212,19 +216,19 @@
   * Export file URLs now expire after 10 minutes and are regenerated with each request.
 * [Get all loyalty memberships](../operations/loyaltymemberships.md#get-all-loyalty-memberships):
   * **Deprecated:** `Codes` in request object.
-  * Extended request object with `MembershipNumbers` that is replacing the `Codes` property. 
+  * Extended request object with `MembershipNumbers` that is replacing the `Codes` property.
   * **Deprecated:** `Code` in response object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership).
-  * Extended repsponse object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership) with `MembershipNumber` property that is replacing the `Codes` property. 
+  * Extended repsponse object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership) with `MembershipNumber` property that is replacing the `Codes` property.
 * [Add loyalty memberships](../operations/loyaltymemberships.md#add-loyalty-memberships)
   * **Deprecated:** `Code` in [Loyalty membership parameters](../operations/loyaltymemberships.md#loyalty-membership-parameters) request object.
-  * Extended [Loyalty membership parameters](../operations/loyaltymemberships.md#loyalty-membership-parameters) request object with `MembershipNumber` that is replacing the `Codes` property. 
+  * Extended [Loyalty membership parameters](../operations/loyaltymemberships.md#loyalty-membership-parameters) request object with `MembershipNumber` that is replacing the `Codes` property.
   * **Deprecated:** `Code` in response object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership).
-  * Extended repsponse object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership) with `MembershipNumber` property that is replacing the `Codes` property. 
+  * Extended repsponse object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership) with `MembershipNumber` property that is replacing the `Codes` property.
 * [Update loyalty memberships](../operations/loyaltymemberships.md#update-loyalty-memberships)
   * **Deprecated:** `Code` in [Loyalty membership update parameters](../operations/loyaltymemberships.md#loyalty-membership-update-parameters) request object.
-  * Extended [Loyalty membership update parameters](../operations/loyaltymemberships.md#loyalty-membership-update-parameters) request object with `MembershipNumber` that is replacing the `Codes` property. 
+  * Extended [Loyalty membership update parameters](../operations/loyaltymemberships.md#loyalty-membership-update-parameters) request object with `MembershipNumber` that is replacing the `Codes` property.
   * **Deprecated:** `Code` in response object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership).
-  * Extended repsponse object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership) with `MembershipNumber` property that is replacing the `Codes` property. 
+  * Extended repsponse object [Loyalty Membership](../operations/loyaltymemberships.md#loyalty-membership) with `MembershipNumber` property that is replacing the `Codes` property.
 
 ## 4th August 2025
 * [Get all preauthorizations by customers](../operations/preauthorizations.md#get-all-preauthorizations-by-customers):
@@ -316,7 +320,7 @@
   * Extended response object [Enterprise](configuration.md#enterprise) with `HoldingKey`and `ChainName`properties.
 * [Get all enterprises](../operations/enterprises.md#get-all-enterprises):
   * Extended response object [Enterprise](enterprises.md#enterprise) with `HoldingKey`and `ChainName`properties.
-  
+
 ## 5th June 2025
 * [Get all products](../operations/products.md#get-all-products):
   * Extended [product classifications](../operations/products.md#product-classifications) with `Fee`.
@@ -344,7 +348,7 @@
   * Extended response object with `PurchaseOrderNumber` property.
 
 ## 22nd May 2025
-* [Get all customers](../operations/customers.md#get-all-customers):  
+* [Get all customers](../operations/customers.md#get-all-customers):
 * [Search customers](../operations/customers.md#search-customers):
 * [Add customer](../operations/customers.md#add-customer):
 * [Update customer](../operations/customers.md#update-customer):
@@ -363,11 +367,11 @@
   * Extended [Rate](../operations/rates.md#rate) response object with `IsDefault` property.
 
 ## 12th May 2025
-* Re-formatted 2025 and 2024 changelog entries to follow current format, for easier search. Documentation-only, no change to API. 
-* Clarified [Scope of restrictions](../concepts/restrictions.md#scope-of-restrictions). Documentation-only, no change to API.  
+* Re-formatted 2025 and 2024 changelog entries to follow current format, for easier search. Documentation-only, no change to API.
+* Clarified [Scope of restrictions](../concepts/restrictions.md#scope-of-restrictions). Documentation-only, no change to API.
 
 ## 24th April 2025
-* Refreshed the [Getting started](../getting-started/README.md) page. Documentation-only, no change to API.  
+* Refreshed the [Getting started](../getting-started/README.md) page. Documentation-only, no change to API.
 
 ## 8th April 2025
 * Aligned [Commands API operations](../operations/commands.md) with OpenAPI Specification, adding previously undocumented properties and fixing examples. Documentation-only.
@@ -398,7 +402,7 @@
 
 ## 1st April 2025
 * Updated [Guidelines: Response codes](../guidelines/responses.md#response-codes):
-  * Documented 404 and 5xx response codes. Documentation-only, no change to API.  
+  * Documented 404 and 5xx response codes. Documentation-only, no change to API.
 
 ## 21st March 2025
 * Updated [Migration guide: Get all reservations](../deprecations/migration-guide-get-reservations.md). Specified  replacement for `ChannelManager`. Documentation-only. No change to API.
@@ -485,17 +489,17 @@
   * **Deprecated** `Passport`, `IdentityCard`, `Visa` and `DriversLicense` in [Customer](../operations/customers.md#customer) response object. Use [Get all identity documents](../operations/identitydocuments.md#get-all-identity-documents) instead.
 * [Get all companionships](../operations/companionships.md#get-all-companionships):
   * **Deprecated** `Passport`, `IdentityCard`, `Visa` and `DriversLicense` in [Customer](../operations/customers.md#customer) response object under extent `Customers`. Use [Get all identity documents](../operations/identitydocuments.md#get-all-identity-documents) instead.
-* [Add customer](../operations/customers.md#add-customer): 
+* [Add customer](../operations/customers.md#add-customer):
   * **Deprecated** `Passport`, `IdentityCard`, `Visa` and `DriversLicense`. Use [Add identity documents](../operations/identitydocuments.md#add-identity-documents) instead
-* [Update customer](../operations/customers.md#update-customer): 
+* [Update customer](../operations/customers.md#update-customer):
   * **Deprecated** `Passport`, `IdentityCard`, `Visa` and `DriversLicense`. Use [Update identity documents](../operations/identitydocuments.md#update-identity-documents) and [Delete identity documents](../operations/identitydocuments.md#delete-identity-documents) instead.
 * [Get all enterprises](../operations/enterprises.md#get-all-enterprises)
   * Extended [Enterprise](../operations/enterprises.md#enterprise) response object with `Address`.
-* [Get configuration](../operations/configuration.md#get-configuration): 
+* [Get configuration](../operations/configuration.md#get-configuration):
   * `Address` is no longer deprecated in [Enterprise](../operations/configuration.md#enterprise).
 * [Get all payments](../operations/payments.md#get-all-payments):
   * Extended request object with `AccountIds` filtering parameter.
-* [Update resource access tokens](../operations/resourceaccesstokens.md#update-resource-access-tokens): 
+* [Update resource access tokens](../operations/resourceaccesstokens.md#update-resource-access-tokens):
   * Extended request object with `Value` parameter.
 
 ## 16th January 2025

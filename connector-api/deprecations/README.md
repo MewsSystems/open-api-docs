@@ -1,6 +1,6 @@
 # Deprecations
 
-Deprecations are features of the API which you are discouraged from using, even though they may still be supported for a period of time for the sake of backwards compatibility. Such features are normally deprecated because they are superseded by a better alternative. They can include object properties, entire objects or entire API operations. The list of deprecations is as follows. Individual items are also highlighted in the [Changelog](../changelog/README.md) when they occur. Historic deprecations that have already been discontinued may not be listed. 
+Deprecations are features of the API which you are discouraged from using, even though they may still be supported for a period of time for the sake of backwards compatibility. Such features are normally deprecated because they are superseded by a better alternative. They can include object properties, entire objects or entire API operations. The list of deprecations is as follows. Individual items are also highlighted in the [Changelog](../changelog/README.md) when they occur. Historic deprecations that have already been discontinued may not be listed.
 
 **For more information, see our [Deprecations Policy](https://mews-systems.gitbook.io/open-api/staying-up-to-date/deprecations-policy).**
 
@@ -15,6 +15,7 @@ The table columns have the following meanings:
 
 ## Migration guides
 
+* [Migration guide: Restrictions (add/delete to set/clear)][mg-restrictions]
 * [Migration guide: Get all reservations](migration-guide-get-reservations.md)
 
 ## Deprecated operations
@@ -26,8 +27,8 @@ The table columns have the following meanings:
 | [Update routing rules](../operations/routingrules.md#update-routing-rules) | Replaced by [Update billing automations](../operations/billingautomations.md#update-billing-automations) and [Update billing automation assignments](../operations/billingautomations.md#update-billing-automation-assignments) | 11 Nov 2025 | 10 Jan 2027 |
 | [Delete routing rules](../operations/routingrules.md#delete-routing-rules) | Replaced by [Delete billing automations](../operations/billingautomations.md#delete-billing-automations) | 11 Nov 2025 | 10 Jan 2027 |
 | [Get customers open items](../operations/customers.md#get-customers-open-items) | Replaced by [Get all payments](payments.md#get-all-payments) and [Get all order items](orderitems.md#get-all-order-items) | 15 Nov 2024 | - |
-| [Add restrictions](../operations/restrictions.md#add-restrictions) | Replaced by [Set restrictions](../operations/restrictions.md#set-restrictions) | 21 Jun 2024 | 10 Jan 2026 |
-| [Delete restrictions](../operations/restrictions.md#delete-restrictions) | Replaced by  [Clear restrictions](../operations/restrictions.md#clear-restrictions) | 21 Jun 2024 | 10 Jan 2026 |
+| [Add restrictions](../operations/restrictions.md#add-restrictions) | Replaced by [Set restrictions](../operations/restrictions.md#set-restrictions); see [migration guide][mg-restrictions] | 21 Jun 2024 | 10 Jan 2026 |
+| [Delete restrictions](../operations/restrictions.md#delete-restrictions) | Replaced by  [Clear restrictions](../operations/restrictions.md#clear-restrictions); see [migration guide][mg-restrictions] | 21 Jun 2024 | 10 Jan 2026 |
 | [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2017-04-12)<br>(ver 2017-04-12) | Replaced by [Get all reservations \(ver 2023-06-06\)](../operations/reservations.md#get-all-reservations-ver-2023-06-06); see [Migration guide: Get all reservations](migration-guide-get-reservations.md) | 23 Jun 2023 | 10 May 2025 |
 | [Get all reservation items](../operations/reservations.md#get-all-reservation-items) | Replaced by [Get all order items](../operations/orderitems.md#get-all-order-items) | 23 Jun 2023 | 10 May 2025 |
 | [Get all accounting items](../operations/accountingitems.md#get-all-accounting-items) | Replaced by [Get all payments](../operations/payments.md#get-all-payments) and [Get all order items](../operations/orderitems.md#get-all-order-items) | 19 Apr 2023 | 10 Jan 2026 |
@@ -86,7 +87,7 @@ The table columns have the following meanings:
 | `CustomerId`<br>in [Add order](../operations/orders.md#add-order) | Replaced by `AccountId` | 24 May 2023 | |
 | `CustomerId` in [Bill](../operations/bills.md#bill) | Replaced by `AccountId` | 24 May 2023 | |
 | Extent `ResourceCategories`<br>in [Get all resources](../operations/resources.md#get-all-resources) | Use [Get all resource categories](../operations/resourcecategories.md#get-all-resource-categories) instead | 23 May 2023 | 10 Jan 2025 |
-| `AmountDefault` in [Payment item](../operations/accountingitems.md#payment-item) | Replaced by `Original amount` | 11 Apr 2023 | | 
+| `AmountDefault` in [Payment item](../operations/accountingitems.md#payment-item) | Replaced by `Original amount` | 11 Apr 2023 | |
 | `AssigneeData` in [Get all bills ](../operations/bills.md#get-all-bills) | Replaced by [Owner data](../operations/bills.md#bill-owner-data) | 20 Feb 2023 | |
 | `ItalianFiscalCode`, `ItalianLotteryCode` <br>in [Get all bills](../operations/bills.md#response) | Retrievable in LegalIdentifiers [Bill customer data](../operations/bills.md#bill-customer-data) | 20 Feb 2023 | 10 Jan 2025 |
 | `Address`<br>in [Company](../operations/companies.md#company) | Replaced by `AddressId` | 18 Jan 2023 | 10 Jan 2025 |
@@ -121,7 +122,7 @@ The table columns have the following meanings:
 | `TaxRate`<br>in [Currency value](../operations/accountingitems.md#currency-value) | - | Prior to 2021 | - |
 | Object `UnitCost`<br> in [Get all accounting items](../operations/accountingitems.md#get-all-accounting-items) | Replaced by `Amount` | Prior to 2021 | - |
 
-### Operations using deprecated time filters 
+### Operations using deprecated time filters
 
 * [Get all customers](../operations/customers.md#get-all-customers)
 * [Get all bills](../operations/bills.md#get-all-bills)
@@ -130,7 +131,7 @@ The table columns have the following meanings:
 * [Get all outlet items](../operations/outletitems.md#get-all-outlet-items)
 * [Get all cashier transactions](../operations/cashiertransactions.md#get-all-cashier-transactions)
 
-### Operations using deprecated gender 
+### Operations using deprecated gender
 
 * [Add customer](../operations/customers.md#add-customer)
 * [Update customer](../operations/customers.md#update-customer)
@@ -144,3 +145,5 @@ The table columns have the following meanings:
 | :-- | :-- | :-- | :-- |
 | [WebSocket authentication](../events/websockets.md#authentication) using URL query parameters | Changed to use cookies instead, which is more secure | 06 Jan 2021 | - |
 | WebSocket `Space event` | Replaced by [Resource event](../events/websockets.md#resource-event) | 21 Sep 2020 | - |
+
+[mg-restrictions]: migration-guide-restrictions-set-clear.md
