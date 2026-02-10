@@ -1,12 +1,13 @@
 ## Manage restrictions
 
 Restrictions in Mews are configured as combinations of [conditions and exceptions](https://help.mews.com/s/article/how-do-restrictions-work?language=en_US). Below are the three [restriction types](../operations/restrictions.md#restriction-type) that can be applied:
- 
+
 * Start: Closed to arrival, meaning guests cannot check-in within the specified dates.
 * End: Closed to departure, meaning guests cannot check-out within the specified dates.
 * Stay: Closed to stay, meaning guests cannot stay overnight within the specified dates.
 
-Using the Connector API, restrictions are managed by [retrieving the existing restrictions](../operations/restrictions.md#get-all-restrictions), [adding a new restriction](../operations/restrictions.md#add-restrictions) or [deleting an existing one](../operations/restrictions.md#delete-restrictions). 
+Using the Connector API, restrictions are managed by [retrieving the existing restrictions](../operations/restrictions.md#get-all-restrictions), [setting restrictions](../operations/restrictions.md#set-restrictions) or [clearing restrictions](../operations/restrictions.md#clear-restrictions).
+
 A restriction can be applied to either rates or resources of a specified reservable service. A list of all services configured at a property is requested using [Get all services](../operations/services.md#get-all-services) and the services to which restrictions can be applied will have the [service type](../operations/services.md#service-type) `Reservable`.
 
 ### Adding a rate restriction
@@ -31,7 +32,7 @@ Resource restrictions can be applied to the following:
 * Resource category type - Specify [resource category type](../operations/resources.md#resource-category-type) to apply a restriction to one type of resource.
 
 Once created in Mews, rates are automatically applied to all active resource categories in their relevant service. In order to allow restrictions to be applied to only one  specific resource category via the API, the integration partner needs to have the entire configuration of the property mapped out in their system. Repeatedly retrieving all resource information for all instances of the above is not optimal API usage.
- 
+
 Aside from the above, restriction conditions include specifying the time period to which it is applied as well as whether the restriction should apply to specific days.
 If `EndUtc` is not specified when setting the time frame, the restriction will apply until deleted. Specifying one or more [days](../operations/restrictions.md#day) means that the restriction will apply only to that specific day of the week within the set time frame.
 

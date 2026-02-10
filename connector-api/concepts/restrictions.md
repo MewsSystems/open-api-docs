@@ -23,17 +23,15 @@ Restrictions give **Mews** customers more control over their reservations, by pr
 
 To retrieve information about restrictions, use [Get all restrictions]. To add and remove restrictions, use [Set restrictions] and [Clear restrictions] respectively.
 
-| <div style="width:350px">'How to' use case</div> | API Operations                                                             |
-| :----------------------------------------------- | :------------------------------------------------------------------------- |
+| <div style="width:350px">'How to' use case</div> | API Operations         |
+| :----------------------------------------------- | :--------------------- |
 | How to get service restrictions                  | [Get all restrictions] |
-| How to add service restrictions                  | [Set restrictions]         |
-| How to remove service restrictions               | [Clear restrictions]     |
+| How to add service restrictions                  | [Set restrictions]     |
+| How to remove service restrictions               | [Clear restrictions]   |
 
 {% hint style="warning" %}
 
 ### Restrictions operations
-
-Older operations [Add restrictions] and [Delete restrictions] are deprecated. They are replaced by the more efficient [Set restrictions] and [Clear restrictions].
 
 Refer to the documentation for the individual operations for an explanation of the workings of these operations. Do not mix them, use _Add restrictions_ with _Delete restrictions_, or _Set restrictions_ with _Clear restrictions_. Note that as an API user you can only set and clear your own restrictions, independently of restrictions set within the user interface of **Mews Operations**, or indeed by other API users.
 
@@ -82,5 +80,4 @@ We assume that only one third-party integration manages restrictions for a given
 [Get all restrictions]: ../operations/restrictions.md#get-all-restrictions
 [Set restrictions]: ../operations/restrictions.md#set-restrictions
 [Clear restrictions]: ../operations/restrictions.md#clear-restrictions
-[Add restrictions]: ../operations/restrictions.md#add-restrictions
-[Delete restrictions]: ../operations/restrictions.md#delete-restrictions
+[Add restrictions]: ../operations/discontinued.md#add-restrictions

@@ -389,8 +389,8 @@ The merging algorithm will adjust underlying entities to match your new desired 
   - There is a quota of 150,000 restrictions per service applied both to the legacy and new operations. The merging algorithm makes it unlikely to be hit when batching and merging are used correctly.
   - Highly fragmented daily updates with overlapping rules can still approach the quota; [batching per service and rate](#bulk-updates-and-ordering-best-practices) with ranges mitigates this.
 
-[Add restrictions]: ../operations/restrictions.md#add-restrictions
-[Delete restrictions]: ../operations/restrictions.md#delete-restrictions
+[Add restrictions]: ../operations/discontinued.md#add-restrictions
+[Delete restrictions]: ../operations/discontinued.md#delete-restrictions
 [Set restrictions]: ../operations/restrictions.md#set-restrictions
 [Clear restrictions]: ../operations/restrictions.md#clear-restrictions
 [Get all restrictions]: ../operations/restrictions.md#get-all-restrictions
