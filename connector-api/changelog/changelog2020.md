@@ -67,7 +67,7 @@
 
 A month ago we announced the [project Spacetime](https://developers.mews.com/project-spacetime/) whose main objective is to generalize the notion of services and spaces. And later, also the time units. We're pleased to announce that the first phase is now available in the Connector API. We are generalizing spaces into resources, we're introducing the possibility to have multiple "visit" services, not just a single one. The resources might be offered via multiple services which also means that a few entities like rates, restrictions or resource features are no longer defined on enterprise level, they're defined on service level and apply only to specified service.
 
-**There are no immediate breaking changes in the API, all of the previous endpoints and capabilities are still working and will be working until the end of the deprecation period which is scheduled for 15 Jan 2021**. 
+**There are no immediate breaking changes in the API, all of the previous endpoints and capabilities are still working and will be working until the end of the deprecation period which is scheduled for 15 Jan 2021**.
 
 However we'd like to ask you to update your clients as soon as possible, we're not able to roll out the new possibilities to our clients if you are not ready. Therefore we rely on you and your timely cooperation because we want to give this new opportunity to the hotels as soon as we can. We acknowledge it's a lot of changes, we're prepared to monitor the situation and help you with any questions or concerns, feel free to contact us at partnersuccess@mews.com.
 
@@ -106,11 +106,11 @@ However we'd like to ask you to update your clients as soon as possible, we're n
 
 ## 6th June 2020
 
-* Extended [Add restrictions](../operations/restrictions.md#add-restrictions) and [Get all restrictions](../operations/restrictions.md#get-all-restrictions) parameters with `ExternalIdentifier`.
-* Extended [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2017-04-12) parameters with `ReservationIds`, `GroupIds`, `CustomerIds`, `SpaceIds`, `RateIds`, `BusinessSegmentIds` and `Numbers`. 
+* Extended Add restrictions and [Get all restrictions](../operations/restrictions.md#get-all-restrictions) parameters with `ExternalIdentifier`.
+* Extended [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2017-04-12) parameters with `ReservationIds`, `GroupIds`, `CustomerIds`, `SpaceIds`, `RateIds`, `BusinessSegmentIds` and `Numbers`.
 * Updated [Add reservations](../operations/reservations.md#add-reservations), [Update reservation](../operations/reservations.md#update-reservation), [Confirm reservation](../operations/reservations.md#confirm-reservation) and [Cancel reservation](../operations/reservations.md#cancel-reservation) by allowing an array of reservations to be specified in each request.
 * Extended [Get all tax environments](../operations/taxenvironments.md#get-all-tax-environments) with new `Discriminator` to allow both `Flat` and `Relative` [Tax rate strategy](../operations/taxations.md#tax-rate-strategy).
-* Extents changed from optional to required for [Space extent](../operations/resources.md#space-extent), [Accounting item extent](../operations/accountingitems.md#accounting-item-extent), [Bill extent](../operations/bills.md#bill-extent), [Rate extent](../operations/rates.md#rate-extent) and [Companionship extent](../operations/companionships.md#companionship-extent).    
+* Extents changed from optional to required for [Space extent](../operations/resources.md#space-extent), [Accounting item extent](../operations/accountingitems.md#accounting-item-extent), [Bill extent](../operations/bills.md#bill-extent), [Rate extent](../operations/rates.md#rate-extent) and [Companionship extent](../operations/companionships.md#companionship-extent).
 
 ## 17th March 2020
 
@@ -145,11 +145,11 @@ However we'd like to ask you to update your clients as soon as possible, we're n
 
 ## 15th January 2020
 
-* Extended [Add task](../operations/tasks.md#add-task) parameters with `ServiceOrderId`. 
+* Extended [Add task](../operations/tasks.md#add-task) parameters with `ServiceOrderId`.
 
 ## 9th January 2020
 
-* Extended [Get all companies](../operations/companies.md#get-all-companies) parameters with `Ids`, `Names`, `CreatedUtc` and `UpdatedUtc`. 
+* Extended [Get all companies](../operations/companies.md#get-all-companies) parameters with `Ids`, `Names`, `CreatedUtc` and `UpdatedUtc`.
 
 | Next |
 | :-- |

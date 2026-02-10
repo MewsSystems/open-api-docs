@@ -113,8 +113,8 @@
   * Extended request object with `ScheduledEndUtc` parameter.
 
 ## 16th October 2024
-* [Add restrictions](../operations/restrictions.md#add-restrictions):
-* [Delete restrictions](../operations/restrictions.md#delete-restrictions):
+* Add restrictions:
+* Delete restrictions:
 * [Clear restrictions](../operations/restrictions.md#clear-restrictions):
   * Introduced backward-compatible [Hybrid identifier](../operations/_objects.md#hybrid-identifier) string for request fields `ServiceId`, `ExactRateId`, `BaseRateId`, `RateGroupId`, and `ResourceCategoryId`.
 
@@ -235,9 +235,9 @@
 
 ## 24th June 2024
 * Added new page [Restrictions](../concepts/restrictions.md) under [Concepts](../concepts/README.md). Documentation-only.
-* [Add restrictions](../operations/restrictions.md#add-restrictions):
+* Add restrictions:
   * **Deprecated** operation. Use [Set restrictions](../operations/restrictions.md#set-restrictions) instead.
-* [Delete restrictions](../operations/restrictions.md#delete-restrictions):
+* Delete restrictions:
   * **Deprecated** operation. Use [Clear restrictions](../operations/restrictions.md#clear-restrictions) instead.
 
 ## 18th June 2024
