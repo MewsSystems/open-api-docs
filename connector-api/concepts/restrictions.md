@@ -31,17 +31,17 @@ To retrieve information about restrictions, use [Get all restrictions]. To add a
 
 {% hint style="warning" %}
 
-### Restrictions operations
+### Restrictions are independent of user and API restrictions
 
-Refer to the documentation for the individual operations for an explanation of the workings of these operations. Do not mix them, use _Add restrictions_ with _Delete restrictions_, or _Set restrictions_ with _Clear restrictions_. Note that as an API user you can only set and clear your own restrictions, independently of restrictions set within the user interface of **Mews Operations**, or indeed by other API users.
+As an API user you can only set and clear your own restrictions, independently of restrictions set within the user interface of **Mews Operations**.. See [Scope of restrictions](#scope-of-restrictions) for more details.
 
 {% endhint %}
 
-## Set restrictions and Clear restrictions
+## Restrictions quota limit
 
-When using old API operation [Add restrictions], if consecutive restrictions are sent with the same conditions and exceptions, no attempt is made by the system to merge the duplicate or overlapping restrictions. This means that there can be a large number of restrictions created per service, leading to sub-optimal performance. A quota limit of 150,000 was introduced. However, to mitigate the issue, API users are encouraged to migrate to new operation [Set restrictions] instead. For improved efficiency, [Set restrictions] merges multiple similar restrictions into a single restriction. Its sibling operation [Clear restrictions] uses a splicing algorithm to work out how to divide up any existing restrictions to meet the specified time interval.
+Each service can have up to 150,000 active restrictions at any given time. This includes restrictions created both through the API and through the user interface of **Mews Operations**. In practice, the risk of hitting this quota is low because [Set restrictions] merges multiple similar restrictions into a single restriction. Its sibling operation [Clear restrictions] uses a splicing algorithm to work out how to divide up any existing restrictions to meet the specified time interval.
 
-The following sections explain the algorithms used by these operations in more detail. These algorithms only apply to [Set restrictions] and [Clear restrictions].
+The following sections explain the algorithms used by these operations in more detail.
 
 ## Merging algorithm
 
@@ -75,9 +75,9 @@ Only restrictions created through the API are affected by these operations, _not
 ### Single third-party integration per enterprise
 
 We assume that only one third-party integration manages restrictions for a given enterprise or property. All restrictions set up in an enterprise are created either by the enterprise itself through the **Mews Operations** user interface, or uniquely by a single integration through the API. These two sources can be identified using the `Origin` field in requests and responses to [Get all restrictions].
+
 {% endhint %}
 
 [Get all restrictions]: ../operations/restrictions.md#get-all-restrictions
 [Set restrictions]: ../operations/restrictions.md#set-restrictions
 [Clear restrictions]: ../operations/restrictions.md#clear-restrictions
-[Add restrictions]: ../operations/discontinued.md#add-restrictions
