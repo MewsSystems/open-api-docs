@@ -8,7 +8,7 @@ This guide helps API partners migrate from deprecated [Add restrictions] and [De
 - **Restrictions are no longer addressed by `ExternalIdentifier` or `RestrictionIds`.** The new operations work on a desired state defined by conditions and time intervals, not by individual restriction entities.
 - **[Set restrictions] merges similar restrictions** to keep the number of stored restrictions small and efficient, while **[Clear restrictions] uses a splicing algorithm** to remove or shorten existing restrictions that match the specified conditions and time intervals. For details, see [Restrictions concepts].
 - **[Clear restrictions] is intended only when a time interval should have no restrictions at all** for the specified conditions. To change restrictions (for example, disable minimum length-of-stay condition but keep close-to-stay), call **[Set restrictions]** with the new desired parameters.
-- **Partners should batch updates per service and rate and use continuous date ranges** to minimize the number of operations and internal entity deletions. This works naturally with the merging and splicing algorithms.
+- **Batch updates per service and rate and use continuous date ranges** to minimize the number of operations and internal entity deletions. This works naturally with the merging and splicing algorithms.
 
 ## New restrictions operations
 
