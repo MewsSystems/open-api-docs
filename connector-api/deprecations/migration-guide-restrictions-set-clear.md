@@ -81,7 +81,6 @@ Important differences:
 ### Implement batching and ordering best practices
 
 - Group updates by **Service + Rate (+ ResourceCategory)** and use date ranges.
-- Respect the maximum `Data` batch size of 1000 items in a single request.
 
 {% endstep %}
 {% step %}
