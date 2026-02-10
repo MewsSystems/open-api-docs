@@ -12,7 +12,7 @@
   "description": "",
   "dependencies": {
     "edge.js": "^6.2.1",
-    "oas": "^26.0.2",
+    "oas": "26.0.4",
     "oas-normalize": "^13.1.2",
     "patch-package": "^8.0.1",
     "yaml": "^2.7.0"
