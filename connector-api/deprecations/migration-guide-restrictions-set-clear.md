@@ -78,9 +78,9 @@ Important differences:
 {% endstep %}
 {% step %}
 
-### Implement batching and ordering best practices
+### Implement bulk updates and ordering best practices
 
-- Group updates by **Service + Rate (+ ResourceCategory)** and use date ranges.
+Group updates by **Service + Rate (+ ResourceCategory)** and use date ranges. See [Bulk updates and ordering best practices](#bulk-updates-and-ordering-best-practices).
 
 {% endstep %}
 {% step %}
