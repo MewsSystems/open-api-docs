@@ -60,114 +60,111 @@ Adds new restrictions with the specified conditions. Care is needed to specify `
 }
 ```
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `ClientToken` | string | required | Token identifying the client application. |
-| `AccessToken` | string | required | Access token of the client application. |
-| `Client` | string | required | Name and version of the client application. |
-| `ServiceId` | string | required | Unique identifier of the [Service](services.md#service) restrictions will be added in. |
-| `Restrictions` | array of [Restriction data](#restriction-data) | required, max 1000 items | Parameters of restrictions. |
+| Property       | Type                                           | Contract                 | Description                                                                            |
+| :------------- | :--------------------------------------------- | :----------------------- | :------------------------------------------------------------------------------------- |
+| `ClientToken`  | string                                         | required                 | Token identifying the client application.                                              |
+| `AccessToken`  | string                                         | required                 | Access token of the client application.                                                |
+| `Client`       | string                                         | required                 | Name and version of the client application.                                            |
+| `ServiceId`    | string                                         | required                 | Unique identifier of the [Service](services.md#service) restrictions will be added in. |
+| `Restrictions` | array of [Restriction data](#restriction-data) | required, max 1000 items | Parameters of restrictions.                                                            |
 
 #### Restriction data
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Identifier` | string | optional | Identifier of the restriction within the transaction. |
-| `ExternalIdentifier` | string | optional | External identifier of the restriction. |
-| `Conditions` | [Restriction condition data](#restriction-condition-data) | required | The conditions or rules that must be met by a reservation for the restriction to apply. |
-| `Exceptions` | [Restriction exception data](#restriction-exception-data) | optional | The rules that prevent the restriction from applying to a reservation, even when all conditions have been met. |
+| Property             | Type                                                      | Contract | Description                                                                                                    |
+| :------------------- | :-------------------------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------- |
+| `Identifier`         | string                                                    | optional | Identifier of the restriction within the transaction.                                                          |
+| `ExternalIdentifier` | string                                                    | optional | External identifier of the restriction.                                                                        |
+| `Conditions`         | [Restriction condition data](#restriction-condition-data) | required | The conditions or rules that must be met by a reservation for the restriction to apply.                        |
+| `Exceptions`         | [Restriction exception data](#restriction-exception-data) | optional | The rules that prevent the restriction from applying to a reservation, even when all conditions have been met. |
 
 #### Restriction condition data
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Type` | [Restriction type](#restriction-type) | required | Restriction type. |
-| `ExactRateId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the exact `Rate` to which the restriction applies. |
-| `BaseRateId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the base `Rate` to which the restriction applies. |
-| `RateGroupId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the `Rate group` to which the restriction applies. |
-| `ResourceCategoryId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the `Resource category` to which the restriction applies. |
-| `ResourceCategoryType` | [Resource category type](#resource-category-type) | optional | Name of the `Resource category type` to which the restriction applies. |
-| `StartUtc` | string | optional | Start date of the time interval for which the restriction conditions should be applied. This must be in UTC timezone in ISO 8601 format - see [Datetimes](../guidelines/serialization.md#datetimes). |
-| `EndUtc` | string | optional | End date of the time interval for which the restriction conditions should be applied. This must be in UTC timezone in ISO 8601 format - see [Datetimes](../guidelines/serialization.md#datetimes). |
-| `Days` | array of string | optional | The restricted days of week. Defaults to all days when not provided. Ignored when the service uses a time unit longer than a day. |
-| `Hours` | [Hours](#hours) | optional | The restricted hours. Defaults to all hours when not provided. |
+| Property               | Type                                                      | Contract | Description                                                                                                                                                                                          |
+| :--------------------- | :-------------------------------------------------------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                 | [Restriction type](#restriction-type)                     | required | Restriction type.                                                                                                                                                                                    |
+| `ExactRateId`          | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the exact `Rate` to which the restriction applies.                                                                                                                              |
+| `BaseRateId`           | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the base `Rate` to which the restriction applies.                                                                                                                               |
+| `RateGroupId`          | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the `Rate group` to which the restriction applies.                                                                                                                              |
+| `ResourceCategoryId`   | string [Hybrid identifier](_objects.md#hybrid-identifier) | optional | Unique identifier of the `Resource category` to which the restriction applies.                                                                                                                       |
+| `ResourceCategoryType` | [Resource category type](#resource-category-type)         | optional | Name of the `Resource category type` to which the restriction applies.                                                                                                                               |
+| `StartUtc`             | string                                                    | optional | Start date of the time interval for which the restriction conditions should be applied. This must be in UTC timezone in ISO 8601 format - see [Datetimes](../guidelines/serialization.md#datetimes). |
+| `EndUtc`               | string                                                    | optional | End date of the time interval for which the restriction conditions should be applied. This must be in UTC timezone in ISO 8601 format - see [Datetimes](../guidelines/serialization.md#datetimes).   |
+| `Days`                 | array of string                                           | optional | The restricted days of week. Defaults to all days when not provided. Ignored when the service uses a time unit longer than a day.                                                                    |
+| `Hours`                | [Hours](#hours)                                           | optional | The restricted hours. Defaults to all hours when not provided.                                                                                                                                       |
 
 #### Restriction type
 
-* `Stay` - Guests can't stay within specified dates.
-* `Start` - Guests can't check in within specified dates.
-* `End` - Guests can't check out within specified dates.
-
+- `Stay` - Guests can't stay within specified dates.
+- `Start` - Guests can't check in within specified dates.
+- `End` - Guests can't check out within specified dates.
 
 #### Resource category type
 
-* `Room`
-* `Bed`
-* `Dorm`
-* `Apartment`
-* `Suite`
-* `Villa`
-* `Site`
-* `Office`
-* `MeetingRoom`
-* `ParkingSpot`
-* `Desk`
-* `TeamArea`
-* `Membership`
-* `Tent`
-* `CaravanOrRV`
-* `UnequippedCampsite`
-* `Bike`
-* `ExtraBed`
-* `Cot`
-* `Crib`
-* `ConferenceRoom`
-* `Rooftop`
-* `Garden`
-* `Restaurant`
-* `Amphitheater`
-* `PrivateSpaces`
-
+- `Room`
+- `Bed`
+- `Dorm`
+- `Apartment`
+- `Suite`
+- `Villa`
+- `Site`
+- `Office`
+- `MeetingRoom`
+- `ParkingSpot`
+- `Desk`
+- `TeamArea`
+- `Membership`
+- `Tent`
+- `CaravanOrRV`
+- `UnequippedCampsite`
+- `Bike`
+- `ExtraBed`
+- `Cot`
+- `Crib`
+- `ConferenceRoom`
+- `Rooftop`
+- `Garden`
+- `Restaurant`
+- `Amphitheater`
+- `PrivateSpaces`
 
 #### Restriction exception data
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `MinAdvance` | string | optional | The minimum time before the reservation starts, you can reserve in ISO 8601 duration format. |
-| `MaxAdvance` | string | optional | The maximum time before the reservation starts, you can reserve in ISO 8601 duration format. |
-| `MinLength` | string | optional | Minimal reservation length in ISO 8601 duration format. |
-| `MaxLength` | string | optional | Maximal reservation length in ISO 8601 duration format. |
-| `MinPrice` | [Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07) | optional | Value of the minimum price per time unit. |
-| `MaxPrice` | [Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07) | optional | Value of the maximum price per time unit. |
-
+| Property     | Type                                                                         | Contract | Description                                                                                  |
+| :----------- | :--------------------------------------------------------------------------- | :------- | :------------------------------------------------------------------------------------------- |
+| `MinAdvance` | string                                                                       | optional | The minimum time before the reservation starts, you can reserve in ISO 8601 duration format. |
+| `MaxAdvance` | string                                                                       | optional | The maximum time before the reservation starts, you can reserve in ISO 8601 duration format. |
+| `MinLength`  | string                                                                       | optional | Minimal reservation length in ISO 8601 duration format.                                      |
+| `MaxLength`  | string                                                                       | optional | Maximal reservation length in ISO 8601 duration format.                                      |
+| `MinPrice`   | [Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07) | optional | Value of the minimum price per time unit.                                                    |
+| `MaxPrice`   | [Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07) | optional | Value of the maximum price per time unit.                                                    |
 
 #### Hours
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Zero` | boolean | required | Hour 0 enabled |
-| `One` | boolean | required | Hour 1 enabled |
-| `Two` | boolean | required | Hour 2 enabled |
-| `Three` | boolean | required | Hour 3 enabled |
-| `Four` | boolean | required | Hour 4 enabled |
-| `Five` | boolean | required | Hour 5 enabled |
-| `Six` | boolean | required | Hour 6 enabled |
-| `Seven` | boolean | required | Hour 7 enabled |
-| `Eight` | boolean | required | Hour 8 enabled |
-| `Nine` | boolean | required | Hour 9 enabled |
-| `Ten` | boolean | required | Hour 10 enabled |
-| `Eleven` | boolean | required | Hour 11 enabled |
-| `Twelve` | boolean | required | Hour 12 enabled |
-| `Thirteen` | boolean | required | Hour 13 enabled |
-| `Fourteen` | boolean | required | Hour 14 enabled |
-| `Fifteen` | boolean | required | Hour 15 enabled |
-| `Sixteen` | boolean | required | Hour 16 enabled |
-| `Seventeen` | boolean | required | Hour 17 enabled |
-| `Eighteen` | boolean | required | Hour 18 enabled |
-| `Nineteen` | boolean | required | Hour 19 enabled |
-| `Twenty` | boolean | required | Hour 20 enabled |
-| `TwentyOne` | boolean | required | Hour 21 enabled |
-| `TwentyTwo` | boolean | required | Hour 22 enabled |
+| Property      | Type    | Contract | Description     |
+| :------------ | :------ | :------- | :-------------- |
+| `Zero`        | boolean | required | Hour 0 enabled  |
+| `One`         | boolean | required | Hour 1 enabled  |
+| `Two`         | boolean | required | Hour 2 enabled  |
+| `Three`       | boolean | required | Hour 3 enabled  |
+| `Four`        | boolean | required | Hour 4 enabled  |
+| `Five`        | boolean | required | Hour 5 enabled  |
+| `Six`         | boolean | required | Hour 6 enabled  |
+| `Seven`       | boolean | required | Hour 7 enabled  |
+| `Eight`       | boolean | required | Hour 8 enabled  |
+| `Nine`        | boolean | required | Hour 9 enabled  |
+| `Ten`         | boolean | required | Hour 10 enabled |
+| `Eleven`      | boolean | required | Hour 11 enabled |
+| `Twelve`      | boolean | required | Hour 12 enabled |
+| `Thirteen`    | boolean | required | Hour 13 enabled |
+| `Fourteen`    | boolean | required | Hour 14 enabled |
+| `Fifteen`     | boolean | required | Hour 15 enabled |
+| `Sixteen`     | boolean | required | Hour 16 enabled |
+| `Seventeen`   | boolean | required | Hour 17 enabled |
+| `Eighteen`    | boolean | required | Hour 18 enabled |
+| `Nineteen`    | boolean | required | Hour 19 enabled |
+| `Twenty`      | boolean | required | Hour 20 enabled |
+| `TwentyOne`   | boolean | required | Hour 21 enabled |
+| `TwentyTwo`   | boolean | required | Hour 22 enabled |
 | `TwentyThree` | boolean | required | Hour 23 enabled |
 
 ### Response
@@ -242,86 +239,51 @@ Adds new restrictions with the specified conditions. Care is needed to specify `
 }
 ```
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
+| Property       | Type                                             | Contract | Description             |
+| :------------- | :----------------------------------------------- | :------- | :---------------------- |
 | `Restrictions` | array of [Added restriction](#added-restriction) | optional | The added restrictions. |
 
 #### Added restriction
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Identifier` | string | optional | Identifier of the restriction within the transaction. |
-| `Restriction` | [Restriction](#restriction) | optional | The added restriction. |
-
+| Property      | Type                        | Contract | Description                                           |
+| :------------ | :-------------------------- | :------- | :---------------------------------------------------- |
+| `Identifier`  | string                      | optional | Identifier of the restriction within the transaction. |
+| `Restriction` | [Restriction](#restriction) | optional | The added restriction.                                |
 
 #### Restriction
+
 The added restriction.
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Id` | string | required | Unique identifier of the restriction. |
-| `ServiceId` | string | required | Unique identifier of the `Service`. |
-| `ExternalIdentifier` | string | optional | External identifier of the restriction. |
-| `Origin` | [Restriction origin](#restriction-origin) | required | Restriction origin |
-| `Conditions` | [Restriction condition](#restriction-condition) | required | The conditions or rules that must be met by a reservation for the restriction to apply. |
-| `Exceptions` | [Restriction exception](#restriction-exception) | optional | The rules that prevent the restriction from applying to a reservation, even when all conditions have been met. |
+| Property             | Type                                            | Contract | Description                                                                                                    |
+| :------------------- | :---------------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------- |
+| `Id`                 | string                                          | required | Unique identifier of the restriction.                                                                          |
+| `ServiceId`          | string                                          | required | Unique identifier of the `Service`.                                                                            |
+| `ExternalIdentifier` | string                                          | optional | External identifier of the restriction.                                                                        |
+| `Origin`             | [Restriction origin](#restriction-origin)       | required | Restriction origin                                                                                             |
+| `Conditions`         | [Restriction condition](#restriction-condition) | required | The conditions or rules that must be met by a reservation for the restriction to apply.                        |
+| `Exceptions`         | [Restriction exception](#restriction-exception) | optional | The rules that prevent the restriction from applying to a reservation, even when all conditions have been met. |
 
 #### Restriction origin
 
-* `User` - Restriction was created by a user in Mews.
-* `Integration` - Restriction was created by a 3rd-party integration.
+- `User` - Restriction was created by a user in Mews.
+- `Integration` - Restriction was created by a 3rd-party integration.
 
 #### Restriction condition
+
 The conditions or rules that must be met by a reservation for the restriction to apply.
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Type` | [Restriction type](#restriction-type) | required | Restriction type. |
-| `ExactRateId` | string | optional | Unique identifier of the restricted exact `Rate`. |
-| `BaseRateId` | string | optional | Unique identifier of the restricted base `Rate`. |
-| `RateGroupId` | string | optional | Unique identifier of the restricted `Rate group`. |
-| `ResourceCategoryId` | string | optional | Unique identifier of the restricted `Resource category`. |
-| `ResourceCategoryType` | [Resource category type](#resource-category-type) | optional | Name of the restricted `Resource category type`. |
-| `StartUtc` | string | optional | Start date of the restriction time interval, specified in ISO 8601 format and adjusted to UTC - see [Datetimes](../guidelines/serialization.md#datetimes) for important information on format and implementation. |
-| `EndUtc` | string | optional | End date of the restriction time interval, specified in ISO 8601 format and adjusted to UTC - see [Datetimes](../guidelines/serialization.md#datetimes) for important information on format and implementation. |
-| `Days` | array of string | optional | The restricted days of week. Defaults to all days when not provided. Ignored when the service uses a time unit longer than a day. |
-| `Hours` | [Hours](#hours) | optional | The restricted hours. Defaults to all hours when not provided. |
-
-#### Restriction type
-
-* `Stay` - Guests can't stay within specified dates.
-* `Start` - Guests can't check in within specified dates.
-* `End` - Guests can't check out within specified dates.
-
-#### Resource category type
-
-* `Room`
-* `Bed`
-* `Dorm`
-* `Apartment`
-* `Suite`
-* `Villa`
-* `Site`
-* `Office`
-* `MeetingRoom`
-* `ParkingSpot`
-* `Desk`
-* `TeamArea`
-* `Membership`
-* `Tent`
-* `CaravanOrRV`
-* `UnequippedCampsite`
-* `Bike`
-* `ExtraBed`
-* `Cot`
-* `Crib`
-* `ConferenceRoom`
-* `Rooftop`
-* `Garden`
-* `Restaurant`
-* `Amphitheater`
-* `PrivateSpaces`
-
+| Property               | Type                                              | Contract | Description                                                                                                                                                                                                       |
+| :--------------------- | :------------------------------------------------ | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                 | [Restriction type](#restriction-type)             | required | Restriction type.                                                                                                                                                                                                 |
+| `ExactRateId`          | string                                            | optional | Unique identifier of the restricted exact `Rate`.                                                                                                                                                                 |
+| `BaseRateId`           | string                                            | optional | Unique identifier of the restricted base `Rate`.                                                                                                                                                                  |
+| `RateGroupId`          | string                                            | optional | Unique identifier of the restricted `Rate group`.                                                                                                                                                                 |
+| `ResourceCategoryId`   | string                                            | optional | Unique identifier of the restricted `Resource category`.                                                                                                                                                          |
+| `ResourceCategoryType` | [Resource category type](#resource-category-type) | optional | Name of the restricted `Resource category type`.                                                                                                                                                                  |
+| `StartUtc`             | string                                            | optional | Start date of the restriction time interval, specified in ISO 8601 format and adjusted to UTC - see [Datetimes](../guidelines/serialization.md#datetimes) for important information on format and implementation. |
+| `EndUtc`               | string                                            | optional | End date of the restriction time interval, specified in ISO 8601 format and adjusted to UTC - see [Datetimes](../guidelines/serialization.md#datetimes) for important information on format and implementation.   |
+| `Days`                 | array of string                                   | optional | The restricted days of week. Defaults to all days when not provided. Ignored when the service uses a time unit longer than a day.                                                                                 |
+| `Hours`                | [Hours](#hours)                                   | optional | The restricted hours. Defaults to all hours when not provided.                                                                                                                                                    |
 
 ## Delete restrictions
 
@@ -347,15 +309,16 @@ Removes restrictions from the service.
 }
 ```
 
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `ClientToken` | string | required | Token identifying the client application. |
-| `AccessToken` | string | required | Access token of the client application. |
-| `Client` | string | required | Name and version of the client application. |
-| `RestrictionIds` | array of string | required | Unique identifiers of the `Restriction`. |
+| Property         | Type            | Contract | Description                                 |
+| :--------------- | :-------------- | :------- | :------------------------------------------ |
+| `ClientToken`    | string          | required | Token identifying the client application.   |
+| `AccessToken`    | string          | required | Access token of the client application.     |
+| `Client`         | string          | required | Name and version of the client application. |
+| `RestrictionIds` | array of string | required | Unique identifiers of the `Restriction`.    |
 
 ### Response
 
 ```javascript
-{}
+{
+}
 ```
