@@ -115,6 +115,7 @@
   * [WebSockets](events/websockets.md)
 * [Your integration journey](your-journey/README.md)
   * [Certification](your-journey/certification.md)
+  * [Private integration journey](your-journey/private-integration.md)
 * [Deprecations](deprecations/README.md)
   * [Migration guide: Restrictions (add/delete to set/clear)](deprecations/migration-guide-restrictions-set-clear.md)
   * [Migration guide: Get all reservations](deprecations/migration-guide-get-reservations.md)
