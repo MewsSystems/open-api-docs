@@ -14,20 +14,20 @@ We want your experience working with Mews to be quick and simple, so we make the
 If you have questions about the process, drop us a line to [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
 
 {% hint style="info" %}
-**Booking Engine integrations**
+#### Booking Engine integrations
 
 Booking Engine API integrations are the exception as they do not need to be certified, do not need a pilot property, and will not normally be listed on the Marketplace. See [Booking Engine integrations](booking-engine-integrations.md).
 {% endhint %}
 
 {% stepper %}
 {% step %}
-### Exploration
+#### Exploration
 
 First find out [which of our APIs you should be using](../the-mews-apis.md). If you're not sure, take a look at the [use cases](/broken/pages/3lElhhVxfB2LdIwAyekt) for suggestions. Each API has its own body of documentation, so you'll want to familiarize yourself with the guidelines and operations for the API you'll be using.
 {% endstep %}
 
 {% step %}
-### Qualification
+#### Qualification
 
 Once you've had a chance to familiarize yourself with the APIs and the process, you will be asked to complete a short Qualification step to answer some basic questions:
 
@@ -38,13 +38,13 @@ Once you've had a chance to familiarize yourself with the APIs and the process, 
 {% endstep %}
 
 {% step %}
-### Development
+#### Development
 
 When you've decided which API operations to use and how, you'll see each API has its own demo credentials for you to try them out, connecting to our demo servers. All of the information you need to start developing and testing is in the documentation. For example, if you're working with the Mews Connector API, the [guidelines](https://mews-systems.gitbook.io/connector-api/guidelines) include details of the [URLs and access credentials](https://mews-systems.gitbook.io/connector-api/guidelines/environments).
 {% endstep %}
 
 {% step %}
-### Certification
+#### Certification
 
 When you are finished developing and testing, it's time to get certified! Complete the [certification form](https://mews.typeform.com/to/ehTUz7) and we'll send you further instructions by email. As part of the certification process, you will be asked for some details about your integration, such as the endpoints you will be using and the request message frequency. You can find more information about certification in the following resources:
 
@@ -57,12 +57,14 @@ When you are finished developing and testing, it's time to get certified! Comple
 {% endstep %}
 
 {% step %}
-### Pilot
+#### Pilot
 
 After successful certification, you will be sent a `Client Token` for connection to production sites - this token is unique to your application. To connect to a customer property, you will also need an `Access Token` (for the Connector API) or `Connection Token` (for the Channel Manager API) - this token is unique to the property.
 
 {% hint style="warning" %}
-**Important:** Tokens are your security keys to access customer data in Mews, please store them safely and securely, do not share them and do not put them into email communication.
+#### Tokens are sensitive
+
+Tokens are your security keys to access customer data in Mews, please store them safely and securely, do not share them and do not put them into email communication.
 {% endhint %}
 
 * **Public integration**\
@@ -72,7 +74,7 @@ After successful certification, you will be sent a `Client Token` for connection
 {% endstep %}
 
 {% step %}
-### Publication
+#### Publication
 
 If your integration is intended to be listed publicly in the Mews Marketplace, then after an agreed period (see below) of successful operation at the pilot site, you will automatically be notified by email with final instructions. Your solution will be listed in the Mews Marketplace and on the [Mews website](https://www.mews.com/en/products/marketplace), and you can roll it out to all properties that want to integrate. For further information, see the [Connector API onboarding guide](https://help.mews.com/s/article/connector-api-integrations-onboarding-mutual-customers?language=en_US) and the [Channel Manager API onboarding guide](https://help.mews.com/s/article/channel-manager-onboarding-guide?language=en_US).
 

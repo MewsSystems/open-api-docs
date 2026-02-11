@@ -238,8 +238,6 @@ This section describes all operations supported by the API, organised here by th
 | [Update rate price](rates.md#update-rate-price) | Updates price of a rate in the specified intervals |
 | [Get all rate groups](rategroups.md#get-all-rate-groups) | Returns all rate groups filtered by rate groups or other filters |
 | [Get all restrictions](restrictions.md#get-all-restrictions) | Returns all restrictions of the default service provided by the enterprise |
-| [~~Add restrictions~~](restrictions.md#add-restrictions) | **Deprecated!** Adds new restrictions with the specified conditions. Use [Set restrictions](../operations/restrictions.md#set-restrictions) instead. |
-| [~~Delete restrictions~~](restrictions.md#delete-restrictions) | **Deprecated!** Removes restrictions from the service. Use [Clear restrictions](../operations/restrictions.md#clear-restrictions) instead. |
 | [Set restrictions](restrictions.md#set-restrictions) | Adds new restrictions with the specified conditions |
 | [Clear restrictions](restrictions.md#clear-restrictions) | Clears restrictions which meet specified conditions over a specified time interval |
 | [Add order](orders.md#add-order) | Creates a new order with the specified products and items |
