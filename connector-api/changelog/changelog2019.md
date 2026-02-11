@@ -106,7 +106,7 @@
 
 ## 19th February 2019
 
-* Extended [Add restriction](../operations/restrictions.md#add-restrictions) parameters with `Identifier`.
+* Extended Add restriction parameters with `Identifier`.
 * Extended [Company](../operations/companies.md#company) with `BillingCode`.
 
 ## 6th February 2019
@@ -117,8 +117,8 @@
 ## 5th February 2019
 
 * Added [Get all restrictions](../operations/restrictions.md#get-all-restrictions) operation.
-* Added [Add restrictions](../operations/restrictions.md#add-restrictions) operation.
-* Added [Delete restrictions](../operations/restrictions.md#delete-restrictions) operation.
+* Added Add restrictions operation.
+* Added Delete restrictions operation.
 
 ## 29th January 2019
 

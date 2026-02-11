@@ -132,8 +132,7 @@ This page summarises all of our 'how to' use cases, together with the main use c
 | How to get rate package rules | [Get all rules](../operations/rules.md#get-all-rules) | [Kiosk](kiosk.md) |
 | How to get all configured business segments | [Get all business segments](../operations/businesssegments.md#get-all-business-segments) | [Revenue management](revenue-management.md) |
 | How to get service restrictions | [Get all restrictions](../operations/restrictions.md#get-all-restrictions) | [Revenue management](revenue-management.md) |
-| How to add or remove restrictions (old) | [Add restrictions](../operations/restrictions.md#add-restrictions), [Delete restrictions](../operations/restrictions.md#delete-restrictions) | [Revenue management](revenue-management.md) |
-| How to add or remove restrictions (new) | [Set restrictions](../operations/restrictions.md#set-restrictions), [Clear restrictions](../operations/restrictions.md#clear-restrictions) | [Revenue management](revenue-management.md) |
+| How to add or remove restrictions | [Set restrictions](../operations/restrictions.md#set-restrictions), [Clear restrictions](../operations/restrictions.md#clear-restrictions) | [Revenue management](revenue-management.md) |
 | How to get availability | [Get service availability](../operations/services.md#get-service-availability)  | [Events](events.md), [Kiosk](kiosk.md) |
 | How to get room or resource availability | [Get service availability](../operations/services.md#get-service-availability) | [Upsell](upsell.md) |
 | How to update or amend service availability | [Update service availability](../operations/services.md#update-service-availability) | [Events](events.md) |
