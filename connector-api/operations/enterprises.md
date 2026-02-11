@@ -43,8 +43,8 @@ Returns all enterprises within scope of the `Access Token`, optionally filtered 
 | `Client` | string | required | Name and version of the client application. |
 | `EnterpriseIds` | array of string | optional, max 1000 items | Unique identifiers of the [Enterprises](enterprises.md#enterprise). If not specified, all enterprises within scope of the Access Token are returned. |
 | `ExternalIdentifiers` | array of string | optional, max 1000 items | Identifiers of the [Enterprise](enterprises.md#enterprise) from external system. |
-| `LinkedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months |  |
-| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months |  |
+| `LinkedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which enterprises were linked. |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which enterprises were updated. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned. |
 
 ### Response

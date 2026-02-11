@@ -45,7 +45,7 @@ Returns all resource feature assignments. This operation uses [Pagination](../gu
 | `EnterpriseIds` | array of string | optional, max 1000 items | Unique identifiers of the Enterprises. If not specified, the operation returns data for all enterprises within scope of the Access Token. |
 | `ResourceFeatureAssignmentIds` | array of string | optional, max 1000 items |  |
 | `ResourceFeatureIds` | array of string | required, max 1000 items | Unique identifiers of [Resource features](resourcefeatures.md#resource-feature) to which the resource feature assignments belong. |
-| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months |  |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the resource feature assignments were updated. |
 | `ActivityStates` | array of [Activity state](_objects.md#activity-state) | optional | Whether to return only active, only deleted or both records. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 

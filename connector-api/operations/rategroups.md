@@ -50,7 +50,7 @@ Returns all rate groups, filtered by unique identifiers and other filters. Note 
 | `RateGroupIds` | array of string | optional, max 1000 items | Unique identifiers of the [Rate group](rategroups.md#rate-group). Required if ServiceIds filter is not provided. |
 | `ServiceIds` | array of string | optional, max 1000 items | Unique identifiers of the [Service](services.md#service). Required if RateGroupIds filter is not provided. |
 | `ExternalIdentifiers` | array of string | optional, max 1000 items | Identifiers of [Rate group](rategroups.md#rate-group) from external systems. |
-| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months |  |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the rate groups were updated. |
 | `ActivityStates` | array of [Activity state](_objects.md#activity-state) | optional | Whether to return only active, only deleted or both records. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
