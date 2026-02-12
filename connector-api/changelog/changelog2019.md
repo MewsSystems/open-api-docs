@@ -137,7 +137,3 @@
 
 * Extended [Add customer](../operations/customers.md#add-customer) parameters with `Options`.
 * Extended [Update customer](../operations/customers.md#update-customer) parameters with `Options`.
-
-| Next |
-| :-- |
-| [Changelog 2018](changelog2018.md) |
