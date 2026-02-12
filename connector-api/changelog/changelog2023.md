@@ -1,10 +1,12 @@
 # Changelog 2023
 
 ## 19th December 2023
+
 * Extended [Add export](../operations/exports.md#add-export) with `Customer` and `Company` entity types.
 * Added `Twint` payment type option to [Add external payment](../operations/payments.md#add-external-payment) request.
 
 ## 12th December 2023
+
 * Extended [Product](../operations/products.md#product) with `Names`, `ExternalNames`, `ShortNames` and `Descriptions`.
 * Deprecated properties in [Product](../operations/products.md#product)
   * `Name`. Use `Names` instead.
@@ -13,6 +15,7 @@
   * `Description`. Use `Descriptions` instead.
 
 ## 8th December 2023
+
 * Extended [Add export](../operations/exports.md#add-export) with `Payment` and `Reservation` entity types.
 
 ## 5th December 2023
@@ -21,9 +24,11 @@
 * Extended [Availability adjustment](../operations/availabilityadjustments.md#availability-adjustment) with `UpdatedUtc` property.
 
 ## 29th November 2023
+
 * Extended [Get all resource blocks](../operations/resourceblocks.md#get-all-resource-blocks) response with `Name` and `Notes` parameters.
 
 ## 28th November 2023
+
 * Added operation [Delete addresses](../operations/addresses.md#delete-addresses).
 
 ## 22nd November 2023
@@ -59,13 +64,11 @@
   * [Get all resource category image assignments](../operations/resourcecategories.md#get-all-resource-category-image-assignments)
   * [Get all resource features](../operations/resourcefeatures.md#get-all-resource-features)
   * [Get all resource feature assignments](../operations/resourcefeatures.md#get-all-resource-feature-assignments)
-
 * Deprecated operation extents
   * `ResourceCategoryAssignments` in [Get all resources](../operations/resources.md#get-all-resources). Use [Get all resource category assignments](../operations/resourcecategories.md#get-all-resource-category-assignments) instead.
   * `ResourceCategoryImageAssignments` in [Get all resources](../operations/resources.md#get-all-resources). Use [Get all resource category image assignments](../operations/resourcecategories.md#get-all-resource-category-image-assignments) instead.
   * `ResourceFeatures` in [Get all resources](../operations/resources.md#get-all-resources). Use [Get all resource features](../operations/resourcefeatures.md#get-all-resource-features) instead.
   * `ResourceFeaturesAssignments` in [Get all resources](../operations/resources.md#get-all-resources). Use [Get all resource feature assignments](../operations/resourcefeatures.md#get-all-resource-feature-assignments) instead.
-
 * Extended [Add rate](../operations/rates.md#add-rate) with `ExternalIdentifier` parameter.
 
 ## 31st October 2023
@@ -74,14 +77,14 @@
 
 ## 26th October 2023
 
-* Enabled [Portfolio Access Tokens](../guidelines/multi-property.md) for the [Add order](../operations/orders.md#add-order) operation.
+* Enabled [Portfolio Access Tokens](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for the [Add order](../operations/orders.md#add-order) operation.
 * Added [Exports](../operations/exports.md) operations, currently in beta-testing:
   * [Get all exports](../operations/exports.md#get-all-exports)
   * [Add export](../operations/exports.md#add-export)
 
 ## 25th October 2023
 
-* Extended [Customer Classification](../operations/customers.md/#customer-classification) with `Student` classification.
+* Extended [Customer Classification](../operations/customers.md#customer-classification) with `Student` classification.
 
 ## 23rd October 2023
 
@@ -95,7 +98,6 @@
   * [Delete voucher codes](../operations/vouchercodes.md#delete-voucher-codes)
 * Deprecated operation extent `VoucherCodes` and `Companies` in [Get all vouchers](../operations/vouchers.md#get-all-vouchers). [Get all voucher codes](../operations/vouchercodes.md#get-all-voucher-codes) and [Get all companies](../operations/companies.md#get-all-companies) should be used instead.
 * Added new parameter field `UpdatedUtc` in [Get all vouchers](../operations/vouchers.md#get-all-vouchers).
-
 * Added `UpdatedUtc` filter for following operations:
   * [Get all routing rules](../operations/routingrules.md#get-all-routing-rules)
   * [Get all payment requests](../operations/paymentrequests.md#get-all-payment-requests)
@@ -112,7 +114,6 @@
   * [Get all cashiers](../operations/cashiers.md#get-all-cashiers)
   * [Get all accounting categories](../operations/accountingcategories.md#get-all-accounting-categories)
   * [Get all enterprises](../operations/enterprises.md#get-all-enterprises)
-
 * Extended following responses with new properties `CreatedUtc` and `UpdatedUtc`:
   * [Routing rule](../operations/routingrules.md#routing-rule)
   * [Payment request](../operations/paymentrequests.md#payment-request)
@@ -127,21 +128,23 @@
   * [Age category](../operations/agecategories.md#age-category)
   * [Cashier](../operations/cashiers.md#cashier)
   * [Accouting category](../operations/accountingcategories.md#accounting-category)
-
 * Extended following responses with new property `UpdatedUtc`:
   * [Credit card](../operations/creditcards.md#credit-card)
   * [Enterprise](../operations/enterprises.md#enterprise)
   * [Configuration enterprise](../operations/configuration.md#enterprise)
 
 ## 20th October 2023
-  * Deprecated operation `Extent` in [Get all bills](../operations/bills.md#get-all-bills). [Get all payments](../operations/payments.md#get-all-payments) and [Get all order items](../operations/orderitems.md#get-all-order-items) should be used instead.
+
+* Deprecated operation `Extent` in [Get all bills](../operations/bills.md#get-all-bills). [Get all payments](../operations/payments.md#get-all-payments) and [Get all order items](../operations/orderitems.md#get-all-order-items) should be used instead.
 
 ## 6th October 2023
-  * Updated [Pagination](../guidelines/pagination.md) documentation
+
+* Updated [Pagination](../guidelines/pagination.md) documentation
 
 ## 14th September 2023
-  * Added operation [Add rates](../operations/rates.md#add-rates)
-  * Extended [Rate](../operations/rates.md#rate) with new properties `Type` and `Descriptions`
+
+* Added operation [Add rates](../operations/rates.md#add-rates)
+* Extended [Rate](../operations/rates.md#rate) with new properties `Type` and `Descriptions`
 
 ## 12th September 2023
 
@@ -160,17 +163,16 @@
 
 ## 31st August 2023
 
-* Enabled [Portfolio Access Tokens](../guidelines/multi-property.md) for the following operations:
+* Enabled [Portfolio Access Tokens](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for the following operations:
   * [Get all message threads](../operations/messagethreads.md#get-all-message-threads)
   * [Get all messages](../operations/messages.md#get-all-messages)
 
 ## 29th August 2023
 
-* Enabled [Portfolio Access Tokens](../guidelines/multi-property.md) for the following operations:
+* Enabled [Portfolio Access Tokens](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for the following operations:
   * [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks)
   * [Update availability blocks](../operations/availabilityblocks.md#update-availability-blocks)
   * [Delete availability blocks](../operations/availabilityblocks.md#delete-availability-blocks)
-
 * Extended the following operations by adding `EnterpriseId` to the request parameters:
   * [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks)
   * [Update availability blocks](../operations/availabilityblocks.md#update-availability-blocks)
@@ -178,11 +180,10 @@
 
 ## 25th August 2023
 
-* Enabled [Portfolio Access Tokens](../guidelines/multi-property.md) for the following operations:
+* Enabled [Portfolio Access Tokens](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for the following operations:
   * [Update reservation customer](../operations/reservations.md#update-reservation-customer)
   * [Update reservation interval](../operations/reservations.md#update-reservation-interval)
   * [Price reservations](../operations/reservations.md#price-reservations)
-
 * Extended the following operations by adding `EnterpriseId` to the request parameters:
   * [Update reservation customer](../operations/reservations.md#update-reservation-customer)
   * [Update reservation interval](../operations/reservations.md#update-reservation-interval)
@@ -194,7 +195,7 @@
 
 ## 17th August 2023
 
-* Extended [Customer Classification](../operations/customers.md/#customer-classification) with `InRoom` and `WaitingForRoom` classifications.
+* Extended [Customer Classification](../operations/customers.md#customer-classification) with `InRoom` and `WaitingForRoom` classifications.
 
 ## 7th August 2023
 
@@ -202,12 +203,10 @@
 
 ## 3rd August 2023
 
-* Enabled [Portfolio Access Tokens](../guidelines/multi-property.md) for the following operations:
+* Enabled [Portfolio Access Tokens](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for the following operations:
   * [Add customer file](../operations/customers.md#add-customer-file)
-
 * Extended the following operations by adding `ChainId` to the request parameters:
   * [Add customer file](../operations/customers.md#add-customer-file)
-
 * Extended the following operation by adding `ReservationGroupIds` to the request parameters:
   * [Get all reservations](../operations/reservations.md#Get-all-reservations-ver-2023-06-06)
 
@@ -218,12 +217,11 @@
 
 ## 28th July 2023
 
-* Enabled [Portfolio Access Tokens](../guidelines/multi-property.md) for the following operations:
+* Enabled [Portfolio Access Tokens](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for the following operations:
   * [Close bill](../operations/bills.md#close-bill)
   * [Delete bill](../operations/bills.md#delete-bill)
   * [Add keycutter command](../operations/commands.md#add-key-cutter-command)
   * [Add printer command](../operations/commands.md#add-printer-command)
-
 * Extended the following operations by adding `EnterpriseId` to the request parameters:
   * [Close bill](../operations/bills.md#close-bill)
   * [Delete bill](../operations/bills.md#delete-bill)
@@ -242,11 +240,11 @@
 * Added operation [Add account notes](../operations/accountnotes.md#add-account-notes) to add account notes.
 * Added operation [Update account notes](../operations/accountnotes.md#update-account-notes) to update account notes.
 * Added operation [Delete account notes](../operations/accountnotes.md#delete-account-notes) to delete account notes.
-* Extended behavior of operations [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions). These operations now only affect restrictions created by 3rd-party integrations.  
+* Extended behavior of operations [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions). These operations now only affect restrictions created by 3rd-party integrations.
 
 ## 11th July 2023
 
-* Enabled [Portfolio Access Tokens](../guidelines/multi-property.md) for the following operations:
+* Enabled [Portfolio Access Tokens](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for the following operations:
   * [Add loyalty programs](../operations/loyaltyprograms.md#add-loyalty-programs)
   * [Update loyalty programs](../operations/loyaltyprograms.md#update-loyalty-programs)
   * [Add loyalty memberships](../operations/loyaltymemberships.md#add-loyalty-memberships)
@@ -266,7 +264,6 @@
   * [Update customer](../operations/customers.md#update-customer)
   * [Add company](../operations/companies.md#add-company)
   * [Update company](../operations/companies.md#update-company)
-
 * Extended the following operations by adding `ChainId` to the request parameters:
   * [Add loyalty programs](../operations/loyaltyprograms.md#add-loyalty-programs)
   * [Update loyalty programs](../operations/loyaltyprograms.md#update-loyalty-programs)
@@ -279,7 +276,6 @@
   * [Update customer](../operations/customers.md#update-customer)
   * [Add company](../operations/companies.md#add-company)
   * [Update company](../operations/companies.md#update-company)
- 
 * Extended the following operations by adding `EnterpriseId` to the request parameters:
   * [Add external payment](../operations/payments.md#add-external-payment)
   * [Update reservations](../operations/reservations.md#update-reservations)
@@ -299,7 +295,7 @@
 
 ## 29th June 2023
 
-* Documentation-only changes to add clarity around endpoint versioning. The deprecated version of `Get all reservations` is now called [Get all reservations \(ver 2017-04-12\)](../operations/reservations.md#get-all-reservations-ver-2017-04-12) and the new version is called [Get all reservations \(ver 2023-06-06\)](../operations/reservations.md#get-all-reservations-ver-2023-06-06). All relevant links have been updated.
+* Documentation-only changes to add clarity around endpoint versioning. The deprecated version of `Get all reservations` is now called [Get all reservations (ver 2017-04-12)](../operations/reservations.md#get-all-reservations-ver-2017-04-12) and the new version is called [Get all reservations (ver 2023-06-06)](../operations/reservations.md#get-all-reservations-ver-2023-06-06). All relevant links have been updated.
 * Extended [Add bill](../operations/payments.md#get-all-payments#add-bill) with `Name` request parameter to name the newly created bill.
 
 ## 26th June 2023
@@ -319,7 +315,6 @@
 ## 21st June 2023
 
 * Added operation [Get all product categories](../operations/productcategories.md#get-all-product-categories) to retrieve product categories.
-
 * Enabled Portfolio Access Tokens for the following operations:
   * [Get all accounting categories](../operations/accountingcategories.md#get-all-accounting-categories).
   * [Get all addresses](../operations/addresses.md#get-all-addresses).
@@ -352,7 +347,6 @@
   * [Get all routing rules](../operations/routingrules.md#get-all-routing-rules).
   * [Get all rules](../operations/rules.md#get-all-rules).
   * [Get all services](../operations/services.md#get-all-services).
-
 * Added pagination to the following operations:
   * [Get all accounting categories](../operations/accountingcategories.md#get-all-accounting-categories).
   * [Get all addresses](../operations/addresses.md#get-all-addresses).
@@ -372,7 +366,6 @@
   * [Get all resources](../operations/resources.md#get-all-resources).
   * [Get all rules](../operations/rules.md#get-all-rules).
   * [Get all services](../operations/services.md#get-all-services).
-  
 * Extended response objects with `EnterpriseId` for following:
   * [Accounting category](../operations/accountingcategories.md#accounting-category).
   * [Age category](../operations/agecategories.md#age-category).
@@ -389,7 +382,6 @@
   * [Resource](../operations/resources.md#resource).
   * [Routing rule](../operations/routingrules.md#routing-rule).
   * [Service](../operations/services.md#service).
-
 * Extended response objects with `ChainId` for following:
   * [Address](../operations/addresses.md#addresses).
   * [Company](../operations/companies.md#company).
@@ -397,7 +389,6 @@
   * [Loyalty membership](../operations/loyaltymemberships.md#loyalty-membership).
   * [Loyalty program](../operations/loyaltyprograms.md#loyalty-program).
   * [Loyalty tier](../operations/loyaltytiers.md#loyalty-tier).
-
 * Extended requests for following endpoints:
   * [Get all accounting categories](../operations/accountingcategories.md#get-all-accounting-categories) request with `EnterpriseIds`, `AccountingCategoryIds`, `ActivityStates` parameters.
   * [Get all addresses](../operations/addresses.md#get-all-addresses) request with `ChainIds`, `ActivityStates` parameters.
@@ -427,12 +418,11 @@
   * [Get all routing rules](../operations/routingrules.md#get-all-routing-rules) request with `EnterpriseIds` parameters.
   * [Get all services](../operations/services.md#get-all-services) request with `EnterpriseIds`, `ServiceIds` parameters.
   * [Get all restrictions](../operations/restrictions.md#get-all-restrictions) request with `EnterpriseIds` parameter.
-
 * Deprecated `BillCounters`, `ProformaCounters`, `BillPreviewCounters`, `ServiceOrderCounters`, `RegistrationCardCounters` in [Get all counters](../operations/counters.md#get-all-counters). Use `Counters` instead.
 
 ## 20th June 2023
 
-* Added new page [Multi-property](../guidelines/multi-property.md) for multi-property operation with Portfolio Access Tokens.
+* Added new page [Multi-property](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/guidelines/multi-property.md) for multi-property operation with Portfolio Access Tokens.
 * Updated [Requests](../guidelines/requests.md) page to add explanation of authentication with Portfolio Access Tokens.
 
 ## 19th June 2023
@@ -485,6 +475,7 @@
 * Added clarification to values for [Reservation origin](../operations/reservations.md#reservation-origin).
 
 ## 21st April 2023
+
 * Extended [loyalty programs](../operations/loyaltyprograms.md#loyalty-program) with [Type](../operations/loyaltyprograms.md#loyalty-program-type) and [Subscription](../operations/loyaltyprograms.md#loyalty-program-subscription) parameters.
 * Added operation [Add service order notes](../operations/serviceordernotes.md#add-service-order-notes).
 * Added operation [Update service order notes](../operations/serviceordernotes.md#update-service-order-notes).
@@ -564,7 +555,7 @@
 * Added new parameter field `UpdatedUtc` in [Get all companionships](../operations/companionships.md#get-all-companionships)
 * Added new parameter field `UpdatedUtc` in [Get all accountingItems](../operations/accountingitems.md#get-all-accounting-items)
 * Extended [Get all source assignments](../operations/sourceassignments.md#get-all-source-assignments) with `UpdatedUtc` filter.
- 
+
 ## 28th February 2023
 
 * Added new parameter field `UpdatedUtc` in [Get all bills](../operations/bills.md#get-all-bills)
@@ -584,11 +575,11 @@
 
 * Added new use case [Mews Payment Terminals](../use-cases/mews-terminals.md)
 * Added new restricted operation [Add payment command](../operations/commands.md#add-payment-command).
-* Deprecated `AssigneeData` in [Get all bills](../operations/bills.md#get-all-bills) response and replaced with  `OwnerData`.
+* Deprecated `AssigneeData` in [Get all bills](../operations/bills.md#get-all-bills) response and replaced with `OwnerData`.
 * Extended [Bill customer data](../operations/bills.md#bill-customer-data) with `CustomerID`, `LegalIdentifiers`, `BillingCode`, `LastName`, `FirstName`, `SecondLastName`, `TitlePrefix` and with [Bill address](../operations/bills.md#bill-address) fields.
 * Extended [Bill company data](../operations/bills.md#bill-company-data) with Owner Data `LegalIdentifiers`, `BillingCode`, `Name`, `FiscalIdentifier`, `AdditionalTaxIdentifier` and with [Bill address](../operations/bills.md#bill-address) fields.
 * Extended [Payment Items](../operations/accountingitems.md#payment-item) with `AmountDefault`.
-* Deprecated  `ItalianFiscalCode` and `ItalianLotteryCode` in [Bill customer data](../operations/bills.md#bill-customer-data).
+* Deprecated `ItalianFiscalCode` and `ItalianLotteryCode` in [Bill customer data](../operations/bills.md#bill-customer-data).
 
 ## 1st February 2023
 
@@ -621,9 +612,9 @@
 ## 18th January 2023
 
 * Added pagination to [Get all companies](../operations/companies.md#get-all-companies)
-* Added new filter `ExternalIdentifiers` to  [Get all companies](../operations/companies.md#get-all-companies)
+* Added new filter `ExternalIdentifiers` to [Get all companies](../operations/companies.md#get-all-companies)
 * Deprecated `Address` in [Company](../operations/companies.md#company) and replaced with `AddressId`
-* Added new page [Service orders](../operations/serviceorders.md) \[corrected to [Service order notes](../operations/serviceordernotes.md) 21st April 2023\].
+* Added new page [Service orders](https://github.com/MewsSystems/poc-open-api-docs/blob/main/connector-api/operations/serviceorders.md) \[corrected to [Service order notes](../operations/serviceordernotes.md) 21st April 2023].
 * Added operation [Get all service order notes](../operations/serviceordernotes.md#get-all-service-order-notes).
 * Deprecated `BasePrices` and replaced it with `BaseAmountPrices` in the response to [Get rate pricing](../operations/rates.md#get-rate-pricing); `BaseAmountPrices` includes information about the tax breakdown.
 * Deprecated `Prices` and replaced it with `AmountPrices` in the response to [Get rate pricing](../operations/rates.md#get-rate-pricing); `AmountPrices` includes information about the tax breakdown.
@@ -637,6 +628,6 @@
 
 * Extended [Get all rates](../operations/rates.md#get-all-rates) with filtering parameters `RateIds` and `UpdatedUtc`.
 
-| Next |
-| :-- |
+| Next                               |
+| ---------------------------------- |
 | [Changelog 2022](changelog2022.md) |
