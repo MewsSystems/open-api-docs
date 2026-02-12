@@ -154,7 +154,7 @@
 
 ## 29th June 2022
 
-* Monthly Services (coming soon) - Deprecated `StartUtc` and `EndUtc` in favor of `FirstTimeUnitUtc` and `LastTimeUnitUtc` in [Availability block](../operations/availabilityblocks.md#availability-block), [Availability block adjustment](../operations/availabilityblocks.md#availability-block-adjustment) 
+* Monthly Services (coming soon) - Deprecated `StartUtc` and `EndUtc` in favor of `FirstTimeUnitUtc` and `LastTimeUnitUtc` in [Availability block](../operations/availabilityblocks.md#availability-block), [Availability block adjustment](../operations/availabilityblocks.md#availability-block-adjustment)
 
 ## 24th Jun 2022
 
@@ -191,7 +191,7 @@
 ## 11th February 2022
 
 * Deprecated `AdultCount` and `ChildCount` from [Reservation](../operations/reservations.md#reservation) and [Reservation parameters](../operations/reservations.md#reservation-parameters) and [Reservation updates](../operations/reservations.md#reservation-updates).
-* Added [Age category parameters](../operations/reservations.md#age-category-parameters) replacing `AdultCount` and `ChildCount` for [Reservation](../operations/reservations.md#reservation) and [Reservation parameters](../operations/reservations.md#reservation-parameters) and [Reservation updates](../operations/reservations.md#reservation-updates). 
+* Added [Age category parameters](../operations/reservations.md#age-category-parameters) replacing `AdultCount` and `ChildCount` for [Reservation](../operations/reservations.md#reservation) and [Reservation parameters](../operations/reservations.md#reservation-parameters) and [Reservation updates](../operations/reservations.md#reservation-updates).
 
 ## 8th February 2022
 
@@ -213,7 +213,3 @@
 * Extended the request parameters for [Get all accounting items](../operations/accountingitems.md#get-all-accounting-items) to add new filter parameter `Rebated item IDs`
 * Extended the [Accounting use case](../use-cases/accounting.md) to include new section [Working with rebates](../use-cases/accounting.md#working-with-rebates)
 * Deprecated `Rebated` property from [Bill options](../operations/bills.md#bill-options) object
-
-| Next |
-| :-- |
-| [Changelog 2021](changelog2021.md) |

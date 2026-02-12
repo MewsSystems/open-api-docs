@@ -49,7 +49,7 @@
 ## 1st August 2018
 
 * Extended [Add reservations](../operations/reservations.md#add-reservations) parameters with `CheckOverbooking`.
-* Added [Get all outlet items](../operations/outletitems.md#get-all-outlet-items) operation. 
+* Added [Get all outlet items](../operations/outletitems.md#get-all-outlet-items) operation.
 
 ## 25th July 2018
 
@@ -85,13 +85,13 @@
 * Extended [Update reservation requested category](../operations/reservations.md#update-reservation-requested-category) with `Overbook`.
 * Extended [Add reservation product](../operations/reservations.md#add-reservation-product) with `UnitCost`.
 * Extended [Product charging](../operations/products.md#product-charging) with `PerPerson`.
-* Updated `Expiration` in [Credit card parameters](../operations/creditcards.md#credit-card-parameters) to be optional. 
+* Updated `Expiration` in [Credit card parameters](../operations/creditcards.md#credit-card-parameters) to be optional.
 * Added [Get all credit cards by ids](../operations/creditcards.md#get-all-credit-cards-by-ids) operation.
 * Added [Get all credit cards by customers](../operations/creditcards.md#get-all-credit-cards-by-customers) operation.
 
 ## 25th May 2018
 
-* Extended [Company](../operations/companies.md#company) with `TaxIdentifier`, `TaxIdentificationNumber` is deprecated. 
+* Extended [Company](../operations/companies.md#company) with `TaxIdentifier`, `TaxIdentificationNumber` is deprecated.
 * Extended [Product](../operations/products.md#product) with `CategoryId`.
 * Extended [Company](../operations/companies.md#company) with `AccountingCode`.
 * Extended [Add customer](../operations/customers.md#add-customer) and [Update customer](../operations/customers.md#update-customer) with `Identity card`, `Visa` and `Drivers license`.
@@ -136,7 +136,3 @@
 * Extended [Get rate pricing](../operations/rates.md#get-rate-pricing) response with `CategoryAdjustments`.
 * Extended WebSockets events with [Space event](../events/websockets.md#space-event).
 * Added [Get all bills by customers](../operations/bills.md#get-all-bills-by-customers) operation.
-
-| Next |
-| :-- |
-| [Changelog 2017](changelog2017.md) |

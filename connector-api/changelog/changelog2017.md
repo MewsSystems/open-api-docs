@@ -164,6 +164,3 @@
 * Extended `Accounting category` with `LedgerAccountCode`, `PostingAccountCode` and `CostCenterCode`.
 * Extended `Customer` with `LanguageCode`.
 
-| Next |
-| :-- |
-| [Changelog 2016](changelog2016.md) |

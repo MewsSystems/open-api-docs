@@ -38,6 +38,3 @@
 * Extended [Space resource data](../operations/resources.md#space-resource-data) with `LocationNotes`.
 * Extended [Space resource data update](../operations/resources.md#space-resource-data-update) with `LocationNotes`.
 
-| Next |
-| :-- |
-| [Changelog 2020](changelog2020.md) |

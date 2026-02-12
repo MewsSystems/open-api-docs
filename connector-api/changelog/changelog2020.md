@@ -150,7 +150,3 @@ However we'd like to ask you to update your clients as soon as possible, we're n
 ## 9th January 2020
 
 * Extended [Get all companies](../operations/companies.md#get-all-companies) parameters with `Ids`, `Names`, `CreatedUtc` and `UpdatedUtc`.
-
-| Next |
-| :-- |
-| [Changelog 2019](changelog2019.md) |
