@@ -26,7 +26,7 @@ When generating or editing **API documentation** in this repository, follow thes
 
 - Prioritize **clarity, correctness, and consistency** over style.
 - Assume the reader is a **developer integrating with Mews** who is busy and often skimming.
-- Optimize for **"time to first successful call"**: readers should quickly understand *what this does, how to call it, and what to watch out for*.
+- Optimize for **"time to first successful call"**: readers should quickly understand _what this does, how to call it, and what to watch out for_.
 
 ### 2. Voice and tone
 
@@ -74,7 +74,7 @@ Example property description:
 ### 5. Terminology and naming
 
 - Use **Mews product names** correctly and consistently (e.g. **Mews Open API**, **Mews Connector API**). See [CONTRIBUTING.md](CONTRIBUTING.md).
-- Align with the [Open API glossary](glossary.md) and existing docs:
+- Align with the [Open API glossary](open-api/glossary.md) and existing docs:
   - Use the same term for the same concept across the documentation.
   - Do not introduce synonyms (e.g. don't mix "enterprise", "property", and "hotel" for the same entity).
 - Use **"API operation"** (or just "operation") in documentation for public consumers. Reserve "endpoint" or "URL" for technical details where needed.

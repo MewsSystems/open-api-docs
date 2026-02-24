@@ -17,7 +17,7 @@ Key entities are referenced with inline code (single backticks), for example `re
 
 - **API Operations, not Endpoints** – Individual API operations are called API Operations or just Operations, as opposed to Functions or Endpoints.
 - **API Operation names** – Normally, API Operations are referred to using a common language name, e.g. "Add reservation", rather than using the URL name, e.g. `reservation/add`. Whichever convention is used, it must be used consistently across the individual API.
-- **Terminology** – The master source for product terminology is the [Mews Glossary for Open API users](glossary.md). Use the same term for the same concept; do not introduce synonyms (e.g. don't mix "enterprise", "property", and "hotel" for the same entity). Reserve "endpoint" or "URL" for technical details where needed.
+- **Terminology** – The master source for product terminology is the [Mews Glossary for Open API users](open-api/glossary.md). Use the same term for the same concept; do not introduce synonyms (e.g. don't mix "enterprise", "property", and "hotel" for the same entity). Reserve "endpoint" or "URL" for technical details where needed.
 
 ### Tone of voice
 
