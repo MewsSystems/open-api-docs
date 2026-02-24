@@ -5,11 +5,19 @@ noIndex: true
 
 # Digital ordering
 
+{% hint style="warning" %}
+
+### Restricted use case
+
+Digital ordering is currently restricted to select partners.
+
+{% endhint %}
+
 This use case is aimed at Digital Ordering Systems and it describes how to use the **Mews POS API** to manage digital orders, including:
 
-* Browsing the product catalog
-* Creating and managing orders
-* Processing payments
+- Browsing the product catalog
+- Creating and managing orders
+- Processing payments
 
 ## Products endpoint polling to get availability updates
 
@@ -19,13 +27,13 @@ Digital ordering systems need to stay synchronized with real-time product availa
 
 Poll the products endpoint using the `updatedAtGteq` or `updatedAtGt` filters to retrieve only products that have been updated since your last check. Use sparse fieldsets to minimize bandwidth by requesting only the `isAvailable` field.
 
-#### Example request:
+#### Example request
 
 ```
 GET https://api.pos.mews-demo.com/v1/products?filter[updatedAtGteq]=2025-03-12&fields[products]=isAvailable
 ```
 
-#### Example response:
+#### Example response
 
 ```json
 {
@@ -56,13 +64,13 @@ Track order state changes in real-time by polling the [Get orders](https://githu
 
 Poll the orders endpoint using the `updatedAtGteq` or `updatedAtGt` filters to retrieve only orders that have been updated since your last check. Use sparse fieldsets to request only the `state` field for efficient bandwidth usage.
 
-#### Example request:
+#### Example request
 
 ```
 GET https://api.pos.mews-demo.com/v1/orders?filter[updatedAtGteq]=2025-05-16&fields[orders]=state
 ```
 
-#### Example response:
+#### Example response
 
 ```json
 {
@@ -91,13 +99,13 @@ GET https://api.pos.mews-demo.com/v1/orders?filter[updatedAtGteq]=2025-05-16&fie
 
 To retrieve the actual covers (guests seated) for a table, you have to poll the [Get orders](https://github.com/MewsSystems/poc-open-api-docs/blob/main/pos-api/operations/orders.md#get-orders) and include the `filter[tableIdEq]` query parameter.
 
-#### Example request:
+#### Example request
 
 ```
 GET https://api.pos.mews-demo.com/v1/orders?filter[tableIdEq]=6d5e100c-5bf9-4781-85ec-cdf183e9486f
 ```
 
-#### Example response:
+#### Example response
 
 ```json
 {
@@ -131,7 +139,7 @@ GET https://api.pos.mews-demo.com/v1/orders?filter[tableIdEq]=6d5e100c-5bf9-4781
 
 ### Room charge
 
-#### Room Number Validation for Payments
+#### Room number validation for payments
 
 When creating a payment, the `room_charge` payment method is the only scenario in which a `roomNumber` value is permitted. This is because room-charge payments must be associated with a specific guest room for proper billing.
 
@@ -141,7 +149,7 @@ If the payment method is anything other than `room_charge`, the `roomNumber` fie
 
 _Room number must be blank_
 
-`roomNumber` is only allowed when the payment method is room-service (e.g., room\_charge). If `roomNumber` is provided with any other payment method, the request fails with HTTP 422 (Unprocessable Content).
+`roomNumber` is only allowed when the payment method is room-service (e.g., `room_charge`). If `roomNumber` is provided with any other payment method, the request fails with HTTP 422 (Unprocessable Content).
 
 ```json
 {
