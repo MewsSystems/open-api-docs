@@ -240,6 +240,7 @@ Returns selected availability and occupancy metrics of a bookable service for a 
 * `AllocatedBlockAvailability` - Number of blocked resources that are in a deducting state (from an availability block / allotment).
 * `UsableResources` - Number of usable resources (i.e. which are not out of order).
 * `ActiveResources` - Number of active resources.
+* `HouseUse` - Number of resources marked as house use (internal use).
 
 ### Response
 

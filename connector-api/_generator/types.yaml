@@ -2604,3 +2604,15 @@ types:
   billtypeenum:
     file: bills.md
     anchor: bill-type
+  paymentmethodrequestadditionresult:
+    file: paymentmethodrequests.md
+    anchor: payment-method-request-addition-result
+  paymentmethodrequestaddparameters:
+    file: paymentmethodrequests.md
+    anchor: payment-method-request-parameters
+  paymentmethodrequestpaymentmethodsenum:
+    file: paymentmethodrequests.md
+    anchor: acceptable-payment-methods
+  paymentmethodrequestemailtypesenum:
+    file: paymentmethodrequests.md
+    anchor: supported-email-types
