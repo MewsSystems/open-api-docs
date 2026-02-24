@@ -41,7 +41,7 @@ Please make the necessary tests in demo and then [contact support](../contact-su
 
 <summary>I am confused by the wording in Mews, is there a cheat sheet for what certain words mean in the system?</summary>
 
-Yes, please see [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+Yes, please see [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
 
 </details>
 

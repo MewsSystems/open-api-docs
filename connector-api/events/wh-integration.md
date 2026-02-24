@@ -15,34 +15,35 @@ This is an older form of Webhook, which only supports events related to changes 
 | Integration | `IntegrationApiKeyCreated` | Event triggered when an integration API key (`AccessToken`) is regenerated |
 
 {% hint style="info" %}
+
 #### Terminology
 
-An _Integration_ refers to the unique connection between an _Enterprise_ or _Property_ (i.e. Mews customer) and an API client (i.e. Mews partner), corresponding to a unique _Access Token_. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+An _Integration_ refers to the unique connection between an _Enterprise_ or _Property_ (i.e. Mews customer) and an API client (i.e. Mews partner), corresponding to a unique _Access Token_. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
 {% endhint %}
 
 ## Request body
 
 ```json
 {
-    "Action": "IntegrationCreated",
-    "Data": {
-        "Enterprise": {
-            "Id": "8865aa96-f62d-4f9b-a912-ab2100f60f42",
-            "Name": "Sample Chain Hotel 1"
-        },
-        "Service": {
-            "Id": "9745ce3a-8dbb-4cc0-a550-55f9ff67b242",
-            "Name": "Accommodation"
-        },
-        "Requestor": null,
-        "AccessToken":"9E5E84E9974D4F169662AB2200F27CB1-00B343A0DDA725CACAC028E38E3EABF",
-        "CreatedUtc": "2019-12-13T14:42:52Z",
-        "IsEnabled": true,
-        "Integration": {
-            "Id": "9e5e84e9-974d-4f16-9662-ab2200f27cb1",
-            "Name": "WebhookTEST"
-        }
+  "Action": "IntegrationCreated",
+  "Data": {
+    "Enterprise": {
+      "Id": "8865aa96-f62d-4f9b-a912-ab2100f60f42",
+      "Name": "Sample Chain Hotel 1"
+    },
+    "Service": {
+      "Id": "9745ce3a-8dbb-4cc0-a550-55f9ff67b242",
+      "Name": "Accommodation"
+    },
+    "Requestor": null,
+    "AccessToken": "9E5E84E9974D4F169662AB2200F27CB1-00B343A0DDA725CACAC028E38E3EABF",
+    "CreatedUtc": "2019-12-13T14:42:52Z",
+    "IsEnabled": true,
+    "Integration": {
+      "Id": "9e5e84e9-974d-4f16-9662-ab2200f27cb1",
+      "Name": "WebhookTEST"
     }
+  }
 }
 ```
 
@@ -53,13 +54,13 @@ An _Integration_ refers to the unique connection between an _Enterprise_ or _Pro
 
 ### Webhook action
 
-* `IntegrationCreated` - Triggered when a new integration is created. `Data` is [Integration created data](wh-integration.md#integration-created-data).
-* `IntegrationEnabled` - Triggered when an integration is enabled. `Data` is [Integration enabled data](wh-integration.md#integration-enabled-data).
-* `IntegrationDisabled` - Triggered when an integration is disabled. `Data` is [Integration disabled data](wh-integration.md#integration-disabled-data).
-* `IntegrationCanceled` - Triggered when an integration is canceled. `Data` is [Integration canceled data](wh-integration.md#integration-canceled-data).
-* `IntegrationReinstated` - Triggered when an integration is reinstated. `Data` is [Integration reinstated data](wh-integration.md#integration-reinstated-data).
-* `IntegrationDeleted` - Triggered when an integration is deleted. `Data` is [Integration deleted data](wh-integration.md#integration-deleted-data).
-* `IntegrationApiKeyCreated` – Triggered when an integration API key (`AccessToken`) is regenerated. `Data` is [Integration API key created data](wh-integration.md#integration-api-key-created-data).
+- `IntegrationCreated` - Triggered when a new integration is created. `Data` is [Integration created data](wh-integration.md#integration-created-data).
+- `IntegrationEnabled` - Triggered when an integration is enabled. `Data` is [Integration enabled data](wh-integration.md#integration-enabled-data).
+- `IntegrationDisabled` - Triggered when an integration is disabled. `Data` is [Integration disabled data](wh-integration.md#integration-disabled-data).
+- `IntegrationCanceled` - Triggered when an integration is canceled. `Data` is [Integration canceled data](wh-integration.md#integration-canceled-data).
+- `IntegrationReinstated` - Triggered when an integration is reinstated. `Data` is [Integration reinstated data](wh-integration.md#integration-reinstated-data).
+- `IntegrationDeleted` - Triggered when an integration is deleted. `Data` is [Integration deleted data](wh-integration.md#integration-deleted-data).
+- `IntegrationApiKeyCreated` – Triggered when an integration API key (`AccessToken`) is regenerated. `Data` is [Integration API key created data](wh-integration.md#integration-api-key-created-data).
 
 ### Webhook data
 
