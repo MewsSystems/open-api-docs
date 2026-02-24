@@ -9,7 +9,7 @@
 * [Mews Marketplace](getting-started/mews-marketplace.md)
 * [Your journey with Mews](getting-started/your-journey/README.md)
   * [Booking Engine integrations](getting-started/your-journey/booking-engine-integrations.md)
-* [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US)
+* [Mews Glossary for Open API users](glossary.md "Glossary")
 
 ## Use cases
 
