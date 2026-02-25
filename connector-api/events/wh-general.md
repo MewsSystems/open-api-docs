@@ -4,9 +4,9 @@ General Webhooks provide a streamlined way to receive event notifications about 
 
 ## Key features
 
-* **Unified event delivery** – Each message encapsulates all events related to the entities you’ve subscribed to that occur simultaneously. For example, subscribing to Service Order events (which include reservations as a subtype) may result in a Webhook containing multiple `ServiceOrderUpdated` events, each corresponding to a different reservation.
-* **Event structure** – Each event within a message specifies the event type and includes the unique identifier of the associated entity, e.g. `CustomerAdded` events include a `CustomerId`. To retrieve detailed information about an entity, use the relevant API Operation along with the entity’s unique identifier. For instance, for a `CustomerAdded` event, call [Get all customers](../operations/customers.md#get-all-customers) with the provided `CustomerId`.
-* **Efficient integration** - Receive notifications for all subscribed enterprises or properties in a single payload, minimizing the need for multiple requests or real-time polling. Leverage `EnterpriseId` and `IntegrationId` to manage and filter event data effectively.
+- **Unified event delivery** – Each message encapsulates all events related to the entities you’ve subscribed to that occur simultaneously. For example, subscribing to Service Order events (which include reservations as a subtype) may result in a Webhook containing multiple `ServiceOrderUpdated` events, each corresponding to a different reservation.
+- **Event structure** – Each event within a message specifies the event type and includes the unique identifier of the associated entity, e.g. `CustomerAdded` events include a `CustomerId`. To retrieve detailed information about an entity, use the relevant API Operation along with the entity’s unique identifier. For instance, for a `CustomerAdded` event, call [Get all customers](../operations/customers.md#get-all-customers) with the provided `CustomerId`.
+- **Efficient integration** - Receive notifications for all subscribed enterprises or properties in a single payload, minimizing the need for multiple requests or real-time polling. Leverage `EnterpriseId` and `IntegrationId` to manage and filter event data effectively.
 
 ## Implementation
 
@@ -29,17 +29,18 @@ To implement General Webhooks:
 | Payment        | `PaymentUpdated`       | Event triggered when a payment is updated        |
 
 {% hint style="info" %}
+
 #### Terminology
 
-A _Service Order_ is an order made against a _Service_. A _Service Order_ made against a _Bookable Service_ is called a _Reservation_. In fact only _Reservations_ are currently supported, however this may be extended in future. A _Resource_ can be a bookable space, an object or even the services of a person. _Resource_ normally implies a space, but again this may be extended in future. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+A _Service Order_ is an order made against a _Service_. A _Service Order_ made against a _Bookable Service_ is called a _Reservation_. In fact only _Reservations_ are currently supported, however this may be extended in future. A _Resource_ can be a bookable space, an object or even the services of a person. _Resource_ normally implies a space, but again this may be extended in future. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
 {% endhint %}
 
 ## Added vs Updated events
 
 In the context of General Webhooks, the terms Added and Updated describe different types of changes to an entity:
 
-* **Updated** – This indicates any change to an entity, including modifications to its fields or properties; it also encompasses the creation of a new entity, as creating an entity is considered a change to its lifecycle state.
-* **Added** – This specifically refers to the initial creation of an entity at the start of its lifecycle; it represents a subset of Updated events, as every Added event is inherently also an Updated event.
+- **Updated** – This indicates any change to an entity, including modifications to its fields or properties; it also encompasses the creation of a new entity, as creating an entity is considered a change to its lifecycle state.
+- **Added** – This specifically refers to the initial creation of an entity at the start of its lifecycle; it represents a subset of Updated events, as every Added event is inherently also an Updated event.
 
 ## Important considerations
 
@@ -57,46 +58,46 @@ To avoid redundant API calls, ensure that you process each entity only once. For
 
 ```json
 {
-    "EnterpriseId": "851df8c8-90f2-4c4a-8e01-a4fc46b25178",
-    "IntegrationId": "c8bee838-7fb1-4f4e-8fac-ac87008b2f90",
-    "Events": [
-        {
-            "Discriminator": "ServiceOrderUpdated",
-            "Value": {
-                "Id": "bfee2c44-1f84-4326-a862-5289598f6e2d"
-            }
-        },
-        {
-            "Discriminator": "ResourceUpdated",
-            "Value": {
-                "Id": "7cccbdc6-73cf-4cd4-8056-6fd00f4d9699"
-            }
-        },
-        {
-            "Discriminator": "MessageAdded",
-            "Value": {
-                "Id": "4bfe4675-98a9-4428-9ea9-ae5300dbaa93"
-            }
-        },
-        {
-            "Discriminator": "CustomerAdded",
-            "Value": {
-                "Id": "c2f1d888-232e-49eb-87ac-5f75363af13b"
-            }
-        },
-        {
-            "Discriminator": "CustomerUpdated",
-            "Value": {
-                "Id": "b3ce0fd7-a715-4bfc-969e-ef7a4822963c"
-            }
-        },
-        {
-            "Discriminator": "PaymentUpdated",
-            "Value": {
-                "Id": "a41e2d45-71bc-49b4-9a05-a3ac5f75735c"
-            }
-        }
-    ]
+  "EnterpriseId": "851df8c8-90f2-4c4a-8e01-a4fc46b25178",
+  "IntegrationId": "c8bee838-7fb1-4f4e-8fac-ac87008b2f90",
+  "Events": [
+    {
+      "Discriminator": "ServiceOrderUpdated",
+      "Value": {
+        "Id": "bfee2c44-1f84-4326-a862-5289598f6e2d"
+      }
+    },
+    {
+      "Discriminator": "ResourceUpdated",
+      "Value": {
+        "Id": "7cccbdc6-73cf-4cd4-8056-6fd00f4d9699"
+      }
+    },
+    {
+      "Discriminator": "MessageAdded",
+      "Value": {
+        "Id": "4bfe4675-98a9-4428-9ea9-ae5300dbaa93"
+      }
+    },
+    {
+      "Discriminator": "CustomerAdded",
+      "Value": {
+        "Id": "c2f1d888-232e-49eb-87ac-5f75363af13b"
+      }
+    },
+    {
+      "Discriminator": "CustomerUpdated",
+      "Value": {
+        "Id": "b3ce0fd7-a715-4bfc-969e-ef7a4822963c"
+      }
+    },
+    {
+      "Discriminator": "PaymentUpdated",
+      "Value": {
+        "Id": "a41e2d45-71bc-49b4-9a05-a3ac5f75735c"
+      }
+    }
+  ]
 }
 ```
 
