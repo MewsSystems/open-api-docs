@@ -135,3 +135,31 @@ Adds a new task to the enterprise, optionally to a specified department.
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `TaskId` | string | required | Unique identifier of added task. |
+
+## Close task
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Closes one or more tasks. Closed tasks are considered completed and not shown in active task lists.
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/tasks/close`
+
+```javascript
+{}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `TaskIds` | array of string | required, max 100 items | Unique identifiers of the Tasks to be closed. |
+
+### Response
+
+```javascript
+{}
+```
