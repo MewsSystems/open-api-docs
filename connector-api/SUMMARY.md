@@ -79,6 +79,7 @@
   * [Outlet items](operations/outletitems.md)
   * [Outlets](operations/outlets.md)
   * [Payments](operations/payments.md)
+  * [Payment method requests](operations/paymentmethodrequests.md)
   * [Payment plans](operations/paymentplans.md)
   * [Payment requests](operations/paymentrequests.md)
   * [Preauthorizations](operations/preauthorizations.md)

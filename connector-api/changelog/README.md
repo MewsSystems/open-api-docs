@@ -7,6 +7,8 @@
 
 - [Get service availability (ver 2024-01-22)](../operations/services.md#get-service-availability-ver-2024-01-22):
   - Extended [Service availability metrics](../operations/services.md#service-availability-metrics) with `HouseUse`.
+- [Add payment method request](../operations/paymentmethodrequests.md#add-payment-method-request):
+  - New operation. Adds a payment method request to a customer or company account, prompting them to provide a payment method such as a payment card or SEPA direct debit.
 
 {% endupdate %}
 {% update date="2026-02-10" %}
