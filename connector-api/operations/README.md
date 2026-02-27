@@ -94,6 +94,7 @@ This section describes all operations supported by the API, organised here by th
 | [Add resource block](resourceblocks.md#add-resource-block) | Adds a new resource block to the specified resource for a defined period of time |
 | [Delete resource blocks](resourceblocks.md#delete-resource-blocks) | Removes specified resource blocks from the resources |
 | [Add task](tasks.md#add-task) | Adds a new task to the enterprise, optionally to a specified department |
+| [Close task](tasks.md#close-tasks) | Closes one or more tasks. |
 | [Get all tasks](tasks.md#get-all-tasks) | Returns all tasks of the enterprise, filtered by identifiers or other filters |
 | [Get all resource categories](resourcecategories.md#get-all-resource-categories) | Returns all resource categories of an enterprise associated with the connector integration |
 | [Get all resource category assignments](resourcecategories.md#get-all-resource-category-assignments) | Returns all resource category assignments of an enterprise associated with the connector integration |
