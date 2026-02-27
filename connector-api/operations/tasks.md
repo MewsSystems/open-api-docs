@@ -148,7 +148,15 @@ Closes one or more tasks. Closed tasks are considered completed and not shown in
 `[PlatformAddress]/api/connector/v1/tasks/close`
 
 ```javascript
-{}
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "TaskIds": [
+    "a7f6f8a1-6a2c-4c4d-8b9f-3c8a6d2f1b7e",
+    "b4c2d9fe-12a1-4c2b-9f6a-5b0c2f1d3e4a"
+  ]
+}
 ```
 
 | Property | Type | Contract | Description |
