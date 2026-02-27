@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-02-27" %}
+
+## New operation: Close tasks
+
+- [Close tasks](../operations/tasks.md#close-task):
+  - New operation to close tasks.
+
+{% endupdate %}
 {% update date="2026-02-25" %}
 
 ## 25th February 2026

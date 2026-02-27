@@ -2616,3 +2616,6 @@ types:
   paymentmethodrequestemailtypesenum:
     file: paymentmethodrequests.md
     anchor: supported-email-types
+  closetaskparameters:
+    file: tasks.md
+    anchor: closetaskparameters
