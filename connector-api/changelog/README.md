@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-02-25" %}
+
+## 25th February 2026
+
+- [Get service availability (ver 2024-01-22)](../operations/services.md#get-service-availability-ver-2024-01-22):
+  - Extended [Service availability metrics](../operations/services.md#service-availability-metrics) with `HouseUse`.
+
+{% endupdate %}
 {% update date="2026-02-10" %}
 
 ## Restrictions removal
