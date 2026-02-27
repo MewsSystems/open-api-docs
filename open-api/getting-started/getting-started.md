@@ -24,4 +24,4 @@ Each API includes a Guidelines section explaining how to use the API, including 
 
 ## Help with terminology
 
-Throughout your Mews journey, you may find terms that are unfamiliar or unclear. That's why we created the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US). The Glossary provides a full description of all the terms used across the individual Mews APIs.
+Throughout your Mews journey, you may find terms that are unfamiliar or unclear. That's why we created the [Mews Glossary for Open API users](../glossary.md). The Glossary provides a full description of all the terms used across the individual Mews APIs.

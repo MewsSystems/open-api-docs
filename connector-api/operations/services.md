@@ -213,7 +213,8 @@ Returns selected availability and occupancy metrics of a bookable service for a 
     "BlockAvailability",
     "AllocatedBlockAvailability",
     "UsableResources",
-    "ActiveResources"
+    "ActiveResources",
+    "HouseUse"
   ]
 }
 ```
@@ -266,7 +267,8 @@ Returns selected availability and occupancy metrics of a bookable service for a 
         "BlockAvailability": [0, 0, 1, 0, 0],
         "AllocatedBlockAvailability": [0, 0, 0, 1, 0],
         "UsableResources": [8, 8, 8, 8, 8],
-        "ActiveResources": [8, 8, 8, 8, 8]
+        "ActiveResources": [8, 8, 8, 8, 8],
+        "HouseUse": [1, 0, 1, 0, 0]
       }
     }
   ]

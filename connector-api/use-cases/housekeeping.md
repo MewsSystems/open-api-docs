@@ -4,47 +4,47 @@ A Housekeeping integration pulls live information about the physical state of ro
 
 ## Initial configuration
 
-The integration must first retrieve all the resources the property has configured in Mews using [Get all resources](../operations/resources.md#get-all-resources). The response contains all relevant information needed to map the physical configuration of the property in the external system. 
+The integration must first retrieve all the resources the property has configured in Mews using [Get all resources](../operations/resources.md#get-all-resources). The response contains all relevant information needed to map the physical configuration of the property in the external system.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to get the list of rooms and spaces | [Get all resources](../operations/resources.md#get-all-resources) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                    |
+| :----------------------------------------------- | :---------------------------------------------------------------- |
+| How to get the list of rooms and spaces          | [Get all resources](../operations/resources.md#get-all-resources) |
 
-> **Terminology:** For an explanation of terms like `room`, `space` and `resource`, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+> **Terminology:** For an explanation of terms like `room`, `space` and `resource`, see the [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
 
-## Managing resources 
+## Managing resources
 
 To ensure all of the information is synchronized between the two systems, a Housekeeping integration can monitor changes to the state of a resource. Rather than polling the API for state changes, you can subscribe to notification events using [Webhooks](../events/README.md) or [WebSockets](../events/websockets.md). Both methods support changes to resources. Don't know which one to use? See [Ways to communicate](../guidelines/communicate.md).
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to listen for changes to reservations | [General Webhooks](../events/wh-general.md) \(`ServiceOrderUpdated` event\) or [WebSockets](../events/websockets.md) \(`Reservation` event\) |
-| How to get reservation and customer details | [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                                                                                               |
+| :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| How to listen for changes to reservations        | [General Webhooks](../events/wh-general.md) \(`ServiceOrderUpdated` event\) or [WebSockets](../events/websockets.md) \(`Reservation` event\) |
+| How to get reservation and customer details      | [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06)                                                    |
 
-Once a staff member has cleaned or inspected a room, the state can be updated in Mews using [Update resources](../operations/resources.md#update-resources), specifying the new state of the resource. 
+Once a staff member has cleaned or inspected a room, the state can be updated in Mews using [Update resources](../operations/resources.md#update-resources), specifying the new state of the resource.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to update the state of a resource | [Update resources](../operations/resources.md#update-resources) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                  |
+| :----------------------------------------------- | :-------------------------------------------------------------- |
+| How to update the state of a resource            | [Update resources](../operations/resources.md#update-resources) |
 
 Resource blocks are blocks of rooms or resources set to 'out of order' or 'internal use'.
 Information about resource blocks can be requested using [Get all resource blocks](../operations/resourceblocks.md#get-all-resource-blocks). Housekeeping integrations can also manage blocks through [Add resource block](../operations/resourceblocks.md#add-resource-block) and [Delete resource blocks](../operations/resourceblocks.md#delete-resource-blocks).
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to get information about resource blocks | [Get all resource blocks](../operations/resourceblocks.md#get-all-resource-blocks) |
-| How to add a resource block | [Add resource block](../operations/resourceblocks.md#add-resource-block) |
-| How to delete resource blocks | [Delete resource blocks](../operations/resourceblocks.md#delete-resource-blocks) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                                     |
+| :----------------------------------------------- | :--------------------------------------------------------------------------------- |
+| How to get information about resource blocks     | [Get all resource blocks](../operations/resourceblocks.md#get-all-resource-blocks) |
+| How to add a resource block                      | [Add resource block](../operations/resourceblocks.md#add-resource-block)           |
+| How to delete resource blocks                    | [Delete resource blocks](../operations/resourceblocks.md#delete-resource-blocks)   |
 
 ## Staff tasks
 
 If you need to create a task directly in Mews, this can be done using [Add task](../operations/tasks.md#add-task). If a task should be assigned to a specific department, the unique identifiers required for this action can be retrieved using [Get all departments](../operations/departments.md#get-all-departments). A list of existing tasks can be retrieved from Mews using [Get all tasks](../operations/tasks.md#get-all-tasks).
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to add a staff task | [Add task](../operations/tasks.md#add-task) |
-| How to get information about departments | [Get all departments](../operations/departments.md#get-all-departments) |
-| How to get the list of staff tasks | [Get all tasks](../operations/tasks.md#get-all-tasks) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                          |
+| :----------------------------------------------- | :---------------------------------------------------------------------- |
+| How to add a staff task                          | [Add task](../operations/tasks.md#add-task)                             |
+| How to get information about departments         | [Get all departments](../operations/departments.md#get-all-departments) |
+| How to get the list of staff tasks               | [Get all tasks](../operations/tasks.md#get-all-tasks)                   |
 
 ## Dirty status
 
@@ -57,5 +57,6 @@ Please ensure you follow our general [Usage guidelines](../guidelines/README.md)
 ## Additional help for working with the demo environment
 
 > **Help Guides**:
-> * [Out-of-service and out-of-order](https://help.mews.com/s/article/what-are-house-use-out-of-service-and-out-of-order-features?language=en_US)
-> * [How to set up a stay service](https://help.mews.com/s/article/set-up-a-bookable-service?language=en_US)
+>
+> - [Out-of-service and out-of-order](https://help.mews.com/s/article/what-are-house-use-out-of-service-and-out-of-order-features?language=en_US)
+> - [How to set up a stay service](https://help.mews.com/s/article/set-up-a-bookable-service?language=en_US)

@@ -12,9 +12,9 @@ An initial data pull is performed once when setting up the connection, because t
 
 The RMS should fetch the reservations in time-limited batches using [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06), with [`TimeFilter`](../operations/reservations.md#reservation-time-filter) set to `Start`. That will give you all reservations with an arrival time colliding with the selected interval. The optimum size of the batches depends on the size of the property and its occupancy, but in general **weekly batches** are recommended and will work well even for big hotels of 1000+ units. For example, in order to get reservations for the past year, the RMS should call [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06) sequentially 52 times, with one call for each week in the past year. That would give the RMS all reservations that have an arrival within the past year.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to get historical reservations data | [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                                            |
+| :----------------------------------------------- | :---------------------------------------------------------------------------------------- |
+| How to get historical reservations data          | [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06) |
 
 You can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from the current date. For example, weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This will reduce the operation count from 52 to 21 \(12 weekly batches + 9 monthly batches\).
 
@@ -22,14 +22,14 @@ You can take advantage of the fact that reservations are usually booked a few we
 
 The RMS can also pull business segments via [Get all business segments](../operations/businesssegments.md#get-all-business-segments) and rates via [Get all rates](../operations/rates.md#get-all-rates). To obtain revenue items associated with reservations, use [Get all order items](../operations/orderitems.md#get-all-order-items). Information about resource blocks, e.g. rooms out of order, can be requested using [Get all resource blocks](../operations/resourceblocks.md#get-all-resource-blocks). If you are managing availability blocks, see the [Events](events.md#managing-group-reservations-with-availability-blocks) use case for information on relevant operations.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to get all configured business segments | [Get all business segments](../operations/businesssegments.md#get-all-business-segments) |
-| How to get all configured rates and rate groups | [Get all rates](../operations/rates.md#get-all-rates) |
-| How to get order items linked to a reservation | [Get all order items](../operations/orderitems.md#get-all-order-items) |
-| How to get information about out-of-order blocks | [Get all resource blocks](../operations/resourceblocks.md#get-all-resource-blocks) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                                           |
+| :----------------------------------------------- | :--------------------------------------------------------------------------------------- |
+| How to get all configured business segments      | [Get all business segments](../operations/businesssegments.md#get-all-business-segments) |
+| How to get all configured rates and rate groups  | [Get all rates](../operations/rates.md#get-all-rates)                                    |
+| How to get order items linked to a reservation   | [Get all order items](../operations/orderitems.md#get-all-order-items)                   |
+| How to get information about out-of-order blocks | [Get all resource blocks](../operations/resourceblocks.md#get-all-resource-blocks)       |
 
-> **Terminology:** For an explanation of terms such as _business segment_, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+> **Terminology:** For an explanation of terms such as _business segment_, see the [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
 
 ### Fetching data in the right order
 
@@ -39,10 +39,10 @@ It is important to get the reservations and revenue first and the additional dat
 
 As an alternative to making conventional API requests using [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06), we provide a bulk [Data export](data-export.md) feature.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to create a bulk data export | [Add export](../operations/exports.md#add-export) |
-| How to check on data export progress | [Get all exports](../operations/exports.md#get-all-exports) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                              |
+| :----------------------------------------------- | :---------------------------------------------------------- |
+| How to create a bulk data export                 | [Add export](../operations/exports.md#add-export)           |
+| How to check on data export progress             | [Get all exports](../operations/exports.md#get-all-exports) |
 
 ## Periodic updates and syncing data
 
@@ -52,31 +52,31 @@ To keep reservations up-to-date and synced across your systems in real time, fir
 
 The suggested frequency for periodic reservation syncing is 30 minutes for business intelligence solutions. Adjust the frequency depending on your use case. For example, a mobile key integration would rely more on real-time accuracy of reservation data to provide correct door access to the guest, whereas a thirty-minute to one-hour (or longer) interval period might suffice for a business intelligence solution aimed at providing daily statistical insight to a property's business operations.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to listen for changes to reservations | [General Webhooks](../events/wh-general.md) \(`ServiceOrderUpdated` event\) or [WebSockets](../websockets/README.md) \(`Reservation` event\) |
-| How to get reservation details | [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                                                                                               |
+| :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| How to listen for changes to reservations        | [General Webhooks](../events/wh-general.md) \(`ServiceOrderUpdated` event\) or [WebSockets](../websockets/README.md) \(`Reservation` event\) |
+| How to get reservation details                   | [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06)                                                    |
 
 ## Rate pricing
 
 To get rate information, there are three relevant operations. [Get all rates](../operations/rates.md#get-all-rates) gives you information about the names and IDs of the rates in the property, and their status, and also restrictions. [Get all rate groups](../operations/rategroups.md#get-all-rate-groups) gives you information rate groups. And [Get rate pricing](../operations/rates.md#get-rate-pricing) gives you the pricing of a specific rate for a specific time period. In order to update rate prices, use [Update rate price](../operations/rates.md#update-rate-price). Individual rate, resource category and time span can be selected. To avoid heavy consumption of API resources, while keeping rate price data up-to-date in real time, use [WebSockets](../websockets/README.md) to listen for `PriceUpdate` events. Then retrieve information about the relevant rates using [Get rate pricing](../operations/rates.md#get-rate-pricing), filtering by the relevant `RateId`.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to get all configured rates | [Get all rates](../operations/rates.md#get-all-rates) |
-| How to get all configured rate groups | [Get all rate groups](../operations/rates.md#get-all-rate-groups) |
-| How to get the price for a specific rate and time period | [Get rate pricing](../operations/rates.md#get-rate-pricing) |
-| How to listen for changes to rate prices | [WebSockets](../websockets/README.md) \(`PriceUpdate` event\) |
+| <div style="width:350px">'How to' use case</div>         | API Operations                                                    |
+| :------------------------------------------------------- | :---------------------------------------------------------------- |
+| How to get all configured rates                          | [Get all rates](../operations/rates.md#get-all-rates)             |
+| How to get all configured rate groups                    | [Get all rate groups](../operations/rates.md#get-all-rate-groups) |
+| How to get the price for a specific rate and time period | [Get rate pricing](../operations/rates.md#get-rate-pricing)       |
+| How to listen for changes to rate prices                 | [WebSockets](../websockets/README.md) \(`PriceUpdate` event\)     |
 
 ## Restrictions
 
 To retrieve information about restrictions, use [Get all restrictions](../operations/restrictions.md#get-all-restrictions). To add and remove restrictions, use [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions) respectively.
 
-| <div style="width:350px">'How to' use case</div> | API Operations |
-| :-- | :-- |
-| How to get service restrictions | [Get all restrictions](../operations/restrictions.md#get-all-restrictions) |
-| How to add service restrictions | [Set restrictions](../operations/restrictions.md#set-restrictions) |
-| How to remove service restrictions | [Clear restrictions](../operations/restrictions.md#clear-restrictions) |
+| <div style="width:350px">'How to' use case</div> | API Operations                                                             |
+| :----------------------------------------------- | :------------------------------------------------------------------------- |
+| How to get service restrictions                  | [Get all restrictions](../operations/restrictions.md#get-all-restrictions) |
+| How to add service restrictions                  | [Set restrictions](../operations/restrictions.md#set-restrictions)         |
+| How to remove service restrictions               | [Clear restrictions](../operations/restrictions.md#clear-restrictions)     |
 
 > **Important:** For more information about restrictions, including the algorithms used when setting and clearing restrictions, and the scope of restrictions affected by API operations, see [Concepts > Restrictions](../concepts/restrictions.md).
 
@@ -95,7 +95,8 @@ For testing Webhooks or WebSockets, set up your system to start listening for ev
 ## Additional help
 
 > **Help Guides**:
-> * [Create a reservation](https://help.mews.com/s/article/create-a-reservation?language=en_US)
-> * [Reservation Report](https://help.mews.com/s/article/reservation-report?language=en_US)
-> * [Scheduling report exports](https://help.mews.com/s/article/schedule-report-exports?language=en_US)
-> * [Understanding restrictions](https://help.mews.com/s/article/Understanding-restrictions-in-Mews-Operations?language=en_US)
+>
+> - [Create a reservation](https://help.mews.com/s/article/create-a-reservation?language=en_US)
+> - [Reservation Report](https://help.mews.com/s/article/reservation-report?language=en_US)
+> - [Scheduling report exports](https://help.mews.com/s/article/schedule-report-exports?language=en_US)
+> - [Understanding restrictions](https://help.mews.com/s/article/Understanding-restrictions-in-Mews-Operations?language=en_US)

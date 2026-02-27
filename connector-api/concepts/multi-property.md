@@ -1,8 +1,10 @@
 # Multi-property
 
-> ### Terminology
-> This feature introduces terms such as *Portfolio*, *Portfolio Access Token* and *Chain*.
-> For a full description of all the terms used, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
+{% hint style="info" %}
+#### Terminology
+
+This feature introduces terms such as _Portfolio_, _Portfolio Access Token_ and _Chain_. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
+{% endhint %}
 
 **Mews Multi-Property** is an optional feature of **Mews Operations**, which enables customers to easily manage a portfolio of multiple properties. A portfolio can be set up which allows all of the properties within the portfolio to be managed from one place, for example to centrally manage rates and vouchers.
 
@@ -30,7 +32,7 @@ Independently of portfolios, properties can be grouped into chains. Chains are u
 
 ### How can I obtain a Portfolio Access Token?
 
-The **Mews Multi-Property** feature is not available for all customers, it depends on system configuration. For more information [contact support](../contact-support/README.md).
+The **Mews Multi-Property** feature is not available for all customers, it depends on system configuration. For more information [contact support](../contact-support/).
 
 ### How can I tell if an Access Token is single enterprise or multi-enterprise in scope?
 

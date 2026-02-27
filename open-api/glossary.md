@@ -1,12 +1,8 @@
-# Glossary
-
-This file mirrors the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
-
----
+# Glossary for Mews Open API users
 
 This glossary lists the terms used within the **Mews Open API** and explains their meaning. The terms are presented in alphabetical order.
 
-# A <a href="#A_section" id="A_section"></a>
+<a href="#A_section" id="A_section"></a>
 
 ## Access Token <a href="#AccessToken" id="AccessToken"></a>
 
@@ -55,7 +51,7 @@ Availability Block is synonymous with Group Block, it implies a block of [Invent
 
 Availability Blocks are different than [Resource Blocks][Resource Block], which are groups of [Spaces][Space] taken out of Inventory because they are out-of-service or being used for other purposes.
 
-# B <a href="#B_section" id="B_section"></a>
+<a href="#B_section" id="B_section"></a>
 
 ## Bill <a href="#Bill" id="Bill"></a>
 
@@ -89,7 +85,7 @@ The **Mews Booking Engine API** is one of the main APIs within the [Mews Open AP
 
 Business Segments, Channel Manager Segments, or just Segments, are used to classify [Reservations][Reservation] by attributes relevant to a [Property]'s operations, such as traveler type or whether the [Reservation] is group or individual. They allow the [Property] to gather information from reports to identify trends and to target customers more effectively. See [Create, modify or delete a segment](https://help.mews.com/s/article/create-modify-or-delete-a-segment?language=en_US&Language=en_US).
 
-# C <a href="#C_section" id="C_section"></a>
+<a href="#C_section" id="C_section"></a>
 
 ## Cashier <a href="#Cashier" id="Cashier"></a>
 
@@ -195,7 +191,7 @@ A Counter is a literal numerical count of something useful such as the number of
 
 The normal meaning of Customer within the [Mews Open API][Open API] is the end-customer or consumer of the services that the hospitality [Enterprise] provides, typically a hotel [Guest]. If you substitute the word 'guest', you won't go far wrong. The details about a Customer are stored in their [Profile]. Note that Customer Profiles can exist independently of a [Reservation].
 
-# D <a href="#D_section" id="D_section"></a>
+<a href="#D_section" id="D_section"></a>
 
 ## Department <a href="#Department" id="Department"></a>
 
@@ -213,7 +209,7 @@ The term Device refers to a physical hardware device or system that Mews connect
 
 Distributor is the old name for the Mews Booking Engine. As such, there may be references to Distributor in the Booking Engine Guide, especially in URLs, function names and the like. For Distributor, read Mews Booking Engine.
 
-# E <a href="#E_section" id="E_section"></a>
+<a href="#E_section" id="E_section"></a>
 
 ## Editable History Interval <a href="#EditableHistoryInterval" id="EditableHistoryInterval"></a>
 
@@ -247,9 +243,9 @@ The term Enterprise implies a single Mews customer, either an individual [Proper
 
 Additional [Products][Product] bundled with a [Reservation] may be described as Extras.
 
-# F <a href="#F_section" id="F_section"></a>
+<a href="#F_section" id="F_section"></a>
 
-# G <a href="#G_section" id="G_section"></a>
+<a href="#G_section" id="G_section"></a>
 
 ## Group <a href="#Group" id="Group"></a>
 
@@ -263,13 +259,13 @@ See [Availability Blocks][Availability Block].
 
 See [Customer]. The term Guest is used in some parts of the [Mews Open API][Open API], but it should be read as the more general term [Customer].
 
-# H <a href="#H_section" id="H_section"></a>
+<a href="#H_section" id="H_section"></a>
 
 ## Hotel <a href="#Hotel" id="Hotel"></a>
 
 See [Property]. The term Hotel is used in some parts of the [Mews Open API][Open API], but it should be read as the more general term [Property].
 
-# I <a href="#I_section" id="I_section"></a>
+<a href="#I_section" id="I_section"></a>
 
 ## Integration <a href="#Integration" id="Integration"></a>
 
@@ -283,17 +279,17 @@ The number of [Spaces][Space] (e.g. guest rooms) available for sale, distributed
 
 Item could be a [Product Item], [Order] Item, [Payment] Item or [Accounting Item].
 
-# J <a href="#J_section" id="J_section"></a>
+<a href="#J_section" id="J_section"></a>
 
-# K <a href="#K_section" id="K_section"></a>
+<a href="#K_section" id="K_section"></a>
 
-# L <a href="#L_section" id="L_section"></a>
+<a href="#L_section" id="L_section"></a>
 
 ## Length of Stay <a href="#LengthOfStay" id="LengthOfStay"></a>
 
 The period of a [Customer]'s stay-over, expressed usually in number of nights.
 
-# M <a href="#M_section" id="M_section"></a>
+<a href="#M_section" id="M_section"></a>
 
 ## Mapping Table <a href="#MappingTable" id="MappingTable"></a>
 
@@ -315,9 +311,9 @@ Message threads are conversations initiated by a customer (i.e. a guest), within
 
 **Mews Multi-Property** is an optional module of **Mews Operations** that supports above-property level functionality, such as central management of users, rates and vouchers, across a [Portfolio] of multiple [Properties][Property]. This functionality is reflected in the [Mews Connector API][Connector API] through the use of [Portfolio Access Tokens][Portfolio Access Token].
 
-# N <a href="#N_section" id="N_section"></a>
+<a href="#N_section" id="N_section"></a>
 
-# O <a href="#O_section" id="O_section"></a>
+<a href="#O_section" id="O_section"></a>
 
 ## Open API <a href="#OpenAPI-MewsOpenAPI" id="OpenAPI-MewsOpenAPI"></a>
 
@@ -343,7 +339,7 @@ You can read more about [how properties use Outlets](https://help.mews.com/s/ar
 
 The Owner of a [Reservation] is the primary [Customer] linked to the Reservation, i.e. the primary [Guest]. Additional Guests are known as [Companions].
 
-# P <a href="#P_section" id="P_section"></a>
+<a href="#P_section" id="P_section"></a>
 
 ## Package <a href="#Package" id="Package"></a>
 
@@ -411,9 +407,9 @@ In its general sense, a Profile is a 'record of details' about some entity, such
 
 Property is a general hospitality industry term to refer to a single hotel, hostel, resort, apartment building, cruise ship or other similar entity providing lodgings and hospitality. Thus a Property is an individual hospitality business that is a user and customer of Mews.
 
-# Q <a href="#Q_section" id="Q_section"></a>
+<a href="#Q_section" id="Q_section"></a>
 
-# R <a href="#R_section" id="R_section"></a>
+<a href="#R_section" id="R_section"></a>
 
 ## Rate <a href="#Rate" id="Rate"></a>
 
@@ -469,7 +465,7 @@ The term Room implies a hotel room or a function room, however the term is rare
 
 The meaning of Rule depends on context, but may be a [Product Rule] or a [Charge Rule].
 
-# S <a href="#S_section" id="S_section"></a>
+<a href="#S_section" id="S_section"></a>
 
 ## Segment <a href="#Segment" id="Segment"></a>
 
@@ -557,7 +553,7 @@ Thus Stay Products are bookable [Stay] [Products][Product] linked to a [Reservat
 
 Swagger is the old name for the [OpenAPI] specification.
 
-# T <a href="#T_section" id="T_section"></a>
+<a href="#T_section" id="T_section"></a>
 
 ## Task <a href="#Task" id="Task"></a>
 
@@ -569,25 +565,25 @@ A Travel Agency is a special type of [Company], representing a booking agent. Li
 
 Since Travel Agencies are a special type of [Company], within the API they may be considered as separate entities.
 
-# U <a href="#U_section" id="U_section"></a>
+<a href="#U_section" id="U_section"></a>
 
 ## User <a href="#User" id="User"></a>
 
 A User is an [Enterprise] [Employee] who has an account on the Mews system.
 
-# V <a href="#V_section" id="V_section"></a>
+<a href="#V_section" id="V_section"></a>
 
 ## Voucher <a href="#Voucher" id="Voucher"></a>
 
 A Voucher is a coupon or token that gives [Customers][Customer] or [Companies][Company] access to special [Rates][Rate]. A Voucher is linked to a private [Rate], i.e. a [Rate] that is not distributed publicly. The Voucher may be in physical form, but may simply be a unique identifying code.
 
-# W <a href="#W_section" id="W_section"></a>
+<a href="#W_section" id="W_section"></a>
 
-# X <a href="#X_section" id="X_section"></a>
+<a href="#X_section" id="X_section"></a>
 
-# Y <a href="#Y_section" id="Y_section"></a>
+<a href="#Y_section" id="Y_section"></a>
 
-# Z <a href="#Z_section" id="Z_section"></a>
+<a href="#Z_section" id="Z_section"></a>
 
 [Access Token]: #AccessToken
 [Accommodation]: #Accommodation
