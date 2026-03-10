@@ -1,0 +1,3 @@
+@each(entry in enum)
+* `{{ entry.value }}`{{{ entry.description ? ` - ${entry.description}` : '' }}}
+@end
