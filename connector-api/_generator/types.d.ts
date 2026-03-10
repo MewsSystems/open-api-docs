@@ -8,6 +8,7 @@ export type TemplateSchema = {
   deprecatedMessage: string;
   properties?: TemplateProperty[];
   oneOfRoot?: boolean;
+  extensibleEnum?: boolean;
 };
 
 export type TemplateOperation = {
