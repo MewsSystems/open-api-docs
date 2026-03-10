@@ -242,6 +242,10 @@ Returns the enterprise configuration. For single-enterprise Access Tokens, this 
 
 #### Accounting configuration option
 
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
+
 * `OptionalCreditCardPaymentDetails` - Optional credit card payment details
 * `ReceivableTrackingEnabled` - Receivable tracking enabled
 * `SeparateDepositsOnBill` - Separate deposits on bill
@@ -251,6 +255,7 @@ Returns the enterprise configuration. For single-enterprise Access Tokens, this 
 * `DisplayEmployeeNameOnBill` - Display employee name on bill
 * `TaxDeclarationOnDeposit` - Tax declaration on deposit
 * `SplitVatByClassificationOnBill` - Split VAT by classification on bill
+* …
 
 #### Payment card storage
 
