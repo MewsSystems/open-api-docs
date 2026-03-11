@@ -131,7 +131,7 @@ This section describes all operations supported by the API, organised here by th
 | [Add tokenized credit card](creditcards.md#add-tokenized-credit-card) | Adds a new tokenized credit card to the specified customer |
 | [Disable gateway credit card](creditcards.md#disable-gateway-credit-card) | **Restricted!** Disables a credit card from being used for payments |
 | [Get all preauthorizations<br/>by customers](preauthorizations.md#get-all-preauthorizations-by-customers) | Returns all preauthorizations of specified customers |
-| ~~[Add credit card payment](payments.md#add-credit-card-payment)~~ | **Deprecated!** Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit cards payments. |
+| ~~[Add credit card payment](payments.md#add-credit-card-payment)~~ | **Deprecated!** Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit card payments. |
 | [Add external payment](payments.md#add-external-payment) | Adds a new external payment to a bill of the specified customer |
 | [Add alternative payment](payments.md#add-alternative-payment) | Adds a new alternative payment to a specified customer |
 | [Get all payments](payments.md#get-all-payments) | Returns all payments, filtered by various parameters |

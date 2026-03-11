@@ -470,7 +470,7 @@ Adds a new external payment to a bill of the specified customer. An external pay
 ## ~~Add credit card payment~~
 
 > ### Deprecated!
-> This operation is [deprecated](../deprecations/README.md). Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit cards payments.
+> This operation is [deprecated](../deprecations/README.md). Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit card payments.
 
 ### Request
 
@@ -637,7 +637,7 @@ Adds a new alternative payment to a specified customer.
 ## Refund payment
 
 Refunds a specified payment on a specified account. A reason must be provided. Optionally, specify an amount for a partial refund. This operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
-                                                   
+
 * **Payment types**: Only `CreditCardPayment` and `AlternativePayment` can be refunded. Other payment types will fail.
 * **Refund information**: The refund is a payment itself. To get more information, use [Get all payments](payments.md#get-all-payments) with the `RefundId` as the `PaymentId`.
 * **Potential failures**: This operation initiates the refund process, but refunds can fail if the payment is in a `Pending` state and fails processing. To check the status of a pending payment, including refunds, use [Get all payments](payments.md#get-all-payments).

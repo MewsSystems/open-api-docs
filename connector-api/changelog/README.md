@@ -7,7 +7,7 @@
 ## Deprecation of Add credit card payment operation
 
 - [Add credit card payment](../operations/payments.md#add-credit-card-payment):
-  - **Deprecated** operation. Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit cards payments.
+  - **Deprecated** operation. Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit card payments.
   - This operation will be discontinued on **10 January 2028**.
   - A detailed migration guide along with new front-end SDK for collecting payment data will be published in Q2 2026.
 
