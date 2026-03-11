@@ -22,6 +22,7 @@ The table columns have the following meanings:
 
 | Feature | Comments | Deprecated | Discontinued |
 | :-- | :-- | :-- | :-- |
+| [Add credit card payment](../operations/payments.md#add-credit-card-payment) | Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit cards payments. | 11 Mar 2026 | 10 Jan 2028 |
 | [Get all routing rules](../operations/routingrules.md#get-all-routing-rules) | Replaced by [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations) | 11 Nov 2025 | 10 Jan 2027 |
 | [Add routing rules](../operations/routingrules.md#add-routing-rules) | Replaced by [Add billing automations](../operations/billingautomations.md#add-billing-automations) | 11 Nov 2025 | 10 Jan 2027 |
 | [Update routing rules](../operations/routingrules.md#update-routing-rules) | Replaced by [Update billing automations](../operations/billingautomations.md#update-billing-automations) and [Update billing automation assignments](../operations/billingautomations.md#update-billing-automation-assignments) | 11 Nov 2025 | 10 Jan 2027 |

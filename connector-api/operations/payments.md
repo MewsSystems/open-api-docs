@@ -467,10 +467,10 @@ Adds a new external payment to a bill of the specified customer. An external pay
 | :-- | :-- | :-- | :-- |
 | `ExternalPaymentId` | string | required | Unique identifier of the [Payment item](accountingitems.md#payment-item). |
 
-## Add credit card payment
+## ~~Add credit card payment~~
 
-Adds a new credit card payment to a bill of the specified customer. Note that the payment is added to open bill of the customer, either to the specified one or the default one. This operation only serves to record a credit card payment that has already been taken outside of Mews or Mews' payment terminal, and does not actually charge the customer's credit card. 
-The bill can then be closed manually by a Mews user, or automatically via API with the [Close bill](bills.md#close-bill) operation.
+> ### Deprecated!
+> This operation is [deprecated](../deprecations/README.md). Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit cards payments.
 
 ### Request
 
