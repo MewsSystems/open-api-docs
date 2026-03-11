@@ -89,15 +89,6 @@ Note that while customer profiles are shared across all properties in a chain, c
 
 Now that you have the `CreditCardId`, you can use the [Charge credit card] endpoint to charge the customer.
 
-{% hint style="warning" %}
-
-### Charge credit card
-
-The [Charge credit card] operation actually charges the customer's credit card, whereas the [Add credit card payment] operation does not.
-
-The latter simply records a credit card payment in Mews and does not trigger any additional action beyond Mews. Use it when the customer's credit card has already been charged from your solution.
-{% endhint %}
-
 [Add tokenized credit card]: ../operations/creditcards.md#add-tokenized-credit-card
 [Charge credit card]: ../operations/creditcards.md#charge-credit-card
 [Get configuration]: ../operations/configuration.md#get-configuration

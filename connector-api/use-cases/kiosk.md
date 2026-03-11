@@ -111,7 +111,8 @@ To record the payment, use the appropriate external payment operation.
 
 - Use [Add external payment] for a general payment of any type - specify the amount, the type of payment (e.g. cash) and the customer identifier.
 - Use [Add alternative payment] for supported alternative payment types, such as "Ideal" - specify the amount, the method of payment, the customer identifier, and any special requirements for that payment type.
-  {% endhint %}
+
+{% endhint %}
 
 ### Mews terminal payments
 
