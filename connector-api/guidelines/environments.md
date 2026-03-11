@@ -74,7 +74,7 @@ The credentials below will connect with a demo enterprise configured for Net pri
 
 #### New Partners
 
-Partners who have not engaged into theCertification process can request access to **Mews Operations** for a dedicated Demo Property by following these steps:
+Partners who have not enrolled into the Certification Process can request access to **Mews Operations** for a dedicated Demo Property by following these steps:
 
 1. Fill in the [Become a Mews Partner Form](https://www.mews.com/en/partners/new-partnerships).
 2. An automated email will be sent to your email address to reset your password to log in into the Demo Property.
@@ -84,14 +84,15 @@ Partners who have not engaged into theCertification process can request access t
 
 #### Existing Partners
 
-Partners who are already engaged in the Certification Process or Certified and Live should follow the steps below:
+Partners who are already enrolled in the Certification Process or Certified and Live should follow the steps below:
+
 1. Do not use generic Credentials to connect to the Demo Properties
 2. [Contact the partner succes team](../contact-support)  to request user access to the Demo properties.
 3. Provide the following details for each user to be added:
     - Demo property name
     - User's first and last name
     - User's email address
-4. The TPSM team creates the user in the Demo properties.
+4. The partner success team creates the user in the Demo properties.
 5. An automated email will be sent to your email address to reset your password to log in into the Demo Property.
 6. Reset the password.
 7. Now, you can successfully log in into your demo property through the [demo environment of Mews Operations](https://app.mews-demo.com).
