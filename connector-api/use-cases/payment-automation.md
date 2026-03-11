@@ -102,4 +102,3 @@ The latter simply records a credit card payment in Mews and does not trigger any
 [Charge credit card]: ../operations/creditcards.md#charge-credit-card
 [Get configuration]: ../operations/configuration.md#get-configuration
 [Get all credit cards]: ../operations/creditcards.md#get-all-credit-cards
-[Add credit card payment]: ../operations/payments.md#add-credit-card-payment
