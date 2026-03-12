@@ -18,7 +18,5 @@ This operation accepts one of the following mutually exclusive parameter sets.
 @end
 @end
 @if(schema.enum)
-@each(entry in schema.enum)
-* `{{ entry.value }}`{{{ entry.description ? ` - ${entry.description}` : '' }}}
-@end
+@!component('enumList', { schema })~
 @end

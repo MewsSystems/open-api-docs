@@ -123,6 +123,10 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 
 #### Account note classification
 
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
+
 * `General` - For Company and Customer
 * `FoodAndBeverage` - Only Customer
 * `FrontOffice` - Only Customer
@@ -135,6 +139,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 * `Accounting` - Only Customer
 * `Complaints` - Only Customer
 * `Other` - Only Customer
+* …
 
 ## Add account notes
 

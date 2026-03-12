@@ -42,7 +42,7 @@ function createTemplateProperty(name, property) {
  * Handles enums for display. Currently we have a Swashbuckle extension which passess enum descriptions to extension properties (which is good),
  * but also appends list of enums to schema description (which is bad). So we're picking up just the first line of description.
  * @param {SchemaObject} schema
- * @returns {{ description: string, enum: TemplateEnumEntry[] }}
+ * @returns {{ description: string, enum: TemplateEnumEntry[], extensibleEnum: boolean }}
  */
 function createEnumTemplateSchema(schema) {
   const entries = [];
@@ -68,9 +68,12 @@ function createEnumTemplateSchema(schema) {
     description = '';
   }
 
+  const extensibleEnum = schema['x-extensible'] ?? false;
+
   return {
     enum: entries,
     description, // blank out description since it'd be the same as in property tables
+    extensibleEnum,
   };
 }
 

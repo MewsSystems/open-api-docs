@@ -1,0 +1,12 @@
+@if(schema.extensibleEnum)
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
+@end
+
+@each(entry in schema.enum)
+* `{{ entry.value }}`{{{ entry.description ? ` - ${entry.description}` : '' }}}
+@end
+@if(schema.extensibleEnum)
+* …
+@end

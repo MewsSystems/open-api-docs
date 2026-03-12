@@ -585,10 +585,15 @@ Adds a new alternative payment to a specified customer.
 
 #### Alternative payment method data discriminator
 
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
+
 * `Ideal` - iDEAL data.
 * `ApplePay` - No additional data.
 * `GooglePay` - No additional data.
 * `SepaDirectDebit` - SEPA Direct Debit data.
+* …
 
 #### SEPA Direct Debit data
 
