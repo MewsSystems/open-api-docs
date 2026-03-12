@@ -32,6 +32,14 @@ To check if a user's credit card is already attached to their customer profile, 
 
 ## Adding a tokenized credit card
 
+{% hint style="info" %}
+
+### Pilot program for Mews Payments Checkout
+
+If your integration involves the collection of credit card details, you may be eligible to participate in the pilot program for the **Mews Payments Checkout** through an embedded form or external payment request page. Please [contact partner support](../contact-support/) for more information on how to join the pilot program.
+
+{% endhint %}
+
 {% stepper %}
 {% step %}
 
