@@ -65,7 +65,7 @@ Note you do _not_ need to follow Step 2 [Obtain the tokens](https://docs.pci-pro
 
 {% hint style="info" %}
 
-#### Expiration date
+### Expiration date
 
 Though not required by PCI Proxy, credit card expiration date is listed as a mandatory parameter on the [Add tokenized credit card] operation so that it can be displayed within the customer profile in Mews. This can also be used as an additional validation method to identify whether there is an expired card on file.
 
