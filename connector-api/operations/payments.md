@@ -467,10 +467,10 @@ Adds a new external payment to a bill of the specified customer. An external pay
 | :-- | :-- | :-- | :-- |
 | `ExternalPaymentId` | string | required | Unique identifier of the [Payment item](accountingitems.md#payment-item). |
 
-## Add credit card payment
+## ~~Add credit card payment~~
 
-Adds a new credit card payment to a bill of the specified customer. Note that the payment is added to open bill of the customer, either to the specified one or the default one. This operation only serves to record a credit card payment that has already been taken outside of Mews or Mews' payment terminal, and does not actually charge the customer's credit card. 
-The bill can then be closed manually by a Mews user, or automatically via API with the [Close bill](bills.md#close-bill) operation.
+> ### Deprecated!
+> This operation is [deprecated](../deprecations/README.md). Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit card payments.
 
 ### Request
 
@@ -642,7 +642,7 @@ Adds a new alternative payment to a specified customer.
 ## Refund payment
 
 Refunds a specified payment on a specified account. A reason must be provided. Optionally, specify an amount for a partial refund. This operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
-                                                   
+
 * **Payment types**: Only `CreditCardPayment` and `AlternativePayment` can be refunded. Other payment types will fail.
 * **Refund information**: The refund is a payment itself. To get more information, use [Get all payments](payments.md#get-all-payments) with the `RefundId` as the `PaymentId`.
 * **Potential failures**: This operation initiates the refund process, but refunds can fail if the payment is in a `Pending` state and fails processing. To check the status of a pending payment, including refunds, use [Get all payments](payments.md#get-all-payments).

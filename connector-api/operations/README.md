@@ -50,7 +50,7 @@ This section describes all operations supported by the API, organised here by th
 | [~~Get customers open items~~](customers.md#get-customers-open-items) | **Deprecated!** Use [Get all payments](payments.md#get-all-payments) and [Get all order items](orderitems.md#get-all-order-items) instead. |
 | [Add customer](customers.md#add-customer) | Adds a new customer to the system and returns details of the added customer |
 | [Update customer](customers.md#update-customer) | Updates personal information of a customer |
-| [~~Merge customers~~](customers.md#merge-customers) | **Deprecated!** Please use [Merge accounts](accounts.md#merge-accounts) instead. |
+| [~~Merge customers~~](customers.md#merge-customers) | **Deprecated!** Use [Merge accounts](accounts.md#merge-accounts) instead. |
 | [Add customer file](customers.md#add-customer-file) | Attaches the specified file to the customer profile |
 | [Get all identity documents](../operations/identitydocuments.md#get-all-identity-documents) | Returns all identity documents for the specified customers |
 | [Adds identity documents](../operations/identitydocuments.md#add-identity-documents) | Adds new identity documents |
@@ -131,7 +131,7 @@ This section describes all operations supported by the API, organised here by th
 | [Add tokenized credit card](creditcards.md#add-tokenized-credit-card) | Adds a new tokenized credit card to the specified customer |
 | [Disable gateway credit card](creditcards.md#disable-gateway-credit-card) | **Restricted!** Disables a credit card from being used for payments |
 | [Get all preauthorizations<br/>by customers](preauthorizations.md#get-all-preauthorizations-by-customers) | Returns all preauthorizations of specified customers |
-| [Add credit card payment](payments.md#add-credit-card-payment) | Adds a new credit card payment to a bill of the specified customer |
+| ~~[Add credit card payment](payments.md#add-credit-card-payment)~~ | **Deprecated!** Follow the [Payment automation use case](../use-cases/payment-automation.md) for processing credit card payments. |
 | [Add external payment](payments.md#add-external-payment) | Adds a new external payment to a bill of the specified customer |
 | [Add alternative payment](payments.md#add-alternative-payment) | Adds a new alternative payment to a specified customer |
 | [Get all payments](payments.md#get-all-payments) | Returns all payments, filtered by various parameters |
