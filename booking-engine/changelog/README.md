@@ -1,7 +1,7 @@
 # Changelog
 
 ## 23rd March 2026
-* Changed `OccupancyData` property from required to optional in [Get availability](../booking-engine-api/operations/hotels.md#get-availability) request object. Documentation-only, no change to the API.
+* API: Changed `OccupancyData` property from required to optional in [Get availability](../booking-engine-api/operations/hotels.md#get-availability) request object. Documentation-only, no change to the API.
 
 | Changelog by year |
 | :-- |
