@@ -1,6 +1,26 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-03-25" %}
+
+## March 2026 updates
+
+- [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations):
+- [Add billing automations](../operations/billingautomations.md#add-billing-automations):
+- [Update billing automations](../operations/billingautomations.md#update-billing-automations):
+- [Update billing automations assignments](../operations/billingautomations.md#update-billing-automations-assignments):
+  - Extended [Billing automation](../operations/billingautomations.md#billing-automation) response object with `UpdatedUtc`, `CreatorProfileId`, and `UpdaterProfileId` properties.
+- [Get all customers](../operations/customers.md#get-all-customers):
+- [Search customers](../operations/customers.md#search-customers):
+- [Add customer](../operations/customers.md#add-customer):
+- [Update customer](../operations/customers.md#update-customer):
+  - Extended [Customer](../operations/customers.md#customer) response object with `BirthCountryCode`, `BirthCountrySubdivisionCode`, and `ItalianLotteryCode` properties.
+  - Extended request objects with `BirthCountryCode`, `BirthCountrySubdivisionCode`, and `ItalianLotteryCode` parameters.
+- [Update accounts](../operations/accounts.md#update-accounts):
+  - Extended [Company update parameters](../operations/accounts.md#company-update-parameters) request object with `ItLotteryCode` parameter.
+  - Extended [Company](../operations/accounts.md#company) response object with `ItLotteryCode` property.
+
+{% endupdate %}
 {% update date="2026-02-27" %}
 
 ## New operation: Close tasks
