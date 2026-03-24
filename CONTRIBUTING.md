@@ -65,6 +65,7 @@ Use [GitBook Updates blocks](https://gitbook.com/docs/creating-content/blocks/up
 
 - Cross-cutting changes that are not tied to a single API Operation can be added as top-level bullets.
 - Keep wording factual and consistent with existing changelog entries.
+- The date should reflect the date of the change, not the date of the changelog entry. It should be today's date or future date, not a past date.
 
 #### Examples
 
