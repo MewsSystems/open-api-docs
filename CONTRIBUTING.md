@@ -35,3 +35,69 @@ When appropriate, use [GitBook-specific blocks](https://gitbook.com/docs/creatin
 - [Hints](https://gitbook.com/docs/creating-content/blocks/hint) over blockquotes.
 - [Steppers](https://gitbook.com/docs/creating-content/blocks/stepper) for step-by-step instructions.
 - [Updates](https://gitbook.com/docs/creating-content/blocks/updates) for changelog entries.
+
+### Changelog entries
+
+Use [GitBook Updates blocks](https://gitbook.com/docs/creating-content/blocks/updates) as the standard format for changelog entries.
+
+#### Updates block structure
+
+- Wrap changelog entries in one `{% updates format="full" %}` block.
+- Add one `{% update date="YYYY-MM-DD" %}` block per date.
+- Inside each update block, use a short level-2 heading (for example, `## 25th February 2026` or `## Restrictions removal`).
+
+#### Operation entry format
+
+- List affected API Operations as bullet points with links, then add nested bullets for details.
+- If one change applies to multiple operations, list all operations first, then add one shared detail bullet.
+- Use operation names in links (for example, `[Get all customers](../operations/customers.md#get-all-customers):`).
+- Use backticks for properties and parameters (for example, `UpdatedUtc`, `EnterpriseIds`).
+
+#### Change labels and wording
+
+- Use `**Breaking:**` for contract changes such as requiredness, type, or limits.
+- Use `**Deprecated:**` for deprecated operations, extents, properties, or parameters. Add replacement guidance when available.
+- Use `**Removed**` for removed operations or removed support.
+- For documentation-only changes, explicitly state `Documentation-only, no change to API.`
+- Mark restricted operations as `(restricted)` or `(restricted operation)` in operation bullets or detail bullets.
+
+#### Additional notes
+
+- Cross-cutting changes that are not tied to a single API Operation can be added as top-level bullets.
+- Keep wording factual and consistent with existing changelog entries.
+
+#### Examples
+
+Single operation update:
+
+```markdown
+- [Get all customers](../operations/customers.md#get-all-customers):
+  - Extended [Customer](../operations/customers.md#customer) response object with `CreatorProfileId` and `UpdaterProfileId` properties.
+```
+
+One change affecting multiple operations:
+
+```markdown
+- [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations):
+- [Add billing automations](../operations/billingautomations.md#add-billing-automations):
+- [Update billing automations](../operations/billingautomations.md#update-billing-automations):
+  - Extended [Billing automation](../operations/billingautomations.md#billing-automation) response object with `UpdatedUtc` property.
+```
+
+Breaking, deprecated, and removed wording:
+
+```markdown
+- [Get all source assignments (ver 2024-09-20)](../operations/sourceassignments.md#get-all-source-assignments-ver-2024-09-20) (restricted operation):
+  - **Breaking:** `EnterpriseIds` property changed from optional to required.
+- [Get all routing rules](../operations/routingrules.md#get-all-routing-rules):
+  - **Deprecated** operation. Use [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations) instead.
+- Add restrictions:
+  - **Removed** operations. See [Migration guide](../deprecations/migration-guide-restrictions-set-clear.md) for details.
+```
+
+Documentation-only change:
+
+```markdown
+- [Get all rules](../operations/rules.md#get-all-rules):
+  - Fixed description per OpenAPI Specification. Documentation-only, no change to API.
+```
