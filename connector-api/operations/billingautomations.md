@@ -63,6 +63,9 @@ Returns all billing automations. Note this operation uses [Pagination](../guidel
       "TriggerType": "Continuous",
       "BillAggregationType": "AggregateAll",
       "CreatedUtc": "2017-01-31T10:58:06Z",
+      "UpdatedUtc": "2023-10-28T14:23:00Z",
+      "CreatorProfileId": "3cd637ef-4728-47f9-8fb1-afb900c9cdcf",
+      "UpdaterProfileId": "122fc063-ec6e-4198-b8db-6b168a59ffae",
       "ProcessingStartOffset": null,
       "OrderItemConsumptionPeriod": null,
       "Assignments": [
@@ -123,6 +126,9 @@ Returns all billing automations. Note this operation uses [Pagination](../guidel
 | `TriggerType` | [Billing automation trigger type](billingautomations.md#billing-automation-trigger-type) | required | Trigger type of billing automation. |
 | `BillAggregationType` | [Billing automation bill aggregation type](billingautomations.md#billing-automation-bill-aggregation-type) | required | Type of bill aggregation. |
 | `CreatedUtc` | string | required | Creation date and time of the billing automation in UTC timezone in ISO 8601 format. |
+| `UpdatedUtc` | string | required | Last update date and time of the billing automation in UTC timezone in ISO 8601 format. |
+| `CreatorProfileId` | string | required | Unique identifier of the user who created the billing automation. |
+| `UpdaterProfileId` | string | required | Unique identifier of the user who last updated the billing automation. |
 | `ProcessingStartOffset` | string | optional | Processing start offset. Applicable only if the billing automation `TriggerType` is set to `Reccuring`. |
 | `OrderItemConsumptionPeriod` | [Billing automation order item consumption period type](billingautomations.md#billing-automation-order-item-consumption-period-type) | optional | Specifies the type of order item consumption period for the billing automation. This value is applicable only when the `TriggerType` is set to `Reccuring`. |
 | `Assignments` | array of [Billing automation assignment](billingautomations.md#billing-automation-assignment) | optional, max 20 items | List of billing automation assignments. |
@@ -320,6 +326,9 @@ Adds billing automations.
       "TriggerType": "Continuous",
       "BillAggregationType": "AggregateAll",
       "CreatedUtc": "2017-01-31T10:58:06Z",
+      "UpdatedUtc": "2023-10-28T14:23:00Z",
+      "CreatorProfileId": "3cd637ef-4728-47f9-8fb1-afb900c9cdcf",
+      "UpdaterProfileId": "122fc063-ec6e-4198-b8db-6b168a59ffae",
       "ProcessingStartOffset": null,
       "OrderItemConsumptionPeriod": null,
       "Assignments": [
@@ -452,6 +461,9 @@ Updates one or more existing billing automations.
       "TriggerType": "Continuous",
       "BillAggregationType": "AggregateAll",
       "CreatedUtc": "2017-01-31T10:58:06Z",
+      "UpdatedUtc": "2023-10-28T14:23:00Z",
+      "CreatorProfileId": "3cd637ef-4728-47f9-8fb1-afb900c9cdcf",
+      "UpdaterProfileId": "122fc063-ec6e-4198-b8db-6b168a59ffae",
       "ProcessingStartOffset": null,
       "OrderItemConsumptionPeriod": null,
       "Assignments": [
@@ -578,6 +590,9 @@ Add, update or remove billing automation assignments of a specific billing autom
       "TriggerType": "Continuous",
       "BillAggregationType": "AggregateAll",
       "CreatedUtc": "2017-01-31T10:58:06Z",
+      "UpdatedUtc": "2023-10-28T14:23:00Z",
+      "CreatorProfileId": "3cd637ef-4728-47f9-8fb1-afb900c9cdcf",
+      "UpdaterProfileId": "122fc063-ec6e-4198-b8db-6b168a59ffae",
       "ProcessingStartOffset": null,
       "OrderItemConsumptionPeriod": null,
       "Assignments": [
