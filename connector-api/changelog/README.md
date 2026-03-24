@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-03-25" %}
+
+## 25th March 2026
+
+- [Payments get all](../operations/payments.md#get-all-payments#response):
+  - Get all endpoint now returns `PaymentRequestId` in the response object.
+
+{% endupdate %}
 {% update date="2026-02-27" %}
 
 ## New operation: Close tasks
