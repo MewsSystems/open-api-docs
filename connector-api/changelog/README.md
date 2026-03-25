@@ -6,7 +6,7 @@
 ## 25th March 2026
 
 - [Get all payments](../operations/payments.md#get-all-payments):
-  - Extended [Payment](../operations/payments.md#payment) response object with  `PaymentRequestId` property.
+  - Extended [Payment](../operations/payments.md#payment) response object with `PaymentRequestId` property.
 
 {% endupdate %}
 {% update date="2026-02-27" %}
