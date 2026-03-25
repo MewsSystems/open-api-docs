@@ -48,6 +48,7 @@
   * [Ways to integrate](FAQ/ways-to-integrate.md)
   * [Migration off the mews.li domain](FAQ/mews-li-migration.md)
 * [Changelog](changelog/README.md)
+	* [Changelog 2025](changelog/changelog2025.md)
 	* [Changelog 2024](changelog/changelog2024.md)
 	* [Changelog 2023](changelog/changelog2023.md)
 	* [Changelog 2022](changelog/changelog2022.md)
