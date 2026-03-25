@@ -5,8 +5,8 @@
 
 ## 25th March 2026
 
-- [Payments get all](../operations/payments.md#get-all-payments#response):
-  - Get all endpoint now returns `PaymentRequestId` in the response object.
+- [Get all payments](../operations/payments.md#get-all-payments):
+  - Extended [Payment](../operations/payments.md#payment) response object with  `PaymentRequestId` property.
 
 {% endupdate %}
 {% update date="2026-02-27" %}
