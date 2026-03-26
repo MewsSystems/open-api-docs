@@ -106,6 +106,8 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       "PreferredLanguageCode": "en-GB",
       "LanguageCode": "en-US",
       "BirthDate": "1983-12-31",
+      "BirthCountryCode": null,
+      "BirthCountrySubdivisionCode": null,
       "BirthPlace": "New York City, NY",
       "Occupation": "Carpenter",
       "Email": "j.smith@example.com",
@@ -144,6 +146,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       ],
       "ItalianDestinationCode": null,
       "ItalianFiscalCode": null,
+      "ItalianLotteryCode": null,
       "CompanyId": "c6f5c82d-621a-4c8a-903b-1b0a9a23b71f",
       "MergeTargetId": null,
       "ActivityState": "Active",
@@ -182,6 +185,8 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `PreferredLanguageCode` | string | optional | Language and culture code of the customer's preferred language, according to their profile. For example: `en-GB`, `fr-CA`. |
 | `LanguageCode` | string | optional | Language and culture code of the customer's language, based on multiple sources. These sources include the preferred language specified in internal data based on previous bookings, and the preferred language of the customer specified in their profile. If neither of these sources are present, we use the native language based on the customer's nationality. The format is, for example, `en-US` or `fr-FR`. |
 | `BirthDate` | string | optional | Date of birth in ISO 8601 format. |
+| `BirthCountryCode` | string | optional | ISO 3166-1 alpha-2 code of the birth country. |
+| `BirthCountrySubdivisionCode` | string | optional | ISO 3166-2 code of the administrative division, e.g. ES-C. |
 | `BirthPlace` | string | optional | Place of birth. |
 | `Occupation` | string | optional | Occupation of the customer. |
 | `Email` | string | optional | Email address of the customer. |
@@ -201,6 +206,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `Options` | array of [Customer option](customers.md#customer-option) | required | Options of the customer. |
 | `ItalianDestinationCode` | string | optional | Value of Italian destination code. |
 | `ItalianFiscalCode` | string | optional | Value of Italian fiscal code. |
+| `ItalianLotteryCode` | string | optional | Italian lottery code. |
 | `CompanyId` | string | optional | Unique identifier of [Company](companies.md#company) the customer is associated with. |
 | `MergeTargetId` | string | optional | Unique identifier of the account ([Customer](customers.md#customer)) to which this customer is linked. |
 | `IsActive` | boolean | required | Whether the customer record is still active. |
@@ -414,7 +420,8 @@ Adds a new customer to the system and returns details of the added customer. If 
   "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "OverwriteExisting": false,
   "ItalianDestinationCode": "7654321",
-  "ItalianFiscalCode": "ZGNZLR17U72P554F"
+  "ItalianFiscalCode": "ZGNZLR17U72P554F",
+  "ItalianLotteryCode": "AB12345"
 }
 ```
 
@@ -431,6 +438,8 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `PreferredLanguageCode` | string | optional | Language and culture code of the customer's preferred language, according to their profile. For example: `en-GB`, `fr-CA`. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `BirthDate` | string | optional | Date of birth in ISO 8601 format. |
+| `BirthCountryCode` | string | optional | Country of birth. |
+| `BirthCountrySubdivisionCode` | string | optional | Province of birth. |
 | `BirthPlace` | string | optional | Place of birth. |
 | `Occupation` | string | optional | Occupation of the customer. |
 | `Email` | string | optional | Email address of the customer. |
@@ -448,6 +457,7 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `OverwriteExisting` | boolean | required | Whether an existing customer should be overwritten in case of duplicity. This applies only to basic personal information (`Title`, `FirstName`, `LastName`, ...). |
 | `ItalianDestinationCode` | string | optional | Value of Italian destination code. |
 | `ItalianFiscalCode` | string | optional | Value of Italian fiscal code. |
+| `ItalianLotteryCode` | string | optional, max length 15 characters | Value of Italian lottery code. |
 | ~~`IdentityCard`~~ | ~~[Identity document parameters](customers.md#identity-document-parameters)~~ | ~~optional~~ | ~~Identity card details of the customer.~~ **Deprecated!** Use [Add identity documents](identitydocuments.md#add-identity-documents) to add document.|
 | ~~`Passport`~~ | ~~[Identity document parameters](customers.md#identity-document-parameters)~~ | ~~optional~~ | ~~Passport details of the customer.~~ **Deprecated!** Use [Add identity documents](identitydocuments.md#add-identity-documents) to add document.|
 | ~~`Visa`~~ | ~~[Identity document parameters](customers.md#identity-document-parameters)~~ | ~~optional~~ | ~~Visa details of the customer.~~ **Deprecated!** Use [Add identity documents](identitydocuments.md#add-identity-documents) to add document.|
@@ -520,6 +530,8 @@ Adds a new customer to the system and returns details of the added customer. If 
   "PreferredLanguageCode": null,
   "LanguageCode": null,
   "BirthDate": "1985-09-30",
+  "BirthCountryCode": null,
+  "BirthCountrySubdivisionCode": null,
   "BirthPlace": "Pescara (BI)",
   "Occupation": "Giornalista",
   "Email": "thea@quotidiano.example",
@@ -557,6 +569,7 @@ Adds a new customer to the system and returns details of the added customer. If 
   "Options": [],
   "ItalianDestinationCode": "7654321",
   "ItalianFiscalCode": "ZGNZLR17U72P554F",
+  "ItalianLotteryCode": "AB12345",
   "CompanyId": "f3b4f0af-9558-463b-8452-07a9bc414708",
   "MergeTargetId": null,
   "ActivityState": null,
@@ -583,6 +596,8 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `PreferredLanguageCode` | string | optional | Language and culture code of the customer's preferred language, according to their profile. For example: `en-GB`, `fr-CA`. |
 | `LanguageCode` | string | optional | Language and culture code of the customer's language, based on multiple sources. These sources include the preferred language specified in internal data based on previous bookings, and the preferred language of the customer specified in their profile. If neither of these sources are present, we use the native language based on the customer's nationality. The format is, for example, `en-US` or `fr-FR`. |
 | `BirthDate` | string | optional | Date of birth in ISO 8601 format. |
+| `BirthCountryCode` | string | optional | ISO 3166-1 alpha-2 code of the birth country. |
+| `BirthCountrySubdivisionCode` | string | optional | ISO 3166-2 code of the administrative division, e.g. ES-C. |
 | `BirthPlace` | string | optional | Place of birth. |
 | `Occupation` | string | optional | Occupation of the customer. |
 | `Email` | string | optional | Email address of the customer. |
@@ -602,6 +617,7 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `Options` | array of [Customer option](customers.md#customer-option) | required | Options of the customer. |
 | `ItalianDestinationCode` | string | optional | Value of Italian destination code. |
 | `ItalianFiscalCode` | string | optional | Value of Italian fiscal code. |
+| `ItalianLotteryCode` | string | optional | Italian lottery code. |
 | `CompanyId` | string | optional | Unique identifier of [Company](companies.md#company) the customer is associated with. |
 | `MergeTargetId` | string | optional | Unique identifier of the account ([Customer](customers.md#customer)) to which this customer is linked. |
 | `IsActive` | boolean | required | Whether the customer record is still active. |
@@ -661,6 +677,9 @@ Updates personal information of a customer. Note that if any of the fields is le
   },
   "ItalianFiscalCode": {
     "Value": "ZGNZLR17U72P554F"
+  },
+  "ItalianLotteryCode": {
+    "Value": "AB12345"
   }
 }
 ```
@@ -680,6 +699,8 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `PreferredLanguageCode` | string | optional | Language and culture code of the customer's preferred language, according to their profile. For example: `en-GB`, `fr-CA`. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `BirthDate` | string | optional | New birth date in ISO 8601 format. |
+| `BirthCountryCode` | string | optional | Country of birth. |
+| `BirthCountrySubdivisionCode` | string | optional | Province of birth. |
 | `BirthPlace` | string | optional | New birth place. |
 | `Occupation` | string | optional | Occupation of the customer. |
 | `Email` | string | optional | New email address. |
@@ -695,6 +716,7 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `Options` | array of [Customer option](customers.md#customer-option) | optional | Options of the customer. |
 | `ItalianDestinationCode` | [String update value](_objects.md#string-update-value) | optional | New Italian destination code of customer. |
 | `ItalianFiscalCode` | [String update value](_objects.md#string-update-value) | optional | New Italian fiscal code of customer. |
+| `ItalianLotteryCode` | [String update value](_objects.md#string-update-value) | optional, max length 15 characters | New Italian lottery code of customer. |
 | ~~`IdentityCard`~~ | ~~[Identity document parameters](customers.md#identity-document-parameters)~~ | ~~optional~~ | ~~New identity card details.~~ **Deprecated!** Use [Update identity documents](identitydocuments.md#update-identity-documents) to update document.|
 | ~~`Passport`~~ | ~~[Identity document parameters](customers.md#identity-document-parameters)~~ | ~~optional~~ | ~~New passport details.~~ **Deprecated!** Use [Update identity documents](identitydocuments.md#update-identity-documents) to update document.|
 | ~~`Visa`~~ | ~~[Identity document parameters](customers.md#identity-document-parameters)~~ | ~~optional~~ | ~~New visa details.~~ **Deprecated!** Use [Update identity documents](identitydocuments.md#update-identity-documents) to update document.|
@@ -716,6 +738,8 @@ Updates personal information of a customer. Note that if any of the fields is le
   "PreferredLanguageCode": null,
   "LanguageCode": null,
   "BirthDate": "1985-09-30",
+  "BirthCountryCode": null,
+  "BirthCountrySubdivisionCode": null,
   "BirthPlace": "Pescara (BI)",
   "Occupation": "Giornalista",
   "Email": "thea@quotidiano.example",
@@ -753,6 +777,7 @@ Updates personal information of a customer. Note that if any of the fields is le
   "Options": [],
   "ItalianDestinationCode": "7654321",
   "ItalianFiscalCode": "ZGNZLR17U72P554F",
+  "ItalianLotteryCode": "AB12345",
   "CompanyId": "f3b4f0af-9558-463b-8452-07a9bc414708",
   "MergeTargetId": null,
   "ActivityState": null,
@@ -779,6 +804,8 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `PreferredLanguageCode` | string | optional | Language and culture code of the customer's preferred language, according to their profile. For example: `en-GB`, `fr-CA`. |
 | `LanguageCode` | string | optional | Language and culture code of the customer's language, based on multiple sources. These sources include the preferred language specified in internal data based on previous bookings, and the preferred language of the customer specified in their profile. If neither of these sources are present, we use the native language based on the customer's nationality. The format is, for example, `en-US` or `fr-FR`. |
 | `BirthDate` | string | optional | Date of birth in ISO 8601 format. |
+| `BirthCountryCode` | string | optional | ISO 3166-1 alpha-2 code of the birth country. |
+| `BirthCountrySubdivisionCode` | string | optional | ISO 3166-2 code of the administrative division, e.g. ES-C. |
 | `BirthPlace` | string | optional | Place of birth. |
 | `Occupation` | string | optional | Occupation of the customer. |
 | `Email` | string | optional | Email address of the customer. |
@@ -798,6 +825,7 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `Options` | array of [Customer option](customers.md#customer-option) | required | Options of the customer. |
 | `ItalianDestinationCode` | string | optional | Value of Italian destination code. |
 | `ItalianFiscalCode` | string | optional | Value of Italian fiscal code. |
+| `ItalianLotteryCode` | string | optional | Italian lottery code. |
 | `CompanyId` | string | optional | Unique identifier of [Company](companies.md#company) the customer is associated with. |
 | `MergeTargetId` | string | optional | Unique identifier of the account ([Customer](customers.md#customer)) to which this customer is linked. |
 | `IsActive` | boolean | required | Whether the customer record is still active. |
@@ -910,6 +938,8 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
         "PreferredLanguageCode": "en-GB",
         "LanguageCode": "en-US",
         "BirthDate": "1983-12-31",
+        "BirthCountryCode": null,
+        "BirthCountrySubdivisionCode": null,
         "BirthPlace": "New York City, NY",
         "Occupation": "Carpenter",
         "Email": "j.smith@example.com",
@@ -948,6 +978,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
         ],
         "ItalianDestinationCode": null,
         "ItalianFiscalCode": null,
+        "ItalianLotteryCode": null,
         "CompanyId": "c6f5c82d-621a-4c8a-903b-1b0a9a23b71f",
         "MergeTargetId": null,
         "ActivityState": "Active",
