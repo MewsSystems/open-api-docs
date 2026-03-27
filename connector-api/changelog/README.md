@@ -19,6 +19,8 @@
 - [Update accounts](../operations/accounts.md#update-accounts):
   - Extended [Company update parameters](../operations/accounts.md#company-update-parameters) request object with `ItLotteryCode` parameter.
   - Extended [Company](../operations/accounts.md#company) response object with `ItLotteryCode` property.
+- [Get all payments](../operations/payments.md#get-all-payments):
+  - Extended [Payment](../operations/payments.md#payment) response object with `PaymentRequestId` property.
 
 {% endupdate %}
 {% update date="2026-02-27" %}

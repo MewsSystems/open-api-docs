@@ -108,6 +108,7 @@ Returns all payments in the system, filtered by various parameters. At least one
       "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "AccountId": "c6f5c82d-621a-4c8a-903b-1b0a9a23b71f",
       "AccountType": "Company",
+      "PaymentRequestId": "bcc76295-4e47-4cf1-a7cb-afae00bd1c35",
       "BillId": "ea087d64-3901-4eee-b0b7-9fce4c58a005",
       "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509",
       "AccountingCategoryId": null,
@@ -171,6 +172,7 @@ Returns all payments in the system, filtered by various parameters. At least one
       "EnterpriseId": "4d0201db-36f5-428b-8d11-4f0a65e960cc",
       "AccountId": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
       "AccountType": "Customer",
+      "PaymentRequestId": "6282d17b-a068-4a9f-83d3-afae00c39bfb",
       "BillId": "d23ac52f-9b86-4a03-a6fe-5822dfcfc5c4",
       "ReservationId": "b7a3f5cb-1e69-4a5f-a069-10f461996d7f",
       "AccountingCategoryId": null,
@@ -238,6 +240,7 @@ Returns all payments in the system, filtered by various parameters. At least one
 | `EnterpriseId` | string | required | Unique identifier of the `Enterprise`. |
 | `AccountId` | string | required | Unique identifier of the account (for example `Customer`) the payment belongs to. |
 | `AccountType` | [Account type](accounts.md#account-type) | required | A discriminator specifying the account type, e.g. `Customer` or `Company` |
+| `PaymentRequestId` | string | optional | Unique identifier of the `PaymentRequest` the payment is associated with. |
 | `BillId` | string | optional | Unique identifier of the `Bill` the payment is assigned to. |
 | `ReservationId` | string | optional | Unique identifier of the `Reservation` the payment belongs to. |
 | `AccountingCategoryId` | string | optional | Unique identifier of the `AccountingCategory` the payment belongs to. |
