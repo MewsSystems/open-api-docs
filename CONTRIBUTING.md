@@ -38,7 +38,7 @@ When appropriate, use [GitBook-specific blocks](https://gitbook.com/docs/creatin
 
 ### Changelog entries
 
-Use [GitBook Updates blocks](https://gitbook.com/docs/creating-content/blocks/updates) as the standard format for changelog entries. This applies to [connector-api/changelog/README.md](../../connector-api/changelog/README.md) for new entries going forward.
+Use [GitBook Updates blocks](https://gitbook.com/docs/creating-content/blocks/updates) as the standard format for changelog entries. This applies to [connector-api/changelog/README.md](connector-api/changelog/README.md) for new entries going forward.
 
 #### Updates block structure
 
@@ -56,7 +56,7 @@ Use [GitBook Updates blocks](https://gitbook.com/docs/creating-content/blocks/up
 #### Change labels and wording
 
 - Use `**Breaking:**` for contract changes such as requiredness, type, or limits.
-- Use `**Deprecated** operation` for deprecated operations and `**Deprecated:**` for extents, properties, or parameters. Add replacement guidance when available.
+- Use `**Deprecated** operation` for deprecated operations and `**Deprecated:**` for deprecated extents, properties, or parameters. Add replacement guidance when available.
 - Use `**Removed**` for removed operations or removed support.
 - For documentation-only changes, explicitly state `Documentation-only, no change to API.`
 - Mark restricted operations as `(restricted)` or `(restricted operation)` in operation bullets or detail bullets.
