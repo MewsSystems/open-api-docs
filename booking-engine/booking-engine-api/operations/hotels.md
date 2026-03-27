@@ -423,7 +423,7 @@ The availability and pricing is returned for each applicable combination of occu
 | `ProductIds` | array of string | optional | Unique identifiers of products which should be included into pricing calculations. |
 | `CurrencyCode` | string | optional | ISO 4217 code of the currency. If specified the prices in response will contain only single currency based on the code provided. [Supported currency codes](../guidelines/supported-currency-codes.md) |
 | `VoucherCode` | string | optional | Voucher code enabling special rate offerings. |
-| `OccupancyData` | array of [Occupancy Data](#occupancy-data) | required | Occupancy numbers for the reservations. |
+| `OccupancyData` | array of [Occupancy Data](#occupancy-data) | optional | Occupancy numbers for the reservations. If omitted, availability and pricing are returned for all applicable occupancy combinations. |
 | ~~`AdultCount`~~ | ~~number~~ | ~~optional~~ | ~~Requested number of adults. If provided together with `ChildCount`, then `RoomOccupancyAvailabilities` will be computed only for that combination instead of all possible. If `RoomCategory` doesn’t support the given values, then the nearest applicable values are found.~~ **Deprecated!** |
 | ~~`ChildCount`~~ | ~~number~~ | ~~optional~~ | ~~Requested number of children.~~ **Deprecated!** |
 | `CategoryIds` | array of string | optional | Unique identifiers of categories for which should be the availability computed only. If omitted, availability of all categories is returned instead. |

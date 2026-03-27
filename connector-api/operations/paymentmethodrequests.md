@@ -6,7 +6,8 @@
 > ### Restricted!
 > This operation is currently in beta-test and as such it is subject to change.
 
-Create a payment method request for the specified customer or company account to securely collect a payment method without charging the guest immediately. An optional email notification is sent to the account's email address or a specified override address. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+Create a payment method request for the specified customer or company account to securely collect a payment method without charging the guest immediately. An optional email notification is sent to the account's email address or a specified override address.
+Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
 ### Request
 

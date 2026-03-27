@@ -354,6 +354,7 @@ Updates one or more existing accounts in the system. Note this operation support
 | :-- | :-- | :-- | :-- |
 | `ItDestinationCode` | [String update value](_objects.md#string-update-value) | optional | Italian destination code (or `null` if the Italian destination code should not be updated). |
 | `ItFiscalCode` | [String update value](_objects.md#string-update-value) | optional | Italian fiscal code (or `null` if the Italian fiscal code should not be updated). |
+| `ItLotteryCode` | [String update value](_objects.md#string-update-value) | optional, max length 15 characters | Italian lottery code (or `null` if the Italian lottery code should not be updated). |
 
 #### Company update parameters
 
@@ -607,6 +608,7 @@ Updated customer data.
 | :-- | :-- | :-- | :-- |
 | `ItDestinationCode` | string | optional | Italian destination code. |
 | `ItFiscalCode` | string | optional | Italian fiscal code. |
+| `ItLotteryCode` | string | optional, max length 15 characters | Italian lottery code. |
 
 #### Company
 
