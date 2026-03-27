@@ -78,8 +78,8 @@ This page summarises all of our 'how to' use cases, together with the main use c
 | How to get checked in and checked out guests                | [Get all customers](../operations/customers.md#get-all-customers)              | [Upsell](upsell.md)                                                  |
 | How to search for a customer or guest                       | [Search customers](../operations/customers.md#search-customers)                | [Point of sale](point-of-sale.md)                                    |
 | How to get only checked in guests                           | [Search customers](../operations/customers.md#search-customers)                | [Upsell](upsell.md)                                                  |
-| How to review already posted items                          | [Get customer open items](../operations/customers.md#get-customers-open-items) | [Events](events.md)                                                  |
-| How to get the list of open revenue items for a guest       | [Get customer open items](../operations/customers.md#get-customers-open-items) | [Kiosk](kiosk.md)                                                    |
+| How to review already posted items                          | [Get all payments](../operations/payments.md#get-all-payments), [Get all order items](../operations/orderitems.md#get-all-order-items) | [Events](events.md)                                                  |
+| How to get the list of open revenue items for a guest       | [Get all payments](../operations/payments.md#get-all-payments), [Get all order items](../operations/orderitems.md#get-all-order-items) | [Kiosk](kiosk.md)                                                    |
 
 ## Reservations
 
