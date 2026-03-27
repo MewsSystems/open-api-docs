@@ -56,8 +56,8 @@ Use [GitBook Updates blocks](https://gitbook.com/docs/creating-content/blocks/up
 #### Change labels and wording
 
 - Use `**Breaking:**` for contract changes such as requiredness, type, or limits.
-- Use `**Deprecated** operation` for deprecated operations and `**Deprecated:**` for deprecated extents, properties, or parameters. Add replacement guidance when available.
-- Use `**Removed**` for removed operations or removed support.
+- Use `**Deprecated** operation` for deprecated operations and `**Deprecated** operation extent` for deprecated extents, properties, or parameters. Add replacement guidance when available.
+- Use `**Removed** operations` for removed operations or removed support.
 - For documentation-only changes, explicitly state `Documentation-only, no change to API.`
 - Mark restricted operations as `(restricted)` or `(restricted operation)` in operation bullets or detail bullets.
 
