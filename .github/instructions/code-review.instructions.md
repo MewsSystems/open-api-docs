@@ -1,4 +1,5 @@
 ---
+name: "Code review instructions"
 description: "Use when reviewing pull requests, reviewing documentation changes, or checking contributions to Mews Open API docs. Covers contribution guidelines, tone of voice, terminology, GitBook formatting, and the PR checklist."
 ---
 
