@@ -55,7 +55,7 @@ A PDF version of the bill can be fetched for printing or display purposes.
 | :-- | :-- |
 | How to get the guest bill | [Get all bills](../operations/bills.md#get-all-bills) |
 | How to get a printable bill | [Get bill PDF](../operations/bills.md#get-bill-pdf) |
-| How to get the list of open revenue items for a guest | [Get customer open items](../operations/customers.md#get-customers-open-items) |
+| How to get the list of open revenue items for a guest | [Get all payments](../operations/payments.md#get-all-payments), [Get all order items](../operations/orderitems.md#get-all-order-items) |
 | How to create a new bill | [Add bill](../operations/bills.md#add-bill) |
 | How to move bill items to a new bill | [Update accounting items](../operations/accountingitems.md#update-accounting-items) |
 | How to close a bill against change | [Close bill](../operations/bills.md#close-bill) |
