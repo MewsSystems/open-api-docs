@@ -50,7 +50,7 @@
 * [Deprecations](staying-up-to-date/deprecations/README.md)
   * [Deprecations Policy](staying-up-to-date/deprecations/deprecations-policy.md)
   * [Connector API Deprecations](https://app.gitbook.com/s/-LBS6Dpna-dkV2PShmis/deprecations)
-  * [POS API Deprecations](https://app.gitbook.com/s/qjL7NbScz6h2z96rBY62/deprecations)
+  * [POS API Deprecations](https://app.gitbook.com/s/fOtD4bwkCg5dMG01D7h0/deprecations)
   * [Booking Engine API Deprecations](https://app.gitbook.com/s/tIc30XOAP46ahd8X73va/booking-engine-api/deprecations)
   * [Channel Manager API Deprecations](https://app.gitbook.com/s/-L8h6CXI9fjLyRk8pw1Q/deprecations)
 * [GitHub](https://github.com/MewsSystems/open-api-docs)
