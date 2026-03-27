@@ -80,14 +80,14 @@ In case payment was taken outside of Mews, or directly in the event management s
 
 ### Further automation possibilities
 
-Call [Get all payments](../operations/payments.md#get-all-payments) and [Get all order items](../operations/orderitems.md#get-all-order-items) to review the revenue and payment items that have already been posted to a customer profile. You can then further automate the management of billing/invoicing by creating a specific bill using [Add bill](../operations/finance.md#add-bill) for a certain group of revenue and payment items. Use [Update accounting items](../operations/finance.md#update-accounting-items) to redirect these items to the relevant bill and then use [Close bill](../operations/finance.md#close-bill) to finalise the financial document.
+Call [Get all payments](../operations/payments.md#get-all-payments) and [Get all order items](../operations/orderitems.md#get-all-order-items), filtered by the relevant customer account (e.g. using `AccountIds`), to review the revenue and payment items that have already been posted to a customer profile. You can then further automate the management of billing/invoicing by creating a specific bill using [Add bill](../operations/bills.md#add-bill) for a certain group of revenue and payment items. Use [Update accounting items](../operations/accountingitems.md#update-accounting-items) to redirect these items to the relevant bill and then use [Close bill](../operations/bills.md#close-bill) to finalise the financial document.
 
 | <div style="width:350px">'How to' use case</div> | API Operations                                                                                                                         |
 | :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | How to review already posted items               | [Get all payments](../operations/payments.md#get-all-payments), [Get all order items](../operations/orderitems.md#get-all-order-items) |
-| How to create a new bill                         | [Add bill](../operations/finance.md#add-bill)                                                                                          |
-| How to add accounting items to a bill            | [Update accounting items](../operations/finance.md#update-accounting-items)                                                            |
-| How to close a bill against change               | [Close bill](../operations/finance.md#close-bill)                                                                                      |
+| How to create a new bill                         | [Add bill](../operations/bills.md#add-bill)                                                                                            |
+| How to add accounting items to a bill            | [Update accounting items](../operations/accountingitems.md#update-accounting-items)                                                    |
+| How to close a bill against change               | [Close bill](../operations/bills.md#close-bill)                                                                                        |
 
 > **Attaching a company to a bill:** Currently, attaching a company to a bill must be done manually in **Mews Operations**. If being able to do this via the API is important to your solution, please consider adding your vote to [this feature request](https://feedback.mews.com/forums/932131-mews-open-api/suggestions/43041963-attach-company-id-to-bills).
 
