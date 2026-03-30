@@ -1,12 +1,6 @@
 # The Mews APIs
 
-Mews currently supports three separate APIs, each serving a different purpose.
-
-> **Three individual APIs**
->
-> * [Mews Connector API](the-mews-apis.md#mews-connector-api)
-> * [Mews Channel Manager API](the-mews-apis.md#mews-channel-manager-api)
-> * [Mews Booking Engine API](the-mews-apis.md#mews-booking-engine-api)
+Mews supports the following APIs, each serving a different purpose.
 
 The documentation for each API is self-contained and consists of two parts:
 
@@ -21,6 +15,14 @@ This API is a general-purpose API that gives access to data and services in Mews
 
 {% content-ref url="https://app.gitbook.com/s/8QGgEdFlLPx3GworPLr8/" %}
 [Mews Connector API](https://app.gitbook.com/s/8QGgEdFlLPx3GworPLr8/)
+{% endcontent-ref %}
+
+## Mews POS API
+
+A general-purpose API that gives real-time access to data and services in Mews POS (Point-of-sale). Supports use cases such as business intelligence, inventory management, table bookings, etc.
+
+{% content-ref url="https://app.gitbook.com/s/fOtD4bwkCg5dMG01D7h0/" %}
+[Mews POS API](https://app.gitbook.com/s/fOtD4bwkCg5dMG01D7h0/)
 {% endcontent-ref %}
 
 ## Mews Channel Manager API
@@ -45,4 +47,4 @@ This API is for booking engines to enable guests to create reservations directly
 
 ## Which API to use?
 
-If you are a Channel Manager, or a bulk sales or distribution channel such as an Online Travel Agent, then you will want the [Mews Channel Manager API](https://mews-systems.gitbook.io/channel-manager-api/). If you are implementing a Booking Engine for your customers to book with you directly, you will want the [Mews Booking Engine API](https://mews-systems.gitbook.io/booking-engine-guide/). For all other use cases, use the [Mews Connector API](https://mews-systems.gitbook.io/connector-api/). Please also take a look at [Use Cases](/broken/pages/3lElhhVxfB2LdIwAyekt), where you can find more information on individual use cases and links to more details in the documentation for the appropriate API.
+If you are a Channel Manager, or a bulk sales or distribution channel such as an Online Travel Agent, then you will want the [Mews Channel Manager API](https://mews-systems.gitbook.io/channel-manager-api/). If you are implementing a Booking Engine for your customers to book with you directly, you will want the [Mews Booking Engine API](https://mews-systems.gitbook.io/booking-engine-guide/). If you are integrating a Point-of-Sale system with Mews, you will want the [Mews POS API](https://app.gitbook.com/s/fOtD4bwkCg5dMG01D7h0/). For all other use cases, use the [Mews Connector API](https://mews-systems.gitbook.io/connector-api/). Please also take a look at [Use Cases](/broken/pages/3lElhhVxfB2LdIwAyekt), where you can find more information on individual use cases and links to more details in the documentation for the appropriate API.
