@@ -3,27 +3,27 @@
 **Mews Loyalty Partner API** follows [RFC 9457](https://datatracker.ietf.org/doc/html/rfc9457) (Problem Details for HTTP APIs) as the standard for error responses. Your API must return errors in this format.
 
 {% hint style="info" %}
+
 #### Custom errors
 
 Your API can return an error which isn't specified in this document (i.e. with different `type` URI), however the users will see only a generic error message.
 {% endhint %}
 
-### Response structure
+### Error properties
 
-Each error response contains a `problemDetail` object at the top level:
+Error response object contains the following properties:
 
-```
-problemDetail (object)
-├── type (string) – URI identifying the problem type
-├── status (integer) – HTTP status code
-├── title (string) – Short description of the problem
-├── detail (string) – Explanation specific to this occurrence
-├── instance (string, optional) – Trace URI for this occurrence
-└── errors (array of objects, optional)
-    ├── type (string) – URI identifying the field-level error type
-    ├── pointer (string) – JSON Pointer to the affected field (RFC 6901)
-    └── detail (string, optional) – Description of the field error
-```
+| Property           | Type             | Contract                          | Description                                                                                                           |
+| ------------------ | ---------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `type`             | string           | required                          | URI identifying the top-level problem type.                                                                           |
+| `status`           | integer          | required                          | HTTP status code.                                                                                                     |
+| `title`            | string           | required                          | Short, human-readable summary of the problem type.                                                                    |
+| `detail`           | string           | optional                          | Human-readable explanation specific to this occurrence of the problem.                                                |
+| `instance`         | string           | optional                          | URI identifying this specific occurrence of the problem for tracing.                                                  |
+| `errors`           | array of objects | optional                          | Field-level validation errors related to the request payload.                                                         |
+| `errors[].type`    | string           | required when `errors` is present | URI identifying the field-level error type.                                                                           |
+| `errors[].pointer` | string           | required when `errors` is present | JSON Pointer to the affected field, formatted according to [RFC 6901](https://datatracker.ietf.org/doc/html/rfc6901). |
+| `errors[].detail`  | string           | optional                          | Human-readable explanation of the field-level validation error.                                                       |
 
 ### Top-level errors
 
