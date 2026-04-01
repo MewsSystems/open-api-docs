@@ -10,13 +10,13 @@ The **Mews Loyalty Partner API** enables loyalty program providers to integrate 
 
 ### Reverse API model
 
-This integration uses a reverse API pattern: Mews calls your system, not the other way around. You implement a set of operations defined by a Mews-provided OpenAPI specification. Once deployed, Mews calls your API when operators perform loyalty-related actions.
+This integration uses a reverse API pattern: Mews calls your system, not the other way around. You implement a set of operations defined by a Mews-provided OpenAPI specification. Once deployed, Mews calls your API when **Mews Operations** users perform loyalty-related actions.
 
 The integration works as follows:
 
 1. Mews provides an OpenAPI specification describing the operations you must implement.
 2. You implement those operations on your system.
-3. Mews calls your API when a Mews operator performs a loyalty action (for example, enrolling a customer).
+3. Mews calls your API when a **Mews Operations** user performs a loyalty action, for example enrolling a customer.
 
 ### Changes to this API
 

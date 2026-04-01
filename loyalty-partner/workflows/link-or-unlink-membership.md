@@ -4,7 +4,7 @@
 
 #### Link during new customer creation
 
-A Mews operator is creating a new customer profile. The membership lookup in the partner system returns a matching membership. The operator selects the appropriate membership and links the customer to it.
+Front desk staff are creating a new customer profile in **Mews Operations**. The membership lookup in the partner system returns a matching membership. They select the appropriate membership and link the customer to it.
 
 {% stepper %}
 {% step %}
@@ -31,7 +31,7 @@ A Mews operator is creating a new customer profile. The membership lookup in the
 
 #### Link from customer profile
 
-A Mews operator views an existing customer profile without a linked membership. The operator opens the lookup screen, which returns a list of matching memberships. The operator selects the correct membership and links the customer to it.
+Front desk staff view an existing customer profile without a linked membership. They open the lookup screen, which returns a list of matching memberships. They select the correct membership and link the customer to it.
 
 {% stepper %}
 {% step %}
@@ -58,7 +58,7 @@ A Mews operator views an existing customer profile without a linked membership. 
 
 #### Unlink
 
-A Mews operator views an existing customer profile with a linked membership. The operator selects the membership program and removes it, unlinking the membership from the customer profile.
+Front desk staff view an existing customer profile with a linked membership. They select the membership program and remove it, unlinking the membership from the customer profile.
 
 {% stepper %}
 {% step %}

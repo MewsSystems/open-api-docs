@@ -4,7 +4,7 @@
 
 ### New customer creation
 
-A Mews operator is creating a new customer profile. The customer already exists in the partner loyalty system with a membership. During the creation process, Mews queries the partner system for potential matching members and returns a list of matches.
+Front desk staff are creating a new customer profile. The customer already exists in the partner loyalty system with a membership. During the creation process, Mews queries the partner system for potential matching members and returns a list of matches.
 
 {% stepper %}
 {% step %}
