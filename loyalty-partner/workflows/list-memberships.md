@@ -1,6 +1,6 @@
 # List memberships
 
-**Mews Operations** use the [List memberships operation](/broken/spaces/NXX5WlJYsdpRtizxNDPz/pages/ed4f12b8e77f11ff432d80fffbb3f72821702539#post-memberships-list) to retrieve current membership data for one or more customers using their `providerMembershipId` values. This operation is used in both manual and automated workflows to keep loyalty data up to date in Mews.
+**Mews Operations** uses the [List memberships operation](/broken/spaces/NXX5WlJYsdpRtizxNDPz/pages/ed4f12b8e77f11ff432d80fffbb3f72821702539#post-memberships-list) to retrieve current membership data for one or more customers using their `providerMembershipId` values. This operation is used in both manual and automated workflows to keep loyalty data up to date in Mews.
 
 #### Manual membership sync
 
