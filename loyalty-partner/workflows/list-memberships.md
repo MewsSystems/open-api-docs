@@ -6,7 +6,7 @@
 
 A Mews operator clicks **Refresh** on a customer profile that is already linked to a membership in the partner system. Mews fetches the latest membership data from the partner system.
 
-<figure><img src="../.gitbook/assets/manual-membership-sync.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/manual-membership-sync.png" alt="Screenshot of a Mews customer profile with a Refresh button to manually sync membership data from the partner system." width="563"><figcaption>Manual membership sync in Mews: operator uses the Refresh button on the customer profile to update membership details from the partner system.</figcaption></figure>
 
 #### Automatic membership sync
 

@@ -28,7 +28,7 @@ Once initial fit is confirmed:
 4. **You provide your integration details** – share your API base URL and the bearer token Mews should use to authenticate requests to your API.
 
 {% hint style="info" %}
-For details on how Mews authenticates requests to your API, see Authentication.
+For details on how Mews authenticates requests to your API, see [Authentication](guidelines/authentication.md).
 {% endhint %}
 {% endstep %}
 
@@ -44,7 +44,7 @@ Implement the operations defined in the OpenAPI specification and test your inte
 * **Checkout event handling** – if applicable to your use case, verify that your API handles checkout notifications correctly.
 
 {% hint style="info" %}
-For implementation context and workflow examples, see User stories.
+For implementation context and workflow examples, see the [Workflows overview](workflows/overview.md).
 {% endhint %}
 {% endstep %}
 
