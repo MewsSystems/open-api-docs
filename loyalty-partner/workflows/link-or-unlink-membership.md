@@ -10,7 +10,7 @@ A Mews operator is creating a new customer profile. The membership lookup in the
 {% step %}
 #### Create new customer
 
-<div align="center" data-full-width="false"><figure><img src="../.gitbook/assets/create-customer-screen (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="center" data-full-width="false"><figure><img src="../.gitbook/assets/create-customer-screen.png" alt="" width="375"><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -34,7 +34,7 @@ A Mews operator views an existing customer profile without a linked membership. 
 {% step %}
 #### Customer profile screen
 
-<figure><img src="../.gitbook/assets/customer-profile-screen (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/customer-profile-screen.png" alt="" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
