@@ -6,12 +6,12 @@
 
 #### Custom errors
 
-Your API can return an error which isn't specified in this document (i.e. with different `type` URI), however the users will see only a generic error message.
+Your API can return an error which isn't specified in this document (i.e. with different `type` URI), however, users will see only a generic error message.
 {% endhint %}
 
 ### Error properties
 
-Error response object contains the following properties:
+The error response object contains the following properties:
 
 | Property           | Type             | Contract                          | Description                                                                                                           |
 | ------------------ | ---------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
