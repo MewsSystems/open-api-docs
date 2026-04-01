@@ -4,7 +4,7 @@ This page walks you through the key steps to integrate with the **Mews Loyalty P
 
 ### Is this the right API?
 
-The Loyalty Partner API is for **loyalty program providers** — engines that need to look up and enrol members inside Mews. It uses a reverse API model: Mews calls your system whenever a Mews operator performs a loyalty action such as searching for a member or enrolling a customer.
+The Loyalty Partner API is for **loyalty program providers** — engines that need to look up and enroll members inside Mews. It uses a reverse API model: Mews calls your system whenever a Mews operator performs a loyalty action such as searching for a member or enrolling a customer.
 
 If your primary need is syncing customer or reservation data with Mews as a generic CRM, use the [Connector API](https://app.gitbook.com/s/8QGgEdFlLPx3GworPLr8/) instead.
 
