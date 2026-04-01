@@ -4,7 +4,7 @@ Mews authenticates all requests to your API using bearer token authentication.
 
 ### Token scope
 
-A single token covers the entire integration. All requests from Mews to your API use the same token regardless of which property initiates the action. You can distinguish the scope of operation using either `mewsEnterpriseId` or `providerEnterpriseId`  properties provided in the request payload.
+A single token covers the entire integration. All requests from Mews to your API use the same token regardless of which property initiates the action. You can distinguish the scope of operation using either `mewsEnterpriseId` or `providerEnterpriseId` properties provided in the request payload.
 
 ### Token generation
 

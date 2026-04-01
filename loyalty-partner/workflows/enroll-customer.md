@@ -1,6 +1,6 @@
 # Enroll customer
 
-**Mews Operations** use the [Enroll a customer](/broken/spaces/NXX5WlJYsdpRtizxNDPz/pages/703d540b7d5b88a00678dd4148b956793bb5b43e#post-members) operation to enroll a Mews customer in the partner loyalty system by creating a new membership.
+**Mews Operations** uses the [Enroll a customer](/broken/spaces/NXX5WlJYsdpRtizxNDPz/pages/703d540b7d5b88a00678dd4148b956793bb5b43e#post-members) operation to enroll a Mews customer in the partner loyalty system by creating a new membership.
 
 If the customer already exists in the partner system, return the same response as for a new enrollment: HTTP 200 with the existing membership details.
 

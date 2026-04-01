@@ -22,7 +22,7 @@ Error response object contains the following properties:
 | `instance`         | string           | optional                          | URI identifying this specific occurrence of the problem for tracing.                                                  |
 | `errors`           | array of objects | optional                          | Field-level validation errors related to the request payload.                                                         |
 | `errors[].type`    | string           | required when `errors` is present | URI identifying the field-level error type.                                                                           |
-| `errors[].pointer` | string           | required when `errors` is present | JSON Pointer to the affected field, formatted according to [RFC 6901](https://datatracker.ietf.org/doc/html/rfc6901). |
+| `errors[].pointer` | string           | required when `errors` is present | JSON Pointer to the affected field in URI fragment form (e.g., `#/customer/email`), formatted according to the [RFC 6901](https://datatracker.ietf.org/doc/html/rfc6901) fragment representation rules. |
 | `errors[].detail`  | string           | optional                          | Human-readable explanation of the field-level validation error.                                                       |
 
 ### Top-level errors
