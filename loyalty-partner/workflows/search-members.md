@@ -10,13 +10,13 @@ A Mews operator is creating a new customer profile. The customer already exists 
 {% step %}
 #### Create customer
 
-<figure><img src="../.gitbook/assets/create-customer-screen.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/create-customer-screen.png" alt="New customer creation form with fields for email, name, phone, membership number, and address" width="375"><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 #### Lookup results
 
-<figure><img src="../.gitbook/assets/lookup-results.png" alt="" width="330"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/lookup-results.png" alt="List of matching members returned from the partner loyalty system, with customer details and a Confirm button" width="330"><figcaption></figcaption></figure>
 {% endstep %}
 {% endstepper %}
 
@@ -28,12 +28,12 @@ A customer already exists in Mews without a linked loyalty membership. Mews quer
 {% step %}
 #### Customer profile screen
 
-<figure><img src="../.gitbook/assets/customer-profile-screen.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/customer-profile-screen.png" alt="Customer profile screen with a Loyalty panel warning that the customer is not enrolled in a loyalty program" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 #### Customer lookup result
 
-<figure><img src="../.gitbook/assets/customer-profile-lookup-result.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/customer-profile-lookup-result.png" alt="Customer profile screen with a membership lookup panel showing a list of matching members from the partner loyalty system" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 {% endstepper %}

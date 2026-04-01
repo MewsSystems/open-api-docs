@@ -10,19 +10,19 @@ A Mews operator is creating a new customer profile. The membership lookup in the
 {% step %}
 #### Create new customer
 
-<div align="center" data-full-width="false"><figure><img src="../.gitbook/assets/create-customer-screen.png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="center" data-full-width="false"><figure><img src="../.gitbook/assets/create-customer-screen.png" alt="New customer creation form with fields for email, name, phone, membership number, and address" width="375"><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
 #### Select matching membership
 
-<figure><img src="../.gitbook/assets/select-matching-membership.png" alt="" width="330"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/select-matching-membership.png" alt="List of matching members returned from the partner loyalty system, with customer details and a Confirm button" width="330"><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 #### Linked membership
 
-<figure><img src="../.gitbook/assets/linked-membership.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/linked-membership.png" alt="Customer profile showing the Loyalty panel with a successfully linked membership entry" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 {% endstepper %}
 
@@ -34,19 +34,19 @@ A Mews operator views an existing customer profile without a linked membership. 
 {% step %}
 #### Customer profile screen
 
-<figure><img src="../.gitbook/assets/customer-profile-screen.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/customer-profile-screen.png" alt="Customer profile screen with a Loyalty panel warning that the customer is not enrolled in a loyalty program" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 #### Select matching membership
 
-<figure><img src="../.gitbook/assets/select-matching-membership-screen.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/select-matching-membership-screen.png" alt="Customer profile screen with a membership lookup panel showing a list of matching members from the partner loyalty system" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 #### Linked membership
 
-<figure><img src="../.gitbook/assets/linked-membership.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/linked-membership.png" alt="Customer profile showing the Loyalty panel with a successfully linked membership entry" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 {% endstepper %}
 
@@ -58,12 +58,12 @@ A Mews operator views an existing customer profile with a linked membership. The
 {% step %}
 #### Select membership
 
-<figure><img src="../.gitbook/assets/unlink-select-membership.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/unlink-select-membership.png" alt="Customer profile showing the Loyalty panel with an active linked membership selected for removal" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 #### Unlink membership
 
-<figure><img src="../.gitbook/assets/unlink-delete.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/unlink-delete.png" alt="Loyalty membership detail panel with the Delete button highlighted to confirm unlinking the membership" width="563"><figcaption></figcaption></figure>
 {% endstep %}
 {% endstepper %}
