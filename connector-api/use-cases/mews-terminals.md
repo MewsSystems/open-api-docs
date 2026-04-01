@@ -215,7 +215,7 @@ To clear down the payments in the account, you could do this manually at the end
 Most of the workflow is common to the POS workflow, for which see above.
 
 #### Displaying the list of open items
-To retrieve and display open items against a customer account, use [Get customers open items](../operations/customers.md#get-customers-open-items) and filter the request by date-time to pick out items relevant to the customer's stay. This helps to avoid any confusion in case the customer has a future reservation.
+To retrieve and display open items against a customer account, use [Get all payments](../operations/payments.md#get-all-payments) and [Get all order items](../operations/orderitems.md#get-all-order-items), filtering by the specific customer account (using `AccountIds` request parameter) and by date-time to pick out items relevant to the customer's stay. This helps to avoid any confusion in case the customer has a future reservation.
 
 ## Fiscal reporting
 
