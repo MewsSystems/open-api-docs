@@ -4,28 +4,28 @@
 
 If the customer already exists in the partner system, return the same response as for a new enrollment: HTTP 200 with the existing membership details.
 
-### Enroll customer
+## Enroll customer
 
 A Mews customer does not have a loyalty membership in the partner system. Front desk staff select the appropriate loyalty program from a list of available options and send an enrollment request to the partner system.
 
 {% stepper %}
 {% step %}
 
-#### Add membership
+### Add membership
 
 <figure><img src="../.gitbook/assets/add-membership.png" alt="Mews customer profile with the option to add a new loyalty membership" width="563"><figcaption>Customer profile screen where front desk staff add a new loyalty membership.</figcaption></figure>
 {% endstep %}
 
 {% step %}
 
-#### Select loyalty program
+### Select loyalty program
 
 <figure><img src="../.gitbook/assets/select-loyalty-program.png" alt="Dialog listing available loyalty programs for selection" width="563"><figcaption>Selection dialog where front desk staff choose the appropriate loyalty program.</figcaption></figure>
 {% endstep %}
 
 {% step %}
 
-#### Enrolled customer
+### Enrolled customer
 
 <figure><img src="../.gitbook/assets/enrolled-customer.png" alt="Customer profile showing active loyalty membership details after enrollment" width="563"><figcaption>Customer profile updated to show the newly created loyalty membership.</figcaption></figure>
 {% endstep %}

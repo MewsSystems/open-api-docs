@@ -7,7 +7,7 @@
 
 ## Workflows
 
-* [Workflows](workflows/overview.md "Overview")
+* [Workflows](workflows/README.md "Overview")
 * [Search members](workflows/search-members.md)
 * [Enroll customer](workflows/enroll-customer.md)
 * [Link or unlink membership](workflows/link-or-unlink-membership.md)
