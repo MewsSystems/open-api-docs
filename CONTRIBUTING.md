@@ -1,5 +1,78 @@
 # Contribution guidelines for Mews Open API documentation
 
+## Who can contribute
+
+This repository contains the source documentation for the public **Mews Open API** and is intended to be contributed to by a broad group of people, including:
+
+- Mews engineers
+- Customer Support (CS) and Technical Partner Success (TPS)
+- External partners working on Mews integrations
+
+If you notice something that can be improved, you are welcome to open a pull request – even for small changes such as fixing typos or broken links.
+
+Because this repository is **public**, treat everything you add here as public information:
+
+- Do **not** include secrets (API keys, passwords, tokens, internal URLs not meant for customers).
+- Do **not** include customer-identifying data or internal-only operational details.
+- Keep examples generic and reusable.
+
+## Branch naming and Jira tickets
+
+Across Mews engineering, branch names usually follow a standard format tied to Jira tickets:
+
+```text
+{ticket-key}-{short-description}
+```
+
+For example:
+
+```text
+con-1234-fix-kiosk-use-case-links
+```
+
+For this documentation repository:
+
+### Engineers
+
+- Prefer the standard format with a Jira key where you already have a ticket.
+- For small, low-risk documentation-only changes (for example, typos, wording, broken links), you may use a `noticket-…` branch name instead of creating a ticket, e.g.:
+  ```text
+  noticket-fix-typo-in-getting-started
+  noticket-update-pos-api-links
+  ```
+
+### CS / TPS / other non-engineering contributors
+
+- Use a simple, descriptive branch name such as:
+  ```text
+  fix-typo-in-pos-use-case
+  clarify-kiosk-payment-example
+  ```
+- If you already have a Jira ticket, you can include its key in the branch name, but this is **not required** for small documentation fixes.
+
+General guidance:
+
+- Keep branches focused on a single change.
+- Use clear pull request titles and fill in the PR template so reviewers understand:
+  - what changed,
+  - why it changed,
+  - and whether it is **documentation-only** or also reflects a functional API change.
+
+## Reviews and compliance
+
+All contributions go through a standard pull request review:
+
+- At least one reviewer will check your change for clarity, correctness, and consistency.
+- For larger changes, reviewers may ask follow-up questions or request small adjustments.
+
+From time to time, we may also run internal checks across pull requests for compliance and quality. If a pull request you authored is selected, someone from Mews might contact you to confirm:
+
+- the purpose of the change,
+- whether it affects API behavior or only documentation,
+- and whether there is any impact on how customer data is processed.
+
+You can make this easy by writing a short summary in the PR description.
+
 ## Style guidelines
 
 ### Product names
