@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-04-02" %}
+{% update date="2026-04-03" %}
 
 ## Payments and payment methods updates
 

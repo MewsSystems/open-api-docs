@@ -137,7 +137,7 @@ The table columns have the following meanings:
 | `DinersClub` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
 | `Jcb` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
 | `UnionPay` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
-| `DepositCreditCard` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 4 Apr 2026 | - |
+| `DepositCreditCard` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 3 Apr 2026 | - |
 
 ### Operations using deprecated time filters
 
