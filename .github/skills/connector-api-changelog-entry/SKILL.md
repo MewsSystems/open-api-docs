@@ -26,9 +26,10 @@ By default, this skill should draft the entry and apply edits to `connector-api/
 
 1. Build the change input from git.
 
-- First, inspect local staged and unstaged changes.
-- If there are local changes, use those files as the primary input set.
-- If there are no local changes, diff the current branch against `main` (or `origin/main` when available) and use that file list.
+- Run [detect changed Connector API files](./scripts/detect-changed-connector-api-files.sh) to collect input.
+- The script checks staged and unstaged local changes first.
+- If no local changes exist, it diffs the current branch against `main` (prefers `origin/main` when available).
+- Use the script output as the primary input set.
 - Focus analysis on Connector API documentation sources, especially:
   - `connector-api/operations/*.md`
   - `connector-api/_generator/**`
@@ -89,7 +90,19 @@ Use this decision order to automatically discover input:
 1. Staged and unstaged changes in the current workspace.
 2. If none exist, branch diff against `main` (prefer `origin/main` when present).
 
-Suggested command sequence:
+Default command:
+
+```bash
+./.github/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh
+```
+
+Optional base ref override:
+
+```bash
+./.github/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh origin/main
+```
+
+Manual equivalent command sequence:
 
 ```bash
 git diff --name-only --cached
@@ -103,7 +116,7 @@ Interpretation rules:
 - Combine staged and unstaged file lists, then de-duplicate.
 - If combined local list is non-empty, do not fall back to `main` diff.
 - Use triple-dot branch diff (`origin/main...HEAD`) so only current-branch changes are considered.
-- Ignore unrelated files outside Connector API scope for changelog decisions.
+- Scope output to `connector-api/` files only.
 
 ## Ready-to-use templates
 
