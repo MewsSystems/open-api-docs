@@ -1,7 +1,7 @@
 ---
 name: connector-api-changelog-entry
 description: "Add or review Connector API changelog entries in connector-api/changelog/README.md. Use when Connector API reference changes need a changelog update, including breaking, deprecated, removed, or documentation-only updates."
-argument-hint: "Describe the Connector API changes to document in the changelog"
+argument-hint: "Describe Connector API changes to document in the changelog"
 ---
 
 # Connector API Changelog Entry
@@ -14,7 +14,11 @@ Create consistent changelog entries for **Mews Connector API** in `connector-api
 - You need to add a new changelog entry that follows repository formatting rules.
 - You are reviewing a PR and need to validate changelog completeness and wording.
 
-By default, this skill should draft the entry and apply edits to `connector-api/changelog/README.md` when the user asks for implementation.
+## Gotchas
+
+- **Date must not be in the past.** Use today's date or a future date. Never backdate an entry.
+- **Label wording is exact.** `**Breaking:**` has a colon. `**Deprecated** operation` has no colon (for operations). `**Removed** operations` is plural. Check `CONTRIBUTING.md` if unsure.
+- **Use triple-dot diff.** `origin/main...HEAD` — not double-dot. Double-dot includes commits from main that aren't on your branch.
 
 ## Sources of truth
 
@@ -24,15 +28,16 @@ By default, this skill should draft the entry and apply edits to `connector-api/
 
 ## Procedure
 
+Draft the entry and apply edits to `connector-api/changelog/README.md` unless the user asks only for a review.
+
 1. Build the change input from git.
 
-- Run [detect changed Connector API files](./scripts/detect-changed-connector-api-files.sh) to collect input.
-- The script checks staged and unstaged local changes first.
-- If no local changes exist, it diffs the current branch against `main` (prefers `origin/main` when available).
+- Run [detect changed Connector API files](./scripts/detect-changed-connector-api-files.sh) script to collect input.
+- The script checks staged/unstaged changes first; if none, diffs the branch against `main`.
 - Use the script output as the primary input set.
+- If the script fails or you need to run git commands manually, read [`references/git-input-strategy.md`](./references/git-input-strategy.md).
 - Focus analysis on Connector API documentation sources, especially:
   - `connector-api/operations/*.md`
-  - `connector-api/_generator/**`
   - `connector-api/changelog/README.md`
 
 2. Identify the change type.
@@ -83,41 +88,6 @@ By default, this skill should draft the entry and apply edits to `connector-api/
 
 If no relevant Connector API reference changes are found in either local changes or branch diff, report that no changelog entry is needed from the detected diff and ask for explicit scope if the user still wants one.
 
-## Git input strategy
-
-Use this decision order to automatically discover input:
-
-1. Staged and unstaged changes in the current workspace.
-2. If none exist, branch diff against `main` (prefer `origin/main` when present).
-
-Default command:
-
-```bash
-./.github/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh
-```
-
-Optional base ref override:
-
-```bash
-./.github/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh origin/main
-```
-
-Manual equivalent command sequence:
-
-```bash
-git diff --name-only --cached
-git diff --name-only
-git rev-parse --verify origin/main
-git diff --name-only origin/main...HEAD
-```
-
-Interpretation rules:
-
-- Combine staged and unstaged file lists, then de-duplicate.
-- If combined local list is non-empty, do not fall back to `main` diff.
-- Use triple-dot branch diff (`origin/main...HEAD`) so only current-branch changes are considered.
-- Scope output to `connector-api/` files only.
-
 ## Ready-to-use templates
 
 Use these as starting points, then replace operation names, links, and properties.
@@ -165,9 +135,3 @@ Documentation-only:
 - Correct labels (`Breaking`, `Deprecated`, `Removed`) where applicable.
 - Correct operation links and concise details.
 - Includes `Documentation-only, no change to API.` when applicable.
-
-## Example prompts
-
-- Add a Connector API changelog entry for a requiredness change in `EnterpriseIds`.
-- Review this PR and verify whether `connector-api/changelog/README.md` must be updated.
-- Draft a documentation-only changelog note for a wording fix in `Get all rules`.
