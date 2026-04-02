@@ -1,6 +1,19 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-04-02" %}
+
+## Payments and payment methods updates
+
+- [Get all payments](../operations/payments.md#get-all-payments):
+  - Extended [Payment data](../operations/payments.md#payment-data) response object with `Alternative` property.
+  - Extended [Payment data discriminator](../operations/payments.md#payment-data-discriminator) with `Alternative` value.
+  - Added [Alternative payment data](../operations/payments.md#alternative-payment-data) response object with [Alternative payment method type](../operations/payments.md#alternative-payment-method-type) enum.
+  - **Deprecated:** `DepositCreditCard` value in [External payment type](../operations/payments.md#external-payment-type). Only supported for existing partners.
+- [Add payment requests](../operations/paymentrequests.md#add-payment-requests):
+  - Extended [Payment request parameters](../operations/paymentrequests.md#payment-request-parameters) request object with optional `BillId` parameter.
+
+{% endupdate %}
 {% update date="2026-03-25" %}
 
 ## March 2026 updates
