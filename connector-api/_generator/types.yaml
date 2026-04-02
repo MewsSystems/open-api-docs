@@ -2619,3 +2619,9 @@ types:
   closetaskparameters:
     file: tasks.md
     anchor: closetaskparameters
+  paymentalternativedata:
+    file: payments.md
+    anchor: alternative-payment-data
+  alternativepaymentmethodtypeenum:
+    file: payments.md
+    anchor: alternative-payment-method-type

@@ -169,7 +169,8 @@ Creates a payment request to the specified [Customer](customers.md#customer). No
       "ExpirationUtc": "2023-02-20T12:00:00Z",
       "Description": "Payment required",
       "Notes": "Internal notes.",
-      "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509"
+      "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509",
+      "BillId": "ea087d64-3901-4eee-b0b7-9fce4c58a005"
     }
   ],
   "SendPaymentRequestEmails": true,
@@ -198,6 +199,7 @@ Creates a payment request to the specified [Customer](customers.md#customer). No
 | `Description` | string | required, max length 1000 characters | Description of the payment request. |
 | `Notes` | string | optional, max length 1000 characters | Payment request's notes. |
 | `ReservationId` | string | optional | Unique identifier of the `Reservation` the payment request belongs to. |
+| `BillId` | string | optional | Unique identifier of the `Bill` the payment request is linked to. |
 
 ### Response
 
