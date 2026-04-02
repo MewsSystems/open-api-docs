@@ -1,18 +1,40 @@
 #!/bin/sh
 set -eu
 
-# Prints changed files scoped to connector-api/.
-# Priority:
-# 1) staged + unstaged local changes
-# 2) if none, diff current branch against BASE_REF...HEAD
-#
-# Usage:
-#   ./scripts/detect-changed-connector-api-files.sh [base-ref]
-# Examples:
-#   ./scripts/detect-changed-connector-api-files.sh
-#   ./scripts/detect-changed-connector-api-files.sh origin/main
+usage() {
+  cat <<'EOF'
+Usage: detect-changed-connector-api-files.sh [OPTIONS] [base-ref]
 
-BASE_REF=${1:-}
+Print changes to connector-api/ between the current state and a base ref.
+
+Options:
+  --no-diff   Print changed file paths only instead of a full diff
+  --help      Show this help message and exit
+
+Arguments:
+  base-ref    Git ref to diff against (default: origin/main or main)
+
+Output:
+  By default, prints a unified diff of all changed connector-api/ files,
+  excluding connector-api/_generator/. With --no-diff, prints one file path
+  per line.
+
+Priority:
+  1) Staged and unstaged local changes
+  2) If none, branch diff against base-ref (triple-dot: base-ref...HEAD)
+EOF
+}
+
+NO_DIFF=0
+for arg in "$@"; do
+  case "$arg" in
+    --help) usage; exit 0 ;;
+    --no-diff) NO_DIFF=1 ;;
+    -*) echo "Unknown option: $arg" >&2; usage >&2; exit 1 ;;
+  esac
+done
+
+BASE_REF=$(printf '%s\n' "$@" | grep -v '^--' | head -1)
 
 if [ -z "$BASE_REF" ]; then
   if git rev-parse --verify --quiet origin/main >/dev/null; then
@@ -31,12 +53,23 @@ cleanup() {
 }
 trap cleanup EXIT HUP INT TERM
 
+EXCLUDE=':(exclude)connector-api/_generator/'
+
 # Collect local changes scoped to connector-api.
-git diff --name-only --cached -- connector-api/ >> "$TMP_FILE"
-git diff --name-only -- connector-api/ >> "$TMP_FILE"
+if [ "$NO_DIFF" -eq 1 ]; then
+  git diff --name-only --cached -- connector-api/ "$EXCLUDE" >> "$TMP_FILE"
+  git diff --name-only        -- connector-api/ "$EXCLUDE" >> "$TMP_FILE"
+else
+  git diff --cached -- connector-api/ "$EXCLUDE" >> "$TMP_FILE"
+  git diff          -- connector-api/ "$EXCLUDE" >> "$TMP_FILE"
+fi
 
 if [ -s "$TMP_FILE" ]; then
-  sort -u "$TMP_FILE"
+  if [ "$NO_DIFF" -eq 1 ]; then
+    sort -u "$TMP_FILE"
+  else
+    cat "$TMP_FILE"
+  fi
   exit 0
 fi
 
@@ -46,4 +79,8 @@ if ! git rev-parse --verify --quiet "$BASE_REF" >/dev/null; then
   exit 1
 fi
 
-git diff --name-only "$BASE_REF"...HEAD -- connector-api/ | sort -u
+if [ "$NO_DIFF" -eq 1 ]; then
+  git diff --name-only "$BASE_REF"...HEAD -- connector-api/ "$EXCLUDE" | sort -u
+else
+  git diff "$BASE_REF"...HEAD -- connector-api/ "$EXCLUDE"
+fi

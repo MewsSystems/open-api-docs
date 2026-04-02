@@ -32,13 +32,10 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 
 1. Build the change input from git.
 
-- Run [detect changed Connector API files](./scripts/detect-changed-connector-api-files.sh) script to collect input.
+- Run [detect changed Connector API files](./scripts/detect-changed-connector-api-files.sh) to collect input. The script outputs a unified diff of all changed `connector-api/` files (excluding `_generator/`).
 - The script checks staged/unstaged changes first; if none, diffs the branch against `main`.
-- Use the script output as the primary input set.
+- Use the diff as the primary input — no need to read individual operation files unless the diff is absent or unclear.
 - If the script fails or you need to run git commands manually, read [`references/git-input-strategy.md`](./references/git-input-strategy.md).
-- Focus analysis on Connector API documentation sources, especially:
-  - `connector-api/operations/*.md`
-  - `connector-api/changelog/README.md`
 
 2. Identify the change type.
 
