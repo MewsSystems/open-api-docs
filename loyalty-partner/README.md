@@ -1,7 +1,3 @@
----
-layout: landing
----
-
 # Loyalty Partner API
 
 The **Mews Loyalty Partner API** enables loyalty program providers to integrate their membership systems with Mews. Once connected, **Mews Operations** users (like front desk staff) can view and manage customer loyalty memberships directly within the Mews guest profile.

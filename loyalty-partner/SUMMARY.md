@@ -22,10 +22,10 @@
 ## API Operations (partner) <a href="#api-operations" id="api-operations"></a>
 
 * ```yaml
-  type: builtin:openapi
   props:
     models: true
     downloadLink: true
+  type: builtin:openapi
   dependencies:
     spec:
       ref:

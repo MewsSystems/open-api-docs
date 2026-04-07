@@ -10,23 +10,20 @@ A Mews customer does not have a loyalty membership in the partner system. Front 
 
 {% stepper %}
 {% step %}
+#### Add membership
 
-### Add membership
-
-<figure><img src="../.gitbook/assets/add-membership.png" alt="Mews customer profile with the option to add a new loyalty membership" width="563"><figcaption>Customer profile screen where front desk staff add a new loyalty membership.</figcaption></figure>
+<figure><img src="../.gitbook/assets/add-membership.png" alt="Mews customer profile with the option to add a new loyalty membership" width="563"><figcaption><p>Customer profile screen where front desk staff add a new loyalty membership.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
+#### Select loyalty program
 
-### Select loyalty program
-
-<figure><img src="../.gitbook/assets/select-loyalty-program.png" alt="Dialog listing available loyalty programs for selection" width="563"><figcaption>Selection dialog where front desk staff choose the appropriate loyalty program.</figcaption></figure>
+<figure><img src="../.gitbook/assets/select-loyalty-program.png" alt="Dialog listing available loyalty programs for selection" width="563"><figcaption><p>Selection dialog where front desk staff choose the appropriate loyalty program.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
+#### Enrolled customer
 
-### Enrolled customer
-
-<figure><img src="../.gitbook/assets/enrolled-customer.png" alt="Customer profile showing active loyalty membership details after enrollment" width="563"><figcaption>Customer profile updated to show the newly created loyalty membership.</figcaption></figure>
+<figure><img src="../.gitbook/assets/enrolled-customer.png" alt="Customer profile showing active loyalty membership details after enrollment" width="563"><figcaption><p>Customer profile updated to show the newly created loyalty membership.</p></figcaption></figure>
 {% endstep %}
 {% endstepper %}
