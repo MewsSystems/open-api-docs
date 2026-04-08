@@ -122,6 +122,23 @@ The table columns have the following meanings:
 | `TaxRate`<br>in [Currency value](../operations/accountingitems.md#currency-value) | - | Prior to 2021 | - |
 | Object `UnitCost`<br> in [Get all accounting items](../operations/accountingitems.md#get-all-accounting-items) | Replaced by `Amount` | Prior to 2021 | - |
 
+### Deprecated enum values
+
+| Feature | Comments | Deprecated | Discontinued |
+| :-- | :-- | :-- | :-- |
+| `CreditCard` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `IDeal` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `PayPal` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `OnlinePayment` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `MasterCard` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `Visa` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `Amex` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `Discover` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `DinersClub` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `Jcb` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `UnionPay` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
+| `DepositCreditCard` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 3 Apr 2026 | - |
+
 ### Operations using deprecated time filters
 
 * [Get all customers](../operations/customers.md#get-all-customers)

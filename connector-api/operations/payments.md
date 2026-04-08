@@ -163,7 +163,8 @@ Returns all payments in the system, filtered by various parameters. At least one
         },
         "Invoice": null,
         "External": null,
-        "Ghost": null
+        "Ghost": null,
+        "Alternative": null
       },
       "PaymentOrigin": "Terminal"
     },
@@ -221,9 +222,73 @@ Returns all payments in the system, filtered by various parameters. At least one
       "Kind": "Payment",
       "Data": null,
       "PaymentOrigin": "PointOfSales"
+    },
+    {
+      "Id": "a3e7f291-6c4d-4b8a-9f12-1d3e5c7b9a01",
+      "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "AccountId": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+      "AccountType": "Customer",
+      "PaymentRequestId": null,
+      "BillId": "ea087d64-3901-4eee-b0b7-9fce4c58a005",
+      "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509",
+      "AccountingCategoryId": null,
+      "Amount": {
+        "Currency": "EUR",
+        "NetValue": -500,
+        "GrossValue": -500,
+        "TaxValues": [],
+        "Breakdown": {
+          "Items": [
+            {
+              "TaxRateCode": null,
+              "NetValue": -500,
+              "TaxValue": 0
+            }
+          ]
+        }
+      },
+      "OriginalAmount": {
+        "Currency": "EUR",
+        "NetValue": -500,
+        "GrossValue": -500,
+        "TaxValues": [],
+        "Breakdown": {
+          "Items": [
+            {
+              "TaxRateCode": null,
+              "NetValue": -500,
+              "TaxValue": 0
+            }
+          ]
+        }
+      },
+      "Notes": null,
+      "SettlementId": null,
+      "ConsumedUtc": null,
+      "ClosedUtc": null,
+      "ChargedUtc": null,
+      "CreatedUtc": "2023-03-06T09:00:00Z",
+      "UpdatedUtc": "2023-03-06T09:00:01Z",
+      "SettlementUtc": null,
+      "AccountingState": "Open",
+      "State": "Pending",
+      "Identifier": null,
+      "Type": "AlternativePayment",
+      "Kind": "Payment",
+      "Data": {
+        "Discriminator": "Alternative",
+        "CreditCard": null,
+        "Invoice": null,
+        "External": null,
+        "Ghost": null,
+        "Alternative": {
+          "Type": "WireTransfer"
+        }
+      },
+      "PaymentOrigin": "System"
     }
   ],
-  "Cursor": "be922eb7-bc5f-4877-b847-1120c0c2acd2"
+  "Cursor": "a3e7f291-6c4d-4b8a-9f12-1d3e5c7b9a01"
 }
 ```
 
@@ -297,6 +362,7 @@ Returns all payments in the system, filtered by various parameters. At least one
 | `Invoice` | [Invoice payment data](payments.md#invoice-payment-data) | optional | Contains additional data in the case of an invoice payment. |
 | `External` | [External payment data](payments.md#external-payment-data) | optional | Contains additional data in the case of an external payment. |
 | `Ghost` | [Ghost payment data](payments.md#ghost-payment-data) | optional | Contains additional data in the case of a ghost payment. |
+| `Alternative` | [Alternative payment data](payments.md#alternative-payment-data) | optional | Contains additional data in the case of an alternative payment. |
 
 #### Payment data discriminator
 
@@ -304,6 +370,7 @@ Returns all payments in the system, filtered by various parameters. At least one
 * `Invoice`
 * `External`
 * `Ghost`
+* `Alternative`
 
 #### Credit card payment data
 
@@ -389,7 +456,7 @@ Returns all payments in the system, filtered by various parameters. At least one
 * `DirectDebit` - Direct debit
 * `DepositCheck` - Deposit - check
 * `DepositCash` - Deposit - cash
-* `DepositCreditCard` - Deposit - credit card
+* `DepositCreditCard` - Deposit - credit card – deprecated, only for existing partners
 * `DepositWireTransfer` - Deposit - wire transfer
 
 #### Ghost payment data
@@ -397,6 +464,21 @@ Returns all payments in the system, filtered by various parameters. At least one
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `OriginalPaymentId` | string | required | Unique identifier of the original payment. |
+
+#### Alternative payment data
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Type` | [Alternative payment method type](payments.md#alternative-payment-method-type) | required | Type of the alternative payment method. |
+
+#### Alternative payment method type
+
+* `Ideal` - iDEAL
+* `ApplePay` - Apple Pay
+* `GooglePay` - Google Pay
+* `SepaDirectDebit` - SEPA Direct Debit
+* `PayPal` - PayPal
+* `WireTransfer` - Wire transfer
 
 #### Payment origin
 
