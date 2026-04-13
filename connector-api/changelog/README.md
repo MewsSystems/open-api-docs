@@ -6,9 +6,9 @@
 ## Export API: LedgerEntry filters and entity documentation
 
 - [Add export](../operations/exports.md#add-export):
-- [Get all exports](../operations/exports.md#get-all-exports):
   - Extended [Export data filters](../operations/exports.md#export-data-filters) with `LedgerEntryFilters` parameter. Required when `EntityType` is `LedgerEntry`.
   - Added [Export ledger entry data filters](../operations/exports.md#export-ledger-entry-data-filters) object with `Posting` date interval filter.
+- [Get all exports](../operations/exports.md#get-all-exports):
   - Added [Ledger entry](../operations/exports.md#ledger-entry) entity definition (beta).
 
 {% endupdate %}
