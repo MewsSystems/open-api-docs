@@ -1,6 +1,10 @@
-# Ledger entries
+# Export-specific types
 
-#### Ledger entry
+The following types are exposed through [export-related operations](../use-cases/data-export.md) but are not used elsewhere in the Connector API.
+
+### Ledger entry
+
+For `LedgerEntry` entity type.
 
 > ### Restricted!
 > This entity is currently in beta-test and as such it is subject to change.
@@ -14,9 +18,9 @@
 | `BillId` | string | optional | Unique identifier of the [Bill](bills.md#bill) associated with this ledger entry. |
 | `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting category](accountingcategories.md#accounting-category) for this ledger entry. |
 | `AccountingItemId` | string | required | Unique identifier of the item linked to this ledger entry. |
-| `AccountingItemType` | [Accounting item type](exports.md#accounting-item-type) | required | Type of item linked to this ledger entry. |
-| `LedgerType` | [Accounting ledger type](exports.md#accounting-ledger-type) | required | Type of accounting ledger where this entry is recorded. |
-| `LedgerEntryType` | [Accounting ledger entry type](exports.md#accounting-ledger-entry-type) | required | Whether this is a debit or credit entry in the ledger. |
+| `AccountingItemType` | [Accounting item type](#accounting-item-type) | required | Type of item linked to this ledger entry. |
+| `LedgerType` | [Accounting ledger type](#accounting-ledger-type) | required | Type of accounting ledger where this entry is recorded. |
+| `LedgerEntryType` | [Accounting ledger entry type](#accounting-ledger-entry-type) | required | Whether this is a debit or credit entry in the ledger. |
 | `PostingDate` | string | required | Date when this entry was posted to the ledger in ISO 8601 format. |
 | `Value` | decimal | required | Monetary value of this ledger entry. Always a positive number. |
 | `NetBaseValue` | decimal | optional | Net value from which tax is calculated. Only populated for entries on the tax ledger. |
