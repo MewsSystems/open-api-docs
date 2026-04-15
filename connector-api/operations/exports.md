@@ -233,7 +233,7 @@ Creates a new pending export for all entities of the specified `EntityType`. If 
 * `AvailabilityAdjustment`
 * `AvailabilityBlock`
 * `ResourceBlock`
-* `LedgerEntry` - Beta testing - subject to change
+* `LedgerEntry` - **Beta testing - subject to change.** See [Ledger entry type](_export-types.md#ledger-entry).
 
 #### Export scope
 
@@ -254,10 +254,10 @@ Creates a new pending export for all entities of the specified `EntityType`. If 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional | Filters entities by the specified UTC update interval. The end of the interval must be no later than 5 minutes in the past. The maximum interval is 180 days. |
-| `LedgerEntryFilters` | [ExportLedgerEntryDataFilters](exports.md#exportledgerentrydatafilters) | optional | Filters specific to the `LedgerEntry` entity type. Required when `EntityType` is `LedgerEntry`. |
+| `LedgerEntryFilters` | [Export ledger entry data filters](exports.md#export-ledger-entry-data-filters) | optional | Filters specific to the `LedgerEntry` entity type. Required when `EntityType` is `LedgerEntry`. |
 
-#### ExportLedgerEntryDataFilters
+#### Export ledger entry data filters
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `Posting` | [Date interval](_objects.md#date-interval) | optional |  |
+| `Posting` | [Date interval](_objects.md#date-interval) | optional | Filters ledger entries by their posting date within the specified date interval. |
