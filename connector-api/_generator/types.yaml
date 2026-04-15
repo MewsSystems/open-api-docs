@@ -2625,3 +2625,6 @@ types:
   alternativepaymentmethodtypeenum:
     file: payments.md
     anchor: alternative-payment-method-type
+  exportledgerentrydatafilters:
+    file: exports.md
+    anchor: exportledgerentrydatafilters

@@ -64,7 +64,8 @@ Returns exports for the given `ExportIds`. This operation supports [Portfolio Ac
         "UpdatedUtc": {
           "StartUtc": "2020-11-04T00:00:00Z",
           "EndUtc": "2020-11-05T00:00:00Z"
-        }
+        },
+        "LedgerEntryFilters": null
       }
     },
     {
@@ -83,7 +84,8 @@ Returns exports for the given `ExportIds`. This operation supports [Portfolio Ac
         "UpdatedUtc": {
           "StartUtc": "2020-11-04T00:00:00Z",
           "EndUtc": "2020-11-05T00:00:00Z"
-        }
+        },
+        "LedgerEntryFilters": null
       }
     },
     {
@@ -189,7 +191,8 @@ Creates a new pending export for all entities of the specified `EntityType`. If 
       "UpdatedUtc": {
         "StartUtc": "2020-11-04T00:00:00Z",
         "EndUtc": "2020-11-05T00:00:00Z"
-      }
+      },
+      "LedgerEntryFilters": null
     }
   }
 }
@@ -251,3 +254,10 @@ Creates a new pending export for all entities of the specified `EntityType`. If 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional | Filters entities by the specified UTC update interval. The end of the interval must be no later than 5 minutes in the past. The maximum interval is 180 days. |
+| `LedgerEntryFilters` | [ExportLedgerEntryDataFilters](exports.md#exportledgerentrydatafilters) | optional | Filters specific to the `LedgerEntry` entity type. Required when `EntityType` is `LedgerEntry`. |
+
+#### ExportLedgerEntryDataFilters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Posting` | [Date interval](_objects.md#date-interval) | optional |  |
