@@ -19,7 +19,7 @@ Returns exports for the given `ExportIds`. This operation supports [Portfolio Ac
   "Client": "Sample Client 1.0.0",
   "ExportIds": [
     "3fa85f64-5717-4562-b3fd-2c963f66afa6",
-    "09708665-0e31-4b23-b337-b0a000be0df0",
+    "5f51c9ef-fc1d-4438-90ad-6b925ab7d7a9",
     "706dc6d5-9511-4751-825e-538ce99da2ce",
     "f776f20a-6f1a-4ddf-93f4-9dae95261415"
   ]
@@ -69,9 +69,9 @@ Returns exports for the given `ExportIds`. This operation supports [Portfolio Ac
       }
     },
     {
-      "Id": "09708665-0e31-4b23-b337-b0a000be0df0",
+      "Id": "5f51c9ef-fc1d-4438-90ad-6b925ab7d7a9",
       "Status": "Pending",
-      "EntityType": "Reservation",
+      "EntityType": "LedgerEntry",
       "Scope": {
         "EnterpriseIds": [
           "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -81,11 +81,13 @@ Returns exports for the given `ExportIds`. This operation supports [Portfolio Ac
       "Files": [],
       "ExpiresUtc": null,
       "Filters": {
-        "UpdatedUtc": {
-          "StartUtc": "2020-11-04T00:00:00Z",
-          "EndUtc": "2020-11-05T00:00:00Z"
-        },
-        "LedgerEntryFilters": null
+        "UpdatedUtc": null,
+        "LedgerEntryFilters": {
+          "Posting": {
+            "Start": "2024-01-01",
+            "End": "2024-01-31"
+          }
+        }
       }
     },
     {
