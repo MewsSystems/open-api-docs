@@ -262,4 +262,4 @@ Creates a new pending export for all entities of the specified `EntityType`. If 
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `Posting` | [Date interval](_objects.md#date-interval) | optional | Filters ledger entries by their posting date within the specified date interval. |
+| `Posting` | [Date interval](_objects.md#date-interval) | required | Filters ledger entries by their posting date within the specified date interval, inclusive of both the start and end dates. |
