@@ -1,6 +1,18 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-04-16" %}
+
+## New export entity type: Ledger entries
+
+- [Add export](../operations/exports.md#add-export):
+- [Get all exports](../operations/exports.md#get-all-exports):
+  - Extended [Exported entity type](../operations/exports.md#exported-entity-type) enum with `LedgerEntry` value (beta).
+  - Extended [Export data filters](../operations/exports.md#export-data-filters) with `LedgerEntryFilters` parameter required `LedgerEntry` type.
+  - Added [Export ledger entry data filters](../operations/exports.md#export-ledger-entry-data-filters) object with `Posting` date interval filter.
+  - Added [Ledger entry](../operations/_export-types.md#ledger-entry) entity definition for exported ledger entry file content (beta).
+
+{% endupdate %}
 {% update date="2026-04-08" %}
 
 ## Payments and payment methods updates
