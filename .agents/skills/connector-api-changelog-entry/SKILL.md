@@ -75,13 +75,23 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 - Avoid marketing language and vague statements.
 - Prefer explicit behavior and constraints.
 
-8. Validate before finalizing.
+8. Update deprecations list when applicable.
+
+- When the changelog entry includes a deprecated operation, property, parameter, extent, or enum value, also update `connector-api/deprecations/README.md`.
+- Add the item to the correct table: **Deprecated operations**, **Deprecated properties**, **Deprecated enum values**, or **Deprecated functionality**.
+- Use the same link text and anchor as in the changelog entry.
+- Set the **Deprecated** date to match the changelog entry date.
+- Leave the **Discontinued** column as `-` unless a specific discontinuation date is already known.
+- Do not add entries for changes that are **Breaking** or **Removed** — only for items explicitly marked **Deprecated**.
+
+9. Validate before finalizing.
 
 - Date is today or future date, not past date.
 - All operation links resolve and use operation names.
 - Label wording exactly matches repository conventions.
 - Documentation-only sentence is present when needed.
 - Entry is consistent with nearby changelog style.
+- `connector-api/deprecations/README.md` updated when deprecations are present.
 
 If no relevant Connector API reference changes are found in either local changes or branch diff, report that no changelog entry is needed from the detected diff and ask for explicit scope if the user still wants one.
 
@@ -132,3 +142,4 @@ Documentation-only:
 - Correct labels (`Breaking`, `Deprecated`, `Removed`) where applicable.
 - Correct operation links and concise details.
 - Includes `Documentation-only, no change to API.` when applicable.
+- `connector-api/deprecations/README.md` updated for any deprecated items.
