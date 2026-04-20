@@ -58,7 +58,7 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 
 - Use `**Breaking:**` for contract changes.
 - Use `**Deprecated** operation` for deprecated operations.
-- Use `**Deprecated:**` for deprecated properties, parameters, or extents.
+- Use `**Deprecated**` with clarification for deprecated properties, parameters, or extents.
 - Use `**Removed** operations` for removed operations or removed support.
 - Mark restricted operations as `(restricted)` or `(restricted operation)`.
 
@@ -117,7 +117,7 @@ Deprecated property or parameter:
 
 ```markdown
 - [Get all bills](../operations/bills.md#get-all-bills):
-  - **Deprecated:** `ClosedUtc` parameter in request object. Use `IssuedUtc` instead.
+  - **Deprecated** operation extent: `ClosedUtc` parameter in request object. Use `IssuedUtc` instead.
 ```
 
 Removed support:
