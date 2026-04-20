@@ -37,6 +37,27 @@ Additional Services are [Services][Service] that cannot be purchased when a [Res
 
 All [Order] items and [Payment] items are types of Accounting Item. [Order] items are consumed items, [Payment] items are payments or invoices.
 
+## ADR <a href="#ADR" id="ADR"></a>
+
+ADR stands for Average Daily Rate, a standard hospitality industry metric expressing the average revenue earned per occupied [Space] per day. Hotels use ADR as a measure of pricing performance — for example, when offering an [Allowance] instead of discounting the room [Rate], the hotel can protect its ADR while still providing added value to the guest.
+
+## Allowance <a href="#Allowance" id="Allowance"></a>
+
+An Allowance is a packaged spending benefit that a [Property] attaches to a [Rate], giving guests a pre-defined amount they can redeem against specified on-property services — for example, food & beverage, spa, or minibar charges. Rather than discounting the room [Rate], the [Property]  adds value while protecting its [ADR].
+
+From an accounting perspective, the allowance represents a liability the [Property] assumes at activation: the property has committed to absorbing qualifying charges on the guest's behalf, up to the specified amount. When an allowance is activated for a [Reservation], the system posts an allowance [Product] order item (a `ProductOrder` with `ProductType = Allowance`) to the guest's [Bill]. When a qualifying charge is subsequently posted — one whose [Accounting Category] matches the allowance's permitted consumption categories — the system automatically creates an `AllowanceDiscount` order item that offsets the charge up to the remaining allowance balance. No additional API call is needed to trigger the discount.
+
+Any unspent allowance is retained by the [Property] as additional revenue, which is known as [Breakage].
+
+The following order item types are specific to allowances:
+
+| Order item type | What it represents |
+| --- | --- |
+| `ProductOrder` (with `ProductType = Allowance`) | The allowance product — the liability posted to the guest's bill when the allowance is activated. |
+| `AllowanceDiscount` | A discount automatically applied to a qualifying charge, offsetting the charge up to the remaining allowance balance. |
+| `AllowanceBreakage` | Unspent allowance retained by the [Property] as revenue at checkout. See [Breakage]. |
+| `AllowanceContraBreakage` | The accounting contra entry for breakage, ensuring double-entry accounting integrity. |
+
 ## ARI <a href="#ARI" id="ARI"></a>
 
 ARI is a general hospitality industry term and stands for [Availability], [Rates][Rate] and [Inventory].
@@ -80,6 +101,12 @@ Booking Engine implies the part of a booking website or app through which users 
 ## Booking Engine API <a href="#BookingEngineAPI" id="BookingEngineAPI"></a>
 
 The **Mews Booking Engine API** is one of the main APIs within the [Mews Open API][Open API]. It can be used by custom Booking Engines to enable users to check availability and make reservations directly in Mews.
+
+## Breakage <a href="#Breakage" id="Breakage"></a>
+
+Breakage is the unspent allowance that is retained by the [Property] as revenue when the allowance expires or the guest checks out. It represents the portion of the allowance that the guest did not consume during their stay.
+
+In the [Connector API], breakage is represented by an `AllowanceBreakage` order item. For every `AllowanceBreakage` item there is a corresponding `AllowanceContraBreakage` item, which maintains double-entry accounting balance. Accounting integrations should expect and reconcile both items.
 
 ## Business Segment <a href="#BusinessSegment" id="BusinessSegment"></a>
 
@@ -591,6 +618,8 @@ A Voucher is a coupon or token that gives [Customers][Customer] or [Companies][C
 [Accounting Category]: #AccountingCategory
 [Additional Services]: #AdditionalServices
 [Accounting Item]: #AccountingItem
+[ADR]: #ADR
+[Allowance]: #Allowance
 [ARI]: #ARI
 [Availability]: #Availability
 [Availability Block]: #AvailabilityBlock
@@ -600,6 +629,7 @@ A Voucher is a coupon or token that gives [Customers][Customer] or [Companies][C
 [Booking]: #Booking
 [Booking Engine]: #BookingEngine
 [Booking Engine API]: #BookingEngineAPI
+[Breakage]: #Breakage
 [Business Segment]: #BusinessSegment
 [Cashier]: #Cashier
 [Chain]: #Chain

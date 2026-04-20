@@ -2,11 +2,11 @@
 
 ## Overview
 
-Allowances are packaged credits that hotels attach to rates, giving guests a spending allowance they can use on-property — for example, a food & beverage credit, spa credit, or minibar allowance.
+An Allowance is a packaged spending benefit that a [Property] attaches to a [Rate], giving guests a pre-defined amount they can redeem against specified on-property services — for example, food & beverage, spa, or minibar charges. Rather than discounting the room [Rate], the [Property]  adds value while protecting its [ADR].
 
-Instead of discounting the room rate, hotels offer added value: the guest perceives a better deal, while the hotel protects its ADR and captures incremental non-room revenue.
+From an accounting perspective, the allowance represents a liability the [Property] assumes at activation: the property has committed to absorbing qualifying charges on the guest's behalf, up to the specified amount. When an allowance is activated for a [Reservation], the system posts an allowance [Product] order item (a `ProductOrder` with `ProductType = Allowance`) to the guest's [Bill]. When a qualifying charge is subsequently posted — one whose [Accounting Category] matches the allowance's permitted consumption categories — the system automatically creates an `AllowanceDiscount` order item that offsets the charge up to the remaining allowance balance. No additional API call is needed to trigger the discount.
 
-Any unspent credit (called **breakage**) is retained by the hotel as additional revenue.
+Any unspent allowance is retained by the [Property] as additional revenue, which is known as [Breakage].
 
 Integrations — such as point-of-sale (POS) systems, accounting systems, and kiosk or self-service applications — can use the Connector API to:
 
@@ -21,10 +21,10 @@ There are several types of order item specific to allowances. Understanding thes
 
 | Order item type | What it represents |
 | --- | --- |
-| `ProductOrder` (with `ProductType = Allowance`) | The allowance product itself — the credit posted to the guest's bill when the allowance is activated. |
-| `AllowanceDiscount` | A discount automatically applied to a qualifying charge. This offsets the original charge amount up to the remaining allowance balance. |
-| `AllowanceBreakage` | Unspent credit retained by the hotel as revenue when the allowance expires or the guest checks out. |
-| `AllowanceContraBreakage` | The accounting balance entry for breakage — ensures double-entry accounting integrity. |
+| `ProductOrder` (with `ProductType = Allowance`) | The allowance product — the liability posted to the guest's bill when the allowance is activated. |
+| `AllowanceDiscount` | A discount automatically applied to a qualifying charge, offsetting the charge up to the remaining allowance balance. |
+| `AllowanceBreakage` | Unspent allowance retained by the [Property] as revenue at checkout. See [Breakage]. |
+| `AllowanceContraBreakage` | The accounting contra entry for breakage, ensuring double-entry accounting integrity. |
 
 ### Automatic discounting
 
@@ -34,7 +34,7 @@ No additional API call is needed to trigger the discount.
 
 ## Posting charges against an allowance
 
-External systems such as POS integrations can post charges to a guest's profile using [`Add order`](https://docs.mews.com/connector-api/operations/orders#add-order).
+External systems such as POS integrations can post charges to a guest's profile using [`Add order`](../operations/orders.md#add-order).
 
 If the guest has an active allowance and the charge falls within the allowance's permitted consumption categories (matched by `AccountingCategoryId`), the system will automatically generate an `AllowanceDiscount` order item that offsets the charge — up to the remaining allowance balance.
 
@@ -44,7 +44,7 @@ In both cases, the `AccountingCategoryId` on the item determines whether the cha
 
 ### Linking orders to reservations
 
-Specify parameter `LinkedReservationId` when using [`Add order`](https://docs.mews.com/connector-api/operations/orders#add-order) to link the order to the guest's reservation.
+Specify parameter `LinkedReservationId` when using [`Add order`](../operations/orders.md#add-order) to link the order to the guest's reservation.
 
 This is especially important for allowances because it ensures the charge and the resulting allowance discount are associated with the correct reservation and its billing automation rules.
 
@@ -52,9 +52,9 @@ This is especially important for allowances because it ensures the charge and th
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to post a charge that triggers an allowance discount | [`Add order`](https://docs.mews.com/connector-api/operations/orders#add-order) |
-| How to post a custom item against an allowance | [`Add order`](https://docs.mews.com/connector-api/operations/orders#add-order) (use `Items` with `AccountingCategoryId`) |
-| How to post an existing Mews product against an allowance | [`Add order`](https://docs.mews.com/connector-api/operations/orders#add-order) (use `ProductOrders`) |
+| How to post a charge that triggers an allowance discount | [`Add order`](../operations/orders.md#add-order) |
+| How to post a custom item against an allowance | [`Add order`](../operations/orders.md#add-order) (use `Items` with `AccountingCategoryId`) |
+| How to post an existing Mews product against an allowance | [`Add order`](../operations/orders.md#add-order) (use `ProductOrders`) |
 
 ## Partial consumption
 
@@ -70,7 +70,7 @@ The charge is posted normally to the guest's bill.
 
 ## Retrieving allowance-related order items
 
-Use [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) to retrieve order items related to allowances.
+Use [`Get all order items`](../operations/orderitems.md#get-all-order-items) to retrieve order items related to allowances.
 
 You can filter:
 
@@ -83,11 +83,11 @@ You can filter:
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to get all order items for a reservation (including allowance items) | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `ServiceOrderIds`) |
-| How to get allowance discount items | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `Types` filter with `AllowanceDiscount`) |
-| How to get breakage items | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `Types` filter with `AllowanceBreakage`) |
-| How to get all allowance-related items on a bill | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `BillIds`) |
-| How to get allowance items over a period | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `ClosedUtc` or `ConsumedUtc`) |
+| How to get all order items for a reservation (including allowance items) | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `ServiceOrderIds`) |
+| How to get allowance discount items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceDiscount`) |
+| How to get breakage items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceBreakage`) |
+| How to get all allowance-related items on a bill | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `BillIds`) |
+| How to get allowance items over a period | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `ClosedUtc` or `ConsumedUtc`) |
 
 ## Working with allowance discounts
 
@@ -96,12 +96,12 @@ When you retrieve order items of type `AllowanceDiscount`, the item's `Data` fie
 * the original charge
 * the allowance product that funded it
 
-Specifically, an [`Order item`](https://docs.mews.com/connector-api/operations/orderitems#order-item) with `Data.Discriminator` set to `AllowanceDiscount` will have:
+Specifically, an [`Order item`](../operations/orderitems.md#order-item) with `Data.Discriminator` set to `AllowanceDiscount` will have:
 
 * `DiscountedOrderItemId` — the unique identifier of the original charge item that was discounted.
-* `AllowanceProductOrderItemId` — the unique identifier of the allowance product order item whose credit was consumed.
+* `AllowanceProductOrderItemId` — the unique identifier of the allowance product order item which consumed the item.
 
-You can use [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) with the `OrderItemIds` filter to fetch the details of either:
+You can use [`Get all order items`](../operations/orderitems.md#get-all-order-items) with the `OrderItemIds` filter to fetch the details of either:
 
 * the original charge, or
 * the allowance product.
@@ -110,20 +110,20 @@ You can use [`Get all order items`](https://docs.mews.com/connector-api/operatio
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to find the original charge for an allowance discount | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `OrderItemIds` with `DiscountedOrderItemId`) |
-| How to find which allowance funded a discount | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId`) |
+| How to find the original charge for an allowance discount | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `DiscountedOrderItemId`) |
+| How to find which allowance funded a discount | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId`) |
 
 Discount amounts are negative. An `AllowanceDiscount` order item carries a negative `Amount`, which offsets the positive amount of the original charge on the guest's bill.
 
 ## Working with breakage and profits
 
-When a guest checks out or an allowance expires with unspent credit remaining, the system generates breakage items. These represent the hotel's retained revenue from unused allowance credit.
+When a guest checks out or an allowance expires with unspent allowance remaining, the system generates breakage items. These represent the hotel's retained revenue from unused allowance.
 
-An [`Order item`](https://docs.mews.com/connector-api/operations/orderitems#order-item) with `Data.Discriminator` set to `AllowanceProfits` will have:
+An [`Order item`](../operations/orderitems.md#order-item) with `Data.Discriminator` set to `AllowanceProfits` will have:
 
-* `AllowanceProductOrderItemId` — the unique identifier of the allowance product whose credit was not fully consumed.
+* `AllowanceProductOrderItemId` — the unique identifier of the allowance product whose amount was not fully consumed.
 * `AllowanceProfitType` — the type of profit entry, which can be one of:
-  * `AllowanceBreakage` — the profit from unspent allowance credit.
+  * `AllowanceBreakage` — the profit from unspent allowance amount.
   * `AllowanceContraBreakage` — the accounting balance entry for the breakage.
   * `AllowanceLoss` — the loss from the allowance product.
   * `AllowanceContraLoss` — the accounting balance entry for the loss.
@@ -132,8 +132,8 @@ An [`Order item`](https://docs.mews.com/connector-api/operations/orderitems#orde
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to get breakage items for reconciliation | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `Types` with `AllowanceBreakage`) |
-| How to find which allowance generated a breakage item | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId` from the breakage item's `Data`) |
+| How to get breakage items for reconciliation | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` with `AllowanceBreakage`) |
+| How to find which allowance generated a breakage item | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId` from the breakage item's `Data`) |
 
 Breakage and contra-breakage always occur in pairs. For every `AllowanceBreakage` item, there is a corresponding `AllowanceContraBreakage` item to maintain double-entry accounting balance. Accounting integrations should expect and reconcile both.
 
@@ -146,17 +146,17 @@ An order item with:
 * `Data.Discriminator` set to `Product`, and
 * `Data.Product.ProductType` set to `Allowance`
 
-is an **allowance product** — the credit itself, as opposed to a charge or discount.
+is an **allowance product** — the allowance amount itself, as opposed to a charge or discount.
 
 ### "How to" use cases (identifying products)
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to identify allowance product items among order items | [`Get all order items`](https://docs.mews.com/connector-api/operations/orderitems#get-all-order-items) (check `Data.Product.ProductType = Allowance`) |
+| How to identify allowance product items among order items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (check `Data.Product.ProductType = Allowance`) |
 
 ## Testing your integration
 
-Ensure you follow the general [`Usage guidelines`](https://docs.mews.com/connector-api/guidelines) for testing integrations.
+Ensure you follow the general [`Usage guidelines`](../guidelines/README.md) for testing integrations.
 
 When testing an integration that works with allowances, verify the following scenarios:
 
@@ -165,7 +165,7 @@ When testing an integration that works with allowances, verify the following sce
 * Post a charge that exceeds the remaining allowance balance — confirm the discount is capped at the remaining balance.
 * Post a charge of amount 0 — confirm no discount is created.
 * Retrieve order items for a reservation and confirm you can identify all allowance-related item types (`AllowanceDiscount`, `AllowanceBreakage`, `AllowanceContraBreakage`).
-* Confirm that breakage items are created after checkout when allowance credit remains unspent.
+* Confirm that breakage items are created after checkout when allowance amount remains unspent.
 * Reconcile the sum of allowance product amount, discount amounts, and breakage amounts — they should balance to zero.
 
 To cross-check allowance financial data, you can use the **Mews Accounting Report** and the **Bills and Invoices Report** in Mews Operations.
