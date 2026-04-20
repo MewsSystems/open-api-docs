@@ -1,4 +1,4 @@
-﻿# Allowances Extended Use Cases
+# Allowances Extended Use Cases
 
 ## Overview
 
