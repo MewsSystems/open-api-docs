@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-04-19" %}
+{% update date="2026-04-23" %}
 
 ## Blocklist replaces Blacklist in customer classifications
 
