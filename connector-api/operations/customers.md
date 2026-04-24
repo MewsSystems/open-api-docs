@@ -251,9 +251,8 @@ Note that the value should not be used as-is, but localized. For example, the va
 
 #### Customer classification
 
-* `None`
 * `PaymasterAccount`
-* `Blacklist`
+* `Blacklist` - Deprecated, use Blocklist instead.
 * `Media`
 * `LoyaltyProgram`
 * `PreviousComplaint`
@@ -272,6 +271,7 @@ Note that the value should not be used as-is, but localized. For example, the va
 * `InRoom`
 * `WaitingForRoom`
 * `Student`
+* `Blocklist`
 
 #### Customer option
 
@@ -478,29 +478,6 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `IssuingCountryCode` | string | optional | ISO 3166-1 code of the `Country`. |
 | `IssuingCountrySubdivisionCode` | string | optional | Identifier of the country subdivision where the document was issued (province, state or region). |
 | `IssuingCity` | string | optional | City from which document issued |
-
-#### Customer classification
-
-* `PaymasterAccount`
-* `Blacklist`
-* `Media`
-* `LoyaltyProgram`
-* `PreviousComplaint`
-* `Returning`
-* `Staff`
-* `FriendOrFamily`
-* `TopManagement`
-* `Important`
-* `VeryImportant`
-* `Problematic`
-* `Cashlist`
-* `DisabledPerson`
-* `Military`
-* `Airline`
-* `HealthCompliant`
-* `InRoom`
-* `WaitingForRoom`
-* `Student`
 
 #### Customer option
 

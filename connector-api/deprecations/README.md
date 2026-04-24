@@ -50,6 +50,7 @@ The table columns have the following meanings:
 
 | Feature | Comments | Deprecated | Discontinued |
 | :-- | :-- | :-- | :-- |
+| `Blacklist` in [Customer update classifications](../operations/accounts.md#customer-update-classifications) and [Customer classifications](../operations/accounts.md#customer-classifications) | Replaced by `Blocklist` | 23 Apr 2026 | - |
 | `Extent` in [Get all services](../operations/services.md#get-all-services) | Replaced by `ActivityStates` parameter. | 15 Sep 2025 | |
 | `Code` in [Get all loyalty memberships](../operations/loyaltymemberships.md#get-all-loyalty-memberships), [Add loyalty memberships](../operations/loyaltymemberships.md#add-loyalty-memberships), [Update loyalty memberships](../operations/loyaltymemberships.md#update-loyalty-memberships) request and response objects. | Replaced by `MembershipNumber` | 05 Aug 2025 | |
 | `CustomerId`, `FullName` <br> in [Payment terminal command data](../operations/commands.md#payment-terminal-command-data) | Replaced by `AccountId` and [AccountData](../operations/commands.md#account-data-for-payment-terminal-command) | 23 Jan 2025 | 10 Jan 2027 |
@@ -126,6 +127,7 @@ The table columns have the following meanings:
 
 | Feature | Comments | Deprecated | Discontinued |
 | :-- | :-- | :-- | :-- |
+| `Blacklist` value in [Customer classification](../operations/customers.md#customer-classification) | Replaced by `Blocklist`. | 23 Apr 2026 | - |
 | `CreditCard` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
 | `IDeal` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |
 | `PayPal` value in [External payment type](../operations/payments.md#external-payment-type) | Only supported for existing partners. | 14 Jul 2025 | - |

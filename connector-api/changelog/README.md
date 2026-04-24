@@ -1,6 +1,23 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-04-23" %}
+
+## Blocklist replaces Blacklist in customer classifications
+
+- [Update accounts](../operations/accounts.md#update-accounts):
+  - Extended [Customer update classifications](../operations/accounts.md#customer-update-classifications) request object with `Blocklist` property.
+  - Extended [Customer classifications](../operations/accounts.md#customer-classifications) response object with `Blocklist` property.
+  - **Deprecated:** `Blacklist` property in [Customer update classifications](../operations/accounts.md#customer-update-classifications) and [Customer classifications](../operations/accounts.md#customer-classifications). Use `Blocklist` instead.
+- [Get all customers](../operations/customers.md#get-all-customers):
+- [Add customer](../operations/customers.md#add-customer):
+- [Update customer](../operations/customers.md#update-customer):
+- [Search customers](../operations/customers.md#search-customers):
+  - Extended [Customer classification](../operations/customers.md#customer-classification) enum with `Blocklist` value.
+  - Removed incorrect `None` value from [Customer classification](../operations/customers.md#customer-classification) enum.
+  - **Deprecated:** `Blacklist` value in [Customer classification](../operations/customers.md#customer-classification) enum. Use `Blocklist` instead.
+
+{% endupdate %}
 {% update date="2026-04-16" %}
 
 ## New export entity type: Ledger entries
