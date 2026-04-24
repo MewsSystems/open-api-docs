@@ -72,7 +72,7 @@ The structure of the Data object depends on [Webhook action](wh-integration.md#w
 | ------------- | -------------------------------------------- | -------- |--------------------------------------------------------------------------------------------------------------|
 | `Enterprise`  | [Enterprise](wh-integration.md#enterprise)   | required | Property or chain of properties.                                                                             |
 | `Service`     | [Service](wh-integration.md#service)         | optional | Service the integration is connected to.                                                                     |
-| `Requestor`   | [Requestor](wh-integration.md#requestor)     | optional | Person requesting the action or event, if known.    |
+| `Requestor`   | [Requestor](wh-integration.md#requestor)     | optional | Person requesting the action or event, if known; otherwise this property is `null`.                          |
 | `AccessToken` | string                                       | required | Access token of the client application.                                                                      |
 | `CreatedUtc`  | string                                       | required | Creation date and time of the integration in UTC timezone in ISO 8601 format.                                |
 | `IsEnabled`   | bool                                         | required | Whether integration is enabled.                                                                              |
