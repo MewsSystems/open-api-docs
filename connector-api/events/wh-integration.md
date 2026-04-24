@@ -69,7 +69,7 @@ The structure of the Data object depends on [Webhook action](wh-integration.md#w
 ### Integration created data
 
 | Property      | Type                                         | Contract | Description                                                                                                  |
-| ------------- | -------------------------------------------- | -------- |--------------------------------------------------------------------------------------------------------------|
+| ------------- | -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
 | `Enterprise`  | [Enterprise](wh-integration.md#enterprise)   | required | Property or chain of properties.                                                                             |
 | `Service`     | [Service](wh-integration.md#service)         | optional | Service the integration is connected to.                                                                     |
 | `Requestor`   | [Requestor](wh-integration.md#requestor)     | optional | Person requesting the action or event, if known; otherwise this property is `null`.                          |
