@@ -43,7 +43,7 @@ ADR stands for Average Daily Rate, a standard hospitality industry metric expres
 
 ## Allowance <a href="#Allowance" id="Allowance"></a>
 
-An Allowance is a packaged spending benefit that a [Property] attaches to a [Rate], giving guests a pre-defined amount they can redeem against specified on-property services — for example, food & beverage, spa, or minibar charges. Rather than discounting the room [Rate], the [Property]  adds value while protecting its [ADR].
+An Allowance is a packaged spending benefit that a [Property] attaches to a [Rate], giving guests a pre-defined amount they can redeem against specified on-property services — for example, food & beverage, spa, or minibar charges. Rather than discounting the room [Rate], the [Property] adds value while protecting its [ADR].
 
 From an accounting perspective, the allowance represents a liability the [Property] assumes at activation: the property has committed to absorbing qualifying charges on the guest's behalf, up to the specified amount. When an allowance is activated for a [Reservation], the system posts an allowance [Product] order item (a `ProductOrder` with `ProductType = Allowance`) to the guest's [Bill]. When a qualifying charge is subsequently posted — one whose [Accounting Category] matches the allowance's permitted consumption categories — the system automatically creates an `AllowanceDiscount` order item that offsets the charge up to the remaining allowance balance. No additional API call is needed to trigger the discount.
 
