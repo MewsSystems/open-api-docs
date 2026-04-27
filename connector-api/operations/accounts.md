@@ -328,7 +328,7 @@ Updates one or more existing accounts in the system. Note this operation support
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `PaymasterAccount` | [Bool update value](_objects.md#bool-update-value) | optional | Paymaster account (or `null` if the value should not be updated). |
-| `Blacklist` | [Bool update value](_objects.md#bool-update-value) | optional | Blacklist (or `null` if the value should not be updated). |
+| `Blocklist` | [Bool update value](_objects.md#bool-update-value) | optional | Blocklist (or `null` if the value should not be updated). |
 | `Media` | [Bool update value](_objects.md#bool-update-value) | optional | Media (or `null` if the value should not be updated). |
 | `LoyaltyProgram` | [Bool update value](_objects.md#bool-update-value) | optional | Loyalty program (or `null` if the value should not be updated). |
 | `PreviousComplaint` | [Bool update value](_objects.md#bool-update-value) | optional | Previous complaint (or `null` if the value should not be updated). |
@@ -347,6 +347,7 @@ Updates one or more existing accounts in the system. Note this operation support
 | `InRoom` | [Bool update value](_objects.md#bool-update-value) | optional | In room (or `null` if the value should not be updated). |
 | `WaitingForRoom` | [Bool update value](_objects.md#bool-update-value) | optional | Waiting for room (or `null` if the value should not be updated). |
 | `Student` | [Bool update value](_objects.md#bool-update-value) | optional | Student (or `null` if the value should not be updated). |
+| ~~`Blacklist`~~ | ~~[Bool update value](_objects.md#bool-update-value)~~ | ~~optional~~ | ~~Synonym of Blocklist, left for backward compatibility (`null` if the value should not be updated).~~ **Deprecated!** Use Blocklist instead.|
 
 #### Customer update legal entity identifiers
 
@@ -582,7 +583,7 @@ Updated customer data.
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `PaymasterAccount` | boolean | required | Paymaster account. |
-| `Blacklist` | boolean | required | Blacklist. |
+| `Blocklist` | boolean | required | Blocklist. |
 | `Media` | boolean | required | Media. |
 | `LoyaltyProgram` | boolean | required | Loyalty program. |
 | `PreviousComplaint` | boolean | required | Previous complaint. |
@@ -601,6 +602,7 @@ Updated customer data.
 | `InRoom` | boolean | required | In room. |
 | `WaitingForRoom` | boolean | required | Waiting for room. |
 | `Student` | boolean | required | Student. |
+| ~~`Blacklist`~~ | ~~boolean~~ | ~~required~~ | ~~Synonym of Blocklist, left for backward compatibility.~~ **Deprecated!** Use Blocklist instead.|
 
 #### Customer legal identifiers
 

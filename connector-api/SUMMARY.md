@@ -65,6 +65,7 @@
   * [Enterprises](operations/enterprises.md)
   * [Exchange rates](operations/exchangerates.md)
   * [Exports](operations/exports.md)
+  * [Export-specific types](operations/_export-types.md)
   * [Identity documents](operations/identitydocuments.md)
   * [Images](operations/images.md)
   * [Languages](operations/languages.md)
