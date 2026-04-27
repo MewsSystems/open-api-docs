@@ -47,17 +47,6 @@ An Allowance is a packaged spending benefit that a [Property] attaches to a [Rat
 
 From an accounting perspective, the allowance represents a liability the [Property] assumes at activation: the property has committed to absorbing qualifying charges on the guest's behalf, up to the specified amount. When an allowance is activated for a [Reservation], the system posts an allowance [Product] order item (a `ProductOrder` with `ProductType = Allowance`) to the guest's [Bill]. When a qualifying charge is subsequently posted — one whose [Accounting Category] matches the allowance's permitted consumption categories — the system automatically creates an `AllowanceDiscount` order item that offsets the charge up to the remaining allowance balance. No additional API call is needed to trigger the discount.
 
-Any unspent allowance is retained by the [Property] as additional revenue, which is known as [Breakage].
-
-The following order item types are specific to allowances:
-
-| Order item type | What it represents |
-| --- | --- |
-| `ProductOrder` (with `ProductType = Allowance`) | The allowance product — the liability posted to the guest's bill when the allowance is activated. |
-| `AllowanceDiscount` | A discount automatically applied to a qualifying charge, offsetting the charge up to the remaining allowance balance. |
-| `AllowanceBreakage` | Unspent allowance retained by the [Property] as revenue at checkout. See [Breakage]. |
-| `AllowanceContraBreakage` | The accounting contra entry for breakage, ensuring double-entry accounting integrity. |
-
 ## ARI <a href="#ARI" id="ARI"></a>
 
 ARI is a general hospitality industry term and stands for [Availability], [Rates][Rate] and [Inventory].
@@ -104,7 +93,7 @@ The **Mews Booking Engine API** is one of the main APIs within the [Mews Open AP
 
 ## Breakage <a href="#Breakage" id="Breakage"></a>
 
-Breakage is the unspent allowance that is retained by the [Property] as revenue when the allowance expires or the guest checks out. It represents the portion of the allowance that the guest did not consume during their stay.
+Breakage is the unspent [Allowance] that is retained by the [Property] as revenue when the allowance expires or the guest checks out. It represents the portion of the allowance that the guest did not consume during their stay.
 
 In the [Connector API], breakage is represented by an `AllowanceBreakage` order item. For every `AllowanceBreakage` item there is a corresponding `AllowanceContraBreakage` item, which maintains double-entry accounting balance. Accounting integrations should expect and reconcile both items.
 
