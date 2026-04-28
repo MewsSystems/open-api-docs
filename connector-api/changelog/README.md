@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-04-28" %}
+
+## Integration Webhooks documentation update
+
+- [Integration Webhooks](../events/wh-integration.md#integration-webhooks):
+  - Clarified contract and description of `Requestor` field in integration created data. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-04-16" %}
 
 ## New export entity type: Ledger entries
