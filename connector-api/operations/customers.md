@@ -286,6 +286,90 @@ Note that the value should not be used as-is, but localized. For example, the va
 * `GuestPhotoConsent`
 * `IdPhotosConsent`
 
+## Get customers relationships
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Returns relationships between customers (e.g. Spouse, Friend) for the provided unique identifiers of customers.
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/customers/getRelationships`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "CustomerIds": [
+    "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+    "bccdafd1-3e44-439d-861f-341526b597a9"
+  ],
+  "ChainIds": [
+    "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "5fcd1933-22f2-40b9-84da-7db04cbecec2"
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `ChainIds` | array of string | optional, max 1000 items | Unique identifiers of `Chain`. If not specified, the operation returns data for all chains within scope of the Access Token. |
+| `CustomerIds` | array of string | required, max 100 items | Unique identifiers of `Customer`. |
+| `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
+
+### Response
+
+```javascript
+{
+  "CustomerRelationships": [
+    {
+      "CustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf5",
+      "RelatedCustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf6",
+      "Relationship": "Other"
+    },
+    {
+      "CustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf6",
+      "RelatedCustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf5",
+      "Relationship": "Other"
+    }
+  ],
+  "Cursor": null
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `CustomerRelationships` | array of [CustomerRelationship](customers.md#customerrelationship) | required | The relationships for the customers. |
+| `Cursor` | string | optional | Unique identifier of the item one newer in time order than the items to be returned. If Cursor is not specified, i.e. null, then the latest or most recent items will be returned. |
+
+#### CustomerRelationship
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `CustomerId` | string | required | Unique identifier of the customer in the relationship. |
+| `RelatedCustomerId` | string | required | Unique identifier of the related customer. |
+| `Relationship` | [Customer relationship type](customers.md#customer-relationship-type) | required | Type of relationship from the related customer to this customer (e.g. Child = the related customer is the child of this customer). |
+
+#### Customer relationship type
+
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
+
+* `Spouse`
+* `Child`
+* `Parent`
+* `OtherFamily` - Any familial relationship that doesn't fit for the options provided
+* `Friend`
+* `Colleague`
+* `Other`
+* …
+
 ## ~~Get customers open items~~
 
 > ### Deprecated!

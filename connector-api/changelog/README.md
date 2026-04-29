@@ -1,6 +1,23 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-04-29" %}
+
+## April 2026 updates
+
+- [Get customers relationships](../operations/customers.md#get-customers-relationships) (restricted operation):
+  - New operation to retrieve relationships between customers (beta).
+- [Add billing automation payment plan](../operations/paymentplans.md#add-billing-automation-payment-plan) (restricted operation):
+  - New operation to add a payment plan connected to a billing automation (beta).
+- [Get configuration](../operations/configuration.md#get-configuration):
+  - Extended [Enterprise](../operations/configuration.md#enterprise) response object with `ShortName` property.
+  - Extended [Accounting configuration option](../operations/configuration.md#accounting-configuration-option) enum with `EmailClosedBillsAfterCheckout` value.
+- [Get all enterprises](../operations/enterprises.md#get-all-enterprises):
+  - Extended [Enterprise](../operations/enterprises.md#enterprise) response object with `ShortName` property.
+- [Price reservations](../operations/reservations.md#price-reservations):
+  - Extended [Reservation parameters](../operations/reservations.md#reservation-parameters) request object with `AssignedResourceId` and `AssignedResourceLocked` properties.
+
+{% endupdate %}
 {% update date="2026-04-23" %}
 
 ## Blocklist replaces Blacklist in customer classifications
