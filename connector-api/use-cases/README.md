@@ -10,6 +10,7 @@ Even if you are integrating a different type of system, it serves as a good star
 ## Business use cases
 
 * [Accounting](accounting.md)
+* [Allowances](allowances.md)
 * [Customer loyalty](loyalty.md)
 * [Customer management](customer-management.md)
 * [Events](events.md)
