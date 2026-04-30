@@ -588,6 +588,9 @@ Updates capacity offset based pricing for specified rates. This operation suppor
 
 ```javascript
 {
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
   "CapacityOffsetUpdates": [
     {
       "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
@@ -604,7 +607,8 @@ Updates capacity offset based pricing for specified rates. This operation suppor
         "Value": 15
       }
     }
-  ]
+  ],
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 }
 ```
 

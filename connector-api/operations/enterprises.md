@@ -62,6 +62,7 @@ Returns all enterprises within scope of the `Access Token`, optionally filtered 
       "CreatedUtc": "2022-03-23T17:12:06Z",
       "UpdatedUtc": "2022-03-23T17:12:06Z",
       "Name": "Sample Portfolio Hotel",
+      "ShortName": null,
       "TimeZoneIdentifier": "Europe/Budapest",
       "LegalEnvironmentCode": "DE-2020-1",
       "AccommodationEnvironmentCode": "DE",
@@ -120,6 +121,7 @@ Returns all enterprises within scope of the `Access Token`, optionally filtered 
 | `CreatedUtc` | string | required | Creation date and time of the enterprise in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Creation date and time of the enterprise in UTC timezone in ISO 8601 format. |
 | `Name` | string | required | Name of the enterprise. |
+| `ShortName` | string | optional, max length 11 characters | Short name of the enterprise used in Manager Report exports. |
 | `TimeZoneIdentifier` | string | required | IANA timezone identifier of the enterprise. |
 | `LegalEnvironmentCode` | string | required | Unique identifier of the legal environment where the enterprise resides. |
 | `AccommodationEnvironmentCode` | string | required | Unique code of the accommodation environment where the enterprise resides. |

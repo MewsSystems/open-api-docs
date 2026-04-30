@@ -1576,6 +1576,8 @@ This operation supports [Portfolio Access Tokens](../concepts/multi-property.md)
 | `CustomerId` | string | required | Unique identifier of the `Customer` who owns the reservation. |
 | `BookerId` | string | optional | Unique identifier of the `Customer` on whose behalf the reservation was made. |
 | `RequestedCategoryId` | string | required | Identifier of the requested `ResourceCategory`. |
+| `AssignedResourceId` | string | optional | Identifier of the assigned `Resource`. |
+| `AssignedResourceLocked` | boolean | optional | Whether the reservation should be locked to the assigned `Resource`. (`null` or `false` if the reservation should not be locked) |
 | `RateId` | string | required | Identifier of the reservation `Rate`. |
 | `VoucherCode` | string | optional | Voucher code value providing access to specified private `Rate` applied to this reservation. |
 | `CreditCardId` | string | optional | Identifier of `CreditCard` belonging either to the `Customer` who owns the reservation or to the `Booker`. |
