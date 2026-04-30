@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-04-29" %}
+{% update date="2026-04-30" %}
 
 ## April 2026 updates
 
@@ -16,6 +16,14 @@
   - Extended [Enterprise](../operations/enterprises.md#enterprise) response object with `ShortName` property.
 - [Price reservations](../operations/reservations.md#price-reservations):
   - Extended [Reservation parameters](../operations/reservations.md#reservation-parameters) request object with `AssignedResourceId` and `AssignedResourceLocked` properties.
+
+{% endupdate %}
+{% update date="2026-04-30" %}
+
+## Integration Webhooks documentation update
+
+- [Integration Webhooks](../events/wh-integration.md#integration-webhooks):
+  - Clarified contract and description of `Requestor` field in integration created data. Documentation-only, no change to API.
 
 {% endupdate %}
 {% update date="2026-04-23" %}
