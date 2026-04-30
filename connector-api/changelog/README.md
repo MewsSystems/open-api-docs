@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-04-28" %}
+{% update date="2026-04-30" %}
 
 ## Integration Webhooks documentation update
 
