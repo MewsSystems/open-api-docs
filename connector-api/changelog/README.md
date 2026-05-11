@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-04-30" %}
+{% update date="2026-05-11" %}
 
 ## April 2026 updates
 
