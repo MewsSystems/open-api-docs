@@ -309,7 +309,10 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
   "ChainIds": [
     "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "5fcd1933-22f2-40b9-84da-7db04cbecec2"
-  ]
+  ],
+  "Limitation": {
+    "Count": 100
+  }
 }
 ```
 
@@ -353,7 +356,7 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
 | :-- | :-- | :-- | :-- |
 | `CustomerId` | string | required | Unique identifier of the customer in the relationship. |
 | `RelatedCustomerId` | string | required | Unique identifier of the related customer. |
-| `Relationship` | [Customer relationship type](customers.md#customer-relationship-type) | required | Type of relationship from the related customer to this customer (e.g. Child = the related customer is the child of this customer). |
+| `Relationship` | [Customer relationship type](customers.md#customer-relationship-type) | required | Type of relationship between the two customers (e.g. Child = the related customer is the child of this customer). |
 
 #### Customer relationship type
 

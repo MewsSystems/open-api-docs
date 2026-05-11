@@ -165,7 +165,7 @@ Returns the enterprise configuration. For single-enterprise Access Tokens, this 
 | `ChainId` | string | required | Unique identifier of the chain to which the enterprise belongs. |
 | `ChainName` | string | required | Name of the `Chain` to which the enterprise belongs. |
 | `CreatedUtc` | string | required | Creation date and time of the enterprise in UTC timezone in ISO 8601 format. |
-| `UpdatedUtc` | string | required | Creation date and time of the enterprise in UTC timezone in ISO 8601 format. |
+| `UpdatedUtc` | string | required | Last update date and time of the enterprise in UTC timezone in ISO 8601 format. |
 | `Name` | string | required | Name of the enterprise. |
 | `ShortName` | string | optional, max length 11 characters | Short name of the enterprise used in Manager Report exports. |
 | `TimeZoneIdentifier` | string | required | IANA timezone identifier of the enterprise. |
@@ -257,7 +257,7 @@ Returns the enterprise configuration. For single-enterprise Access Tokens, this 
 * `DisplayEmployeeNameOnBill` - Display employee name on bill
 * `TaxDeclarationOnDeposit` - Tax declaration on deposit
 * `SplitVatByClassificationOnBill` - Split VAT by classification on bill
-* `EmailClosedBillsAfterCheckout` - Send system closed bills automatically after check out
+* `EmailClosedBillsAfterCheckout` - Send system closed bills automatically after checkout
 * …
 
 #### Payment card storage
