@@ -15,7 +15,7 @@ For `LedgerEntry` entity type.
 | `EnterpriseId` | string | required | Unique identifier of the [Enterprise](enterprises.md#enterprise). |
 | `TransactionId` | string | optional | Unique identifier of the transaction in which the ledger entry was created. `null` for ledger entries created before transaction identifiers were introduced. |
 | `AccountId` | string | required | Unique identifier of the account (for example `Customer`) associated with this ledger entry. |
-| `BillId` | string | optional | Unique identifier of the [Bill](bills.md#bill) associated with this ledger entry. |
+| `BillId` | string | optional | Unique identifier of the [Bill](bills.md#bill) associated with this ledger entry. Note that this may reference a bill that has since been deleted; ledger entries are immutable and retain their original `BillId` even when the associated bill no longer exists. |
 | `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting category](accountingcategories.md#accounting-category) for this ledger entry. |
 | `AccountingItemId` | string | required | Unique identifier of the item linked to this ledger entry. |
 | `AccountingItemType` | [Accounting item type](#accounting-item-type) | required | Type of item linked to this ledger entry. |
