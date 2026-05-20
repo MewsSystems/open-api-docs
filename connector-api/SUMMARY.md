@@ -31,6 +31,7 @@
   * [Payment automation](use-cases/payment-automation.md)
   * [Point of sale](use-cases/point-of-sale.md)
   * [Reputation management](use-cases/reputation-management.md)
+  * [Reservations](use-cases/reservations.md)
   * [Revenue management](use-cases/revenue-management.md)
   * [Upsell](use-cases/upsell.md)
 * [API Operations](operations/README.md)
