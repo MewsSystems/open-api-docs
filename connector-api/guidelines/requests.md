@@ -52,7 +52,7 @@ In rare circumstances, you may receive a `408 Request Timeout` response if the r
 There are numerous scenarios in which that might occur, the most common of which are related to [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06).
 There can be a large number of reservations on the system, and they can carry a lot of information. You should be prepared to receive this error response and have a mitigation solution in place.
 
-What should you do if you receive a 408 error? The error indicates that the load required to prepare the response is too great, so the best solution is to lessen the load.
+What should you do if you receive a 408 error? This error usually means the request is taking too long because too much data is being loaded to prepare the response. The best solution is to reduce the amount of data returned.
 Follow our [Best practices](best-practices.md) to reduce the likelihood of timeouts and specifically use [Pagination](pagination.md) to fetch data in smaller batches where supported.
 
 ## Request minimal response
