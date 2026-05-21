@@ -1079,8 +1079,6 @@ Updates information about the specified reservations. Note that if any of the fi
   "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "Client": "Sample Client 1.0.0",
   "Reason": "Testing",
-  "CheckOverbooking": true,
-  "CheckRateApplicability": true,
   "Reprice": true,
   "ApplyCancellationFee": true,
   "ReservationUpdates": [
@@ -1195,8 +1193,6 @@ Updates information about the specified reservations. Note that if any of the fi
 | `Reprice` | boolean | optional | Whether the price should be updated to latest value for date/rate/category combination set in Mews. If not specified, the reservation price is updated. |
 | `ApplyCancellationFee` | boolean | optional | Whether the cancellation fees should be applied according to rate cancellation policies. If not specified, the cancellation fees are applied. |
 | `Reason` | string | optional | Reason for updating the reservation. Required when updating the price of the reservation. |
-| ~~`CheckOverbooking`~~ | ~~boolean~~ | ~~optional~~ | ~~Indicates whether the system will check and prevent a booking being made in the case of an overbooking, i.e. where there is an insufficient number of resources available to meet the request.~~ **Deprecated!** The value will be ignored.|
-| ~~`CheckRateApplicability`~~ | ~~boolean~~ | ~~optional~~ | ~~Indicates whether the system will check and prevent a booking being made using a restricted rate, e.g. a private rate. The default is true, i.e. the system will normally check for this unless the property is set to false.~~ **Deprecated!** The value will be ignored.|
 
 #### Person counts update value
 
