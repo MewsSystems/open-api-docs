@@ -6,7 +6,7 @@
 ## Removed CheckOverbooking and CheckRateApplicability from Update reservations
 
 - [Update reservations](../operations/reservations.md#update-reservations):
-  - Removed `CheckOverbooking` and `CheckRateApplicability` request parameters. These were never implemented in this operation and had no effect. Documentation-only change, no change to API behavior.
+  - Removed `CheckOverbooking` and `CheckRateApplicability` request parameters. These were never implemented in this operation and had no effect. Documentation-only, no change to API.
 
 {% endupdate %}
 {% update date="2026-05-11" %}
