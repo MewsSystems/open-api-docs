@@ -23,7 +23,7 @@ Additionally, all API operations can optionally accept `LanguageCode` and `Cultu
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "Client": "Sample Client 1.0.0",
     "LanguageCode": null,
-    "CultureCode": null 
+    "CultureCode": null
 }
 ```
 
@@ -52,10 +52,8 @@ In rare circumstances, you may receive a `408 Request Timeout` response if the r
 There are numerous scenarios in which that might occur, the most common of which are related to [Get all reservations](../operations/reservations.md#get-all-reservations-ver-2023-06-06).
 There can be a large number of reservations on the system, and they can carry a lot of information. You should be prepared to receive this error response and have a mitigation solution in place.
 
-What should you do if you receive a 408 error? The error indicates that the load required to prepare the response is too great, so the best solution is to lessen the load.
-If you are asking for reservations over a period of time, instead make multiple requests over shorter periods of time.
-For example, if a single request for reservation data over a period of several days returns a 408 error, instead try multiple requests, each for a separate day;
-if a single request for reservation data over a period of one day returns a 408 error, instead try multiple requests, each for a separate hour.
+What should you do if you receive a 408 error? This error usually means the request is taking too long because too much data is being loaded to prepare the response. The best solution is to reduce the amount of data returned.
+Follow our [Best practices](best-practices.md) to reduce the likelihood of timeouts and specifically use [Pagination](pagination.md) to fetch data in smaller batches where supported.
 
 ## Request minimal response
 
