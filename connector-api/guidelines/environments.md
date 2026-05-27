@@ -89,9 +89,9 @@ Partners who are already enrolled in the Certification Process or Certified and 
 1. Do not use generic Credentials to connect to the Demo Properties
 2. [Contact the partner succes team](../contact-support)  to request user access to the Demo properties.
 3. Provide the following details for each user to be added:
-    - Demo property name
-    - User's first and last name
-    - User's email address
+  - Demo property name
+  - User's first and last name
+  - User's email address
 4. The partner success team creates the user in the Demo properties.
 5. An automated email will be sent to your email address to reset your password to log in into the Demo Property.
 6. Reset the password.
@@ -99,9 +99,17 @@ Partners who are already enrolled in the Certification Process or Certified and 
 
 ### Request limits
 
-* 200 requests per `AccessToken` within 30 seconds
+* 200 requests per AccessToken within 30 seconds
 
 > **IMPORTANT** Number of requests and time window can be changed without prior notice. Your application must be prepared to handle `429 Too Many Requests` responses. See [Request limits](requests.md#request-limits) for more information.
+
+Request limits are enforced using a sliding window, not fixed time buckets. The 30-second window is anchored to the first request in a burst, not to clock boundaries such as `:00` or `:30`.
+
+Rate limits are best-effort. Under certain conditions, such as traffic being routed across multiple edge locations, the observed limit may differ slightly from the documented value. The stated limit is a guideline, not as a strict guarantee in either direction.
+
+Your application must be prepared to handle `429 Too Many Requests` responses. The `Retry-After` response header is the primary signal for backoff timing. If the header is not present, implement exponential backoff as a fallback.
+
+See [Request limits](requests.md#request-limits) for more information.
 
 ## Production environment
 
@@ -125,6 +133,14 @@ Partners who are already enrolled in the Certification Process or Certified and 
 * 200 requests per `AccessToken` within 30 seconds
 
 > **IMPORTANT** Number of requests and time window can be changed without prior notice. Your application must be prepared to handle `429 Too Many Requests` responses. See [Request limits](requests.md#request-limits) for more information.
+
+Request limits are enforced using a sliding window, not fixed time buckets. The 30-second window is anchored to the first request in a burst, not to clock boundaries such as `:00` or `:30`.
+
+Rate limits are best-effort. Under certain conditions, such as traffic being routed across multiple edge locations, the observed limit may differ slightly from the documented value. The stated limit is a guideline, not as a strict guarantee in either direction.
+
+Your application must be prepared to handle `429 Too Many Requests` responses. The `Retry-After` response header is the primary signal for backoff timing. If the header is not present, implement exponential backoff as a fallback.
+
+See [Request limits](requests.md#request-limits) for more information.
 
 ## Taxations
 
