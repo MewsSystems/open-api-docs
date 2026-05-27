@@ -38,12 +38,22 @@ Additionally, all API operations can optionally accept `LanguageCode` and `Cultu
 ## Request limits
 
 Mews implements API request limits in order to protect our systems against an excessive volume of calls which could compromise the service for all its users.
-The limits are dependent on circumstances and on the environment - see [Environments](environments.md) for details of specific request limits.
-Regardless, your system should be prepared to receive a `429 Too Many Requests` response in cases where you hit such a limit - see [Responses](responses.md).
+The limits are dependent on circumstances and on the environment - see [Environments](environments.md#request-limits).
 
+Request limits are enforced using a sliding window, not fixed time buckets. This means the 30-second window is anchored to the first request in a burst, not to clock boundaries such as `:00` or `:30`.
+If your system measures its own request rate using fixed intervals, it may undercount requests and still receive `429 Too Many Requests` responses even when it appears to be below the documented limit.
+
+Rate limits are also enforced on a best-effort basis. Under certain conditions, such as traffic being routed across multiple edge locations, the observed behavior may differ slightly from the documented limit.
+The stated limit is a guideline, not a strict guarantee in either direction.
+
+Regardless, your system should be prepared to receive a `429 Too Many Requests` response in cases where you hit such a limit - see [Responses](responses.md).
 If you receive this error response, your system can re-try after an interval time, however some care is needed in choosing the interval time.
-In case of a 429 error, we include the `Retry-After` HTTP header in the response to indicate how long you should wait before making a re-try attempt.
-Alternatively, you could implement something like an exponential backoff strategy, i.e. using a progressively longer wait between re-tries for consecutive error responses. Pausing for a fixed amount of time is never recommended.
+
+In case of a `429` error, we include the `Retry-After` HTTP header in the response to indicate how long you should wait before making a re-try attempt.
+The `Retry-After` header should be the primary signal for backoff timing. In some cases the header may not be present, so your implementation should fall back to an exponential backoff strategy.
+
+Using a progressively longer wait between re-tries for consecutive error responses is recommended. Pausing for a fixed amount of time is never recommended.
+
 If you are receiving `429 Too Many Requests` errors, then we would also recommend examining your implementation to see if it is possible to make design changes to reduce the load on our API and prevent the errors being generated in the first place.
 
 ## Request timeouts
