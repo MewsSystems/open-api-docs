@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-05-29" %}
+
+## New operation: Get Accounts Receivable status
+
+- [Get Accounts Receivable status](../operations/accountsreceivable.md#get-accounts-receivable-status) (beta):
+  - New operation to retrieve the activation lifecycle status of Accounts Receivable for an enterprise, together with a flag indicating whether wire transfer is enabled. Partners use these signals to switch between legacy posting and the Mews clearing-account model. An enterprise must be treated as Accounts Receivable enabled only when the response is exactly `{ "Status": "Active", "IsWireTransferEnabled": true }`; in any other combination the legacy posting flow must be used.
+
+{% endupdate %}
 {% update date="2026-05-21" %}
 
 ## Removed CheckOverbooking and CheckRateApplicability from Update reservations

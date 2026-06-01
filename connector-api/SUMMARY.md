@@ -39,6 +39,7 @@
   * [Accounting items](operations/accountingitems.md)
   * [Accounts](operations/accounts.md)
   * [Account notes](operations/accountnotes.md)
+  * [Accounts Receivable](operations/accountsreceivable.md)
   * [Addresses](operations/addresses.md)
   * [Age categories](operations/agecategories.md)
   * [Availability adjustments](operations/availabilityadjustments.md)
