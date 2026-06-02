@@ -8,6 +8,7 @@ Note this operation supports [Portfolio Access Tokens](../concepts/multi-propert
 
 > ### Linking orders to reservations
 > Specify parameter `LinkedReservationId` in order to link the order to a guest reservation. This will greatly assist the property when using billing automation.
+> This parameter is also a prerequisite for the Allowances flow; without linking the order to the correct reservation, Allowances will not apply to those items. If this parameter is not set, Mews will attempt to predict the linked reservation, but accuracy cannot be guaranteed.
 
 ### Request
 
