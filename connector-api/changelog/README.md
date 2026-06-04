@@ -1,6 +1,39 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-05-21" %}
+
+## Removed CheckOverbooking and CheckRateApplicability from Update reservations
+
+- [Update reservations](../operations/reservations.md#update-reservations):
+  - Removed `CheckOverbooking` and `CheckRateApplicability` request parameters. These were never implemented in this operation and had no effect. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-05-11" %}
+
+## April 2026 updates
+
+- [Get customers relationships](../operations/customers.md#get-customers-relationships) (restricted operation):
+  - New operation to retrieve relationships between customers (beta).
+- [Add billing automation payment plan](../operations/paymentplans.md#add-billing-automation-payment-plan) (restricted operation):
+  - New operation to add a payment plan connected to a billing automation (beta).
+- [Get configuration](../operations/configuration.md#get-configuration):
+  - Extended [Enterprise](../operations/configuration.md#enterprise) response object with `ShortName` property.
+  - Extended [Accounting configuration option](../operations/configuration.md#accounting-configuration-option) enum with `EmailClosedBillsAfterCheckout` value.
+- [Get all enterprises](../operations/enterprises.md#get-all-enterprises):
+  - Extended [Enterprise](../operations/enterprises.md#enterprise) response object with `ShortName` property.
+- [Price reservations](../operations/reservations.md#price-reservations):
+  - Extended [Reservation parameters](../operations/reservations.md#reservation-parameters) request object with `AssignedResourceId` and `AssignedResourceLocked` properties.
+
+{% endupdate %}
+{% update date="2026-04-30" %}
+
+## Integration Webhooks documentation update
+
+- [Integration Webhooks](../events/wh-integration.md#integration-webhooks):
+  - Clarified contract and description of `Requestor` field in integration created data. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-04-23" %}
 
 ## Blocklist replaces Blacklist in customer classifications

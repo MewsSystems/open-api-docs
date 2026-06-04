@@ -2628,3 +2628,21 @@ types:
   exportledgerentrydatafilters:
     file: exports.md
     anchor: export-ledger-entry-data-filters
+  customerrelationshipresult:
+    file: customers.md
+    anchor: customerrelationshipresult
+  customerrelationship:
+    file: customers.md
+    anchor: customerrelationship
+  customerrelationshiptypeenum:
+    file: customers.md
+    anchor: customer-relationship-type
+  customerrelationshipfilterparameters:
+    file: customers.md
+    anchor: customerrelationshipfilterparameters
+  billingautomationpaymentplanaddparameters:
+    file: paymentplans.md
+    anchor: billingautomationpaymentplanaddparameters
+  billingautomationpaymentplanpaymentrequest:
+    file: paymentplans.md
+    anchor: billing-automation-payment-plan-payment-request
