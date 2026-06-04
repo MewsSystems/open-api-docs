@@ -2,11 +2,11 @@
 
 ## Overview
 
-An `Allowance` is a packaged spending benefit that a `Property` attaches to a `Rate`, giving guests a defined amount they can redeem against specified on-property services — for example, food & beverage, spa, or minibar charges. Rather than discounting the room `Rate`, the `Property` adds value while protecting its Average Daily Rate (ADR).
+An Allowance is a packaged spending benefit that a Property attaches to a Rate, giving guests a defined amount they can redeem against specified on-property services — for example, food & beverage, spa, or minibar charges. Rather than discounting the room Rate, the Property adds value while protecting its Average Daily Rate (ADR).
 
-From an accounting perspective, the allowance represents a liability the `Property` assumes at activation: the `Property` has committed to absorbing qualifying charges on the guest's behalf, up to the specified amount. When an allowance is activated for a `Reservation`, the system posts an allowance product order item (a `ProductOrder` with `ProductType = Allowance`) to the guest's `Bill`. When a qualifying charge is subsequently posted — one whose `Accounting Category` matches the allowance's permitted consumption categories — the system automatically creates an `AllowanceDiscount` order item that offsets the charge up to the remaining allowance balance.
+From an accounting perspective, the allowance represents a liability the Property assumes at activation: the Property has committed to absorbing qualifying charges on the guest's behalf, up to the specified amount. When an allowance is activated for a Reservation, the system posts an allowance product order item (a `ProductOrder` with `ProductType = Allowance`) to the guest's Bill. When a qualifying charge is subsequently posted — one whose Accounting Category matches the allowance's permitted consumption categories — the system automatically creates an `AllowanceDiscount` order item that offsets the charge up to the remaining allowance balance.
 
-Any unspent allowance is retained by the `Property` as additional revenue, which is known as `Breakage`.
+Any unspent allowance is retained by the Property as additional revenue, which is known as Breakage.
 
 Integrations — such as point-of-sale (POS) systems, accounting systems, and kiosk or self-service applications — can use the **Mews Connector API** to:
 
@@ -23,7 +23,7 @@ There are several types of order item specific to allowances. Understanding thes
 | --- | --- |
 | `ProductOrder` (with `ProductType = Allowance`) | The allowance product — the liability posted to the guest's bill when the allowance is activated. |
 | `AllowanceDiscount` | A discount automatically applied to a qualifying charge, offsetting the charge up to the remaining allowance balance. |
-| `AllowanceBreakage` | Unspent allowance retained by the `Property` as revenue at checkout. See `Breakage`. |
+| `AllowanceBreakage` | Unspent allowance retained by the Property as revenue at checkout. See Breakage. |
 | `AllowanceContraBreakage` | The accounting contra entry for breakage, ensuring double-entry accounting integrity. |
 
 ### Automatic discounting
@@ -51,7 +51,7 @@ You can filter:
 | --- | --- |
 | How to get all order items for a reservation (including allowance items) | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `ServiceOrderIds`) |
 | How to get allowance discount items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceDiscount`) |
-| How to get breakage items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceBreakage`) |
+| How to get breakage items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceBreakage` and `AllowanceContraBreakage`) |
 | How to get all allowance-related items on a bill | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `BillIds`) |
 | How to get allowance items over a period | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `ClosedUtc` or `ConsumedUtc`) |
 
@@ -102,7 +102,7 @@ Discount amounts are negative. An `AllowanceDiscount` order item carries a negat
 
 ## Working with breakage and profits
 
-When a guest checks out or an allowance expires with unspent allowance remaining, the system generates breakage items. These represent the `Property`'s retained revenue from unused allowance.
+When a guest checks out or an allowance expires, the system generates profit-related items. The most common case is breakage, where unspent allowance is retained by the Property as revenue. In other accounting scenarios, the system may instead generate loss entries (`AllowanceLoss`, `AllowanceContraLoss`).
 
 An [`Order item`](../operations/orderitems.md#order-item) with `Data.Discriminator` set to `AllowanceProfits` will have:
 
@@ -117,7 +117,7 @@ An [`Order item`](../operations/orderitems.md#order-item) with `Data.Discriminat
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to get breakage items for reconciliation | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` with `AllowanceBreakage`) |
+| How to get breakage items for reconciliation | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` with `AllowanceBreakage` and `AllowanceContraBreakage`) |
 | How to find which allowance generated a breakage item | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId` from the breakage item's `Data`) |
 
 {% hint style="info" %}
