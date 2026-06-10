@@ -6,7 +6,7 @@
 ## May 2026 updates
 
 - [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks):
-  - Extended [Availability block parameters](../operations/availabilityblocks.md#availability-block-parameters) request object with required `TemplateRateId` parameter. The block is always created with a new dedicated rate based on this template, so the `RateId` returned in the response differs from the `TemplateRateId` provided in the request.
+  - Extended [Availability block parameters](../operations/availabilityblocks.md#availability-block-parameters) request object with `TemplateRateId` parameter, replacing `RateId`. The block is always created with a new dedicated rate based on this template, so the `RateId` returned in the response differs from the `TemplateRateId` provided in the request. This is not a new behavior, but the new property makes it explicit.
   - **Deprecated:** `RateId` parameter in [Availability block parameters](../operations/availabilityblocks.md#availability-block-parameters). Use `TemplateRateId` instead. `RateId` is kept as a synonym for backward compatibility and is ignored when `TemplateRateId` is provided.
 - [Get all products](../operations/products.md#get-all-products):
   - Extended [Product](../operations/products.md#product) response object with `ExcludePriceFromOffer` property.
