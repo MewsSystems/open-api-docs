@@ -215,6 +215,7 @@ Returns all products offered together with the specified services. Note this ope
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `BillAsPackage` | boolean | required | Product should be displayed as part of a package. |
+| `ExcludePriceFromOffer` | boolean | required | Product's price should not be displayed separately on the offer. |
 
 #### Product classifications
 
