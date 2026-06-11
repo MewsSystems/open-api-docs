@@ -919,6 +919,43 @@ Adds the specified reservations as a single group. If `GroupId` is specified, ad
 | `CheckOverbooking` | boolean | optional | Indicates whether the system will check and prevent a booking being made in the case of an overbooking, i.e. where there is an insufficient number of resources available to meet the request. The default is `true`, i.e. the system will normally check for this unless the property is set to `false`. |
 | `SendConfirmationEmail` | boolean | optional | Whether the confirmation email is sent. Default value is `true`. |
 
+#### Reservation parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Identifier` | string | optional | Identifier of the reservation within the transaction. |
+| `ChannelNumber` | string | optional |  |
+| `State` | [Service order state (ver 2017-04-12)](reservations.md#service-order-state-ver-2017-04-12) | optional | State of the newly created reservation (either `Optional`, `Enquired` or `Confirmed`). If not specified, `Confirmed` is used. |
+| `StartUtc` | string | required | Reservation start in UTC timezone in ISO 8601 format. |
+| `EndUtc` | string | required | Reservation end in UTC timezone in ISO 8601 format. |
+| `ReleasedUtc` | string | optional | Release date and time of an unconfirmed reservation in UTC timezone in ISO 8601 format. |
+| `PersonCounts` | array of [Age category parameters](reservations.md#age-category-parameters) | required | Number of people per age category the reservation was booked for. At least one category with valid count must be provided. |
+| `CustomerId` | string | required | Unique identifier of the `Customer` who owns the reservation. |
+| `BookerId` | string | optional | Unique identifier of the `Customer` on whose behalf the reservation was made. |
+| `RequestedCategoryId` | string | required | Identifier of the requested `ResourceCategory`. |
+| `AssignedResourceId` | string | optional | Identifier of the assigned `Resource`. |
+| `AssignedResourceLocked` | boolean | optional | Whether the reservation should be locked to the assigned `Resource`. (`null` or `false` if the reservation should not be locked) |
+| `RateId` | string | required | Identifier of the reservation `Rate`. |
+| `VoucherCode` | string | optional | Voucher code value providing access to specified private `Rate` applied to this reservation. |
+| `CreditCardId` | string | optional | Identifier of `CreditCard` belonging either to the `Customer` who owns the reservation or to the `Booker`. |
+| `TravelAgencyId` | string | optional | Identifier of the `Company` that mediated the reservation. |
+| `CompanyId` | string | optional | Identifier of the `Company` on behalf of which the reservation was made. |
+| `BusinessSegmentId` | string | optional | Identifier of the reservation `BusinessSegment`. |
+| `Notes` | string | optional | Additional notes. |
+| `TimeUnitAmount` | [Amount parameters](_objects.md#amount-parameters) | optional | Amount of each night of the reservation. |
+| `TimeUnitPrices` | array of [Time unit amount parameters](reservations.md#time-unit-amount-parameters) | optional | Prices for time units of the reservation. E.g. prices for the first or second night. |
+| `ProductOrders` | array of [Product order parameters](orders.md#product-order-parameters) | optional | Parameters of the products ordered together with the reservation. |
+| `AvailabilityBlockId` | string | optional | Unique identifier of the `AvailabilityBlock` the reservation is assigned to. |
+| ~~`AdultCount`~~ | ~~integer~~ | ~~required~~ | **Deprecated!** Use `PersonCounts` instead.|
+| ~~`ChildCount`~~ | ~~integer~~ | ~~required~~ | **Deprecated!** Use `PersonCounts` instead.|
+
+#### Time unit amount parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Index` | integer | required | Index of the unit. Indexing starts with `0`. E.g. the first night of the reservation has index `0`. |
+| `Amount` | [Amount parameters](_objects.md#amount-parameters) | optional | Amount of the unit. |
+
 ### Response
 
 ```javascript
@@ -1076,91 +1113,23 @@ Updates information about the specified reservations. Note that if any of the fi
 {
   "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
   "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "Client": "Sample Client 1.0.0",
-  "Reason": "Testing",
-  "Reprice": true,
-  "ApplyCancellationFee": true,
   "ReservationUpdates": [
     {
-      "ReservationId": "622605a9-2969-441f-9610-aa720099ae1c",
+      "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509",
       "StartUtc": {
         "Value": "2019-10-01T14:00:00Z"
       },
       "EndUtc": {
         "Value": "2019-10-03T10:00:00Z"
-      },
-      "AssignedResourceId": {
-        "Value": "16ce4335-2198-408b-8949-9722894a42fb"
-      },
-      "AssignedResourceLocked": {
-        "Value": "false"
-      },
-      "ChannelNumber": null,
-      "RequestedCategoryId": null,
-      "TravelAgencyId": {
-        "Value": null
-      },
-      "CompanyId": {
-        "Value": "73ba34d1-f375-460c-bf2d-8a63e71677a6"
-      },
-      "BusinessSegmentId": null,
-      "Purpose": {
-        "Value": "Business"
-      },
-      "RateId": null,
-      "BookerId": {
-        "Value": "92923102-bf91-4a4a-8ee8-9dcb79c9d6de"
-      },
-      "TimeUnitPrices": {
-        "Value": [
-          {
-            "Index": 0,
-            "Amount": {
-              "Currency": "GBP",
-              "GrossValue": 20,
-              "TaxCodes": [
-                "UK-S"
-              ]
-            }
-          },
-          {
-            "Index": 1,
-            "Amount": {
-              "Currency": "GBP",
-              "GrossValue": 30,
-              "TaxCodes": [
-                "UK-S"
-              ]
-            }
-          }
-        ]
-      },
-      "PersonCounts": {
-        "Value": [
-          {
-            "AgeCategoryId": "ab58c939-be30-4a60-8f75-ae1600c60c9f",
-            "Count": 2
-          },
-          {
-            "AgeCategoryId": "1f67644f-052d-4863-acdf-ae1600c60ca0",
-            "Count": 2
-          }
-        ]
-      },
-      "CreditCardId": {
-        "Value": "5d802a8f-3238-42b2-94be-ab0300ab2b6c"
-      },
-      "AvailabilityBlockId": {
-        "Value": "aaaa654a4a94-4f96-9efc-86da-bd26d8db"
-      },
-      "Options": {
-        "OwnerCheckedIn": {
-          "Value": true
-        }
       }
     }
-  ]
+  ],
+  "Reprice": true,
+  "ApplyCancellationFee": true,
+  "Reason": "Testing",
+  "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509",
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 }
 ```
 
@@ -1244,66 +1213,29 @@ Updates information about the specified reservations. Note that if any of the fi
 
 ```javascript
 {
-  "BusinessSegments": null,
-  "Customers": [
-    {
-      "Address": null,
-      "BirthDate": null,
-      "BirthPlace": null,
-      "CategoryId": null,
-      "Classifications": [],
-      "CreatedUtc": "2016-01-01T00:00:00Z",
-      "Email": null,
-      "FirstName": "John",
-      "Sex": null,
-      "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
-      "IdentityCard": null,
-      "LanguageCode": null,
-      "LastName": "Smith",
-      "LoyaltyCode": null,
-      "NationalityCode": "US",
-      "Notes": "",
-      "Number": "1",
-      "Passport": null,
-      "Phone": "00420123456789",
-      "SecondLastName": null,
-      "TaxIdentificationNumber": null,
-      "Title": null,
-      "UpdatedUtc": "2016-01-01T00:00:00Z",
-      "Visa": null
-    }
-  ],
-  "OrderItems": null,
-  "Products": null,
-  "RateGroups": null,
-  "Rates": null,
-  "ReservationGroups": [
-    {
-      "Id": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
-      "Name": "13-12-Smith-F712"
-    }
-  ],
   "Reservations": [
     {
-      "Id": "bfee2c44-1f84-4326-a862-5289598f6e2d",
+      "Id": "0f515589-99b4-423d-b83a-b237009f0509",
       "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
       "GroupId": "94843f6f-3be3-481b-a1c7-06458774c3df",
-      "Number": "52",
+      "Number": "50",
       "ChannelNumber": "TW48ZP",
-      "ChannelManager": "",
+      "ChannelManagerNumber": "",
       "ChannelManagerGroupNumber": null,
-      "ChannelManagerNumber": null,
-      "State": "Processed",
+      "ChannelManager": null,
+      "State": "Confirmed",
       "Origin": "Connector",
-      "OriginDetail": null,
-      "Purpose": "Student",
-      "CreatedUtc": "2016-02-20T14:58:02Z",
-      "UpdatedUtc": "2016-02-20T14:58:02Z",
+      "OriginDetails": null,
+      "Purpose": "Leisure",
+      "CreatedUtc": "2019-09-23T16:00:00Z",
+      "UpdatedUtc": "2019-09-28T17:00:00Z",
       "CancelledUtc": null,
-      "StartUtc": "2016-02-20T13:00:00Z",
-      "EndUtc": "2016-02-22T11:00:00Z",
+      "StartUtc": "2019-10-01T14:00:00Z",
+      "EndUtc": "2019-10-03T10:00:00Z",
       "ReleasedUtc": null,
       "RequestedCategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
+      "AssignedSpaceId": null,
+      "AssignedSpaceLocked": false,
       "AssignedResourceId": "20e00c32-d561-4008-8609-82d8aa525714",
       "AssignedResourceLocked": false,
       "BusinessSegmentId": null,
@@ -1312,25 +1244,45 @@ Updates information about the specified reservations. Note that if any of the fi
       "AvailabilityBlockId": null,
       "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
       "VoucherId": null,
-      "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98",
+      "CreditCardId": null,
+      "CancellationReason": null,
+      "AdultCount": 0,
+      "ChildCount": 0,
       "PersonCounts": [
         {
           "AgeCategoryId": "1f67644f-052d-4863-acdf-ae1600c60ca0",
           "Count": 2
-        },
-        {
-          "AgeCategoryId": "ab58c939-be30-4a60-8f75-ae1600c60c9f",
-          "Count": 2
         }
-      ]
+      ],
+      "OwnerId": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+      "CustomerId": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+      "BookerId": "ebd507c5-6bfd-4ca9-96aa-ffed6fa94f72",
+      "CompanionIds": [],
+      "ChannelManagerId": null,
+      "Options": {
+        "OwnerCheckedIn": false,
+        "AllCompanionsCheckedIn": false,
+        "AnyCompanionCheckedIn": false
+      }
     }
   ],
+  "ReservationGroups": null,
+  "Customers": null,
   "Services": null,
+  "Products": null,
   "Resources": null,
   "ResourceCategories": null,
   "ResourceCategoryAssignments": null,
+  "BusinessSegments": null,
+  "Rates": null,
+  "RateGroups": null,
+  "Items": null,
+  "OrderItems": null,
   "Notes": null,
-  "Cursor": "8d02142f-31cf-4115-90bf-ae5200c7a1ba"
+  "QrCodeData": null,
+  "Companies": null,
+  "ResourceAccessTokens": null,
+  "Cursor": null
 }
 ```
 
@@ -1557,43 +1509,6 @@ This operation supports [Portfolio Access Tokens](../concepts/multi-property.md)
 | `Client` | string | required | Name and version of the client application. |
 | `ServiceId` | string | required | Unique identifier of the `Service` to be priced. |
 | `Reservations` | array of [Reservation parameters](reservations.md#reservation-parameters) | required | Parameters of the reservations to price. Note that `CustomerId` is not required when pricing reservations. |
-
-#### Reservation parameters
-
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Identifier` | string | optional | Identifier of the reservation within the transaction. |
-| `ChannelNumber` | string | optional |  |
-| `State` | [Service order state (ver 2017-04-12)](reservations.md#service-order-state-ver-2017-04-12) | optional | State of the newly created reservation (either `Optional`, `Enquired` or `Confirmed`). If not specified, `Confirmed` is used. |
-| `StartUtc` | string | required | Reservation start in UTC timezone in ISO 8601 format. |
-| `EndUtc` | string | required | Reservation end in UTC timezone in ISO 8601 format. |
-| `ReleasedUtc` | string | optional | Release date and time of an unconfirmed reservation in UTC timezone in ISO 8601 format. |
-| `PersonCounts` | array of [Age category parameters](reservations.md#age-category-parameters) | required | Number of people per age category the reservation was booked for. At least one category with valid count must be provided. |
-| `CustomerId` | string | required | Unique identifier of the `Customer` who owns the reservation. |
-| `BookerId` | string | optional | Unique identifier of the `Customer` on whose behalf the reservation was made. |
-| `RequestedCategoryId` | string | required | Identifier of the requested `ResourceCategory`. |
-| `AssignedResourceId` | string | optional | Identifier of the assigned `Resource`. |
-| `AssignedResourceLocked` | boolean | optional | Whether the reservation should be locked to the assigned `Resource`. (`null` or `false` if the reservation should not be locked) |
-| `RateId` | string | required | Identifier of the reservation `Rate`. |
-| `VoucherCode` | string | optional | Voucher code value providing access to specified private `Rate` applied to this reservation. |
-| `CreditCardId` | string | optional | Identifier of `CreditCard` belonging either to the `Customer` who owns the reservation or to the `Booker`. |
-| `TravelAgencyId` | string | optional | Identifier of the `Company` that mediated the reservation. |
-| `CompanyId` | string | optional | Identifier of the `Company` on behalf of which the reservation was made. |
-| `BusinessSegmentId` | string | optional | Identifier of the reservation `BusinessSegment`. |
-| `Notes` | string | optional | Additional notes. |
-| `TimeUnitAmount` | [Amount parameters](_objects.md#amount-parameters) | optional | Amount of each night of the reservation. |
-| `TimeUnitPrices` | array of [Time unit amount parameters](reservations.md#time-unit-amount-parameters) | optional | Prices for time units of the reservation. E.g. prices for the first or second night. |
-| `ProductOrders` | array of [Product order parameters](orders.md#product-order-parameters) | optional | Parameters of the products ordered together with the reservation. |
-| `AvailabilityBlockId` | string | optional | Unique identifier of the `AvailabilityBlock` the reservation is assigned to. |
-| ~~`AdultCount`~~ | ~~integer~~ | ~~required~~ | **Deprecated!** Use `PersonCounts` instead.|
-| ~~`ChildCount`~~ | ~~integer~~ | ~~required~~ | **Deprecated!** Use `PersonCounts` instead.|
-
-#### Time unit amount parameters
-
-| Property | Type | Contract | Description |
-| :-- | :-- | :-- | :-- |
-| `Index` | integer | required | Index of the unit. Indexing starts with `0`. E.g. the first night of the reservation has index `0`. |
-| `Amount` | [Amount parameters](_objects.md#amount-parameters) | optional | Amount of the unit. |
 
 ### Response
 

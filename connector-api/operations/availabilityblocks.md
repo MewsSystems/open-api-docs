@@ -205,7 +205,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 | `Id` | string | required | Unique identifier of the availability block. |
 | `EnterpriseId` | string | required | Unique identifier of the [enterprise](enterprises.md#enterprise). |
 | `ServiceId` | string | required | Unique identifier of the `Service` the block is assigned to. |
-| `RateId` | string | required | Unique identifier of the `Rate` the block is assigned to. |
+| `RateId` | string | required | Unique identifier of the `Rate` assigned to the block. Availability block is always created with a new dedicated rate so this value differs from `TemplateRateId` or `RateId` provided in the request. |
 | `VoucherId` | string | optional | Unique identifier of the `Voucher` used to access specified private `Rate`. |
 | `BookerId` | string | optional | Unique identifier of the `Customer` on whose behalf the block was made. |
 | `CompanyId` | string | optional | Unique identifier of the `Company` linked to the block. |
@@ -253,7 +253,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 
 ## Add availability blocks
 
-Adds availability blocks which are used to group related `Availability updates`. This makes limiting public availability easier and more organized. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+Adds availability blocks which are used to group related `Availability updates`. This makes limiting public availability easier and more organized. Each block specifies a `TemplateRateId` - the `Rate` used as a template for the block. When the block is created, a new dedicated `Rate` is created based on this template, so the `RateId` returned in the response will differ from the `TemplateRateId` provided in the request. Reservations picked up from the block inherit pricing from the newly created rate. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
 ### Request
 
@@ -310,7 +310,7 @@ Adds availability blocks which are used to group related `Availability updates`.
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `ServiceId` | string | required | Unique identifier of the [Service](services.md#service) to assign block to. |
-| `RateId` | string | required | Unique identifier of the [Rate](rates.md#rate) to assign block to. |
+| `TemplateRateId` | string | required | Unique identifier of the [Rate](rates.md#rate) used as a template for the availability block's newly created rate. |
 | `FirstTimeUnitStartUtc` | string | required | Start of the time interval, expressed as the timestamp for the start of the first time unit, in UTC timezone ISO 8601 format. |
 | `LastTimeUnitStartUtc` | string | required | End of the time interval, expressed as the timestamp for the start of the first time unit, in UTC timezone ISO 8601 format. |
 | `ReleasedUtc` | string | optional | The moment when the block and its availability is released, in UTC timezone ISO 8601 format. Takes precedence over `RollingReleaseOffset`. |
@@ -329,6 +329,7 @@ Adds availability blocks which are used to group related `Availability updates`.
 | `PurchaseOrderNumber` | string | optional | Unique number of the purchase order. This number is propagated to any newly picked up `Reservation` within the block. |
 | `BusinessSegmentId` | string | optional | Unique identifier of the business segment. |
 | `PickupDistribution` | [Pickup distribution](availabilityblocks.md#pickup-distribution) | optional | Specifies how reservations within the block are distributed for pickup. Defaults to `AllInOneGroup` if not provided. This value cannot be updated after creation. |
+| ~~`RateId`~~ | ~~string~~ | ~~optional~~ | ~~Synonym of `TemplateRateId`, left for backward compatibility. Ignored when `TemplateRateId` is provided.~~ **Deprecated!** Use `TemplateRateId` instead.|
 
 ### Response
 

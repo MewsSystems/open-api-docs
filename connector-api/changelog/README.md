@@ -1,6 +1,21 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-06-11" %}
+
+## May 2026 updates
+
+- [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks):
+  - Extended [Availability block parameters](../operations/availabilityblocks.md#availability-block-parameters) request object with `TemplateRateId` parameter, replacing `RateId`. The block is always created with a new dedicated rate based on this template, so the `RateId` returned in the response differs from the `TemplateRateId` provided in the request. This is not a new behavior, but the new property makes it explicit.
+  - **Deprecated:** `RateId` parameter in [Availability block parameters](../operations/availabilityblocks.md#availability-block-parameters). Use `TemplateRateId` instead. `RateId` is kept as a synonym for backward compatibility and is ignored when `TemplateRateId` is provided.
+- [Get all products](../operations/products.md#get-all-products):
+  - Extended [Product](../operations/products.md#product) response object with `ExcludePriceFromOffer` property.
+- [Get bill PDF](../operations/bills.md#get-bill-pdf):
+  - Documented the "Property Financial Document Print Event Weekly Count" quota. Documentation-only, no change to API.
+- [Get service availability (ver 2024-01-22)](../operations/services.md#get-service-availability-ver-2024-01-22):
+  - Operation is no longer restricted and is now generally available.
+
+{% endupdate %}
 {% update date="2026-05-21" %}
 
 ## Removed CheckOverbooking and CheckRateApplicability from Update reservations

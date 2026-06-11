@@ -50,6 +50,7 @@ The table columns have the following meanings:
 
 | Feature | Comments | Deprecated | Discontinued |
 | :-- | :-- | :-- | :-- |
+| `RateId` in [Availability block parameters](../operations/availabilityblocks.md#availability-block-parameters) | Replaced by `TemplateRateId` | 10 Jun 2026 | - |
 | `Blacklist` in [Customer update classifications](../operations/accounts.md#customer-update-classifications) and [Customer classifications](../operations/accounts.md#customer-classifications) | Replaced by `Blocklist` | 23 Apr 2026 | - |
 | `Extent` in [Get all services](../operations/services.md#get-all-services) | Replaced by `ActivityStates` parameter. | 15 Sep 2025 | |
 | `Code` in [Get all loyalty memberships](../operations/loyaltymemberships.md#get-all-loyalty-memberships), [Add loyalty memberships](../operations/loyaltymemberships.md#add-loyalty-memberships), [Update loyalty memberships](../operations/loyaltymemberships.md#update-loyalty-memberships) request and response objects. | Replaced by `MembershipNumber` | 05 Aug 2025 | |
