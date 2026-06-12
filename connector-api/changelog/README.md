@@ -3,6 +3,14 @@
 {% updates format="full" %}
 {% update date="2026-06-11" %}
 
+## Removed reservation-based Add payment plan from the documentation
+
+- Add payment plan:
+  - **Removed** restricted operation from the documentation. It is superseded by [Add billing automation payment plan](../operations/paymentplans.md#add-billing-automation-payment-plan).
+
+{% endupdate %}
+{% update date="2026-06-11" %}
+
 ## May 2026 updates
 
 - [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks):
