@@ -6,7 +6,7 @@
 ## Removed reservation-based Add payment plan from the documentation
 
 - Add payment plan:
-  - **Removed** this restricted operation from the documentation. It is superseded by [Add billing automation payment plan](../operations/paymentplans.md#add-billing-automation-payment-plan). The operation remains functional for existing integrations, but new integrations should use billing automation payment plans instead.
+  - **Removed** restricted operation from the documentation. It is superseded by [Add billing automation payment plan](../operations/paymentplans.md#add-billing-automation-payment-plan).
 
 {% endupdate %}
 {% update date="2026-06-11" %}
