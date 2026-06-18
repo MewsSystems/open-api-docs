@@ -36,7 +36,7 @@ No additional API call is needed to trigger the discount.
 
 ## Retrieving allowance-related order items
 
-Use [`Get all order items`](../operations/orderitems.md#get-all-order-items) to retrieve order items related to allowances.
+Use [Get all order items](../operations/orderitems.md#get-all-order-items) to retrieve order items related to allowances.
 
 You can filter:
 
@@ -49,11 +49,11 @@ You can filter:
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to get all order items for a reservation (including allowance items) | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `ServiceOrderIds`) |
-| How to get allowance discount items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceDiscount`) |
-| How to get breakage items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceBreakage` and `AllowanceContraBreakage`) |
-| How to get all allowance-related items on a bill | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `BillIds`) |
-| How to get allowance items over a period | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `ClosedUtc` or `ConsumedUtc`) |
+| How to get all order items for a reservation (including allowance items) | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `ServiceOrderIds`) |
+| How to get allowance discount items | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceDiscount`) |
+| How to get breakage items | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `Types` filter with `AllowanceBreakage` and `AllowanceContraBreakage`) |
+| How to get all allowance-related items on a bill | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `BillIds`) |
+| How to get allowance items over a period | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `ClosedUtc` or `ConsumedUtc`) |
 
 ## Identifying allowance products
 
@@ -70,7 +70,7 @@ is an **allowance product** — the allowance amount itself, as opposed to a cha
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to identify allowance product items among order items | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (check `Data.Product.ProductType = Allowance`) |
+| How to identify allowance product items among order items | [Get all order items](../operations/orderitems.md#get-all-order-items) (check `Data.Product.ProductType = Allowance`) |
 
 ## Working with allowance discounts
 
@@ -79,12 +79,12 @@ When you retrieve order items of type `AllowanceDiscount`, the item's `Data` fie
 * the original charge
 * the allowance product that funded it
 
-Specifically, an [`Order item`](../operations/orderitems.md#order-item) with `Data.Discriminator` set to `AllowanceDiscount` will have:
+Specifically, an [Order item](../operations/orderitems.md#order-item) with `Data.Discriminator` set to `AllowanceDiscount` will have:
 
 * `DiscountedOrderItemId` — the unique identifier of the original charge item that was discounted.
 * `AllowanceProductOrderItemId` — the unique identifier of the allowance product order item which consumed the item.
 
-You can use [`Get all order items`](../operations/orderitems.md#get-all-order-items) with the `OrderItemIds` filter to fetch the details of either:
+You can use [Get all order items](../operations/orderitems.md#get-all-order-items) with the `OrderItemIds` filter to fetch the details of either:
 
 * the original charge, or
 * the allowance product.
@@ -93,8 +93,8 @@ You can use [`Get all order items`](../operations/orderitems.md#get-all-order-it
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to find the original charge for an allowance discount | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `DiscountedOrderItemId`) |
-| How to find which allowance funded a discount | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId`) |
+| How to find the original charge for an allowance discount | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `DiscountedOrderItemId`) |
+| How to find which allowance funded a discount | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId`) |
 
 {% hint style="info" %}
 Discount amounts are negative. An `AllowanceDiscount` order item carries a negative `Amount`, which offsets the positive amount of the original charge on the guest's bill.
@@ -104,7 +104,7 @@ Discount amounts are negative. An `AllowanceDiscount` order item carries a negat
 
 When a guest checks out or an allowance expires, the system generates profit-related items. The most common case is breakage, where unspent allowance is retained by the Property as revenue. In other accounting scenarios, the system may instead generate loss entries (`AllowanceLoss`, `AllowanceContraLoss`).
 
-An [`Order item`](../operations/orderitems.md#order-item) with `Data.Discriminator` set to `AllowanceProfits` will have:
+An [Order item](../operations/orderitems.md#order-item) with `Data.Discriminator` set to `AllowanceProfits` will have:
 
 * `AllowanceProductOrderItemId` — the unique identifier of the allowance product whose amount was not fully consumed.
 * `AllowanceProfitType` — the type of profit entry, which can be one of:
@@ -117,8 +117,8 @@ An [`Order item`](../operations/orderitems.md#order-item) with `Data.Discriminat
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to get breakage items for reconciliation | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `Types` with `AllowanceBreakage` and `AllowanceContraBreakage`) |
-| How to find which allowance generated a breakage item | [`Get all order items`](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId` from the breakage item's `Data`) |
+| How to get breakage items for reconciliation | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `Types` with `AllowanceBreakage` and `AllowanceContraBreakage`) |
+| How to find which allowance generated a breakage item | [Get all order items](../operations/orderitems.md#get-all-order-items) (use `OrderItemIds` with `AllowanceProductOrderItemId` from the breakage item's `Data`) |
 
 {% hint style="info" %}
 Breakage and contra-breakage always occur in pairs. For every `AllowanceBreakage` item, there is a corresponding `AllowanceContraBreakage` item to maintain double-entry accounting balance. Accounting integrations should expect and reconcile both.
@@ -126,7 +126,7 @@ Breakage and contra-breakage always occur in pairs. For every `AllowanceBreakage
 
 ## Posting charges against an allowance
 
-External systems such as POS integrations can post charges to a guest's profile using [`Add order`](../operations/orders.md#add-order).
+External systems such as POS integrations can post charges to a guest's profile using [Add order](../operations/orders.md#add-order).
 
 If the guest has an active allowance and the charge falls within the allowance's permitted consumption categories (matched by `AccountingCategoryId`), the system will automatically generate an `AllowanceDiscount` order item that offsets the charge — up to the remaining allowance balance.
 
@@ -136,7 +136,7 @@ In both cases, the `AccountingCategoryId` on the item determines whether the cha
 
 ### Linking orders to reservations
 
-Specify parameter `LinkedReservationId` when using [`Add order`](../operations/orders.md#add-order) to link the order to the guest's reservation.
+Specify parameter `LinkedReservationId` when using [Add order](../operations/orders.md#add-order) to link the order to the guest's reservation.
 
 This is especially important for allowances because it ensures the charge and the resulting allowance discount are associated with the correct reservation and its billing automation rules.
 
@@ -144,9 +144,9 @@ This is especially important for allowances because it ensures the charge and th
 
 | "How to" use case | API operations |
 | --- | --- |
-| How to post a charge that triggers an allowance discount | [`Add order`](../operations/orders.md#add-order) |
-| How to post a custom item against an allowance | [`Add order`](../operations/orders.md#add-order) (use `Items` with `AccountingCategoryId`) |
-| How to post an existing Mews product against an allowance | [`Add order`](../operations/orders.md#add-order) (use `ProductOrders`) |
+| How to post a charge that triggers an allowance discount | [Add order](../operations/orders.md#add-order) |
+| How to post a custom item against an allowance | [Add order](../operations/orders.md#add-order) (use `Items` with `AccountingCategoryId`) |
+| How to post an existing Mews product against an allowance | [Add order](../operations/orders.md#add-order) (use `ProductOrders`) |
 
 ## Partial consumption
 
@@ -162,7 +162,7 @@ The charge is posted normally to the guest's bill.
 
 ## Testing your integration
 
-Ensure you follow the general [`Usage guidelines`](../guidelines/README.md) for testing integrations.
+Ensure you follow the general [Usage guidelines](../guidelines/README.md) for testing integrations.
 
 When testing an integration that works with allowances, verify the following scenarios:
 

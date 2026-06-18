@@ -93,8 +93,6 @@ The **Mews Booking Engine API** is one of the main APIs within the [Mews Open AP
 
 Breakage is the unspent [Allowance] that is retained by the [Property] as revenue when the allowance expires or the guest checks out. It represents the portion of the allowance that the guest did not consume during their stay.
 
-In the [Connector API], breakage is represented by an `AllowanceBreakage` order item. For every `AllowanceBreakage` item there is a corresponding `AllowanceContraBreakage` item, which maintains double-entry accounting balance. Accounting integrations should expect and reconcile both items.
-
 ## Business Segment <a href="#BusinessSegment" id="BusinessSegment"></a>
 
 Business Segments, Channel Manager Segments, or just Segments, are used to classify [Reservations][Reservation] by attributes relevant to a [Property]'s operations, such as traveler type or whether the [Reservation] is group or individual. They allow the [Property] to gather information from reports to identify trends and to target customers more effectively. See [Create, modify or delete a segment](https://help.mews.com/s/article/create-modify-or-delete-a-segment?language=en_US&Language=en_US).
