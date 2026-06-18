@@ -208,7 +208,9 @@ Extent of data to be returned. E.g. it is possible to specify that together with
 
 ## Get bill PDF
 
-Creates a PDF version of the specified bill. In case it's not possible to return PDF immediately, you must retry the call later while providing the unique event identifier that is returned from the first invocation.
+Generates a PDF document of the specified bill. If the PDF cannot be returned immediately, retry the call later with the unique event identifier returned by the first invocation as `BillPrintEventId`.
+
+This operation is subject to the [Mews Operations quota](https://help.mews.com/s/article/Quotas-in-Mews-Operations) "Property Financial Document Print Event Weekly Count". Each bill can be printed or previewed up to 30 times within 7 days. Requests that include an existing `BillPrintEventId` do not count against this quota.
 
 ### Request
 
@@ -230,7 +232,7 @@ Creates a PDF version of the specified bill. In case it's not possible to return
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
 | `BillId` | string | required | Unique identifier of the [Bill](bills.md#bill) to be printed. |
-| `BillPrintEventId` | string | optional | Unique identifier of the [Bill print event](bills.md#bill-print-event) returned by previous invocation. |
+| `BillPrintEventId` | string | optional | Identifier of an existing bill print event returned by a previous call. Provide this value to retry retrieval of a pending PDF without consuming its "Property Financial Document Print Event Weekly Count" quota. |
 | `PdfTemplate` | [Bill PDF template type](bills.md#bill-pdf-template-type) | optional | Bill PDF template type. If not specified, the default template is used. |
 | `PrintReason` | string | optional, max length 255 characters | The reason for reprinting the bill with different template. Required for France LE. |
 
