@@ -18,6 +18,7 @@
 * [Use cases](use-cases/README.md)
   * ['How to' use cases](use-cases/how-to.md)
   * [Accounting](use-cases/accounting.md)
+  * [Allowances](use-cases/allowances.md)
   * [Customer loyalty](use-cases/loyalty.md)
   * [Customer management](use-cases/customer-management.md)
   * [Customer messaging](use-cases/messaging.md)

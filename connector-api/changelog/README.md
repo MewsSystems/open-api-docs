@@ -1,6 +1,15 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-06-19" %}
+
+## Allowances use case documentation
+
+- [Allowances use cases](../use-cases/allowances.md):
+  - New use case documentation, no change to API.
+  - Documents allowance-related order item types (`AllowanceDiscount`, `AllowanceBreakage`, `AllowanceContraBreakage`) and how charges posted against a guest with an active allowance are automatically offset by an `AllowanceDiscount` order item.
+
+{% endupdate %}
 {% update date="2026-06-11" %}
 
 ## Removed reservation-based Add payment plan from the documentation
