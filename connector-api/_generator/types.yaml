@@ -250,7 +250,7 @@ types:
     anchor: availability-update
   paxcount:
     file: services.md
-    anchor: paxcount
+    anchor: pax-count
   serviceavailabilityresult:
     file: services.md
     anchor: serviceavailabilityresult
