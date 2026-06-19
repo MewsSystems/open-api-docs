@@ -1,14 +1,13 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-06-18" %}
+{% update date="2026-06-19" %}
 
 ## Allowances use case documentation
 
-- [Get all order items](../operations/orderitems.md#get-all-order-items):
-  - Documented allowance-related order item types (`AllowanceDiscount`, `AllowanceBreakage`, `AllowanceContraBreakage`) and how to retrieve, identify, and interpret them. Documentation-only, no change to API.
-- [Add order](../operations/orders.md#add-order):
-  - Documented how charges posted against a guest with an active allowance are automatically offset by an `AllowanceDiscount` order item. Documentation-only, no change to API.
+- [Allowances use cases](../use-cases/allowances.md):
+  - New use case documentation, no change to API.
+  - Documents allowance-related order item types (`AllowanceDiscount`, `AllowanceBreakage`, `AllowanceContraBreakage`) and how charges posted against a guest with an active allowance are automatically offset by an `AllowanceDiscount` order item.
 
 {% endupdate %}
 {% update date="2026-06-11" %}
