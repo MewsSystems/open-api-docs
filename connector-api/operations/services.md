@@ -403,16 +403,16 @@ Updates the number of available resources in [Resource category](resources.md#re
 | `ResourceCategoryId` | string | required | Unique identifier of the [Resource category](resources.md#resource-category) whose availability to update. |
 | `UnitCountAdjustment` | [Number update value](_objects.md#number-update-value) | required | Adjustment value to be applied on the interval, can be both positive and negative (relative adjustment, not an absolute number). If specified without `Value` parameter, removes all adjustments within the interval. |
 | `AvailabilityBlockId` | string | optional | Unique identifier of the [Availability block](availabilityblocks.md#availability-block) whose availability to update. |
-| `PaxCounts` | array of [PaxCount](services.md#paxcount) | optional, max 5 items | Collection of predicted occupancy of availability adjustments. Relates how many adjustments are assigned to each count of guests. |
+| `PaxCounts` | array of [Pax count](services.md#pax-count) | optional, max 5 items | Occupancy splits for the availability block adjustment. Applicable only when `AvailabilityBlockId` is set. Each entry assigns blocked units (`UnitCount`) to a specific guest count (`PersonCount`); `PersonCount` values must be unique within the collection. Sending a new request replaces all existing splits for the interval (last-writer-wins). Omitting this field on a block adjustment resets splits to a single default slot. Requires the multi-occupancy availability blocks feature to be enabled for the enterprise. |
 | ~~`StartUtc`~~ | ~~string~~ | ~~optional~~ | **Deprecated!** |
 | ~~`EndUtc`~~ | ~~string~~ | ~~optional~~ | **Deprecated!** |
 
-#### PaxCount
+#### Pax count
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `PersonCount` | integer | required | Predicted guest count that will be assigned to the Resource. The guest count must fit within the Resource Category maximum capacity. |
-| `UnitCount` | integer | required | Positive number of adjustments that are assigned to `PersonCount`. The sum of all `UnitCount` in `PaxCounts` should match the adjustment value applied to the interval. |
+| `PersonCount` | integer | required | Guest count assigned to the resource. Must not exceed the resource category capacity. Must be unique within the `PaxCounts` collection. |
+| `UnitCount` | integer | required | Number of blocked units assigned to this `PersonCount`. The sum of all `UnitCount` values in `PaxCounts` must equal the absolute value of `UnitCountAdjustment`. |
 
 ### Response
 
