@@ -1,14 +1,6 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-06-19" %}
-
-## Multi-occupancy availability blocks — Update service availability
-
-- [Update service availability](../operations/services.md#update-service-availability):
-  - Extended [Availability update](../operations/services.md#availability-update) request object with `PaxCounts` property to support multi-occupancy availability blocks. Each entry in `PaxCounts` assigns a number of blocked units (`UnitCount`) to a specific guest count (`PersonCount`). Requires the multi-occupancy availability blocks feature to be enabled for the enterprise.
-
-{% endupdate %}
 {% update date="2026-06-11" %}
 
 ## Removed reservation-based Add payment plan from the documentation
