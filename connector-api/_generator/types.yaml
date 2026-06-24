@@ -2646,3 +2646,6 @@ types:
   billingautomationpaymentplanpaymentrequest:
     file: paymentplans.md
     anchor: billing-automation-payment-plan-payment-request
+  cashiertransactiontypeenum:
+    file: cashiertransactions.md
+    anchor: cashier-transaction-type
