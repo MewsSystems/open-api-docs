@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-06-24" %}
+
+## Cashier transaction type
+
+- [Get all cashier transactions](../operations/cashiertransactions.md#get-all-cashier-transactions):
+  - Extended [Cashier transaction](../operations/cashiertransactions.md#cashier-transaction) response object with optional `Type` property and added the [Cashier transaction type](../operations/cashiertransactions.md#cashier-transaction-type) enum (`CashIn`, `CashOut`, `CashOutTip`, `CashOutExpense`, `CashOutFloatAdjustment`). The property is not set for legacy transactions created before the type was tracked.
+
+{% endupdate %}
 {% update date="2026-06-19" %}
 
 ## Allowances use case documentation

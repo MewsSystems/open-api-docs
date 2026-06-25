@@ -81,3 +81,12 @@ Returns all cashier transactions. At least one of the filter parameters `Cashier
 | `Number` | string | required | Number of the transaction. |
 | `Notes` | string | optional | Additional notes of the transaction. |
 | `Amount` | [Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07) | required | Total price of the transaction |
+| `Type` | [Cashier transaction type](cashiertransactions.md#cashier-transaction-type) | optional | Type of the cashier transaction. Not set for legacy transactions created before the type was tracked. |
+
+#### Cashier transaction type
+
+* `CashIn` - Cash received into the cashier.
+* `CashOut` - Cash paid out of the cashier.
+* `CashOutTip` - Cash paid out of the cashier as a tip.
+* `CashOutExpense` - Cash paid out of the cashier as an expense.
+* `CashOutFloatAdjustment` - Cash paid out of the cashier as a float adjustment.
