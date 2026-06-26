@@ -3,9 +3,6 @@
 
 ## Add billing automation payment plan
 
-> ### Restricted!
-> This operation is currently in beta-test and as such it is subject to change.
-
 Adds a payment plan connected to a `Billing automation` and returns the payment request URL associated with the created payment plan. The fulfillment of the payment request will activate the payment plan.
 Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
@@ -53,7 +50,7 @@ Note this operation supports [Portfolio Access Tokens](../concepts/multi-propert
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `PaymentMethods` | array of [Available payment plan payment methods](paymentplans.md#available-payment-plan-payment-methods) | required | Allowed payment methods to use for the payment plan. |
+| `PaymentMethods` | array of [Available payment plan payment methods](paymentplans.md#available-payment-plan-payment-methods) | required | Allowed payment methods to use for the payment plan. Currently only `Payment card` and `SEPA Direct Debit` are supported. |
 | `Message` | string | required, max length 1000 characters | Message for customer in the payment request email. |
 | `Note` | string | optional, max length 2000 characters | Internal note for the payment request. |
 | `ExpirationDateUtc` | string | required | Expiration date (UTC time) of the payment request. Must be within 30 days of payment plan creation. ISO-8601 format. |

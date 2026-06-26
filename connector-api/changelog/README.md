@@ -1,6 +1,15 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-06-26" %}
+
+## Add billing automation payment plan generally available
+
+- [Add billing automation payment plan](../operations/paymentplans.md#add-billing-automation-payment-plan):
+  - Operation is no longer restricted and is now generally available. It is covered by the standard Connector API [deprecation policy](../deprecations/README.md).
+  - Documented that only `Payment card` and `SEPA Direct Debit` payment methods are currently supported. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-06-24" %}
 
 ## Cashier transaction type
