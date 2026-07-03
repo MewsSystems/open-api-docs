@@ -150,7 +150,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
       "FirstTimeUnitStartUtc": "2022-10-14T00:00:00Z",
       "LastTimeUnitStartUtc": "2022-11-17T00:00:00Z",
       "ReleasedUtc": null,
-      "RollingReleaseOffset": "P-3DT4H",
+      "RollingReleaseOffset": "P3DT4H",
       "ExternalIdentifier": "Block-0002",
       "Name": "Rolling release",
       "Notes": null,
@@ -217,8 +217,8 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 | `UpdatedUtc` | string | required | Last update date and time of the block in UTC timezone in ISO 8601 format. |
 | `FirstTimeUnitStartUtc` | string | required | Start of the time interval, expressed as the timestamp for the start of the first time unit, in UTC timezone ISO 8601 format. See [Time units](../concepts/time-units.md). |
 | `LastTimeUnitStartUtc` | string | required | End of the time interval, expressed as the timestamp for the start of the last time unit, in UTC timezone ISO 8601 format. See [Time units](../concepts/time-units.md). |
-| `ReleasedUtc` | string | optional | The moment when the block and its availability is released in UTC timezone in ISO 8601 format. Mutually exclusive with `RollingReleaseOffset`; the block will not be automatically released if neither `ReleasedUtc` nor `RollingReleaseOffsetUtc` is specified. |
-| `RollingReleaseOffset` | string | optional | Exact offset from the start of availability adjustments to the moment the individual days in the adjustment should be released, in ISO 8601 duration format. Mutually exclusive with `ReleasedUtc`; the block will not be automatically released if neither `ReleasedUtc` nor `RollingReleaseOffsetUtc` is specified. |
+| `ReleasedUtc` | string | optional | The moment when the block and its availability is released in UTC timezone in ISO 8601 format. Mutually exclusive with `RollingReleaseOffset`; the block will not be automatically released if neither `ReleasedUtc` nor `RollingReleaseOffset` is specified. |
+| `RollingReleaseOffset` | string | optional | Exact offset from the start of availability adjustments to the moment the individual days in the adjustment should be released, in ISO 8601 duration format. A positive offset means the release happens before the start of the availability adjustment, a negative offset means it happens after the start. Mutually exclusive with `ReleasedUtc`; the block will not be automatically released if neither `ReleasedUtc` nor `RollingReleaseOffset` is specified. |
 | `ExternalIdentifier` | string | optional, max length 255 characters | Identifier of the block from external system. |
 | `Name` | string | optional | The name of the block in Mews. |
 | `Notes` | string | optional | Additional notes of the block. |
@@ -314,7 +314,7 @@ Adds availability blocks which are used to group related `Availability updates`.
 | `FirstTimeUnitStartUtc` | string | required | Start of the time interval, expressed as the timestamp for the start of the first time unit, in UTC timezone ISO 8601 format. |
 | `LastTimeUnitStartUtc` | string | required | End of the time interval, expressed as the timestamp for the start of the first time unit, in UTC timezone ISO 8601 format. |
 | `ReleasedUtc` | string | optional | The moment when the block and its availability is released, in UTC timezone ISO 8601 format. Takes precedence over `RollingReleaseOffset`. |
-| `RollingReleaseOffset` | string | optional | Exact offset from the start of availability adjustments to the moment the availability adjustment should be released, in ISO 8601 duration format. Ignored if `ReleasedUtc` is specified. |
+| `RollingReleaseOffset` | string | optional | Exact offset from the start of availability adjustments to the moment the availability adjustment should be released, in ISO 8601 duration format. A positive offset means the release happens before the start of the availability adjustment, a negative offset means it happens after the start. Ignored if `ReleasedUtc` is specified. |
 | `Name` | string | optional | The name of the block. |
 | `VoucherCode` | string | optional | Voucher code providing access to specified private [Rate](rates.md#rate). |
 | `BookerId` | string | optional | Unique identifier of the Booker as a creator of an availability block. |
@@ -397,7 +397,7 @@ Adds availability blocks which are used to group related `Availability updates`.
       "FirstTimeUnitStartUtc": "2022-10-14T00:00:00Z",
       "LastTimeUnitStartUtc": "2022-11-17T00:00:00Z",
       "ReleasedUtc": null,
-      "RollingReleaseOffset": "P-3DT4H",
+      "RollingReleaseOffset": "P3DT4H",
       "ExternalIdentifier": "Block-0002",
       "Name": "Rolling release",
       "Notes": null,
@@ -534,7 +534,7 @@ Updates information about the specified `Availability block`. Note this operatio
 | `Budget` | [Currency value (ver 2018-06-07) update value](availabilityblocks.md#currency-value-ver-2018-06-07-update-value) | optional | The tentative budget for the total price of reservations (or `null` if not updated). |
 | `CancellationReason` | [String update value](_objects.md#string-update-value) | optional | Cancellation reason of the availability block (or `null` if not updated). |
 | `CancellationReasonDetail` | [String update value](_objects.md#string-update-value) | optional | Cancellation reason detail of the availability block (or `null` if not updated). |
-| `RollingReleaseOffset` | [String update value](_objects.md#string-update-value) | optional | Exact offset from the start of availability adjustments to the moment the availability adjustment should be released, in ISO 8601 duration format. Required if `ReleaseStrategy` is set to `RollingRelease`, ignored otherwise. |
+| `RollingReleaseOffset` | [String update value](_objects.md#string-update-value) | optional | Exact offset from the start of availability adjustments to the moment the availability adjustment should be released, in ISO 8601 duration format. A positive offset means the release happens before the start of the availability adjustment, a negative offset means it happens after the start. Required if `ReleaseStrategy` is set to `RollingRelease`, ignored otherwise. |
 | `ReleasedUtc` | [String update value](_objects.md#string-update-value) | optional | The moment when the block and its availability is released, in UTC timezone ISO 8601 format. Required if `ReleaseStrategy` is set to `FixedRelease`, or used when `ReleaseStrategy` update is unspecified. |
 | `ReleaseStrategy` | [Release strategy update value](availabilityblocks.md#release-strategy-update-value) | optional | The strategy for automatic release of the availability block (or `null` if not updated). |
 | `QuoteId` | [String update value](_objects.md#string-update-value) | optional | Unique identifier of the Mews Events quote associated with the availability block (or `null` if not updated). |
@@ -619,7 +619,7 @@ Updates information about the specified `Availability block`. Note this operatio
       "FirstTimeUnitStartUtc": "2022-10-14T00:00:00Z",
       "LastTimeUnitStartUtc": "2022-11-17T00:00:00Z",
       "ReleasedUtc": null,
-      "RollingReleaseOffset": "P-3DT4H",
+      "RollingReleaseOffset": "P3DT4H",
       "ExternalIdentifier": "Block-0002",
       "Name": "Rolling release",
       "Notes": null,
