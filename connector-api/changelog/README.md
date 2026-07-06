@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-07-03" %}
+
+## Clarified RollingReleaseOffset in availability blocks
+
+- [Get all availability blocks](../operations/availabilityblocks.md#get-all-availability-blocks), [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks), [Update availability blocks](../operations/availabilityblocks.md#update-availability-blocks):
+  - Clarified `RollingReleaseOffset` description and updated examples. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-06-26" %}
 
 ## Add billing automation payment plan generally available
