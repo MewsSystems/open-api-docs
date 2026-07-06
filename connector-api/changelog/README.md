@@ -6,7 +6,7 @@
 ## Clarified RollingReleaseOffset in availability blocks
 
 - [Get all availability blocks](../operations/availabilityblocks.md#get-all-availability-blocks), [Add availability blocks](../operations/availabilityblocks.md#add-availability-blocks), [Update availability blocks](../operations/availabilityblocks.md#update-availability-blocks):
-  - Clarified `RollingReleaseOffset` description: a positive offset means the release happens before the start of the availability adjustment, a negative offset means it happens after the start. Updated examples to use a positive offset. Documentation-only, no change to API.
+  - Clarified `RollingReleaseOffset` description and updated examples. Documentation-only, no change to API.
 
 {% endupdate %}
 {% update date="2026-06-26" %}
