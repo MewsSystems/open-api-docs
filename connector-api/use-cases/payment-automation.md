@@ -1,6 +1,6 @@
 # Payment automation
 
-This section describes how to use Mews Payments Checkout, an embeddable checkout application that enables you to collect payments and payment methods directly within your own application, eliminating the need to redirect users to a separate Mews payment request page. The checkout handles all API communication for processing payments and recording data in Mews, including PCI-DSS compliant capture of payment card details. For connecting to Mews Payment Terminals to take payments from customers, please refer to [Mews Payment Terminals](../use-cases/mews-terminals.md).
+This section describes how to use **Mews Payments Checkout**, an embeddable checkout application that enables you to collect payments and payment methods directly within your own application, eliminating the need to redirect users to a separate Mews payment request page. The checkout handles all API communication for processing payments and recording data in Mews, including PCI-DSS compliant capture of payment card details. For connecting to Mews Payment Terminals to take payments from customers, refer to [Mews Payment Terminals](../use-cases/mews-terminals.md).
 
 {% hint style="info" %}
 
@@ -13,13 +13,13 @@ This section describes how to use Mews Payments Checkout, an embeddable checkout
 
 ## How it works
 
-Mews Payments Checkout is a JavaScript SDK that renders a fully responsive payment experience inside an iframe injected into a container element on your page. You use the Mews Connector API to create a [payment request](../operations/paymentrequests.md#add-payment-requests) or a [payment method request](../operations/paymentmethodrequests.md#add-payment-method-request), then pass the returned identifier to the checkout application, which takes care of the rest – payment method selection, card data capture, 3D Secure authentication, and posting the resulting payment or payment method into Mews.
+Mews Payments Checkout is a JavaScript SDK that renders a fully responsive payment experience inside an iframe injected into a container element on your page. You use the **Mews Connector API** to create a [payment request](../operations/paymentrequests.md#add-payment-requests) or a [payment method request](../operations/paymentmethodrequests.md#add-payment-method-request), then pass the returned identifier to the checkout application, which takes care of the rest – payment method selection, card data capture, 3D Secure authentication, and posting the resulting payment or payment method into Mews.
 
 Supported payment methods include payment cards, Apple Pay, Google Pay, iDEAL, and SEPA Direct Debit.
 
 The checkout supports two integration goals:
 
-* **Collect a payment** – charge the guest a specific amount, either against a pre-created payment request or directly with just an enterprise ID and amount.
+* **Collect a payment** – charge the guest a specific amount, either against a pre-created payment request or directly with only an enterprise ID and amount.
 * **Collect a payment method** – store a payment card or SEPA Direct Debit mandate against the guest profile, with consent, for future charges.
 
 Application updates are deployed automatically without requiring configuration changes on your side.
@@ -78,7 +78,7 @@ When a payment request is created, by default Mews sends an email to the guest t
 
 This flow removes the dependency on pre-creating a payment request and guest account in Mews. It is sufficient to provide an enterprise ID and the desired amount and currency to the checkout's loading configuration; the checkout application then collects the payer details automatically. After the guest clicks the pay button, a guest account is created in Mews, the payment method is collected, and the payment is created and linked to the guest's account.
 
-* **Option A: Express checkout** – a one-click payment option available for Apple Pay and Google Pay. The guest simply confirms the payment in their device's native interface, and the payment is created. All details are captured automatically.
+* **Option A: Express checkout** – a one-click payment option available for Apple Pay and Google Pay. The guest confirms the payment in their device's native interface, and the payment is created. All details are captured automatically.
 * **Option B: Payment method selection** – for other payment methods (payment card, SEPA Direct Debit, iDEAL, etc.), the guest provides their payment method and billing details. A guest account is then created in Mews, and the payment is linked to it.
 
 {% endstep %}
@@ -213,7 +213,7 @@ export const MewsPaymentCheckout = ({ paymentRequestId }: { paymentRequestId: st
 
 Setup is complete. The Mews Payments Checkout application handles all API communication for processing payments and recording data in Mews.
 
-The application renders inside an iframe injected into the container element specified in Step 3. The application is fully responsive and adapts to its container dimensions. If initialization or communication is blocked, please [contact support](../contact-support/README.md).
+The application renders inside an iframe injected into the container element specified in Step 3. The application is fully responsive and adapts to its container dimensions. If initialization or communication is blocked, [contact support](../contact-support/README.md).
 
 {% endstep %}
 {% endstepper %}
@@ -232,7 +232,7 @@ If you chose [Flow 1: Capture a payment request](#flow-1-capture-a-payment-reque
 
 ## Collecting a payment method for future charges
 
-Instead of collecting a payment, you can use the checkout to collect a payment method with the guest's consent for future charges. The payment method is stored against the guest profile in Mews and can later be charged manually in Mews Operations, automatically via Mews automation, or programmatically via the Connector API.
+Instead of collecting a payment, you can use the checkout to collect a payment method with the guest's consent for future charges. The payment method is stored against the guest profile in Mews and can later be charged manually in **Mews Operations**, automatically via Mews automation, or programmatically via the **Mews Connector API**.
 
 Currently supported payment methods for collection: payment card and SEPA Direct Debit.
 
@@ -293,11 +293,11 @@ window.Mews.PaymentCheckout.load({
 
 ### Charge the collected payment method
 
-Once collected, the payment method becomes available in the guest profile in Mews Operations, under **Payments > Payment methods**, and can be charged in three ways:
+Once collected, the payment method becomes available in the guest profile in **Mews Operations**, under **Payments > Payment methods**, and can be charged in three ways:
 
 * **Manually in Mews Operations** – property staff charge the stored payment method directly from the guest profile.
 * **Automatically with Mews automation** – create a reservation using [Add reservations](../operations/reservations.md#add-reservations) and set `CreditCardId` in the [reservation parameters](../operations/reservations.md#reservation-parameters) to the received payment method ID. The payment method is then charged automatically by Mews according to the rate's [payment policy schedule](https://help.mews.com/s/article/how-to-set-up-payment-automation).
-* **Programmatically via the Connector API** – charge the payment method directly using [Charge credit card](../operations/creditcards.md#charge-credit-card). This is currently supported only for collected payment cards.
+* **Programmatically via the Mews Connector API** – charge the payment method directly using [Charge credit card](../operations/creditcards.md#charge-credit-card). This is currently supported only for collected payment cards.
 
 | 'How to' use case | API Operations |
 | ----------------- | -------------- |
@@ -310,7 +310,7 @@ Once collected, the payment method becomes available in the guest profile in Mew
 
 #### Charge credit card
 
-Note the [Charge credit card](../operations/creditcards.md#charge-credit-card) operation actually charges the guest's payment card, whereas the [Add credit card payment](../operations/payments.md#add-credit-card-payment) operation does NOT. The latter simply records a credit card payment in Mews and does not trigger any additional action beyond Mews – suitable for when the guest's card has already been charged from your solution.
+Note the [Charge credit card](../operations/creditcards.md#charge-credit-card) operation charges the guest's payment card, whereas the [Add credit card payment](../operations/payments.md#add-credit-card-payment) operation does NOT. The latter only records a credit card payment in Mews and does not trigger any additional action beyond Mews – suitable for when the guest's card has already been charged from your solution.
 
 {% endhint %}
 
@@ -329,7 +329,7 @@ To fully remove the checkout application from the screen, use the `Mews.PaymentC
 
 ### Displaying Apple Pay and Google Pay
 
-To enable Apple Pay in the checkout application, please [contact support](../contact-support/README.md) with the URL of the site embedding the application. Mews will configure this payment method for your site. Google Pay requires no configuration and is displayed automatically.
+To enable Apple Pay in the checkout application, [contact support](../contact-support/README.md) with the URL of the site embedding the application. Mews will configure this payment method for your site. Google Pay requires no configuration and is displayed automatically.
 
 Conditions that the guest's browser needs to fulfill to display these payment methods:
 
@@ -400,9 +400,9 @@ Layout customization is limited, as most elements are part of the Mews product, 
 
 ### Multicurrency
 
-The Multicurrency (MCCY) feature allows guests to pay in their preferred currency rather than the property's default currency, helping to increase conversion rates and enhance the overall payment journey.
+The Multicurrency (MCCY) feature lets guests pay in their preferred currency rather than the property's default currency, which can improve conversion.
 
-When a guest opens the checkout, the currency is pre-selected – either automatically detected based on their location, or defaulting to the property's currency. If this currency differs from the guest's preferred one, they can change it at any time using the currency picker; the exchange rate and any applicable fees are transparently displayed before completing payment, and the displayed amount updates immediately, so what the guest sees is exactly what they pay.
+When a guest opens the checkout, the currency is pre-selected – either detected from their location, or defaulting to the property's currency. If this currency differs from the guest's preferred one, they can change it at any time using the currency picker. The exchange rate and any applicable fees are shown before the guest completes payment, and the displayed amount updates immediately, so what the guest sees is what they pay.
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
@@ -561,4 +561,4 @@ The following aspects are not currently configurable via the public `styles` obj
 
 Aim for at least WCAG AA contrast (4.5:1) between `global.textColorPrimary` and `global.backgroundColor`, and between `button.textColor` and `button.backgroundColor`. Use `textColorPrimary` for primary information and labels, reserving `textColorSecondary` and `textColorTertiary` for supporting information, to avoid low-contrast UIs.
 
-Make sure hover and active states visibly differ from the default state, keep disabled buttons clearly distinguishable from active ones without resembling error states, and map the pay button to your brand's primary button style. Choose spinner colors that are clearly visible on the background and avoid pure red or error colors, to prevent implying a failure state while the payment is still processing.
+Make sure hover and active states visibly differ from the default state, keep disabled buttons distinguishable from active ones without resembling error states, and map the pay button to your brand's primary button style. Choose spinner colors that stay visible on the background and avoid pure red or error colors, to prevent implying a failure state while the payment is still processing.
