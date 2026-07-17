@@ -329,7 +329,7 @@ To fully remove the checkout application from the screen, use the `Mews.PaymentC
 
 ### Displaying Apple Pay and Google Pay
 
-To enable Apple Pay in the checkout application, [contact support](../contact-support/README.md) with the URL of the site embedding the application. Mews will configure this payment method for your site. Google Pay requires no configuration and is displayed automatically.
+To enable Apple Pay in the checkout application, request domain activation using the [Apple Pay domain activation form](https://cmroytqod000at6wk80hyftzp.zapier.app/) with the URL of the site embedding the application. Mews will configure this payment method for your site. Google Pay requires no configuration and is displayed automatically.
 
 Conditions that the guest's browser needs to fulfill to display these payment methods:
 
