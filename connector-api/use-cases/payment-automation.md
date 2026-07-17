@@ -2,10 +2,14 @@
 
 This section describes how to use Mews Payments Checkout, an embeddable checkout application that enables you to collect payments and payment methods directly within your own application, eliminating the need to redirect users to a separate Mews payment request page. The checkout handles all API communication for processing payments and recording data in Mews, including PCI-DSS compliant capture of payment card details. For connecting to Mews Payment Terminals to take payments from customers, please refer to [Mews Payment Terminals](../use-cases/mews-terminals.md).
 
-> #### PCI Compliance
->
-> * [Mews PCI compliance](https://help.mews.com/s/article/pci-compliance?language=en_US)
-> * [Mews PCI certificate](https://www.mews.com/en/platform-documentation)
+{% hint style="info" %}
+
+#### PCI Compliance
+
+* [Mews PCI compliance](https://help.mews.com/s/article/pci-compliance?language=en_US)
+* [Mews PCI certificate](https://www.mews.com/en/platform-documentation)
+
+{% endhint %}
 
 ## How it works
 
@@ -20,7 +24,12 @@ The checkout supports two integration goals:
 
 Application updates are deployed automatically without requiring configuration changes on your side.
 
-## Step 1: Add the checkout loading script
+## Integration steps
+
+{% stepper %}
+{% step %}
+
+### Step 1: Add the checkout loading script
 
 Add the Mews Payments Checkout script to your page. The script loads asynchronously and initializes the global `Mews.PaymentCheckout` object.
 
@@ -35,9 +44,12 @@ Place the following `<script>` code snippet in the `<head>` of your web page's H
 </head>
 ```
 
-## Step 2: Choose your payment flow
+{% endstep %}
+{% step %}
 
-### Flow 1: Capture a payment request
+### Step 2: Choose your payment flow
+
+#### Flow 1: Capture a payment request
 
 If you already have a guest profile in Mews, or guest details are collected before displaying the checkout and you don't want the guest to resubmit their information, use this flow to charge them a specific amount. The checkout renders only payment-related fields, as all guest details are already known.
 
@@ -62,20 +74,23 @@ When a payment request is created, by default Mews sends an email to the guest t
 | How to check the state of a payment request | [Get all payment requests](../operations/paymentrequests.md#get-all-payment-requests) |
 | How to cancel an unfulfilled payment request | [Cancel payment requests](../operations/paymentrequests.md#cancel-payment-requests) |
 
-### Flow 2: Capture a payment
+#### Flow 2: Capture a payment
 
 This flow removes the dependency on pre-creating a payment request and guest account in Mews. It is sufficient to provide an enterprise ID and the desired amount and currency to the checkout's loading configuration; the checkout application then collects the payer details automatically. After the guest clicks the pay button, a guest account is created in Mews, the payment method is collected, and the payment is created and linked to the guest's account.
 
 * **Option A: Express checkout** – a one-click payment option available for Apple Pay and Google Pay. The guest simply confirms the payment in their device's native interface, and the payment is created. All details are captured automatically.
 * **Option B: Payment method selection** – for other payment methods (payment card, SEPA Direct Debit, iDEAL, etc.), the guest provides their payment method and billing details. A guest account is then created in Mews, and the payment is linked to it.
 
-## Step 3: Load the checkout application
+{% endstep %}
+{% step %}
+
+### Step 3: Load the checkout application
 
 Once the `Mews.PaymentCheckout` object is initialized (Step 1) and the payment collection flow is selected (Step 2), load the checkout application using either the payment request ID from the API response (Flow 1) or a `context` object (Flow 2).
 
 Method: `Mews.PaymentCheckout.load(configuration)`
 
-### Configuration
+#### Configuration
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
@@ -98,7 +113,7 @@ Method: `Mews.PaymentCheckout.load(configuration)`
 | ~~`onPaymentSuccess`~~ | no | function | **Deprecated!** Use `onSuccess` instead. Callback invoked when a payment is charged (or submitted, for SEPA payments). Receives the Mews payment ID (GUID string) as an argument. |
 | ~~`onPaymentFailure`~~ | no | function | **Deprecated!** Use `onFailure` instead. Callback invoked when a payment error occurs. |
 
-#### Context
+##### Context
 
 Required for [Flow 2: Capture a payment](#flow-2-capture-a-payment).
 
@@ -107,14 +122,14 @@ Required for [Flow 2: Capture a payment](#flow-2-capture-a-payment).
 | `enterpriseId` | yes | GUID string | The unique identifier of the enterprise (property) in Mews. |
 | `amount` | yes | object | The amount to be charged. See [Amount](#amount). |
 
-#### Amount
+##### Amount
 
 | Parameter | Required | Type | Description |
 | --------- | -------- | ---- | ----------- |
 | `currency` | yes | string | The currency of the payment, in ISO 4217 format (e.g. `USD`, `EUR`, `GBP`). The currency must be accepted by your property's configuration in Mews. |
 | `value` | yes | number | The amount to be charged in the specified currency (e.g. `49.99`). |
 
-### Callback events
+#### Callback events
 
 The `onSuccess` callback is invoked when a payment or payment method collection succeeds.
 
@@ -131,7 +146,7 @@ The `onFailure` callback is invoked when a payment or payment method collection 
 | `payment-failure` | `{ type: "payment-failure", error: string }` | Payment charge or submission failed. |
 | `payment-method-collection-failure` | `{ type: "payment-method-collection-failure", error: string }` | Payment method collection failed. |
 
-### Examples
+#### Examples
 
 Loading configuration example – Flow 1: Capture a payment request:
 
@@ -191,17 +206,29 @@ export const MewsPaymentCheckout = ({ paymentRequestId }: { paymentRequestId: st
 };
 ```
 
-## Step 4: All done
+{% endstep %}
+{% step %}
+
+### Step 4: All done
 
 Setup is complete. The Mews Payments Checkout application handles all API communication for processing payments and recording data in Mews.
 
 The application renders inside an iframe injected into the container element specified in Step 3. The application is fully responsive and adapts to its container dimensions. If initialization or communication is blocked, please [contact support](../contact-support/README.md).
 
+{% endstep %}
+{% endstepper %}
+
 ## Testing
 
 To test the checkout application, set the `dataBaseUrl` configuration parameter in Step 3 to `https://app.mews-demo.com`. This loads the application in the Mews demo environment.
 
-> **Demo environment:** If you chose [Flow 1: Capture a payment request](#flow-1-capture-a-payment-request), the payment request (Step 2) must also be created in the Mews [demo environment](../guidelines/environments.md).
+{% hint style="info" %}
+
+#### Demo environment
+
+If you chose [Flow 1: Capture a payment request](#flow-1-capture-a-payment-request), the payment request (Step 2) must also be created in the Mews [demo environment](../guidelines/environments.md).
+
+{% endhint %}
 
 ## Collecting a payment method for future charges
 
@@ -209,11 +236,20 @@ Instead of collecting a payment, you can use the checkout to collect a payment m
 
 Currently supported payment methods for collection: payment card and SEPA Direct Debit.
 
-### 1. Create a payment method request
+{% stepper %}
+{% step %}
+
+### Create a payment method request
 
 Instead of creating a payment request, create a payment method request using [Add payment method request](../operations/paymentmethodrequests.md#add-payment-method-request). Take note of the `PaymentMethodRequestId` in the API response.
 
-> **Restricted!** The [Add payment method request](../operations/paymentmethodrequests.md#add-payment-method-request) operation is currently in beta-test and as such is subject to change.
+{% hint style="warning" %}
+
+#### Restricted
+
+The [Add payment method request](../operations/paymentmethodrequests.md#add-payment-method-request) operation is currently in beta-test and as such is subject to change.
+
+{% endhint %}
 
 ```javascript
 {
@@ -229,9 +265,18 @@ Instead of creating a payment request, create a payment method request using [Ad
 }
 ```
 
-> **Emails to send:** When a payment method request is created, Mews can email the guest to fulfill it. To disable all emails, send an empty list in `EmailsToSend`. Because the guest sees the checkout immediately, an empty array is the preferred value when collecting payment methods using the checkout.
+{% hint style="info" %}
 
-### 2. Load the checkout application
+#### Emails to send
+
+When a payment method request is created, Mews can email the guest to fulfill it. To disable all emails, send an empty list in `EmailsToSend`. Because the guest sees the checkout immediately, an empty array is the preferred value when collecting payment methods using the checkout.
+
+{% endhint %}
+
+{% endstep %}
+{% step %}
+
+### Load the checkout application
 
 Use the `PaymentMethodRequestId` from the API response as the `requestId` in the loading configuration, exactly as in [Step 3](#step-3-load-the-checkout-application). When the guest's payment method is successfully collected and stored in Mews, the `onSuccess` callback is triggered with type `payment-method-collected` and the `paymentMethodId` of the newly created payment method.
 
@@ -243,7 +288,10 @@ window.Mews.PaymentCheckout.load({
 });
 ```
 
-### 3. Charge the collected payment method
+{% endstep %}
+{% step %}
+
+### Charge the collected payment method
 
 Once collected, the payment method becomes available in the guest profile in Mews Operations, under **Payments > Payment methods**, and can be charged in three ways:
 
@@ -258,7 +306,16 @@ Once collected, the payment method becomes available in the guest profile in Mew
 | How to charge a collected payment card using Mews Payments | [Charge credit card](../operations/creditcards.md#charge-credit-card) |
 | How to check if a payment method is stored against a guest profile | [Get all credit cards](../operations/creditcards.md#get-all-credit-cards) |
 
-> **Charge credit card:** Note the [Charge credit card](../operations/creditcards.md#charge-credit-card) operation actually charges the guest's payment card, whereas the [Add credit card payment](../operations/payments.md#add-credit-card-payment) operation does NOT. The latter simply records a credit card payment in Mews and does not trigger any additional action beyond Mews – suitable for when the guest's card has already been charged from your solution.
+{% hint style="warning" %}
+
+#### Charge credit card
+
+Note the [Charge credit card](../operations/creditcards.md#charge-credit-card) operation actually charges the guest's payment card, whereas the [Add credit card payment](../operations/payments.md#add-credit-card-payment) operation does NOT. The latter simply records a credit card payment in Mews and does not trigger any additional action beyond Mews – suitable for when the guest's card has already been charged from your solution.
+
+{% endhint %}
+
+{% endstep %}
+{% endstepper %}
 
 ## Additional use cases
 
@@ -298,7 +355,13 @@ If a Content Security Policy (CSP) is configured on your site, enable the follow
 * `https://www.gstatic.com/recaptcha/`
 * `https://pay.datatrans.com/upp/payment/js/secure-fields-2.0.0.min.js`
 
-> **PCI Proxy:** The `pay.datatrans.com` domain is required for PCI Proxy, the PCI-DSS compliant solution used by Mews Payments to process payment cards.
+{% hint style="info" %}
+
+#### PCI Proxy
+
+The `pay.datatrans.com` domain is required for PCI Proxy, the PCI-DSS compliant solution used by Mews Payments to process payment cards.
+
+{% endhint %}
 
 ### Language customization
 
@@ -346,7 +409,13 @@ When a guest opens the checkout, the currency is pre-selected – either automat
 | `multicurrency.enabled` | no | boolean | Enables multicurrency support, allowing the guest to see and pay in a currency different from the payment gateway account currency. |
 | `multicurrency.autoDetect` | no | boolean | Enables automatic detection of the guest's local currency via their IP address. When enabled, the detected currency is pre-selected automatically. |
 
-> **Prerequisites:** Multicurrency can only be enabled in the checkout if the [multicurrency feature](https://help.mews.com/s/article/Multicurrency-by-Mews-Payments-FAQ) is enabled for the property in Mews. Currently, multicurrency is available only for [Flow 1: Capture a payment request](#flow-1-capture-a-payment-request).
+{% hint style="info" %}
+
+#### Prerequisites
+
+Multicurrency can only be enabled in the checkout if the [multicurrency feature](https://help.mews.com/s/article/Multicurrency-by-Mews-Payments-FAQ) is enabled for the property in Mews. Currently, multicurrency is available only for [Flow 1: Capture a payment request](#flow-1-capture-a-payment-request).
+
+{% endhint %}
 
 ### Billing details form display options
 
@@ -395,7 +464,13 @@ window.Mews.PaymentCheckout.load({
 
 Style overrides are organized into sections, each enabling granular customization of specific components. All style overrides are optional; configure as many or as few properties as needed. All color overrides support hex values (3, 6, or 8 digits). The 8-digit hex format (`#RRGGBBAA`) includes an alpha/transparency channel, where the last two digits represent opacity (`00` = fully transparent, `FF` = fully opaque).
 
-> **Global application:** Styles are applied globally across the application. For example, modifying a text color affects all elements using that token throughout the application. Changing a single style property applies consistently across all related elements without requiring multiple configurations, but changes propagate throughout the application, so consider the effect of each modification carefully.
+{% hint style="warning" %}
+
+#### Global application
+
+Styles are applied globally across the application. For example, modifying a text color affects all elements using that token throughout the application. Changing a single style property applies consistently across all related elements without requiring multiple configurations, but changes propagate throughout the application, so consider the effect of each modification carefully.
+
+{% endhint %}
 
 ### Global styles
 
