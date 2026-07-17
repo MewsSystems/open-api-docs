@@ -55,6 +55,7 @@ Examples:
   - Remove filler words ("basically", "actually", "really", "in order to" → "to").
   - Avoid words that downplay difficulty or assume something is obvious, such as "just", "simply", "obviously", "of course", "clearly", "easy", "everyone knows", and similar.
   - Prefer one precise sentence over two vague ones.
+- Use **en dashes** (–), not em dashes (—), for parenthetical breaks and separators in prose and lists.
 
 ### 4. Structure and consistency
 
