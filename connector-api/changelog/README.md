@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-07-22" %}
+
+## Payment automation use case documents Mews Payments Checkout
+
+- [Payment automation use case](../use-cases/payment-automation.md):
+  - Rewritten to document Mews Payments Checkout, the embeddable checkout for collecting payments and payment methods directly in your application. Covers the payment request and payment method request flows, loading configuration, callback events, styling, and testing. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-07-03" %}
 
 ## Clarified RollingReleaseOffset in availability blocks
