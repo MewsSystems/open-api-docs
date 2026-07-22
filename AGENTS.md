@@ -18,6 +18,8 @@ Follow [CONTRIBUTING.md](CONTRIBUTING.md) for product names, key entities, and t
 
 Use <https://gitbook.com/docs/skill.md> for GitBook-specific Markdown syntax and configuration files.
 
+Inside a `{% hint %}` callout, give the title a Markdown heading one level deeper than the section that contains the callout (for example `###` for a callout inside a `##` section, `####` for one inside a `###` step). This keeps the document outline consistent.
+
 ## Documentation tone of voice (for AI agents)
 
 When generating or editing **API documentation** in this repository, follow these rules.
