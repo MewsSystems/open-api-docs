@@ -4,7 +4,7 @@ This section describes how to use **Mews Payments Checkout**, an embeddable chec
 
 {% hint style="info" %}
 
-#### PCI Compliance
+### PCI Compliance
 
 * [Mews PCI compliance](https://help.mews.com/s/article/pci-compliance?language=en_US)
 * [Mews PCI certificate](https://www.mews.com/en/platform-documentation)
@@ -81,6 +81,14 @@ This flow removes the dependency on pre-creating a payment request and guest acc
 * **Option A: Express checkout** – a one-click payment option available for Apple Pay and Google Pay. The guest confirms the payment in their device's native interface, and the payment is created. All details are captured automatically.
 * **Option B: Payment method selection** – for other payment methods (payment card, SEPA Direct Debit, iDEAL, etc.), the guest provides their payment method and billing details. A guest account is then created in Mews, and the payment is linked to it.
 
+{% hint style="warning" %}
+
+##### Verify the charged amount server-side
+
+In Flow 2, the `amount` is supplied in the client-side loading configuration (see [Context](#context)) and can be altered in the browser. Do not treat it as authoritative. After the payment succeeds, reconcile the charged amount against your records using [Get all payments](../operations/payments.md#get-all-payments) with the `paymentId` from the `onSuccess` callback.
+
+{% endhint %}
+
 {% endstep %}
 {% step %}
 
@@ -146,6 +154,8 @@ The `onFailure` callback is invoked when a payment or payment method collection 
 | `payment-failure` | `{ type: "payment-failure", error: string }` | Payment charge or submission failed. |
 | `payment-method-collection-failure` | `{ type: "payment-method-collection-failure", error: string }` | Payment method collection failed. |
 
+The `error` property is a human-readable message intended for logging and diagnostics. Its content is not a stable enumeration and can change, so branch on `type` rather than parsing `error`. Always handle both failure types – payment failures are common (declined cards, failed 3D Secure, insufficient funds) and should surface a retry path to the guest.
+
 #### Examples
 
 Loading configuration example – Flow 1: Capture a payment request:
@@ -187,8 +197,9 @@ window.Mews.PaymentCheckout.load({
 Example in a React application:
 
 ```jsx
-export const MewsPaymentCheckout = ({ paymentRequestId }: { paymentRequestId: string }) => {
-  const checkoutContainerRef = useRef<HTMLDivElement>(null);
+// paymentRequestId: string – the payment request ID from Flow 1
+export const MewsPaymentCheckout = ({ paymentRequestId }) => {
+  const checkoutContainerRef = useRef(null);
 
   useEffect(() => {
     if (!checkoutContainerRef.current) {
@@ -197,6 +208,14 @@ export const MewsPaymentCheckout = ({ paymentRequestId }: { paymentRequestId: st
     window.Mews.PaymentCheckout.load({
       containerId: checkoutContainerRef.current.id,
       requestId: paymentRequestId,
+      onSuccess: (event) => {
+        // event.type: "payment-charged" | "payment-submitted" | "payment-method-collected"
+        console.log('Payment checkout succeeded', event);
+      },
+      onFailure: (event) => {
+        // Branch on event.type; event.error is a human-readable message, not a stable code
+        console.error('Payment checkout failed', event.type, event.error);
+      },
     });
   }, [paymentRequestId]);
 
@@ -222,9 +241,17 @@ The application renders inside an iframe injected into the container element spe
 
 To test the checkout application, set the `dataBaseUrl` configuration parameter in Step 3 to `https://app.mews-demo.com`. This loads the application in the Mews demo environment.
 
+{% hint style="warning" %}
+
+### Remove dataBaseUrl in production
+
+`dataBaseUrl` points the checkout at the demo environment. Remove it (or leave it unset) in your production build, otherwise real traffic is silently sent to the Mews demo environment and no live payments are taken.
+
+{% endhint %}
+
 {% hint style="info" %}
 
-#### Demo environment
+### Demo environment
 
 If you chose [Flow 1: Capture a payment request](#flow-1-capture-a-payment-request), the payment request (Step 2) must also be created in the Mews [demo environment](../guidelines/environments.md).
 
@@ -466,7 +493,7 @@ Style overrides are organized into sections, each enabling granular customizatio
 
 {% hint style="warning" %}
 
-#### Global application
+### Global application
 
 Styles are applied globally across the application. For example, modifying a text color affects all elements using that token throughout the application. Changing a single style property applies consistently across all related elements without requiring multiple configurations, but changes propagate throughout the application, so consider the effect of each modification carefully.
 
