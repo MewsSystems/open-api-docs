@@ -333,14 +333,6 @@ Once collected, the payment method becomes available in the guest profile in **M
 | How to charge a collected payment card using Mews Payments | [Charge credit card](../operations/creditcards.md#charge-credit-card) |
 | How to check if a payment method is stored against a guest profile | [Get all credit cards](../operations/creditcards.md#get-all-credit-cards) |
 
-{% hint style="warning" %}
-
-#### Charge credit card
-
-Note the [Charge credit card](../operations/creditcards.md#charge-credit-card) operation charges the guest's payment card, whereas the [Add credit card payment](../operations/payments.md#add-credit-card-payment) operation does NOT. The latter only records a credit card payment in Mews and does not trigger any additional action beyond Mews – suitable for when the guest's card has already been charged from your solution.
-
-{% endhint %}
-
 {% endstep %}
 {% endstepper %}
 

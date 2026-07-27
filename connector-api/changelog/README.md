@@ -1,6 +1,16 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-07-29" %}
+
+## Deprecation of Add credit card payment operation
+
+- [Add credit card payment](../operations/payments.md#add-credit-card-payment):
+  - **Deprecated** operation. Follow the [Payment automation use case](../use-cases/payment-automation.md) to collect and charge payment methods with Mews Payments Checkout.
+  - This operation will be discontinued on **10 January 2028**.
+  - Existing integrations can keep using this operation until the discontinuation date.
+
+{% endupdate %}
 {% update date="2026-07-22" %}
 
 ## Payment automation use case documents Mews Payments Checkout
