@@ -55,7 +55,8 @@ Returns all identity documents for the specified customers, with additional filt
       "IssuingCountryCode": "CZ",
       "IssuingCountrySubdivisionCode": null,
       "IssuingCity": "Prague",
-      "IdentityDocumentSupportNumber": "S-123456"
+      "IdentityDocumentSupportNumber": "S-123456",
+      "IsVerified": true
     },
     {
       "Id": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf4",
@@ -67,7 +68,8 @@ Returns all identity documents for the specified customers, with additional filt
       "IssuingCountryCode": "CZ",
       "IssuingCountrySubdivisionCode": null,
       "IssuingCity": "Brno",
-      "IdentityDocumentSupportNumber": "B-321"
+      "IdentityDocumentSupportNumber": "B-321",
+      "IsVerified": false
     }
   ],
   "Cursor": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf4"
@@ -93,6 +95,7 @@ Returns all identity documents for the specified customers, with additional filt
 | `IssuingCountrySubdivisionCode` | string | optional | Identifier of the country subdivision where the document was issued (province, state or region). |
 | `IssuingCity` | string | optional | City where the document was issued. |
 | `IdentityDocumentSupportNumber` | string | optional | Identity document support number. Only required for Spanish identity cards in Spanish hotels. |
+| `IsVerified` | boolean | required | Whether the document has been verified. |
 
 ## Add identity documents
 
@@ -116,7 +119,8 @@ Adds identity documents. This operation supports [Portfolio Access Tokens](../co
       "IssuanceDate": "2020-11-20T00:00:00Z",
       "IssuingCountryCode": "CZ",
       "IssuingCity": "Prague",
-      "IdentityDocumentSupportNumber": "S-123456"
+      "IdentityDocumentSupportNumber": "S-123456",
+      "IsVerified": true
     }
   ],
   "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -144,6 +148,7 @@ Adds identity documents. This operation supports [Portfolio Access Tokens](../co
 | `IssuingCountrySubdivisionCode` | string | optional | Identifier of the country subdivision where the document was issued (province, state or region). |
 | `IssuingCity` | string | optional | City where the document was issued. |
 | `IdentityDocumentSupportNumber` | string | optional | Identity document support number. Only required for Spanish identity cards in Spanish hotels. |
+| `IsVerified` | boolean | optional | Whether the document has been verified. Defaults to `false` when not specified. |
 
 ### Response
 
@@ -160,7 +165,8 @@ Adds identity documents. This operation supports [Portfolio Access Tokens](../co
       "IssuingCountryCode": "CZ",
       "IssuingCountrySubdivisionCode": null,
       "IssuingCity": "Prague",
-      "IdentityDocumentSupportNumber": "S-123456"
+      "IdentityDocumentSupportNumber": "S-123456",
+      "IsVerified": true
     }
   ]
 }
@@ -206,6 +212,9 @@ Updates specified identity documents. This operation supports [Portfolio Access 
       },
       "IdentityDocumentSupportNumber": {
         "Value": "S-123456"
+      },
+      "IsVerified": {
+        "Value": true
       }
     }
   ],
@@ -234,6 +243,7 @@ Updates specified identity documents. This operation supports [Portfolio Access 
 | `IssuingCountrySubdivisionCode` | [String update value](_objects.md#string-update-value) | optional | Identifier of the country subdivision where the document was issued (province, state or region) (or `null` if the value should not be updated). |
 | `IssuingCity` | [String update value](_objects.md#string-update-value) | optional | City where the document was issued (or `null` if the issuing city should not be updated). |
 | `IdentityDocumentSupportNumber` | [String update value](_objects.md#string-update-value) | optional | Identity document support number. Only required for Spanish identity cards in Spanish hotels. |
+| `IsVerified` | [Bool update value](_objects.md#bool-update-value) | optional | Whether the document has been verified (or `null` if the value should not be updated). |
 
 #### Identity document type update value
 Has same structure as [String update value](_objects.md#string-update-value).
@@ -257,7 +267,8 @@ Has same structure as [String update value](_objects.md#string-update-value).
       "IssuingCountryCode": "CZ",
       "IssuingCountrySubdivisionCode": null,
       "IssuingCity": "Prague",
-      "IdentityDocumentSupportNumber": "S-123456"
+      "IdentityDocumentSupportNumber": "S-123456",
+      "IsVerified": true
     }
   ]
 }

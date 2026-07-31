@@ -143,3 +143,4 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 * `CorrectionBillCounter`
 * `PaymentConfirmationBillCounter`
 * `CreditNoteBillCounter`
+* `PaymentSplitBillCounter`

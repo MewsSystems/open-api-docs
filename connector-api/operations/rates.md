@@ -729,13 +729,21 @@ Adds new Rates or updates existing ones if they are matched by `Id` or `External
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `BaseRatePricing` | [Base rate pricing parameters (without occupancy adjustments)](rates.md#base-rate-pricing-parameters-without-occupancy-adjustments) | optional | Additional data for rates with base rate pricing. Used when `PricingType` is `BaseRatePricing`. Defaults are applied if not specified: amount is set to 10000 in default Enterprise's currency and with its default accommodation tax rate code. |
-| `DependentRatePricing` | [Dependent rate pricing parameters](rates.md#dependent-rate-pricing-parameters) | optional | Additional data for rate with dependent rate pricing. Required when `PricingType` is `DependentRatePricing`. |
+| `DependentRatePricing` | [Dependent rate set pricing parameters](rates.md#dependent-rate-set-pricing-parameters) | optional | Additional data for rate with dependent rate pricing. Required when `PricingType` is `DependentRatePricing`. |
 
 #### Base rate pricing parameters (without occupancy adjustments)
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `Amount` | [Amount parameters](_objects.md#amount-parameters) | required | Price of the product that overrides the price defined in Mews. |
+
+#### Dependent rate set pricing parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `BaseRateId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | required | Unique identifier of the base rate. |
+| `RelativeAdjustment` | number | required | Relative amount which shows the difference between this rate and the base rate. |
+| `AbsoluteAdjustment` | number | required | Specific amount which shows the difference between this rate and the base rate. |
 
 ### Response
 

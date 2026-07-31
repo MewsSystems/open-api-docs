@@ -2633,7 +2633,7 @@ types:
     anchor: customerrelationshipresult
   customerrelationship:
     file: customers.md
-    anchor: customerrelationship
+    anchor: customer-relationship
   customerrelationshiptypeenum:
     file: customers.md
     anchor: customer-relationship-type
@@ -2649,3 +2649,36 @@ types:
   cashiertransactiontypeenum:
     file: cashiertransactions.md
     anchor: cashier-transaction-type
+  dependentratesetpricingparameters:
+    file: rates.md
+    anchor: dependent-rate-set-pricing-parameters
+  resourcecategorymodificationresult:
+    file: resourcecategories.md
+    anchor: resource-category-modification-result
+  multipleresourcecategoryaddparameters:
+    file: resourcecategories.md
+    anchor: multiple-resource-category-add-parameters
+  resourcecategoryaddparameters:
+    file: resourcecategories.md
+    anchor: resource-category-add-parameters
+  resourceclassificationenum:
+    file: resourcecategories.md
+    anchor: resource-classification
+  multipleresourcecategoryupdateparameters:
+    file: resourcecategories.md
+    anchor: multiple-resource-category-update-parameters
+  resourcecategoryupdateparameters:
+    file: resourcecategories.md
+    anchor: resource-category-update-parameters
+  localizedstringsupdatevalue:
+    file: resourcecategories.md
+    anchor: localized-text-update-value
+  resourcecategorytypeupdatevalue:
+    file: resourcecategories.md
+    anchor: resource-category-type-update-value
+  resourceclassificationnullableupdatevalue:
+    file: resourcecategories.md
+    anchor: resource-classification-update-value
+  resourcecategorydeleteparameters:
+    file: resourcecategories.md
+    anchor: resource-category-delete-parameters

@@ -306,6 +306,10 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
     "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
     "bccdafd1-3e44-439d-861f-341526b597a9"
   ],
+  "UpdatedUtc": {
+    "StartUtc": "2023-08-01T00:00:00Z",
+    "EndUtc": "2023-08-30T00:00:00Z"
+  },
   "ChainIds": [
     "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "5fcd1933-22f2-40b9-84da-7db04cbecec2"
@@ -323,6 +327,7 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
 | `Client` | string | required | Name and version of the client application. |
 | `ChainIds` | array of string | optional, max 1000 items | Unique identifiers of `Chain`. If not specified, the operation returns data for all chains within scope of the Access Token. |
 | `CustomerIds` | array of string | required, max 100 items | Unique identifiers of `Customer`. |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the relationship was updated. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
 ### Response
@@ -333,12 +338,14 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
     {
       "CustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf5",
       "RelatedCustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf6",
-      "Relationship": "Other"
+      "Relationship": "Other",
+      "UpdatedUtc": "2023-08-01T12:00:00Z"
     },
     {
       "CustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf6",
       "RelatedCustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf5",
-      "Relationship": "Other"
+      "Relationship": "Other",
+      "UpdatedUtc": "2023-08-01T12:00:00Z"
     }
   ],
   "Cursor": null
@@ -347,16 +354,17 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `CustomerRelationships` | array of [CustomerRelationship](customers.md#customerrelationship) | required | The relationships for the customers. |
+| `CustomerRelationships` | array of [Customer relationship](customers.md#customer-relationship) | required | The relationships for the customers. |
 | `Cursor` | string | optional | Unique identifier of the item one newer in time order than the items to be returned. If Cursor is not specified, i.e. null, then the latest or most recent items will be returned. |
 
-#### CustomerRelationship
+#### Customer relationship
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `CustomerId` | string | required | Unique identifier of the customer in the relationship. |
 | `RelatedCustomerId` | string | required | Unique identifier of the related customer. |
 | `Relationship` | [Customer relationship type](customers.md#customer-relationship-type) | required | Type of relationship between the two customers (e.g. Child = the related customer is the child of this customer). |
+| `UpdatedUtc` | string | required | Date and time when the relationship was last updated in UTC timezone in ISO 8601 format. |
 
 #### Customer relationship type
 
