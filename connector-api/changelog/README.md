@@ -1,6 +1,30 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-07-31" %}
+
+## July 2026 updates
+
+- [Add resource categories](../operations/resourcecategories.md#add-resource-categories) (restricted operation):
+- [Update resource categories](../operations/resourcecategories.md#update-resource-categories) (restricted operation):
+- [Delete resource categories](../operations/resourcecategories.md#delete-resource-categories) (restricted operation):
+  - New operations to create, update and delete resource categories (beta). A resource category cannot be deleted while it still has active resources, overbookings, rate adjustments, channel manager mappings, product rules, promotions, restrictions or active reservations.
+- [Get all identity documents](../operations/identitydocuments.md#get-all-identity-documents):
+- [Add identity documents](../operations/identitydocuments.md#add-identity-documents):
+- [Update identity documents](../operations/identitydocuments.md#update-identity-documents):
+  - Extended [Identity document (ver 2024-10-25)](../operations/identitydocuments.md#identity-document-ver-2024-10-25) response object with `IsVerified` property.
+  - Extended [Identity document parameters](../operations/identitydocuments.md#identity-document-parameters) and [Identity document update parameters](../operations/identitydocuments.md#identity-document-update-parameters) request objects with `IsVerified` parameter. Defaults to `false` when not specified.
+- [Get customers relationships](../operations/customers.md#get-customers-relationships) (restricted operation):
+  - Extended request with optional `UpdatedUtc` time interval filter, with a maximum length of 3 months.
+  - Extended [Customer relationship](../operations/customers.md#customer-relationship) response object with `UpdatedUtc` property.
+- [Get all counters](../operations/counters.md#get-all-counters):
+  - Extended [Counter type discriminator](../operations/counters.md#counter-type-discriminator) enum with `PaymentSplitBillCounter` value.
+- [Get all order items](../operations/orderitems.md#get-all-order-items):
+  - Extended [Tax exemption reason type](../operations/orderitems.md#tax-exemption-reason-type) enum with `IT_N2_1`, `IT_N3_4`, `FR_261_7`, `FR_262_00_BIS`, and `FR_293_B` values.
+- [Set rates](../operations/rates.md#set-rates):
+  - The `DependentRatePricing` parameter now references [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters). The object has the same structure as before. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-07-29" %}
 
 ## Deprecation of Add credit card payment operation

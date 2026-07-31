@@ -216,6 +216,15 @@ Filter commands by the unique identifiers of `Device` and states, with optional 
 | `Bill` | [Bill (ver 2025-06-23)](commands.md#bill-ver-2025-06-23) | required | The issued bill that should be fiscalized. |
 | `CommandData` | [FiscalMachineAdditionalData](commands.md#fiscalmachineadditionaldata) | optional | Additional data of the fiscal machine. |
 
+#### Command state
+
+* `Pending` - Created in Mews, but not yet received by the client application.
+* `Received` - Received by the client application.
+* `Processing` - Being processed by the client application.
+* `Processed` - Successfully processed command.
+* `Cancelled` - A command whose execution has been canceled before (or during) processing.
+* `Error` - A command whose execution or processing was terminated by an error.
+
 #### Bill (ver 2025-06-23)
 
 | Property | Type | Contract | Description |
@@ -351,15 +360,6 @@ Returns all commands by their identifiers.
 | `Creator` | [User](commands.md#user) | optional | Creator of the command. |
 | `Device` | [Device](devices.md#device) | required | Device that the command should be executed on. |
 | `Data` | object | required | Structure of the object depends on [Device type](devices.md#device-type). |
-
-#### Command state
-
-* `Pending` - Created in Mews, but not yet received by the client application.
-* `Received` - Received by the client application.
-* `Processing` - Being processed by the client application.
-* `Processed` - Successfully processed command.
-* `Cancelled` - A command whose execution has been canceled before (or during) processing.
-* `Error` - A command whose execution or processing was terminated by an error.
 
 #### User
 

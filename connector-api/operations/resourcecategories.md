@@ -294,3 +294,273 @@ Returns all resource category image assignments. This operation uses [Pagination
 | `CreatedUtc` | string | required | Creation date and time of the assignment in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the assignment in UTC timezone in ISO 8601 format. |
 | `Ordering` | integer | required | Ordering of the image in the resource category. |
+
+## Add resource categories
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Adds one or more resource categories (also known as space categories or room types) to the specified services. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/resourceCategories/add`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "ResourceCategories": [
+    {
+      "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
+      "Type": "Room",
+      "Capacity": 2,
+      "ExtraCapacity": 1,
+      "Names": {
+        "en-US": "Standard Double Room"
+      },
+      "ShortNames": {
+        "en-US": "SDBL"
+      },
+      "Descriptions": {
+        "en-US": "A standard room with a double bed."
+      },
+      "Classification": "StandardDouble",
+      "Ordering": 1,
+      "ExternalIdentifier": "STD-DBL",
+      "AccountingCategoryId": "90eff5aa-36b4-4689-80c0-ab3a00bb412e"
+    }
+  ],
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseId` | string | optional | Unique identifier of the enterprise. Required when using [Portfolio Access Tokens](../concepts/multi-property.md), ignored otherwise. |
+| `ResourceCategories` | array of [Resource category add parameters](resourcecategories.md#resource-category-add-parameters) | required, max 100 items | Parameters of the new resource categories to be created. |
+
+#### Resource category add parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ServiceId` | string | required | Unique identifier of the `Service` the resource category belongs to. |
+| `Type` | [Resource category type](restrictions.md#resource-category-type) | required | Type of the category. |
+| `Capacity` | integer | required | Capacity that can be served (e.g. bed count). Must be a positive number. |
+| `ExtraCapacity` | integer | optional | Extra capacity that can be served (e.g. extra bed count). Must not be negative. |
+| `Names` | [Localized text](_objects.md#localized-text) | optional | All translations of the name. |
+| `ShortNames` | [Localized text](_objects.md#localized-text) | optional | All translations of the short name. |
+| `Descriptions` | [Localized text](_objects.md#localized-text) | optional | All translations of the description. |
+| `Classification` | [Resource classification](resourcecategories.md#resource-classification) | optional | Classification of the resource category. |
+| `Ordering` | integer | optional | Ordering of the category, lower number corresponds to lower category (note that neither uniqueness nor continuous sequence is guaranteed). |
+| `ExternalIdentifier` | string | optional, max length 255 characters | Identifier of the resource category from an external system. |
+| `AccountingCategoryId` | string | optional | Unique identifier of the accounting category. |
+
+#### Resource classification
+
+* `StandardSingle`
+* `StandardDouble`
+* `SuperiorTwin`
+* `SuperiorDouble`
+* `JuniorSuite`
+* `SharedOrDorm`
+* `Other`
+* `SuperiorSingle`
+* `Triple`
+* `Family`
+* `StandardTwin`
+* `Studio`
+* `SuperiorTripleRoom`
+* `OneBedroomApartment`
+* `ThreeBedroomsApartment`
+* `TwoBedroomsApartment`
+
+### Response
+
+```javascript
+{
+  "ResourceCategories": [
+    {
+      "Id": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
+      "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
+      "IsActive": true,
+      "Type": "Room",
+      "Classification": "StandardDouble",
+      "Names": {
+        "en-US": "Standard Double Room"
+      },
+      "ShortNames": {
+        "en-US": "SDBL"
+      },
+      "Descriptions": {
+        "en-US": "A standard room with a double bed."
+      },
+      "Ordering": 1,
+      "Capacity": 2,
+      "ExtraCapacity": 1,
+      "ExternalIdentifier": "STD-DBL",
+      "AccountingCategoryId": "90eff5aa-36b4-4689-80c0-ab3a00bb412e"
+    }
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ResourceCategories` | array of [Resource category](resources.md#resource-category) | required, max 100 items | Resource categories affected by the operation. |
+
+## Update resource categories
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Updates one or more existing resource categories. Only the fields that are set are updated. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/resourceCategories/update`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "ResourceCategoryUpdates": [
+    {
+      "ResourceCategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
+      "Names": {
+        "Value": {
+          "en-US": "Superior Double Room"
+        }
+      },
+      "Capacity": {
+        "Value": 3
+      },
+      "Ordering": {
+        "Value": 2
+      }
+    }
+  ],
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseId` | string | optional | Unique identifier of the enterprise. Required when using [Portfolio Access Tokens](../concepts/multi-property.md), ignored otherwise. |
+| `ResourceCategoryUpdates` | array of [Resource category update parameters](resourcecategories.md#resource-category-update-parameters) | required, max 100 items | Details of the resource categories to be updated. |
+
+#### Resource category update parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ResourceCategoryId` | string | required | Unique identifier of the resource category to be updated. |
+| `Names` | [Localized text update value](resourcecategories.md#localized-text-update-value) | optional | All translations of the name (or null if it should not be updated). |
+| `ShortNames` | [Localized text update value](resourcecategories.md#localized-text-update-value) | optional | All translations of the short name (or null if it should not be updated). |
+| `Descriptions` | [Localized text update value](resourcecategories.md#localized-text-update-value) | optional | All translations of the description (or null if it should not be updated). |
+| `Type` | [Resource category type update value](resourcecategories.md#resource-category-type-update-value) | optional | Type of the category (or null if it should not be updated). |
+| `Capacity` | [Integer update value](_objects.md#integer-update-value) | optional | Capacity that can be served, e.g. bed count. Must be a positive number (or null if it should not be updated). |
+| `ExtraCapacity` | [Integer update value](_objects.md#integer-update-value) | optional | Extra capacity that can be served, e.g. extra bed count. Must not be negative (or null if it should not be updated). |
+| `Ordering` | [Integer update value](_objects.md#integer-update-value) | optional | Ordering of the category, lower number corresponds to lower category (or null if it should not be updated). |
+| `Classification` | [Resource classification update value](resourcecategories.md#resource-classification-update-value) | optional | Classification of the resource category. Set the inner value to null to clear it (or null if it should not be updated). |
+| `ExternalIdentifier` | [String update value](_objects.md#string-update-value) | optional | Identifier of the resource category from an external system. Set the inner value to null to clear it (or null if it should not be updated). |
+| `AccountingCategoryId` | [String update value](_objects.md#string-update-value) | optional | Unique identifier of the accounting category. Set the inner value to null to clear it (or null if it should not be updated). |
+
+#### Localized text update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | [Localized text](_objects.md#localized-text) | optional | Value which is to be updated. |
+
+#### Resource category type update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | [Resource category type](restrictions.md#resource-category-type) | required | Value which is to be updated. |
+
+#### Resource classification update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | [Resource classification](resourcecategories.md#resource-classification) | optional | Value which is to be updated. |
+
+### Response
+
+```javascript
+{
+  "ResourceCategories": [
+    {
+      "Id": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
+      "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
+      "IsActive": true,
+      "Type": "Room",
+      "Classification": "StandardDouble",
+      "Names": {
+        "en-US": "Standard Double Room"
+      },
+      "ShortNames": {
+        "en-US": "SDBL"
+      },
+      "Descriptions": {
+        "en-US": "A standard room with a double bed."
+      },
+      "Ordering": 1,
+      "Capacity": 2,
+      "ExtraCapacity": 1,
+      "ExternalIdentifier": "STD-DBL",
+      "AccountingCategoryId": "90eff5aa-36b4-4689-80c0-ab3a00bb412e"
+    }
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ResourceCategories` | array of [Resource category](resources.md#resource-category) | required, max 100 items | Resource categories affected by the operation. |
+
+## Delete resource categories
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Deletes the specified resource categories. A resource category cannot be deleted while it still has active resources, overbookings, rate adjustments, channel manager mappings, product rules, promotions, restrictions or active reservations. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/resourceCategories/delete`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "ResourceCategoryIds": [
+    "773d5e42-de1e-43a0-9ce6-f940faf2303f",
+    "47d6b462-35ec-467e-a565-b00300781a41"
+  ],
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseId` | string | optional | Unique identifier of the enterprise. Required when using [Portfolio Access Tokens](../concepts/multi-property.md), ignored otherwise. |
+| `ResourceCategoryIds` | array of string | required, max 100 items | Unique identifiers of the resource categories to be deleted. |
+
+### Response
+
+```javascript
+{}
+```

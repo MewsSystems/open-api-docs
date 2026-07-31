@@ -14,62 +14,20 @@ Returns all order items. At least one of the `OrderItemIds`, `ServiceOrderIds`, 
   "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
   "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
   "Client": "Sample Client 1.0.0",
+  "AccountIds": [
+    "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+    "bccdafd1-3e44-439d-861f-341526b597a9"
+  ],
+  "CreatedUtc": {
+    "StartUtc": "2023-01-01T00:00:00Z",
+    "EndUtc": "2023-01-31T23:59:59Z"
+  },
   "EnterpriseIds": [
     "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "4d0201db-36f5-428b-8d11-4f0a65e960cc"
   ],
-  "OrderItemIds": [
-    "3e982ab5-6245-4c39-80af-1118d40e7494",
-    "bd11dc4a-8f9e-442b-bb1e-f5361b31dfa2"
-  ],
-  "AccountIds": [
-    "c173bb22-6ff8-4ffd-875f-afb900c92865",
-    "8d02b0e5-7b3a-4c1d-9f6e-afb900c92866"
-  ],
-  "ServiceOrderIds": [
-    "ac5ef5eb-c5b2-4083-879f-83f04a5ebda5",
-    "5d603823-b40a-43a4-8244-d5d2b515deb5"
-  ],
-  "ServiceIds": [
-    "294c7859-63ba-46ad-a8bf-34fad2019383",
-    "05089c0c-5d55-4756-827b-c4bcee1edf00"
-  ],
-  "BillIds": [
-    "d27ffe99-ff92-4afb-ac03-9268f24f0556",
-    "297de6f8-bd67-4ebd-98b6-ecc1cd8f920c"
-  ],
-  "CreatedUtc": {
-    "StartUtc": "2023-03-01T00:00:00Z",
-    "EndUtc": "2023-03-31T00:00:00Z"
-  },
-  "UpdatedUtc": {
-    "StartUtc": "2023-03-01T00:00:00Z",
-    "EndUtc": "2023-03-31T00:00:00Z"
-  },
-  "ConsumedUtc": {
-    "StartUtc": "2023-03-01T00:00:00Z",
-    "EndUtc": "2023-03-31T00:00:00Z"
-  },
-  "CanceledUtc": {
-    "StartUtc": "2023-03-01T00:00:00Z",
-    "EndUtc": "2023-03-31T00:00:00Z"
-  },
-  "ClosedUtc": {
-    "StartUtc": "2023-03-01T00:00:00Z",
-    "EndUtc": "2023-03-31T00:00:00Z"
-  },
-  "AccountingStates": [
-    "Open",
-    "Closed"
-  ],
-  "Types": [
-    "CityTax",
-    "SpaceOrder"
-  ],
-  "Currency": "EUR",
   "Limitation": {
-    "Count": 10,
-    "Cursor": null
+    "Count": 100
   }
 }
 ```
@@ -433,13 +391,18 @@ Additional order item data.
 
 * `Unknown` - Unknown tax exemption reason
 * `IT_N1` - N1 - Escluse ex art.15
+* `IT_N2_1` - N2.1 - Non soggette ad IVA ai sensi degli artt. da 7 a 7-septies del d.P.R. n. 633/72
 * `IT_N2_2` - N2.2 - Non soggette – altri casi
+* `IT_N3_4` - N3.4 - Non imponibili – operazioni assimilate alle cessioni all’esportazione
 * `IT_N3_5` - N3.5 - Non imponibili – a seguito di dichiarazioni d’intento
 * `IT_N4` - N4 - Esenti
 * `IT_N5` - N5 - Regime del margine / IVA non esposta in fattura
 * `PL_ZW` - ZW - Zwolniony
 * `PL_NP` - NP - Nie podlega
 * `DE_NATO` - NATO-ZAbk - Umsatzsteuerbefreiung gemäß Artikel 67(3) NATO-Zusatzabkommen
+* `FR_261_7` - Exonération de TVA, article 261, 7 du CGI
+* `FR_262_00_BIS` - Exonération de TVA, article 262-00 bis du CGI
+* `FR_293_B` - TVA non applicable, article 293 B du CGI
 
 ## Cancel order items
 
