@@ -24,4 +24,4 @@ node index.js --source https://api.mews.com/swagger/connector/swagger.yaml --out
 
 ## Automatic regeneration
 
-The [Regenerate Connector API reference](../../.github/workflows/regenerate-connector-api-reference.yml) workflow runs the generator every Wednesday and opens a pull request when the output changes. It can also be triggered manually.
+The [Regenerate Connector API reference](../../.github/workflows/regenerate-connector-api-reference.yml) workflow runs the generator every Thursday and opens a pull request when the output changes. It can also be triggered manually.
