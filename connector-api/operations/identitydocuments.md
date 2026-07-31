@@ -148,7 +148,7 @@ Adds identity documents. This operation supports [Portfolio Access Tokens](../co
 | `IssuingCountrySubdivisionCode` | string | optional | Identifier of the country subdivision where the document was issued (province, state or region). |
 | `IssuingCity` | string | optional | City where the document was issued. |
 | `IdentityDocumentSupportNumber` | string | optional | Identity document support number. Only required for Spanish identity cards in Spanish hotels. |
-| `IsVerified` | boolean | required | Whether the document has been verified. Defaults to `false` when not specified. |
+| `IsVerified` | boolean | optional | Whether the document has been verified. Defaults to `false` when not specified. |
 
 ### Response
 
