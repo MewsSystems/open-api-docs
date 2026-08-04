@@ -1,3 +1,7 @@
 # Payment automation
 
-Refer to [Mews Payments Checkout](mews-payments-checkout.md) for streamlining online payment experience and operations across the guest journey.
+This section describes how to automate payment collection across the guest journey using **Mews Payments Checkout**.
+
+## How it works
+
+For full integration details, see [Mews Payments Checkout](mews-payments-checkout.md).
