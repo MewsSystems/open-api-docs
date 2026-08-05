@@ -1,6 +1,16 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-05" %}
+
+## Billing automation prepayment condition for virtual credit cards
+
+- [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations):
+- [Add billing automations](../operations/billingautomations.md#add-billing-automations):
+- [Update billing automations](../operations/billingautomations.md#update-billing-automations):
+  - Extended [Billing automation prepayment type](../operations/billingautomations.md#billing-automation-prepayment-type) enum with `PrepaidOrVcc` value. A billing automation with this prepayment condition applies to reservations that the OTA flagged as prepaid and to reservations with a virtual credit card attached.
+
+{% endupdate %}
 {% update date="2026-07-31" %}
 
 ## July 2026 updates

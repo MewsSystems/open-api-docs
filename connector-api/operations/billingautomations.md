@@ -121,7 +121,7 @@ Returns all billing automations. Note this operation uses [Pagination](../guidel
 | `Name` | string | required | Name of the billing automation. |
 | `Description` | string | optional | Description of the billing automation. |
 | `CompaniesWithRelations` | array of [Company with billing automation relation](billingautomations.md#company-with-billing-automation-relation) | required, max 1000 items | List of companies with relations to the billing automation. |
-| `Prepayment` | [Billing automation prepayment type](billingautomations.md#billing-automation-prepayment-type) | required | Type of prepayment. |
+| `Prepayment` | [Billing automation prepayment type](billingautomations.md#billing-automation-prepayment-type) | required | Type of prepayment. `All` applies regardless of prepayment, `Prepaid` only to reservations the OTA flagged as prepaid, and `PrepaidOrVcc` also to reservations with a virtual credit card attached. |
 | `AssignmentTargetType` | [Billing automation assignment target type](billingautomations.md#billing-automation-assignment-target-type) | required | Type of target company and customer assignment behavior. |
 | `TriggerType` | [Billing automation trigger type](billingautomations.md#billing-automation-trigger-type) | required | Trigger type of billing automation. |
 | `BillAggregationType` | [Billing automation bill aggregation type](billingautomations.md#billing-automation-bill-aggregation-type) | required | Type of bill aggregation. |
@@ -149,8 +149,9 @@ Returns all billing automations. Note this operation uses [Pagination](../guidel
 
 #### Billing automation prepayment type
 
-* `All` - All
-* `Prepaid` - Prepaid
+* `All` - Applies regardless of prepayment.
+* `Prepaid` - Applies only to reservations that the OTA flagged as prepaid.
+* `PrepaidOrVcc` - Applies to reservations that the OTA flagged as prepaid and to reservations with a virtual credit card attached.
 
 #### Billing automation assignment target type
 
@@ -283,7 +284,7 @@ Adds billing automations.
 | `Name` | string | required, max length 255 characters | Name of the billing automation. |
 | `Description` | string | optional, max length 1000 characters | Description of the billing automation. |
 | `CompaniesWithRelations` | array of [Company with billing automation relation](billingautomations.md#company-with-billing-automation-relation) | optional, max 1000 items | List of companies with relations indicating whether the company is considered a travel agency or a company in the reservation. Can only be empty if `AssignmentTargetType` is `CompanyAsDetails` or `NoCompany`. |
-| `Prepayment` | [Billing automation prepayment type](billingautomations.md#billing-automation-prepayment-type) | required | Type of prepayment. |
+| `Prepayment` | [Billing automation prepayment type](billingautomations.md#billing-automation-prepayment-type) | required | Type of prepayment. `All` applies regardless of prepayment, `Prepaid` only to reservations the OTA flagged as prepaid, and `PrepaidOrVcc` also to reservations with a virtual credit card attached. |
 | `AssignmentTargetType` | [Billing automation assignment target type](billingautomations.md#billing-automation-assignment-target-type) | required | Specifies the type of company assignment to the bill. If set to `NoCompany`, the `BillAggregationType` must be `AggregateByCustomer`. |
 | `TriggerType` | [Billing automation trigger type](billingautomations.md#billing-automation-trigger-type) | required | Trigger type of billing automation. |
 | `BillAggregationType` | [Billing automation bill aggregation type](billingautomations.md#billing-automation-bill-aggregation-type) | required | Specifies the type of bill aggregation. If the value is not `AggregateByCustomer`, the `AssignmentTargetType` must be `CompanyAsOwner`. |
@@ -425,7 +426,7 @@ Updates one or more existing billing automations.
 | `Name` | [String update value](_objects.md#string-update-value) | optional, max length 255 characters | Name of the billing automation (or null should it not be updated). |
 | `Description` | [String update value](_objects.md#string-update-value) | optional, max length 1000 characters | Description of the billing automation (or null should it not be updated). |
 | `Companies` | [Company with billing automation relation array update value](billingautomations.md#company-with-billing-automation-relation-array-update-value) | optional, max length 1000 characters | List of companies with relations indicating whether the company should be considered as a travel agency or a company in the reservation. This list can only be empty if the `AssignmentTargetType` is `CompanyAsDetails` or `NoCompany`. Set to null if the value is not updated. |
-| `Prepayment` | [Billing automation prepayment update value](_objects.md#string-update-value) | optional | Type of prepayment (or null should it not be updated). |
+| `Prepayment` | [Billing automation prepayment update value](_objects.md#string-update-value) | optional | Type of prepayment. `All` applies regardless of prepayment, `Prepaid` only to reservations the OTA flagged as prepaid, and `PrepaidOrVcc` also to reservations with a virtual credit card attached. Set to null if the value is not updated. |
 | `AssignmentTargetType` | [Billing automation assignment target type update value](_objects.md#string-update-value) | optional | Specifies the type of company assignment to the bill. If set to `NoCompany`, the `BillAggregationType` must be `AggregateByCustomer`. Set to null if the value is not updated. |
 | `BillAggregationType` | [Billing automation bill aggregation type update value](_objects.md#string-update-value) | optional | Defines the aggregation target type for billing automation. If not `AggregateByCustomer`, the `AssignmentTargetType` must be `CompanyAsOwner`. Set to null if the value is not updated. |
 | `OrderItemConsumptionPeriod` | [Billing automation order item consumption period type update value](_objects.md#string-update-value) | optional | Specifies the order item consumption period type for the billing automation. Required if the `TriggerType` is recurring. Can be null if the value is not updated. |
