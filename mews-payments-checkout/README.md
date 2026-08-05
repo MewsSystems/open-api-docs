@@ -1,6 +1,6 @@
 # Mews Payments Checkout
 
-This section describes how to use **Mews Payments Checkout**, an embeddable checkout application that enables you to collect payments and payment methods directly within your own application, eliminating the need to redirect users to a separate Mews payment request page. The checkout handles all API communication for processing payments and recording data in Mews, including PCI-DSS compliant capture of payment card details. For connecting to Mews Payment Terminals to take payments from customers, refer to [Mews Payment Terminals](../use-cases/mews-terminals.md).
+This section describes how to use **Mews Payments Checkout**, an embeddable checkout application that enables you to collect payments and payment methods directly within your own application, eliminating the need to redirect users to a separate Mews payment request page. The checkout handles all API communication for processing payments and recording data in Mews, including PCI-DSS compliant capture of payment card details. For connecting to Mews Payment Terminals to take payments from customers, refer to [Mews Payment Terminals](https://docs.mews.com/connector-api/use-cases/mews-terminals).
 
 {% hint style="info" %}
 

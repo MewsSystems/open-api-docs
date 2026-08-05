@@ -29,7 +29,6 @@
   * [Housekeeping](use-cases/housekeeping.md)
   * [Kiosk](use-cases/kiosk.md)
   * [Mews Payment Terminals](use-cases/mews-terminals.md)
-  * [Mews Payments Checkout](use-cases/mews-payments-checkout.md)
   * [Payment automation](use-cases/payment-automation.md)
   * [Point of sale](use-cases/point-of-sale.md)
   * [Reputation management](use-cases/reputation-management.md)

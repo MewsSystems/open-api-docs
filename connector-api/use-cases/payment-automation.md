@@ -4,4 +4,4 @@ This section describes how to automate payment collection across the guest journ
 
 ## How it works
 
-For full integration details, see [Mews Payments Checkout](mews-payments-checkout.md).
+For full integration details, see [Mews Payments Checkout](https://docs.mews.com/mews-payments-checkout).

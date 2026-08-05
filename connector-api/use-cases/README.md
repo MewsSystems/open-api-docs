@@ -29,4 +29,4 @@ Even if you are integrating a different type of system, it serves as a good star
 * [Customer messaging](messaging.md)
 * [Payments - Mews Payment Terminals](mews-terminals.md)
 * [Payments - Payment automation](payment-automation.md)
-* [Payments - Mews Payments Checkout](mews-payments-checkout.md)
+* [Payments - Mews Payments Checkout](https://docs.mews.com/mews-payments-checkout)
