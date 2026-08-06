@@ -149,9 +149,8 @@ Returns all billing automations. Note this operation uses [Pagination](../guidel
 
 #### Billing automation prepayment type
 
-* `All` - Applies to reservations regardless of prepayment.
-* `Prepaid` - Applies only to reservations the OTA flagged as prepaid.
-* `PrepaidOrVcc` - Applies to reservations the OTA flagged as prepaid, and to reservations with a virtual credit card attached.
+* `All` - All
+* `Prepaid` - Prepaid
 
 #### Billing automation assignment target type
 
