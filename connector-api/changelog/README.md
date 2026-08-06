@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-08-05" %}
+{% update date="2026-08-11" %}
 
 ## Billing automation prepayment condition for virtual credit cards
 
