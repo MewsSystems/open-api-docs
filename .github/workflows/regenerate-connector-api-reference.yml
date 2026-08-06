@@ -2,9 +2,6 @@ name: Regenerate Connector API reference
 
 on:
   schedule:
-    # Thursdays at 12:00 UTC. The monolith deploys to demo on Tuesdays and Thursdays
-    # at 10:00 UTC, so this runs once the deploy has settled.
-    # https://mews.atlassian.net/wiki/spaces/EKB/pages/2134606081
     - cron: '0 12 * * 4'
   workflow_dispatch:
 
@@ -31,8 +28,6 @@ jobs:
         working-directory: connector-api/_generator
         run: npm ci
 
-      # Reads the specification URL from config.yaml. Also rewrites types.yaml,
-      # the cross-page type registry, which must be committed with the output.
       - name: Regenerate reference documentation
         working-directory: connector-api/_generator
         run: node index.js
@@ -54,8 +49,6 @@ jobs:
       #     anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
       #     prompt: /connector-api-changelog-entry
 
-      # Force-pushes the branch and reuses the open pull request. Creates nothing when
-      # the regenerated output is identical to the base branch.
       - name: Create pull request
         uses: peter-evans/create-pull-request@v8
         with:
