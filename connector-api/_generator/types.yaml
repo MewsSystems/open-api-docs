@@ -2682,3 +2682,33 @@ types:
   resourcecategorydeleteparameters:
     file: resourcecategories.md
     anchor: resource-category-delete-parameters
+  cancellationpolicymodificationresult:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-modification-result
+  cancellationpolicymodificationdata:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-modification-data
+  multiplecancellationpolicyaddparameters:
+    file: cancellationpolicies.md
+    anchor: multiple-cancellation-policy-add-parameters
+  cancellationpolicyaddparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-add-parameters
+  multiplecancellationpolicyupdateparameters:
+    file: cancellationpolicies.md
+    anchor: multiple-cancellation-policy-update-parameters
+  cancellationpolicyupdateparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-update-parameters
+  cancellationpolicyapplicabilityupdatevalue:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-applicability-update-value
+  cancellationfeeextentienumerableupdatevalue:
+    file: cancellationpolicies.md
+    anchor: cancellation-fee-extent-array-update-value
+  currencyvalueupdatevalue:
+    file: cancellationpolicies.md
+    anchor: currency-value-ver-2023-02-02-update-value
+  cancellationpolicydeleteparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-delete-parameters
