@@ -39,6 +39,7 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
   ```
 
   It outputs a unified diff of all changed `connector-api/` files (excluding `_generator/`).
+- A full regeneration diff can exceed the output limit, and a truncated diff looks exactly like a complete one. When many files changed, list them with `--no-diff` and then request each one with `--path`, rather than asking for the whole diff at once.
 - The script checks staged/unstaged changes first; if none, diffs the branch against `main`.
 - The script relies on `git diff`, which does not see untracked files. A brand-new operations page is therefore invisible until it is staged — and the generator writes one page per OpenAPI tag, so a new tag in the specification produces exactly that. Run `git add -A -- connector-api/` first when the working tree may contain new files.
 - Use the diff as the primary input — no need to read individual operation files unless the diff is absent or unclear.

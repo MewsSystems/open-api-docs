@@ -16,7 +16,12 @@ jobs:
   regenerate:
     runs-on: ubuntu-latest
     steps:
+      # persist-credentials: false keeps the contents:write token out of .git/config, where the
+      # changelog agent would otherwise be able to read it. create-pull-request pushes with its own
+      # token input, so it does not need the persisted credential.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 #v7.0.0
         with:
@@ -65,6 +70,12 @@ jobs:
       # and --strict-mcp-config with no --mcp-config guarantees no MCP server is spawned.
       # GITHUB_ACTIONS is falsified so claude-code-action cannot attach a GitHub MCP surface by some
       # route --strict-mcp-config does not cover.
+      #
+      # Edit is scoped to the two files the prompt authorises. Unscoped, it would reach the detect
+      # script itself — the one command this step may also execute — so the agent could rewrite that
+      # script and invoke it under the allowlisted prefix, turning a deliberately narrow Bash grant
+      # into arbitrary shell next to a live gateway key. Scoping also makes "edit the tables in place
+      # only" a permission rather than a request.
       - name: Draft changelog entry
         id: changelog
         if: steps.stage.outputs.changed == 'true'
@@ -82,22 +93,28 @@ jobs:
           # text is taken as the slash command's argument rather than as a separate message.
           prompt: >-
             /connector-api-changelog-entry The Connector API reference was just regenerated in this
-            working tree and the changes are staged — collect them with the skill's detect script.
-            Date the entry tomorrow rather than today, so it is not already in the past when this pull
-            request is reviewed. Edit the changelog and deprecations tables in place only; do not
-            stage, commit, push, or open a pull request, as a later workflow step does that. If the
-            diff is documentation-only, change nothing and say so.
+            working tree and the changes are staged — collect them with the skill's detect script. A
+            full regeneration diff can exceed the output limit, and a truncated diff looks exactly
+            like a complete one, so list the changed files with --no-diff first and then request them
+            one at a time with --path rather than asking for the whole diff at once. Date the entry
+            tomorrow rather than today, so it is not already in the past when this pull request is
+            reviewed. Edit the changelog and deprecations tables in place only; do not stage, commit,
+            push, or open a pull request, as a later workflow step does that. If the diff is
+            documentation-only, change nothing and say so.
           claude_args: |
             --model claude-opus-5
             --max-turns 40
             --strict-mcp-config
-            --allowedTools "Skill,Read,Grep,Glob,Edit,Bash(.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh:*)"
+            --allowedTools "Skill,Read,Grep,Glob,Edit(connector-api/changelog/README.md),Edit(connector-api/deprecations/README.md),Bash(.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh:*)"
 
       - name: Create pull request
         if: steps.stage.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 #v8.1.1
         with:
           branch: chore/regenerate-connector-api-reference
+          # Nothing outside connector-api/ is ever a legitimate product of this workflow, so an edit
+          # elsewhere cannot ride into the commit.
+          add-paths: connector-api/**
           commit-message: 'docs: regenerate Connector API reference'
           title: 'docs: regenerate Connector API reference'
           labels: changelog-automatic
@@ -108,7 +125,7 @@ jobs:
 
             The demo environment can be ahead of production. Confirm the documented changes are released before merging.
 
-            An agent drafted the changelog entry in this run, or judged that none was needed (changelog step outcome: `${{ steps.changelog.outcome }}`). Verify that decision rather than assuming it: an entry in `connector-api/changelog/README.md` is required only if this diff contains functional changes — new or removed operations or properties, or changes to requiredness, types, enum values, or limits. Documentation-only changes do not need one. Entries are dated one day ahead, so check the date still makes sense if this sits unmerged.
+            ${{ steps.changelog.outcome == 'success' && 'An agent drafted the changelog entry in this run, or judged that none was needed — verify that decision rather than assuming it.' || format('⚠️ **The changelog agent did not complete (outcome: `{0}`), so no entry was drafted. Write it by hand.**', steps.changelog.outcome) }} An entry in `connector-api/changelog/README.md` is required only if this diff contains functional changes — new or removed operations or properties, or changes to requiredness, types, enum values, or limits. Documentation-only changes do not need one. Drafted entries are dated one day ahead, so check the date still makes sense if this sits unmerged.
 
             > [!WARNING]
             > This branch is force-pushed on every run. Commits pushed to it will be lost.

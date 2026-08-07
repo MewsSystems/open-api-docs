@@ -5,7 +5,7 @@ Use this decision order to automatically discover input:
 1. Staged and unstaged changes in the current workspace.
 2. If none exist, branch diff against `main` (prefer `origin/main` when present).
 
-**Note:** Run these commands from the repository root. The script itself works from any directory – it changes to the repository root before diffing – but the path used to invoke it must match the form above so it stays within the allowlist granted by the [regenerate workflow](../../../../.github/workflows/regenerate-connector-api-reference.yml).
+**Note:** Run these commands from the repository root, exactly as written below. The script itself works from any directory – it changes to the repository root before diffing – but do not rewrite the path used to invoke it. Automated callers may be permitted to run only this one literal invocation, so an equivalent-but-different path can be refused.
 
 Default command (full diff output):
 
@@ -17,6 +17,12 @@ File paths only (no diff content):
 
 ```bash
 .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh --no-diff
+```
+
+One file at a time, to stay under the output limit on a large change set (repeatable, must be under `connector-api/`):
+
+```bash
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh --path connector-api/operations/reservations.md
 ```
 
 Optional base ref override:
@@ -48,3 +54,4 @@ Interpretation rules:
 - Use triple-dot branch diff so only current-branch changes are considered.
 - `connector-api/_generator/` is excluded from all output.
 - Untracked files never appear – every command here is a `git diff`. Stage them first with `git add -A -- connector-api/` so new operations pages are picked up as additions.
+- `--path` can only narrow the scope. The `_generator/` exclusion is always applied last, so it cannot be used to reach excluded or unrelated files.
