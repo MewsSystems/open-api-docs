@@ -131,10 +131,11 @@ const hasLocalChanges =
   `${git(['diff', '--name-only', '--cached', '--', ...fullScope])}${git(['diff', '--name-only', '--', ...fullScope])}`.trim() !==
   '';
 
-// Nothing below may call process.exit. stdout is asynchronous when it is a pipe, which is how the
-// caller reads this, and process.exit discards writes still queued past the 64 KB pipe buffer — a
-// silent truncation with exit status 0, the exact failure this script's Priority notes warn about.
-// Letting the process end naturally lets Node flush first.
+// Nothing below may call process.exit once anything has been written to stdout. stdout is
+// asynchronous when it is a pipe, which is how the caller reads this, and process.exit discards
+// writes still queued past the 64 KB pipe buffer — a silent truncation with exit status 0, the
+// exact failure this script's Priority notes warn about. Letting the process end naturally lets
+// Node flush first. The fail() below is fine: it exits before any stdout write.
 if (hasLocalChanges) {
   if (noDiff) {
     printFiles([
