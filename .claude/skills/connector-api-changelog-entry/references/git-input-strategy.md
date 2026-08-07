@@ -5,25 +5,25 @@ Use this decision order to automatically discover input:
 1. Staged and unstaged changes in the current workspace.
 2. If none exist, branch diff against `main` (prefer `origin/main` when present).
 
-**Note:** These commands are relative to the skill's directory.
+**Note:** Run these commands from the repository root. The script itself works from any directory – it changes to the repository root before diffing – but the path used to invoke it must match the form above so it stays within the allowlist granted by the [regenerate workflow](../../../../.github/workflows/regenerate-connector-api-reference.yml).
 
 Default command (full diff output):
 
 ```bash
-scripts/detect-changed-connector-api-files.sh
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh
 ```
 
 File paths only (no diff content):
 
 ```bash
-scripts/detect-changed-connector-api-files.sh --no-diff
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh --no-diff
 ```
 
 Optional base ref override:
 
 ```bash
-scripts/detect-changed-connector-api-files.sh origin/main
-scripts/detect-changed-connector-api-files.sh --no-diff origin/main
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh origin/main
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh --no-diff origin/main
 ```
 
 Manual equivalent command sequence:
@@ -47,3 +47,4 @@ Interpretation rules:
 - If combined local output is empty, fall back to branch diff against the preferred base ref (`origin/main` if it exists, otherwise `main`).
 - Use triple-dot branch diff so only current-branch changes are considered.
 - `connector-api/_generator/` is excluded from all output.
+- Untracked files never appear – every command here is a `git diff`. Stage them first with `git add -A -- connector-api/` so new operations pages are picked up as additions.

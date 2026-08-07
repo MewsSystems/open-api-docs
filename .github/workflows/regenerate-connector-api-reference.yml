@@ -32,24 +32,69 @@ jobs:
         working-directory: connector-api/_generator
         run: node index.js
 
-      # TODO: Draft the changelog entry with an agent, here — after generation, before the commit.
+      # Staging serves two purposes: the changelog skill's detect script reads `git diff --cached`
+      # first, and `git diff` alone would not see a brand-new operations page (the generator writes
+      # one per OpenAPI tag, and `config.yaml` filters no tags).
       #
-      # At this point the working tree is dirty, so
-      # .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh
-      # picks the diff up from staged/unstaged changes with no extra plumbing. The skill decides
-      # whether an entry is needed at all (functional changes require one, documentation-only
-      # changes do not) and updates connector-api/changelog/README.md, plus
+      # The gate excludes `_generator/` because `index.js` rewrites `_generator/types.yaml` on every
+      # run. Without the exclusion, a types-cache-only run would produce a pointless PR and burn an
+      # agent invocation. A types-only change instead waits and rides along with the next real one.
+      - name: Stage regenerated reference
+        id: stage
+        run: |
+          git add -A -- connector-api/
+          if git diff --cached --quiet -- connector-api/ ':(exclude)connector-api/_generator/'; then
+            echo 'No reference changes — skipping changelog and pull request.'
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+
+      # The skill decides whether an entry is needed at all (functional changes require one,
+      # documentation-only changes do not) and updates connector-api/changelog/README.md, plus
       # connector-api/deprecations/README.md when deprecations are involved.
       #
-      # Blocked on credentials: this repository has no ANTHROPIC_API_KEY secret yet.
+      # Credentials: MOXLY_LITELLM_BASE_URL / MOXLY_LITELLM_API_KEY are org-level and surface into any
+      # workflow that references them by name, so this repository needs no secret of its own. The key
+      # must go in `with:`, not `env:` — the action hardcodes ANTHROPIC_API_KEY from its own input.
       #
-      # - name: Draft changelog entry
-      #   uses: anthropics/claude-code-action@v1
-      #   with:
-      #     anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-      #     prompt: /connector-api-changelog-entry
+      # This repository is public, and the diff the agent reads originates from a network-fetched
+      # OpenAPI specification, so the prompt-injection surface is real even though no fork-authored
+      # content can reach this workflow (schedule and workflow_dispatch only). The mitigation is to
+      # deny egress: no github_token is passed, the allowlist carries no WebFetch/WebSearch/gh/git,
+      # and --strict-mcp-config with no --mcp-config guarantees no MCP server is spawned.
+      # GITHUB_ACTIONS is falsified so claude-code-action cannot attach a GitHub MCP surface by some
+      # route --strict-mcp-config does not cover.
+      - name: Draft changelog entry
+        id: changelog
+        if: steps.stage.outputs.changed == 'true'
+        continue-on-error: true
+        uses: anthropics/claude-code-action@593d7a5c4e0073569f74772c2b7b64c30ec14707 #v1
+        env:
+          ANTHROPIC_BASE_URL: ${{ vars.MOXLY_LITELLM_BASE_URL }}
+          ANTHROPIC_CUSTOM_HEADERS: |
+            x-litellm-end-user-id: ${{ github.actor }}
+            x-litellm-tags: trigger=regenerate-connector-api-reference,repository=${{ github.repository }},workflow=${{ github.workflow }},run_id=${{ github.run_id }}
+          GITHUB_ACTIONS: false
+        with:
+          anthropic_api_key: ${{ secrets.MOXLY_LITELLM_API_KEY }}
+          # Folded, not literal: the whole prompt must reach the CLI as a single line so the trailing
+          # text is taken as the slash command's argument rather than as a separate message.
+          prompt: >-
+            /connector-api-changelog-entry The Connector API reference was just regenerated in this
+            working tree and the changes are staged — collect them with the skill's detect script.
+            Date the entry tomorrow rather than today, so it is not already in the past when this pull
+            request is reviewed. Edit the changelog and deprecations tables in place only; do not
+            stage, commit, push, or open a pull request, as a later workflow step does that. If the
+            diff is documentation-only, change nothing and say so.
+          claude_args: |
+            --model claude-opus-5
+            --max-turns 40
+            --strict-mcp-config
+            --allowedTools "Skill,Read,Grep,Glob,Edit,Bash(.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh:*)"
 
       - name: Create pull request
+        if: steps.stage.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 #v8.1.1
         with:
           branch: chore/regenerate-connector-api-reference
@@ -63,7 +108,7 @@ jobs:
 
             The demo environment can be ahead of production. Confirm the documented changes are released before merging.
 
-            A changelog entry in `connector-api/changelog/README.md` is required only if this diff contains functional changes — new or removed operations or properties, or changes to requiredness, types, enum values, or limits. Documentation-only changes do not need one.
+            An agent drafted the changelog entry in this run, or judged that none was needed (changelog step outcome: `${{ steps.changelog.outcome }}`). Verify that decision rather than assuming it: an entry in `connector-api/changelog/README.md` is required only if this diff contains functional changes — new or removed operations or properties, or changes to requiredness, types, enum values, or limits. Documentation-only changes do not need one. Entries are dated one day ahead, so check the date still makes sense if this sits unmerged.
 
             > [!WARNING]
             > This branch is force-pushed on every run. Commits pushed to it will be lost.
