@@ -13,7 +13,7 @@ This section describes how to use **Mews Payments Checkout**, an embeddable chec
 
 ## How it works
 
-Mews Payments Checkout is a JavaScript SDK that renders a fully responsive payment experience inside an iframe injected into a container element on your page. You use the **Mews Connector API** to create a [payment request](../operations/paymentrequests.md#add-payment-requests) or a [payment method request](../operations/paymentmethodrequests.md#add-payment-method-request), then pass the returned identifier to the checkout application, which takes care of the rest – payment method selection, card data capture, 3D Secure authentication, and posting the resulting payment or payment method into Mews.
+Mews Payments Checkout is a JavaScript SDK that renders a fully responsive payment experience inside an iframe injected into a container element on your page. You use the **Mews Connector API** to create a [payment request](https://docs.mews.com/connector-api/operations/paymentrequests#add-payment-requests) or a [payment method request](https://docs.mews.com/connector-api/operations/paymentmethodrequests#add-payment-method-request), then pass the returned identifier to the checkout application, which takes care of the rest – payment method selection, card data capture, 3D Secure authentication, and posting the resulting payment or payment method into Mews.
 
 Supported payment methods include payment cards, Apple Pay, Google Pay, iDEAL, and SEPA Direct Debit.
 
@@ -53,7 +53,7 @@ Place the following `<script>` code snippet in the `<head>` of your web page's H
 
 If you already have a guest profile in Mews, or guest details are collected before displaying the checkout and you don't want the guest to resubmit their information, use this flow to charge them a specific amount. The checkout renders only payment-related fields, as all guest details are already known.
 
-To proceed, create a payment request for the desired amount and currency using [Add payment requests](../operations/paymentrequests.md#add-payment-requests). Take note of the payment request `Id` in the API response.
+To proceed, create a payment request for the desired amount and currency using [Add payment requests](https://docs.mews.com/connector-api/operations/paymentrequests#add-payment-requests). Take note of the payment request `Id` in the API response.
 
 When a payment request is created, by default Mews sends an email to the guest to fulfill the payment request. For the checkout use case, the guest sees the checkout immediately, so there's usually no need to send an additional email. To skip sending the email, set the `SendPaymentRequestEmails` property to `false` in the request.
 
@@ -70,9 +70,9 @@ When a payment request is created, by default Mews sends an email to the guest t
 
 | 'How to' use case | API Operations |
 | ----------------- | -------------- |
-| How to create a payment request for the checkout | [Add payment requests](../operations/paymentrequests.md#add-payment-requests) |
-| How to check the state of a payment request | [Get all payment requests](../operations/paymentrequests.md#get-all-payment-requests) |
-| How to cancel an unfulfilled payment request | [Cancel payment requests](../operations/paymentrequests.md#cancel-payment-requests) |
+| How to create a payment request for the checkout | [Add payment requests](https://docs.mews.com/connector-api/operations/paymentrequests#add-payment-requests) |
+| How to check the state of a payment request | [Get all payment requests](https://docs.mews.com/connector-api/operations/paymentrequests#get-all-payment-requests) |
+| How to cancel an unfulfilled payment request | [Cancel payment requests](https://docs.mews.com/connector-api/operations/paymentrequests#cancel-payment-requests) |
 
 #### Flow 2: Capture a payment
 
@@ -85,7 +85,7 @@ This flow removes the dependency on pre-creating a payment request and guest acc
 
 ##### Verify the charged amount server-side
 
-In Flow 2, the `amount` is supplied in the client-side loading configuration (see [Context](#context)) and can be altered in the browser. Do not treat it as authoritative. After the payment succeeds, reconcile the charged amount against your records using [Get all payments](../operations/payments.md#get-all-payments) with the `paymentId` from the `onSuccess` callback.
+In Flow 2, the `amount` is supplied in the client-side loading configuration (see [Context](#context)) and can be altered in the browser. Do not treat it as authoritative. After the payment succeeds, reconcile the charged amount against your records using [Get all payments](https://docs.mews.com/connector-api/operations/payments#get-all-payments) with the `paymentId` from the `onSuccess` callback.
 
 {% endhint %}
 
@@ -232,7 +232,7 @@ export const MewsPaymentCheckout = ({ paymentRequestId }) => {
 
 Setup is complete. The Mews Payments Checkout application handles all API communication for processing payments and recording data in Mews.
 
-The application renders inside an iframe injected into the container element specified in Step 3. The application is fully responsive and adapts to its container dimensions. If initialization or communication is blocked, [contact support](../contact-support/README.md).
+The application renders inside an iframe injected into the container element specified in Step 3. The application is fully responsive and adapts to its container dimensions. If initialization or communication is blocked, [contact support](https://docs.mews.com/connector-api/contact-support).
 
 {% endstep %}
 {% endstepper %}
@@ -253,7 +253,7 @@ To test the checkout application, set the `dataBaseUrl` configuration parameter 
 
 ### Demo environment
 
-If you chose [Flow 1: Capture a payment request](#flow-1-capture-a-payment-request), the payment request (Step 2) must also be created in the Mews [demo environment](../guidelines/environments.md).
+If you chose [Flow 1: Capture a payment request](#flow-1-capture-a-payment-request), the payment request (Step 2) must also be created in the Mews [demo environment](https://docs.mews.com/connector-api/guidelines/environments).
 
 {% endhint %}
 
@@ -268,13 +268,13 @@ Currently supported payment methods for collection: payment card and SEPA Direct
 
 ### Create a payment method request
 
-Instead of creating a payment request, create a payment method request using [Add payment method request](../operations/paymentmethodrequests.md#add-payment-method-request). Take note of the `PaymentMethodRequestId` in the API response.
+Instead of creating a payment request, create a payment method request using [Add payment method request](https://docs.mews.com/connector-api/operations/paymentmethodrequests#add-payment-method-request). Take note of the `PaymentMethodRequestId` in the API response.
 
 {% hint style="warning" %}
 
 #### Restricted
 
-The [Add payment method request](../operations/paymentmethodrequests.md#add-payment-method-request) operation is currently in beta-test and as such is subject to change.
+The [Add payment method request](https://docs.mews.com/connector-api/operations/paymentmethodrequests#add-payment-method-request) operation is currently in beta-test and as such is subject to change.
 
 {% endhint %}
 
@@ -323,15 +323,15 @@ window.Mews.PaymentCheckout.load({
 Once collected, the payment method becomes available in the guest profile in **Mews Operations**, under **Payments > Payment methods**, and can be charged in three ways:
 
 * **Manually in Mews Operations** – property staff charge the stored payment method directly from the guest profile.
-* **Automatically with Mews automation** – create a reservation using [Add reservations](../operations/reservations.md#add-reservations) and set `CreditCardId` in the [reservation parameters](../operations/reservations.md#reservation-parameters) to the received payment method ID. The payment method is then charged automatically by Mews according to the rate's [payment policy schedule](https://help.mews.com/s/article/how-to-set-up-payment-automation).
-* **Programmatically via the Mews Connector API** – charge the payment method directly using [Charge credit card](../operations/creditcards.md#charge-credit-card). This is currently supported only for collected payment cards.
+* **Automatically with Mews automation** – create a reservation using [Add reservations](https://docs.mews.com/connector-api/operations/reservations#add-reservations) and set `CreditCardId` in the [reservation parameters](https://docs.mews.com/connector-api/operations/reservations#reservation-parameters) to the received payment method ID. The payment method is then charged automatically by Mews according to the rate's [payment policy schedule](https://help.mews.com/s/article/how-to-set-up-payment-automation).
+* **Programmatically via the Mews Connector API** – charge the payment method directly using [Charge credit card](https://docs.mews.com/connector-api/operations/creditcards#charge-credit-card). This is currently supported only for collected payment cards.
 
 | 'How to' use case | API Operations |
 | ----------------- | -------------- |
-| How to request a payment method from a guest | [Add payment method request](../operations/paymentmethodrequests.md#add-payment-method-request) |
-| How to charge a collected payment method on a reservation schedule | [Add reservations](../operations/reservations.md#add-reservations) |
-| How to charge a collected payment card using Mews Payments | [Charge credit card](../operations/creditcards.md#charge-credit-card) |
-| How to check if a payment method is stored against a guest profile | [Get all credit cards](../operations/creditcards.md#get-all-credit-cards) |
+| How to request a payment method from a guest | [Add payment method request](https://docs.mews.com/connector-api/operations/paymentmethodrequests#add-payment-method-request) |
+| How to charge a collected payment method on a reservation schedule | [Add reservations](https://docs.mews.com/connector-api/operations/reservations#add-reservations) |
+| How to charge a collected payment card using Mews Payments | [Charge credit card](https://docs.mews.com/connector-api/operations/creditcards#charge-credit-card) |
+| How to check if a payment method is stored against a guest profile | [Get all credit cards](https://docs.mews.com/connector-api/operations/creditcards#get-all-credit-cards) |
 
 {% endstep %}
 {% endstepper %}
