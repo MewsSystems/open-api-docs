@@ -28,6 +28,9 @@ Output:
 Priority:
   1) Staged and unstaged local changes
   2) If none, branch diff against base-ref (triple-dot: base-ref...HEAD)
+
+  This choice is made across all of connector-api/, not per --path, so narrowing
+  changes what is printed without changing what it is compared against.
 EOF
 }
 
@@ -39,6 +42,9 @@ REQUESTED_PATHS=''
 
 add_path() {
   case "$1" in
+    # Reject traversal before the prefix test: git normalizes '..' in a pathspec before matching,
+    # so 'connector-api/../.github' passes a prefix check and then resolves outside the scope.
+    *..*) echo "--path must not contain '..': $1" >&2; exit 1 ;;
     connector-api/*) ;;
     *) echo "--path must be under connector-api/: $1" >&2; exit 1 ;;
   esac
@@ -76,44 +82,45 @@ fi
 REPO_ROOT=$(git rev-parse --show-toplevel)
 cd "$REPO_ROOT"
 
-TMP_FILE=$(mktemp "${TMPDIR:-/tmp}/connector-api-changes.XXXXXX")
-cleanup() {
-  rm -f "$TMP_FILE"
-}
-trap cleanup EXIT HUP INT TERM
+EXCLUDE=':(exclude)connector-api/_generator/'
 
-# Build the pathspec as positional parameters. The _generator/ exclusion is appended last in both
-# cases, so --path can only ever narrow the scope, never widen it past what this script documents.
+# Decide local-versus-branch across the whole of connector-api/, before any --path narrowing.
+# Deciding it per request would let successive --path calls answer from different comparison bases:
+# a path with no working-tree change would fall through to the branch diff while another path still
+# had local changes, so the documented "--no-diff, then --path per file" flow could mix the two.
+if [ -n "$(git diff --name-only --cached -- connector-api/ "$EXCLUDE"; git diff --name-only -- connector-api/ "$EXCLUDE")" ]; then
+  USE_LOCAL=1
+else
+  USE_LOCAL=0
+fi
+
+# Build the pathspec as positional parameters. set -f disables pathname expansion across the split,
+# so a --path value cannot be glob-expanded into paths the caller never asked for. The _generator/
+# exclusion is appended last, so --path can only narrow the scope, never widen it.
 if [ -n "$REQUESTED_PATHS" ]; then
   OLD_IFS=$IFS
   IFS='
 '
+  set -f
   set -- $REQUESTED_PATHS
+  set +f
   IFS=$OLD_IFS
 else
   set -- connector-api/
 fi
-set -- "$@" ':(exclude)connector-api/_generator/'
+set -- "$@" "$EXCLUDE"
 
-# Collect local changes scoped to connector-api.
-if [ "$NO_DIFF" -eq 1 ]; then
-  git diff --name-only --cached -- "$@" >> "$TMP_FILE"
-  git diff --name-only        -- "$@" >> "$TMP_FILE"
-else
-  git diff --cached -- "$@" >> "$TMP_FILE"
-  git diff          -- "$@" >> "$TMP_FILE"
-fi
-
-if [ -s "$TMP_FILE" ]; then
+if [ "$USE_LOCAL" -eq 1 ]; then
   if [ "$NO_DIFF" -eq 1 ]; then
-    sort -u "$TMP_FILE"
+    { git diff --name-only --cached -- "$@"; git diff --name-only -- "$@"; } | sort -u
   else
-    cat "$TMP_FILE"
+    git diff --cached -- "$@"
+    git diff          -- "$@"
   fi
   exit 0
 fi
 
-# Fallback to branch diff if no local changes are present.
+# No local changes anywhere in connector-api/, so compare the branch against the base ref.
 if ! git rev-parse --verify --quiet "$BASE_REF" >/dev/null; then
   echo "Base ref not found: $BASE_REF" >&2
   exit 1

@@ -54,4 +54,5 @@ Interpretation rules:
 - Use triple-dot branch diff so only current-branch changes are considered.
 - `connector-api/_generator/` is excluded from all output.
 - Untracked files never appear – every command here is a `git diff`. Stage them first with `git add -A -- connector-api/` so new operations pages are picked up as additions.
-- `--path` can only narrow the scope. The `_generator/` exclusion is always applied last, so it cannot be used to reach excluded or unrelated files.
+- `--path` can only narrow the scope. Values must be under `connector-api/` and may not contain `..`, and the `_generator/` exclusion is always applied last, so it cannot be used to reach excluded or unrelated files.
+- Whether the output comes from local changes or from the branch diff is decided across all of `connector-api/`, not per `--path`. Narrowing therefore changes what is printed, never what it is compared against.
