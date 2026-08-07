@@ -10,26 +10,26 @@ Use this decision order to automatically discover input:
 Default command (full diff output):
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs
 ```
 
 File paths only (no diff content):
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh --no-diff
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --no-diff
 ```
 
 One file at a time, to stay under the output limit on a large change set (repeatable, must be under `connector-api/`):
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh --path connector-api/operations/reservations.md
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --path connector-api/operations/reservations.md
 ```
 
 Optional base ref override:
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh origin/main
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh --no-diff origin/main
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs origin/main
+.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --no-diff origin/main
 ```
 
 Manual equivalent command sequence:
@@ -54,5 +54,5 @@ Interpretation rules:
 - Use triple-dot branch diff so only current-branch changes are considered.
 - `connector-api/_generator/` is excluded from all output.
 - Untracked files never appear – every command here is a `git diff`. Stage them first with `git add -A -- connector-api/` so new operations pages are picked up as additions.
-- `--path` can only narrow the scope. Values must be under `connector-api/` and may not contain `..`, and the `_generator/` exclusion is always applied last, so it cannot be used to reach excluded or unrelated files.
+- `--path` can only narrow the scope. Each value is resolved and must land inside `connector-api/`, so `..` and absolute paths are rejected rather than pattern-matched, and the `_generator/` exclusion is always applied last. It cannot be used to reach excluded or unrelated files.
 - Whether the output comes from local changes or from the branch diff is decided across all of `connector-api/`, not per `--path`. Narrowing therefore changes what is printed, never what it is compared against.

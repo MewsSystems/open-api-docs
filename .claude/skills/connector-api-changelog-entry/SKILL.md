@@ -35,7 +35,7 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 - Run the detect script from the repository root, exactly as written:
 
   ```bash
-  .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.sh
+  .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs
   ```
 
   It outputs a unified diff of all changed `connector-api/` files (excluding `_generator/`).
