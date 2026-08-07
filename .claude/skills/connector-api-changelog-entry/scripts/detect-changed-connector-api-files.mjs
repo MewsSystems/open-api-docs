@@ -1,5 +1,7 @@
-#!/usr/bin/env node
 // Print changes to connector-api/ between the current state and a base ref.
+//
+// Run as `node <this file>`. There is deliberately no shebang and no executable bit: one invocation
+// form means callers that allowlist a literal command need to grant exactly one string.
 //
 // This was POSIX sh until three review rounds found the same class of bug: --path values escaped
 // their containment check through shell mechanics rather than through the check itself — git's
@@ -14,7 +16,7 @@
 import { execFileSync } from 'node:child_process';
 import { isAbsolute, relative, resolve, sep } from 'node:path';
 
-const USAGE = `Usage: detect-changed-connector-api-files.mjs [OPTIONS] [base-ref]
+const USAGE = `Usage: node detect-changed-connector-api-files.mjs [OPTIONS] [base-ref]
 
 Print changes to connector-api/ between the current state and a base ref.
 

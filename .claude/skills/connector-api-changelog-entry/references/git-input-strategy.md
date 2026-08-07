@@ -10,26 +10,26 @@ Use this decision order to automatically discover input:
 Default command (full diff output):
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs
+node .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs
 ```
 
 File paths only (no diff content):
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --no-diff
+node .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --no-diff
 ```
 
 One file at a time, to stay under the output limit on a large change set (repeatable, must be under `connector-api/`):
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --path connector-api/operations/reservations.md
+node .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --path connector-api/operations/reservations.md
 ```
 
 Optional base ref override:
 
 ```bash
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs origin/main
-.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --no-diff origin/main
+node .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs origin/main
+node .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs --no-diff origin/main
 ```
 
 Manual equivalent command sequence:

@@ -77,10 +77,9 @@ jobs:
       # into arbitrary shell next to a live gateway key. Scoping also makes "edit the tables in place
       # only" a permission rather than a request.
       #
-      # The detect script is granted twice, bare and `node`-prefixed. The skill pins the bare form and
-      # the file is executable, but a .mjs path is a strong attractor for a `node ` prefix, and a
-      # denied first attempt in an unattended weekly job is worth the extra entry. Node itself comes
-      # from the setup-node step above.
+      # The detect script is granted only `node`-prefixed, which is the single form the skill pins and
+      # documents. The file is deliberately not executable, so there is no second way to invoke it
+      # that the grant would have to cover. Node itself comes from the setup-node step above.
       - name: Draft changelog entry
         id: changelog
         if: steps.stage.outputs.changed == 'true'
@@ -110,7 +109,7 @@ jobs:
             --model claude-opus-5
             --max-turns 40
             --strict-mcp-config
-            --allowedTools "Skill,Read,Grep,Glob,Edit(connector-api/changelog/README.md),Edit(connector-api/deprecations/README.md),Bash(.claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs:*),Bash(node .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs:*)"
+            --allowedTools "Skill,Read,Grep,Glob,Edit(connector-api/changelog/README.md),Edit(connector-api/deprecations/README.md),Bash(node .claude/skills/connector-api-changelog-entry/scripts/detect-changed-connector-api-files.mjs:*)"
 
       - name: Create pull request
         if: steps.stage.outputs.changed == 'true'
