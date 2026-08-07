@@ -131,6 +131,10 @@ const hasLocalChanges =
   `${git(['diff', '--name-only', '--cached', '--', ...fullScope])}${git(['diff', '--name-only', '--', ...fullScope])}`.trim() !==
   '';
 
+// Nothing below may call process.exit. stdout is asynchronous when it is a pipe, which is how the
+// caller reads this, and process.exit discards writes still queued past the 64 KB pipe buffer — a
+// silent truncation with exit status 0, the exact failure this script's Priority notes warn about.
+// Letting the process end naturally lets Node flush first.
 if (hasLocalChanges) {
   if (noDiff) {
     printFiles([
@@ -141,14 +145,13 @@ if (hasLocalChanges) {
     process.stdout.write(git(['diff', '--cached', '--', ...pathspec]));
     process.stdout.write(git(['diff', '--', ...pathspec]));
   }
-  process.exit(0);
-}
-
-// No local changes anywhere in connector-api/, so compare the branch against the base ref.
-if (!refExists(baseRef)) fail(`Base ref not found: ${baseRef}`);
-
-if (noDiff) {
-  printFiles([git(['diff', '--name-only', `${baseRef}...HEAD`, '--', ...pathspec])]);
 } else {
-  process.stdout.write(git(['diff', `${baseRef}...HEAD`, '--', ...pathspec]));
+  // No local changes anywhere in connector-api/, so compare the branch against the base ref.
+  if (!refExists(baseRef)) fail(`Base ref not found: ${baseRef}`);
+
+  if (noDiff) {
+    printFiles([git(['diff', '--name-only', `${baseRef}...HEAD`, '--', ...pathspec])]);
+  } else {
+    process.stdout.write(git(['diff', `${baseRef}...HEAD`, '--', ...pathspec]));
+  }
 }
