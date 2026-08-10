@@ -79,6 +79,14 @@ jobs:
       # does not). GITHUB_ACTIONS is falsified so claude-code-action cannot attach a GitHub MCP
       # surface by some route --strict-mcp-config does not cover.
       #
+      # Egress denial is not total: the changelog edit the agent is authorised to make is committed
+      # and force-pushed to a public branch by the step below, so anything written into those tables
+      # is published. That channel exists by design and cannot be closed without removing the point
+      # of the step, so the exposure is bounded rather than eliminated — this token dies with the
+      # job, and a human reviews the pull request before merge. The gateway key in the agent's
+      # environment does not expire, though, so treat content in those tables that does not describe
+      # an API change as a leak rather than as a formatting mistake.
+      #
       # Edit is scoped to the two files the prompt authorises. Unscoped, it would reach the detect
       # script itself — the one command this step may also execute — so the agent could rewrite that
       # script and invoke it under the allowlisted prefix, turning a deliberately narrow Bash grant
