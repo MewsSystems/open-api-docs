@@ -2,7 +2,7 @@ name: Regenerate Connector API reference
 
 on:
   schedule:
-    - cron: '0 12 * * 4'
+    - cron: "0 12 * * 4"
   workflow_dispatch:
 
 permissions:
@@ -92,7 +92,7 @@ jobs:
         id: changelog
         if: steps.stage.outputs.changed == 'true'
         continue-on-error: true
-        uses: anthropics/claude-code-action@593d7a5c4e0073569f74772c2b7b64c30ec14707 #v1
+        uses: anthropics/claude-code-action@v1
         env:
           ANTHROPIC_BASE_URL: ${{ vars.MOXLY_LITELLM_BASE_URL }}
           ANTHROPIC_CUSTOM_HEADERS: |
@@ -128,8 +128,8 @@ jobs:
           # Nothing outside connector-api/ is ever a legitimate product of this workflow, so an edit
           # elsewhere cannot ride into the commit.
           add-paths: connector-api/**
-          commit-message: 'docs: regenerate Connector API reference'
-          title: 'docs: regenerate Connector API reference'
+          commit-message: "docs: regenerate Connector API reference"
+          title: "docs: regenerate Connector API reference"
           labels: changelog-automatic
           body: |
             ## Summary
