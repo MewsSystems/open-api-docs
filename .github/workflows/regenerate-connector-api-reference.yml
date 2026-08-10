@@ -2,7 +2,7 @@ name: Regenerate Connector API reference
 
 on:
   schedule:
-    - cron: '0 12 * * 4'
+    - cron: "0 12 * * 4"
   workflow_dispatch:
 
 permissions:
@@ -16,9 +16,9 @@ jobs:
   regenerate:
     runs-on: ubuntu-latest
     steps:
-      # persist-credentials: false keeps the contents:write token out of .git/config, where the
-      # changelog agent would otherwise be able to read it. create-pull-request pushes with its own
-      # token input, so it does not need the persisted credential.
+      # persist-credentials: false because nothing here pushes with the checkout credential:
+      # create-pull-request pushes with its own token input. It does not keep a token away from the
+      # changelog agent — claude-code-action writes one into the origin URL itself, see below.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
         with:
           persist-credentials: false
@@ -63,13 +63,29 @@ jobs:
       # workflow that references them by name, so this repository needs no secret of its own. The key
       # must go in `with:`, not `env:` — the action hardcodes ANTHROPIC_API_KEY from its own input.
       #
+      # github_token is passed deliberately. The action always needs a GitHub token: without this
+      # input it mints an OIDC token and exchanges it with api.anthropic.com for a Claude GitHub App
+      # token that carries contents, pull-requests *and* issues write. Passing the job's own token
+      # skips that exchange and keeps the grant to what this workflow already has.
+      #
       # This repository is public, and the diff the agent reads originates from a network-fetched
       # OpenAPI specification, so the prompt-injection surface is real even though no fork-authored
-      # content can reach this workflow (schedule and workflow_dispatch only). The mitigation is to
-      # deny egress: no github_token is passed, the allowlist carries no WebFetch/WebSearch/gh/git,
-      # and --strict-mcp-config with no --mcp-config guarantees no MCP server is spawned.
-      # GITHUB_ACTIONS is falsified so claude-code-action cannot attach a GitHub MCP surface by some
-      # route --strict-mcp-config does not cover.
+      # content can reach this workflow (schedule and workflow_dispatch only). Assume the agent can
+      # read that token — the action puts it in GITHUB_TOKEN/GH_TOKEN and in the origin URL in
+      # .git/config, and Read is allowlisted. The mitigation is therefore to deny egress rather than
+      # to hide the token: the allowlist carries no WebFetch/WebSearch/gh/git, and
+      # --strict-mcp-config with no --mcp-config guarantees no MCP server is spawned (in agent mode
+      # the action only adds one of its own when --allowedTools names an mcp__github* tool, which it
+      # does not). GITHUB_ACTIONS is falsified so claude-code-action cannot attach a GitHub MCP
+      # surface by some route --strict-mcp-config does not cover.
+      #
+      # Egress denial is not total: the changelog edit the agent is authorised to make is committed
+      # and force-pushed to a public branch by the step below, so anything written into those tables
+      # is published. That channel exists by design and cannot be closed without removing the point
+      # of the step, so the exposure is bounded rather than eliminated — this token dies with the
+      # job, and a human reviews the pull request before merge. The gateway key in the agent's
+      # environment does not expire, though, so treat content in those tables that does not describe
+      # an API change as a leak rather than as a formatting mistake.
       #
       # Edit is scoped to the two files the prompt authorises. Unscoped, it would reach the detect
       # script itself — the one command this step may also execute — so the agent could rewrite that
@@ -84,7 +100,7 @@ jobs:
         id: changelog
         if: steps.stage.outputs.changed == 'true'
         continue-on-error: true
-        uses: anthropics/claude-code-action@593d7a5c4e0073569f74772c2b7b64c30ec14707 #v1
+        uses: anthropics/claude-code-action@v1
         env:
           ANTHROPIC_BASE_URL: ${{ vars.MOXLY_LITELLM_BASE_URL }}
           ANTHROPIC_CUSTOM_HEADERS: |
@@ -93,6 +109,7 @@ jobs:
           GITHUB_ACTIONS: false
         with:
           anthropic_api_key: ${{ secrets.MOXLY_LITELLM_API_KEY }}
+          github_token: ${{ github.token }}
           # Folded, not literal: the whole prompt must reach the CLI as a single line so the trailing
           # text is taken as the slash command's argument rather than as a separate message.
           prompt: >-
@@ -119,8 +136,8 @@ jobs:
           # Nothing outside connector-api/ is ever a legitimate product of this workflow, so an edit
           # elsewhere cannot ride into the commit.
           add-paths: connector-api/**
-          commit-message: 'docs: regenerate Connector API reference'
-          title: 'docs: regenerate Connector API reference'
+          commit-message: "docs: regenerate Connector API reference"
+          title: "docs: regenerate Connector API reference"
           labels: changelog-automatic
           body: |
             ## Summary
