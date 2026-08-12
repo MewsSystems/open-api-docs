@@ -3,24 +3,26 @@
 {% updates format="full" %}
 {% update date="2026-08-12" %}
 
-## August 2026 updates
+## Cancellation policy management operations
 
 - [Get all cancellation policies (ver 2026-07-31)](../operations/cancellationpolicies.md#get-all-cancellation-policies-ver-2026-07-31) (restricted operation):
 - [Add cancellation policies](../operations/cancellationpolicies.md#add-cancellation-policies) (restricted operation):
 - [Update cancellation policies](../operations/cancellationpolicies.md#update-cancellation-policies) (restricted operation):
 - [Delete cancellation policies](../operations/cancellationpolicies.md#delete-cancellation-policies) (restricted operation):
-  - New operations to read, create, update and delete cancellation policies (beta). The new `getAll` version returns current policy versions in the same shape as `add` and `update`, including policies not assigned to any rate or reservation, and supports filtering by `CancellationPolicyIds`, `UpdatedUtc` and `ActivityStates`. Policies managed by the portfolio cannot be updated or deleted.
-- [Generate Guest portal links](../operations/reservations.md#generate-guest-portal-links) (restricted operation):
-  - New operation that generates single-use Guest portal links for a reservation and customer. Supported link types are `Homepage`, `CheckIn`, `CheckOut`, `Chat` and `Keys`. Each link has an expiration time and cannot be reused.
-- [Add rates](../operations/rates.md#add-rates):
-  - Extended [Dependent rate pricing parameters](../operations/rates.md#dependent-rate-pricing-parameters) with optional `TaxCodes`. An empty collection sets the rate to have no taxes; when omitted or `null`, the rate is created without tax codes.
-- [Set rates](../operations/rates.md#set-rates):
-  - Extended [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters) with optional `TaxCodes` as a [String array update value](../operations/rates.md#string-array-update-value). Omit the property to keep the persisted tax codes, send an empty collection to set no taxes, or send `null` to remove the persisted tax codes.
-- [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations):
-  - Extended [Billing automation prepayment type](../operations/billingautomations.md#billing-automation-prepayment-type) enum with `PrepaidOrVcc` value, which applies to reservations flagged as prepaid by the OTA and to reservations with a virtual credit card attached.
+  - New operations to read, create, update and delete cancellation policies (beta).
 
 {% endupdate %}
-{% update date="2026-07-31" %}
+{% update date="2026-08-12" %}
+
+## Guest portal links, tax codes for dependent rates
+
+- [Generate Guest portal links](../operations/reservations.md#generate-guest-portal-links) (restricted operation):
+  - New operation that generates single-use Guest portal links for a reservation and customer.
+- [Add rates](../operations/rates.md#add-rates):
+- [Set rates](../operations/rates.md#set-rates):
+  - Extended [Dependent rate pricing parameters](../operations/rates.md#dependent-rate-pricing-parameters) and [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters) respectively with optional `TaxCodes` request parameter.
+
+{% endupdate %}
 
 ## July 2026 updates
 
