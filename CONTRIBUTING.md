@@ -116,13 +116,16 @@ Use [GitBook Updates blocks](https://gitbook.com/docs/creating-content/blocks/up
 #### Updates block structure
 
 - Wrap changelog entries in one `{% updates format="full" %}` block.
-- Add one `{% update date="YYYY-MM-DD" %}` block per date.
-- Inside each update block, use a short level-2 heading (for example, `## 25th February 2026` or `## Restrictions removal`).
+- Add one `{% update date="YYYY-MM-DD" %}` block per topic. Several blocks may share the same date.
+- Inside each update block, use a short level-2 heading that names the change (for example, `## Restrictions removal`). Do not use a date as the heading.
+- Use a month heading (for example, `## February 2026 updates`) only for a large end-of-month batch that has no single topic.
+- Group changes by topic rather than adding one block per operation. Fold a small unrelated change into a neighboring block instead of giving it its own.
 
 #### Operation entry format
 
 - List affected API Operations as bullet points with links, then add nested bullets for details.
-- If one change applies to multiple operations, list all operations first, then add one shared detail bullet.
+- If one change applies to multiple operations, list all operations first, then add one shared detail bullet. The same applies to one logical change made to parallel objects – list both operations, then name both objects in one bullet using "respectively".
+- Keep each detail bullet to one sentence that says what changed, and link to the affected operation or object. Do not repeat what the reference page documents, such as defaults, `null` handling, limits, or validation rules. A **Breaking** change is the exception – state the behavior difference, because that is the change itself.
 - Use operation names in links (for example, `[Get all customers](../operations/customers.md#get-all-customers):`).
 - Use backticks for properties and parameters (for example, `UpdatedUtc`, `EnterpriseIds`).
 

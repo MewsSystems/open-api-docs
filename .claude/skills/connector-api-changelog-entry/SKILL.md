@@ -76,7 +76,7 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 - Add one `{% update date="YYYY-MM-DD" %}` block per topic. Several blocks may share the same date.
 - Add a short level-2 heading inside each update block. The heading names the change, for example `## Cancellation policy management operations`. Do not title a block by its date.
 - Use `## <Month YYYY> updates` only for a large end-of-month batch that has no single topic.
-- Group changes by topic rather than one block per operation. Two to four blocks per regeneration is typical; fold a small unrelated change into a neighbouring block instead of giving it its own.
+- Group changes by topic rather than one block per operation. Two to four blocks per regeneration is typical; fold a small unrelated change into a neighboring block instead of giving it its own.
 - Use operation bullets followed by detail bullets.
 
 7. Keep wording factual and concise.
