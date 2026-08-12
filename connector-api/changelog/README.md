@@ -23,6 +23,18 @@
   - Extended [Dependent rate pricing parameters](../operations/rates.md#dependent-rate-pricing-parameters) and [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters) respectively with optional `TaxCodes` request parameter.
 
 {% endupdate %}
+{% update date="2026-08-11" %}
+
+## Billing automation prepayment condition for virtual credit cards
+
+- [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations):
+- [Add billing automations](../operations/billingautomations.md#add-billing-automations):
+- [Update billing automations](../operations/billingautomations.md#update-billing-automations):
+  - Extended [Billing automation prepayment type](../operations/billingautomations.md#billing-automation-prepayment-type) enum with `PrepaidOrVcc` value. A billing automation with this prepayment condition applies to reservations that the OTA flagged as prepaid and to reservations with a virtual credit card attached.
+  - Clarified the `All` and `Prepaid` value descriptions to state which reservations each value applies to. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-07-31" %}
 
 ## July 2026 updates
 
