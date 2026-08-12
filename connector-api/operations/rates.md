@@ -492,6 +492,7 @@ Adds rates to the enterprise. Note this operation supports [Portfolio Access Tok
 | `BaseRateId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | required | Unique identifier of the base rate. |
 | `RelativeAdjustment` | number | required | Relative amount which shows the difference between this rate and the base rate. |
 | `AbsoluteAdjustment` | number | required | Specific amount which shows the difference between this rate and the base rate. |
+| `TaxCodes` | array of string | optional | Tax codes applied to the dependent rate. An empty collection is a valid value that sets the rate to have no taxes (zero taxes defined). When omitted or `null`, the rate is created without tax codes. |
 
 ### Response
 
@@ -744,6 +745,13 @@ Adds new Rates or updates existing ones if they are matched by `Id` or `External
 | `BaseRateId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | required | Unique identifier of the base rate. |
 | `RelativeAdjustment` | number | required | Relative amount which shows the difference between this rate and the base rate. |
 | `AbsoluteAdjustment` | number | required | Specific amount which shows the difference between this rate and the base rate. |
+| `TaxCodes` | [String array update value](rates.md#string-array-update-value) | optional | Tax codes applied to the dependent rate. Omit the property to keep the currently persisted tax codes unchanged. Provide a value to update them: an empty collection sets the rate to have no taxes (zero taxes defined), and `null` removes the previously persisted tax codes. |
+
+#### String array update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | array of string | optional | Value which is to be updated. |
 
 ### Response
 

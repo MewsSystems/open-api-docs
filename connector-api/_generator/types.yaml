@@ -2682,3 +2682,60 @@ types:
   resourcecategorydeleteparameters:
     file: resourcecategories.md
     anchor: resource-category-delete-parameters
+  cancellationpolicyresultv20260731:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-result-ver-2026-07-31
+  cancellationpolicymodificationdata:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-modification-data
+  cancellationpolicyfilterparametersv20260731:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-filter-parameters-ver-2026-07-31
+  cancellationpolicymodificationresult:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-modification-result
+  multiplecancellationpolicyaddparameters:
+    file: cancellationpolicies.md
+    anchor: multiple-cancellation-policy-add-parameters
+  cancellationpolicyaddparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-add-parameters
+  multiplecancellationpolicyupdateparameters:
+    file: cancellationpolicies.md
+    anchor: multiple-cancellation-policy-update-parameters
+  cancellationpolicyupdateparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-update-parameters
+  cancellationpolicyapplicabilityupdatevalue:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-applicability-update-value
+  cancellationfeeextentienumerableupdatevalue:
+    file: cancellationpolicies.md
+    anchor: cancellation-fee-extent-array-update-value
+  currencyvalueupdatevalue:
+    file: cancellationpolicies.md
+    anchor: currency-value-ver-2023-02-02-update-value
+  cancellationpolicydeleteparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-delete-parameters
+  stringireadonlylistupdatevalue:
+    file: rates.md
+    anchor: string-array-update-value
+  guestportallinkresult:
+    file: reservations.md
+    anchor: guestportallinkresult
+  guestportallink:
+    file: reservations.md
+    anchor: guest-portal-link-details
+  guestportalurldetails:
+    file: reservations.md
+    anchor: guest-portal-url-details
+  guestportallinktypeenum:
+    file: reservations.md
+    anchor: guest-portal-link-type
+  multipleguestportallinkparameters:
+    file: reservations.md
+    anchor: multipleguestportallinkparameters
+  guestportallinkparameters:
+    file: reservations.md
+    anchor: guest-portal-link-parameters

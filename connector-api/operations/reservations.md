@@ -1624,6 +1624,103 @@ This operation supports [Portfolio Access Tokens](../concepts/multi-property.md)
 | `TotalAmount` | [Amount](_objects.md#amount) | required | Total price of the reservation. |
 | ~~`Total`~~ | ~~[Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07)~~ | ~~optional~~ | ~~Total price of the reservation.~~ **Deprecated!** Use `TotalAmount` instead.|
 
+## Generate Guest portal links
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Generates one or more Guest portal links for specific reservations and customers. These links can be used to grant guests direct access to their online check-in, key management, or other Guest portal functionalities. Links are single-use only. Reusing the same link multiple times may lead to a failed login attempt. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/reservations/generateGuestPortalLinks`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "GuestPortalLinks": [
+    {
+      "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509",
+      "CustomerId": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+      "GuestPortalLinkTypes": [
+        "Homepage",
+        "CheckIn"
+      ]
+    }
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `GuestPortalLinks` | array of [Guest portal link parameters](reservations.md#guest-portal-link-parameters) | required, max 50 items | Collection of link parameters. |
+
+#### Guest portal link parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ReservationId` | string | required | ID of the reservation for which the link will be generated. |
+| `CustomerId` | string | required | ID of the customer for whom the link will be generated. |
+| `GuestPortalLinkTypes` | array of [Guest portal link type](reservations.md#guest-portal-link-type) | required | Type of the link that will be generated. |
+
+### Response
+
+```javascript
+{
+  "GuestPortalLinks": [
+    {
+      "ReservationId": "0f515589-99b4-423d-b83a-b237009f0509",
+      "CustomerId": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+      "GuestPortalUrls": [
+        {
+          "Url": "https://app.mews.com/User/SignIn/A0A0A0A0A0AA0A00A0AAA00000A00A0A-A0AAA00A00000000A00A00000AA00A0?utm_campaign=homepageExternalLink&utm_medium=api&utm_source=connector-api&language=en-US&enterpriseId=3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "GuestPortalLinkType": "Homepage",
+          "ExpiresUtc": "2025-01-01T10:00:00Z"
+        },
+        {
+          "Url": "https://app.mews.com/User/SignIn/A0A0A0A0A0AA0A00A0AAA00000A00A0A-A0AAA00A00000000A00A00000AA00A0?utm_campaign=checkInExternalLink&utm_medium=api&utm_source=connector-api&language=en-US&enterpriseId=3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "GuestPortalLinkType": "CheckIn",
+          "ExpiresUtc": "2025-01-01T10:00:00Z"
+        }
+      ]
+    }
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `GuestPortalLinks` | array of [Guest portal link details](reservations.md#guest-portal-link-details) | required | Collection of requested links. |
+
+#### Guest portal link details
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ReservationId` | string | required | ID of the reservation which is accessible through the link. |
+| `CustomerId` | string | required | ID of the customer whose Guest portal account is accessible through the link. |
+| `GuestPortalUrls` | array of [Guest portal URL details](reservations.md#guest-portal-url-details) | required | Collection of URLs pointing to Guest portal. |
+
+#### Guest portal URL details
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Url` | string | required | URL granting access to Guest portal. |
+| `GuestPortalLinkType` | [Guest portal link type](reservations.md#guest-portal-link-type) | required | Type of the link. |
+| `ExpiresUtc` | string | required | Expiration date and time of the link in UTC timezone in ISO 8601 format. After this time the link is invalidated and cannot be used to access Guest portal. |
+
+#### Guest portal link type
+
+* `Homepage` - Link points to Guest portal home page.
+* `CheckIn` - Link points to online check-in flow.
+* `CheckOut` - Link points to online check-out flow.
+* `Chat` - Link points to messaging functionality.
+* `Keys` - Link points to a keys page (instructions, mobile, wallet).
+
 ## Delete reservation companion
 
 Removes customer companionship from the reservation. Note that the customer profile stays untouched, only the relation between the customer and reservation is deleted. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).

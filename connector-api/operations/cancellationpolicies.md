@@ -1,6 +1,121 @@
 <!-- AUTOMATICALLY GENERATED, DO NOT MODIFY -->
 # Cancellation policies
 
+## Get all cancellation policies (ver 2026-07-31)
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Returns the current versions of cancellation policies within the enterprise scope in the same shape as the `add`, `update` operations, including policies that are not currently assigned to any rate or reservation. Historical versions produced by fee-affecting updates are not returned. Optionally filtered by `CancellationPolicyIds`, `UpdatedUtc`, and `ActivityStates`; when no filter is provided all current cancellation policies within the enterprise scope are returned. Note this operation uses [Pagination](../guidelines/pagination.md) and supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/cancellationPolicies/getAll/2026-07-31`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "CancellationPolicyIds": [
+    "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  ],
+  "UpdatedUtc": {
+    "StartUtc": "2026-07-01T00:00:00Z",
+    "EndUtc": "2026-07-31T00:00:00Z"
+  },
+  "ActivityStates": [
+    "Active"
+  ],
+  "EnterpriseIds": [
+    "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  ],
+  "Limitation": {
+    "Count": 100
+  }
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseIds` | array of string | optional, max 1000 items | Unique identifiers of the Enterprises. If not specified, the operation returns data for all enterprises within scope of the Access Token. |
+| `CancellationPolicyIds` | array of string | optional, max 100 items | Unique identifiers of the requested cancellation policies. If not specified, all current cancellation policy versions within the enterprise scope are returned. |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the cancellation policy was updated. |
+| `ActivityStates` | array of [Activity state](_objects.md#activity-state) | optional | Whether to return only active, only deleted, or both types of record. If not specified, only active records will be returned. |
+| `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
+
+### Response
+
+```javascript
+{
+  "CancellationPolicies": [
+    {
+      "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "CreatedUtc": "2023-02-02T00:00:00Z",
+      "UpdatedUtc": "2023-02-02T00:00:00Z",
+      "IsActive": true,
+      "Applicability": "Start",
+      "FeeExtents": [
+        "TimeUnits",
+        "Products"
+      ],
+      "ApplicabilityOffset": "P0M-1DT0H0M0S",
+      "FeeMaximumTimeUnits": 1,
+      "AbsoluteFee": {
+        "Currency": "EUR",
+        "Value": 50
+      },
+      "RelativeFee": 0.5,
+      "Name": "Standard cancellation policy",
+      "ExternalIdentifier": "standard-policy",
+      "IsPortfolioManaged": false
+    }
+  ],
+  "Cursor": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `CancellationPolicies` | array of [Cancellation policy modification data](cancellationpolicies.md#cancellation-policy-modification-data) | required, max 1000 items | The requested cancellation policies. |
+| `Cursor` | string | optional | Opaque pagination cursor which can be used in `Limitation` to fetch further cancellation policies. |
+
+#### Cancellation policy modification data
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Id` | string | required | Unique identifier of the cancellation policy. |
+| `EnterpriseId` | string | required | Unique identifier of the enterprise the cancellation policy belongs to. |
+| `CreatedUtc` | string | required | Creation date and time of the cancellation policy in UTC timezone in ISO 8601 format. |
+| `UpdatedUtc` | string | required | Last update date and time of the cancellation policy in UTC timezone in ISO 8601 format. |
+| `IsActive` | boolean | required | Whether the cancellation policy is still active. |
+| `Applicability` | [Cancellation Policy Applicability](cancellationpolicies.md#cancellation-policy-applicability) | required | Applicability mode of the cancellation policy. |
+| `FeeExtents` | array of [Cancellation Fee Extent](cancellationpolicies.md#cancellation-fee-extent) | required | Extent for the cancellation fee, i.e. what should be in scope for the automatic payment. |
+| `ApplicabilityOffset` | string | required | Offset from which the fee is applied in ISO 8601 duration format. |
+| `FeeMaximumTimeUnits` | integer | optional | Maximum number of time units the cancellation fee is applicable to. |
+| `AbsoluteFee` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Absolute value of the fee. |
+| `RelativeFee` | number | required | Relative value of the fee, as a percentage of the reservation price. |
+| `Name` | string | optional | Name of the cancellation policy. |
+| `ExternalIdentifier` | string | optional | Identifier of the cancellation policy from an external system, unique within the enterprise, that can be used to reference the policy from your own system. |
+| `IsPortfolioManaged` | boolean | required | Whether the cancellation policy is managed by the portfolio. Policies managed by the portfolio cannot be updated or deleted through this resource. |
+
+#### Cancellation Policy Applicability
+
+* `Creation`
+* `Start`
+* `StartDate`
+
+#### Cancellation Fee Extent
+
+* `Nothing`
+* `TimeUnits`
+* `Products`
+* `Everything`
+
 ## Get all cancellation policies
 
 > ### Restricted!
@@ -226,19 +341,6 @@ Gets cancellation policies for enterprise grouped by reservation for granular ca
 | `AbsoluteFee` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Absolute value of the fee. |
 | `RelativeFee` | number | required | Relative value of the fee, as a percentage of the reservation price. |
 
-#### Cancellation Policy Applicability
-
-* `Creation`
-* `Start`
-* `StartDate`
-
-#### Cancellation Fee Extent
-
-* `Nothing`
-* `TimeUnits`
-* `Products`
-* `Everything`
-
 ## Get cancellation policies by rates
 
 > ### Restricted!
@@ -342,3 +444,247 @@ Gets cancellation policies for enterprise grouped by rate for granular cancellat
 | :-- | :-- | :-- | :-- |
 | `RateId` | string | required | Unique identifier of the `Rate`. |
 | `Policies` | array of [Cancellation policy data](cancellationpolicies.md#cancellation-policy-data) | required | Collection of cancellation policy data. |
+
+## Add cancellation policies
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Adds one or more cancellation policies to the specified enterprise. This operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/cancellationPolicies/add`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "CancellationPolicies": [
+    {
+      "Applicability": "Start",
+      "FeeExtents": [
+        "TimeUnits",
+        "Products"
+      ],
+      "ApplicabilityOffset": "P0M-1DT0H0M0S",
+      "FeeMaximumTimeUnits": 1,
+      "AbsoluteFee": {
+        "Currency": "EUR",
+        "Value": 50
+      },
+      "RelativeFee": 0.5,
+      "Name": "Standard cancellation policy",
+      "ExternalIdentifier": "standard-policy"
+    }
+  ],
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseId` | string | optional | Unique identifier of the enterprise. Required when using [Portfolio Access Tokens](../concepts/multi-property.md), ignored otherwise. |
+| `CancellationPolicies` | array of [Cancellation policy add parameters](cancellationpolicies.md#cancellation-policy-add-parameters) | required, max 100 items | Parameters of the new cancellation policies to be created. |
+
+#### Cancellation policy add parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Applicability` | [Cancellation Policy Applicability](cancellationpolicies.md#cancellation-policy-applicability) | required | Applicability mode of the cancellation policy. |
+| `FeeExtents` | array of [Cancellation Fee Extent](cancellationpolicies.md#cancellation-fee-extent) | required, max 10 items | Extent for the cancellation fee, i.e. what should be in scope for the automatic payment. |
+| `ApplicabilityOffset` | string | optional | Offset from which the fee is applied in ISO 8601 duration format. Defaults to zero when not provided. |
+| `FeeMaximumTimeUnits` | integer | optional | Maximum number of time units the cancellation fee is applicable to. |
+| `AbsoluteFee` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Absolute value of the fee. |
+| `RelativeFee` | number | required | Relative value of the fee, as a percentage of the reservation price. Must be between 0 and 1. Defaults to 0. |
+| `Name` | string | optional, max length 255 characters | Name of the cancellation policy. |
+| `ExternalIdentifier` | string | optional, max length 255 characters | Identifier of the cancellation policy from an external system, unique within the enterprise. Use it to reference the policy from your own system. Adding another policy with the same external identifier in the same enterprise is rejected. Note that `add` always creates a new policy; it never updates an existing one matched by this identifier. |
+
+### Response
+
+```javascript
+{
+  "CancellationPolicies": [
+    {
+      "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "CreatedUtc": "2023-02-02T00:00:00Z",
+      "UpdatedUtc": "2023-02-02T00:00:00Z",
+      "IsActive": true,
+      "Applicability": "Start",
+      "FeeExtents": [
+        "TimeUnits",
+        "Products"
+      ],
+      "ApplicabilityOffset": "P0M-1DT0H0M0S",
+      "FeeMaximumTimeUnits": 1,
+      "AbsoluteFee": {
+        "Currency": "EUR",
+        "Value": 50
+      },
+      "RelativeFee": 0.5,
+      "Name": "Standard cancellation policy",
+      "ExternalIdentifier": "standard-policy",
+      "IsPortfolioManaged": false
+    }
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `CancellationPolicies` | array of [Cancellation policy modification data](cancellationpolicies.md#cancellation-policy-modification-data) | required, max 100 items | Cancellation policies affected by the operation. |
+
+## Update cancellation policies
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Updates one or more existing cancellation policies. Only the fields that are set are updated. Cancellation policies managed by portfolio cannot be updated. This operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/cancellationPolicies/update`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "CancellationPolicyUpdates": [
+    {
+      "CancellationPolicyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "AbsoluteFee": {
+        "Value": {
+          "Currency": "EUR",
+          "Value": 75
+        }
+      },
+      "RelativeFee": {
+        "Value": 0.75
+      },
+      "Name": {
+        "Value": "Updated cancellation policy"
+      }
+    }
+  ],
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseId` | string | optional | Unique identifier of the enterprise. Required when using [Portfolio Access Tokens](../concepts/multi-property.md), ignored otherwise. |
+| `CancellationPolicyUpdates` | array of [Cancellation policy update parameters](cancellationpolicies.md#cancellation-policy-update-parameters) | required, max 100 items | Details of the cancellation policies to be updated. |
+
+#### Cancellation policy update parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `CancellationPolicyId` | string | required | Unique identifier of the cancellation policy to be updated. |
+| `Applicability` | [Cancellation Policy Applicability update value](cancellationpolicies.md#cancellation-policy-applicability-update-value) | optional | Applicability mode of the cancellation policy (or null if it should not be updated). |
+| `FeeExtents` | [Cancellation Fee Extent array update value](cancellationpolicies.md#cancellation-fee-extent-array-update-value) | optional | Extent for the cancellation fee, up to 10 values (or null if it should not be updated). |
+| `ApplicabilityOffset` | [String update value](_objects.md#string-update-value) | optional | Offset from which the fee is applied in ISO 8601 duration format. Set the inner value to null to reset it to zero (or null if it should not be updated). |
+| `FeeMaximumTimeUnits` | [Number update value](_objects.md#number-update-value) | optional | Maximum number of time units the cancellation fee is applicable to. Set the inner value to null to clear it (or null if it should not be updated). |
+| `AbsoluteFee` | [Currency value (ver 2023-02-02) update value](cancellationpolicies.md#currency-value-ver-2023-02-02-update-value) | optional | Absolute value of the fee (or null if it should not be updated). |
+| `RelativeFee` | [Decimal update value](_objects.md#decimal-update-value) | optional | Relative value of the fee, as a percentage of the reservation price. Must be between 0 and 1 (or null if it should not be updated). |
+| `Name` | [String update value](_objects.md#string-update-value) | optional | Name of the cancellation policy. Set the inner value to null to clear it (or null if it should not be updated). |
+| `ExternalIdentifier` | [String update value](_objects.md#string-update-value) | optional | Identifier of the cancellation policy from an external system, unique within the enterprise, used to reference the policy from your own system. Set the inner value to null to clear it (or null if it should not be updated). |
+
+#### Cancellation Policy Applicability update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | [Cancellation Policy Applicability](cancellationpolicies.md#cancellation-policy-applicability) | required | Value which is to be updated. |
+
+#### Cancellation Fee Extent array update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | array of [Cancellation Fee Extent](cancellationpolicies.md#cancellation-fee-extent) | optional | Value which is to be updated. |
+
+#### Currency value (ver 2023-02-02) update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | optional | Value which is to be updated. |
+
+### Response
+
+```javascript
+{
+  "CancellationPolicies": [
+    {
+      "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "CreatedUtc": "2023-02-02T00:00:00Z",
+      "UpdatedUtc": "2023-02-02T00:00:00Z",
+      "IsActive": true,
+      "Applicability": "Start",
+      "FeeExtents": [
+        "TimeUnits",
+        "Products"
+      ],
+      "ApplicabilityOffset": "P0M-1DT0H0M0S",
+      "FeeMaximumTimeUnits": 1,
+      "AbsoluteFee": {
+        "Currency": "EUR",
+        "Value": 50
+      },
+      "RelativeFee": 0.5,
+      "Name": "Standard cancellation policy",
+      "ExternalIdentifier": "standard-policy",
+      "IsPortfolioManaged": false
+    }
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `CancellationPolicies` | array of [Cancellation policy modification data](cancellationpolicies.md#cancellation-policy-modification-data) | required, max 100 items | Cancellation policies affected by the operation. |
+
+## Delete cancellation policies
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Deletes the specified cancellation policies. Cancellation policies managed by portfolio cannot be deleted. This operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/cancellationPolicies/delete`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "CancellationPolicyIds": [
+    "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "4d0201db-36f5-428b-8d11-4f0a65e960cc"
+  ],
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseId` | string | optional | Unique identifier of the enterprise. Required when using [Portfolio Access Tokens](../concepts/multi-property.md), ignored otherwise. |
+| `CancellationPolicyIds` | array of string | required, max 100 items | Unique identifiers of the cancellation policies to be deleted. |
+
+### Response
+
+```javascript
+{}
+```

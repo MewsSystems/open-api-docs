@@ -1,6 +1,28 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-12" %}
+
+## Cancellation policy management operations
+
+- [Get all cancellation policies (ver 2026-07-31)](../operations/cancellationpolicies.md#get-all-cancellation-policies-ver-2026-07-31) (restricted operation):
+- [Add cancellation policies](../operations/cancellationpolicies.md#add-cancellation-policies) (restricted operation):
+- [Update cancellation policies](../operations/cancellationpolicies.md#update-cancellation-policies) (restricted operation):
+- [Delete cancellation policies](../operations/cancellationpolicies.md#delete-cancellation-policies) (restricted operation):
+  - New operations to read, create, update and delete cancellation policies (beta).
+
+{% endupdate %}
+{% update date="2026-08-12" %}
+
+## Guest portal links, tax codes for dependent rates
+
+- [Generate Guest portal links](../operations/reservations.md#generate-guest-portal-links) (restricted operation):
+  - New operation that generates single-use Guest portal links for a reservation and customer.
+- [Add rates](../operations/rates.md#add-rates):
+- [Set rates](../operations/rates.md#set-rates):
+  - Extended [Dependent rate pricing parameters](../operations/rates.md#dependent-rate-pricing-parameters) and [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters) respectively with optional `TaxCodes` request parameter.
+
+{% endupdate %}
 {% update date="2026-08-11" %}
 
 ## Billing automation prepayment condition for virtual credit cards
