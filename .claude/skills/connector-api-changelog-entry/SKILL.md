@@ -60,7 +60,7 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 
 - Use operation display names in links, not URL names.
 - Link each affected operation to the correct section in `../operations/*.md`.
-- If one change affects multiple operations, list all operations first, then one shared detail bullet.
+- If one change affects multiple operations, list all operations first, then one shared detail bullet. This also covers the same logical change applied to parallel objects (for example a request parameter added to both the `add` and `set` variants of an operation) – list both operations, then name both objects in one bullet using "respectively".
 
 5. Select the correct label wording.
 
@@ -73,15 +73,18 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 6. Write the update block in GitBook format.
 
 - Keep one `{% updates format="full" %}` wrapper in the file.
-- Add one `{% update date="YYYY-MM-DD" %}` block for the change date.
-- Add a short level-2 heading inside each update block.
+- Add one `{% update date="YYYY-MM-DD" %}` block per topic. Several blocks may share the same date.
+- Add a short level-2 heading inside each update block. The heading names the change, for example `## Cancellation policy management operations`. Do not title a block by its date.
+- Use `## <Month YYYY> updates` only for a large end-of-month batch that has no single topic.
+- Group changes by topic rather than one block per operation. Two to four blocks per regeneration is typical; fold a small unrelated change into a neighboring block instead of giving it its own.
 - Use operation bullets followed by detail bullets.
 
 7. Keep wording factual and concise.
 
 - Use clear, neutral language.
 - Avoid marketing language and vague statements.
-- Prefer explicit behavior and constraints.
+- Keep each detail bullet to one sentence that says what changed. Name the new operation, object, property, or enum value and link to it.
+- Do not restate what the reference page already documents – field semantics, defaults, `null` and empty-collection handling, limits, expiry, or validation rules belong on the operation page, not in the changelog. Exception: a **Breaking** change states the behavior difference, because that is the change itself.
 
 8. Update deprecations list when applicable.
 
@@ -95,6 +98,13 @@ Draft the entry and apply edits to `connector-api/changelog/README.md` unless th
 9. Validate before finalizing.
 
 - Date is today or future date, not past date.
+- Block tags balance. Run the check below from the repository root – the two counts must be equal and the wrapper count must be `1`. An unbalanced tag is easy to introduce when splitting or merging blocks and it breaks rendering for every entry below it.
+
+  ```bash
+  grep -c '{% update date' connector-api/changelog/README.md
+  grep -c '{% endupdate %}' connector-api/changelog/README.md
+  grep -c '{% updates format' connector-api/changelog/README.md
+  ```
 - All operation links resolve and use operation names.
 - Label wording exactly matches repository conventions.
 - Documentation-only sentence is present when needed.
@@ -135,6 +145,23 @@ Removed support:
   - **Removed** operations. See [Migration guide](../deprecations/migration-guide-restrictions-set-clear.md) for details.
 ```
 
+Same logical change across parallel operations:
+
+```markdown
+- [Add rates](../operations/rates.md#add-rates):
+- [Set rates](../operations/rates.md#set-rates):
+  - Extended [Dependent rate pricing parameters](../operations/rates.md#dependent-rate-pricing-parameters) and [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters) respectively with optional `TaxCodes` request parameter.
+```
+
+New operations:
+
+```markdown
+- [Add cancellation policies](../operations/cancellationpolicies.md#add-cancellation-policies) (restricted operation):
+- [Update cancellation policies](../operations/cancellationpolicies.md#update-cancellation-policies) (restricted operation):
+- [Delete cancellation policies](../operations/cancellationpolicies.md#delete-cancellation-policies) (restricted operation):
+  - New operations to create, update and delete cancellation policies (beta).
+```
+
 Documentation-only:
 
 ```markdown
@@ -146,7 +173,9 @@ Documentation-only:
 
 - Correctly classified as functional or non-functional.
 - Correct requirement decision for changelog update.
-- Correct GitBook updates block structure.
+- Correct GitBook updates block structure, with balanced `{% update %}` and `{% endupdate %}` tags.
+- Topical heading per block, changes grouped by topic.
+- Detail bullets are one sentence each and do not repeat reference-page semantics.
 - Correct labels (`Breaking`, `Deprecated`, `Removed`) where applicable.
 - Correct operation links and concise details.
 - Includes `Documentation-only, no change to API.` when applicable.
