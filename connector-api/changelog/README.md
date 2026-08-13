@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-13" %}
+
+## Transaction details for alternative payments
+
+- [Get all payments](../operations/payments.md#get-all-payments):
+  - Extended [Alternative payment data](../operations/payments.md#alternative-payment-data) response object with optional `Transaction` property, referencing [Credit card transaction](../operations/payments.md#credit-card-transaction).
+
+{% endupdate %}
 {% update date="2026-08-12" %}
 
 ## Cancellation policy management operations
