@@ -1,6 +1,22 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-31" %}
+
+## Custom title name added to Customer object
+
+- [Get all customers](../operations/customers.md#get-all-customers):
+- [Search customers](../operations/customers.md#search-customers):
+- [Add customer](../operations/customers.md#add-customer):
+- [Update customer](../operations/customers.md#update-customer):
+- [Get all reservations (ver 2017-04-12)](../operations/reservations.md#get-all-reservations-ver-2017-04-12):
+- [Get all companionships](../operations/companionships.md#get-all-companionships):
+  - Extended [Customer](../operations/customers.md#customer) response object with `CustomTitleName` property – name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title`; unlike `Title`, the value is not localized.
+  - The property is also included in exports of the `Customer` [Exported entity type](../operations/exports.md#exported-entity-type).
+- [Update accounts](../operations/accounts.md#update-accounts):
+  - Extended the account's [Customer](../operations/accounts.md#customer) response object with the same `CustomTitleName` property.
+
+{% endupdate %}
 {% update date="2026-08-13" %}
 
 ## Transaction details for alternative payments

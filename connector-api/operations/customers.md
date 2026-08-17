@@ -98,6 +98,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "Number": "12345",
       "Title": "Mister",
+      "CustomTitleName": null,
       "Sex": "Male",
       "FirstName": "John",
       "LastName": "Smith",
@@ -176,7 +177,8 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `Id` | string | required | Unique identifier of the customer. |
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
-| `Title` | [Title](customers.md#title) | optional | Title of the customer. |
+| `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -594,6 +596,7 @@ Adds a new customer to the system and returns details of the added customer. If 
   "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "Number": "390881",
   "Title": "Miss",
+  "CustomTitleName": null,
   "Sex": null,
   "FirstName": "Thea",
   "LastName": "Carbone",
@@ -659,7 +662,8 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `Id` | string | required | Unique identifier of the customer. |
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
-| `Title` | [Title](customers.md#title) | optional | Title of the customer. |
+| `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -802,6 +806,7 @@ Updates personal information of a customer. Note that if any of the fields is le
   "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "Number": "390881",
   "Title": "Miss",
+  "CustomTitleName": null,
   "Sex": null,
   "FirstName": "Thea",
   "LastName": "Carbone",
@@ -867,7 +872,8 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `Id` | string | required | Unique identifier of the customer. |
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
-| `Title` | [Title](customers.md#title) | optional | Title of the customer. |
+| `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -1002,6 +1008,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
         "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         "Number": "12345",
         "Title": "Mister",
+        "CustomTitleName": null,
         "Sex": "Male",
         "FirstName": "John",
         "LastName": "Smith",
