@@ -2739,3 +2739,30 @@ types:
   guestportallinkparameters:
     file: reservations.md
     anchor: guest-portal-link-parameters
+  paymentpolicyresult:
+    file: paymentpolicies.md
+    anchor: payment-policy-result
+  paymentpolicy:
+    file: paymentpolicies.md
+    anchor: payment-policy
+  paymentpolicysettlementactionenum:
+    file: paymentpolicies.md
+    anchor: payment-policy-settlement-action
+  paymentpolicysettlementtriggerenum:
+    file: paymentpolicies.md
+    anchor: payment-policy-settlement-trigger
+  paymentpolicysettlementtypeenum:
+    file: paymentpolicies.md
+    anchor: payment-policy-settlement-type
+  paymentpolicyfilterparameters:
+    file: paymentpolicies.md
+    anchor: payment-policy-filter-parameters
+  paymentpolicyassignmentresult:
+    file: paymentpolicyassignments.md
+    anchor: payment-policy-assignment-result
+  paymentpolicyassignment:
+    file: paymentpolicyassignments.md
+    anchor: payment-policy-assignment
+  paymentpolicyassignmentfilterparameters:
+    file: paymentpolicyassignments.md
+    anchor: payment-policy-assignment-filter-parameters
