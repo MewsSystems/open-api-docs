@@ -1,6 +1,15 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-19" %}
+
+## Payment policy operations
+
+- [Get all payment policies](../operations/paymentpolicies.md#get-all-payment-policies) (restricted operation):
+- [Get all payment policy assignments](../operations/paymentpolicyassignments.md#get-all-payment-policy-assignments) (restricted operation):
+  - New operations to read payment policies and their assignments to rate groups and rates (beta).
+
+{% endupdate %}
 {% update date="2026-08-13" %}
 
 ## Transaction details for alternative payments
