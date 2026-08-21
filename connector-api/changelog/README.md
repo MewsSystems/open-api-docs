@@ -6,7 +6,11 @@
 ## New resource category types
 
 - [Get all resources](../operations/resources.md#get-all-resources):
+- [Add resource categories](../operations/resourcecategories.md#add-resource-categories) (restricted operation):
+- [Update resource categories](../operations/resourcecategories.md#update-resource-categories) (restricted operation):
+- [Get all restrictions](../operations/restrictions.md#get-all-restrictions):
 - [Set restrictions](../operations/restrictions.md#set-restrictions):
+- [Clear restrictions](../operations/restrictions.md#clear-restrictions):
   - Extended [Resource category type](../operations/resources.md#resource-category-type) enum with `Cabin`, `Pod` and `SunBed` values.
 
 {% endupdate %}
