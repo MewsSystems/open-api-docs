@@ -269,6 +269,9 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 * `Restaurant`
 * `Amphitheater`
 * `PrivateSpaces`
+* `Cabin`
+* `Pod`
+* `SunBed`
 
 ## Get resources&#x27; occupancy state
 
