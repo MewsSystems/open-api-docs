@@ -3,7 +3,7 @@
 {% updates format="full" %}
 {% update date="2026-08-21" %}
 
-## August 2026 updates
+## New resource category types, customer custom titles
 
 - [Get all resources](../operations/resources.md#get-all-resources):
 - [Add resource categories](../operations/resourcecategories.md#add-resource-categories) (restricted operation):
