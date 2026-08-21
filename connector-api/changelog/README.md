@@ -3,7 +3,7 @@
 {% updates format="full" %}
 {% update date="2026-08-21" %}
 
-## New resource category types
+## August 2026 updates
 
 - [Get all resources](../operations/resources.md#get-all-resources):
 - [Add resource categories](../operations/resourcecategories.md#add-resource-categories) (restricted operation):
@@ -12,12 +12,6 @@
 - [Set restrictions](../operations/restrictions.md#set-restrictions):
 - [Clear restrictions](../operations/restrictions.md#clear-restrictions):
   - Extended [Resource category type](../operations/resources.md#resource-category-type) enum with `Cabin`, `Pod` and `SunBed` values.
-
-{% endupdate %}
-{% update date="2026-08-21" %}
-
-## Custom title name added to Customer object
-
 - [Get all customers](../operations/customers.md#get-all-customers):
 - [Search customers](../operations/customers.md#search-customers):
 - [Add customer](../operations/customers.md#add-customer):
