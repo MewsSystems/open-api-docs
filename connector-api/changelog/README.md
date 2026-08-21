@@ -1,6 +1,15 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-21" %}
+
+## New resource category types
+
+- [Get all resources](../operations/resources.md#get-all-resources):
+- [Set restrictions](../operations/restrictions.md#set-restrictions):
+  - Extended [Resource category type](../operations/resources.md#resource-category-type) enum with `Cabin`, `Pod` and `SunBed` values.
+
+{% endupdate %}
 {% update date="2026-08-19" %}
 
 ## Payment policy operations
