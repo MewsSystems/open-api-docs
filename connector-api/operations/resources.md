@@ -94,6 +94,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       },
       "CreatedUtc": "2023-01-15T10:30:00Z",
       "UpdatedUtc": "2023-06-15T14:20:00Z",
+      "DeletedUtc": null,
       "Data": {
         "Discriminator": "Space",
         "Value": {
@@ -120,6 +121,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       },
       "CreatedUtc": "2023-01-15T10:35:00Z",
       "UpdatedUtc": "2023-06-15T14:25:00Z",
+      "DeletedUtc": null,
       "Data": {
         "Discriminator": "Object",
         "Value": {}
@@ -143,6 +145,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       },
       "CreatedUtc": "2023-02-01T09:00:00Z",
       "UpdatedUtc": "2023-06-20T16:45:00Z",
+      "DeletedUtc": null,
       "Data": {
         "Discriminator": "Space",
         "Value": {
@@ -190,6 +193,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `Descriptions` | [Localized text](_objects.md#localized-text) | required | All translations of the description. |
 | `CreatedUtc` | string | required | Creation date and time of the resource in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the resource in UTC timezone in ISO 8601 format. |
+| `DeletedUtc` | string | optional | Date and time when the resource was deleted (for deleted ones) in UTC timezone in ISO 8601 format. |
 | `Data` | [Resource data](resources.md#resource-data) | required | Additional data of the resource. |
 | `ExternalNames` | [Localized text](_objects.md#localized-text) | required | All translations of external name. |
 | `Directions` | [Localized text](_objects.md#localized-text) | required | All translations of direction. |

@@ -230,7 +230,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
 | `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
-| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title`. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -715,7 +715,7 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
 | `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
-| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title`. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -925,7 +925,7 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
 | `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
-| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title`. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |

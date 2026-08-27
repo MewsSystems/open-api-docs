@@ -565,7 +565,7 @@ Updated customer data.
 | `BirthDate` | string | optional | Date of birth in ISO 8601 format. |
 | `Sex` | string | optional | Sex of the customer. |
 | `Title` | [Title](customers.md#title) | optional | Title prefix of the customer. Mutually exclusive with `CustomTitleName`. |
-| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title`. |
 | `PreferredLanguageCode` | string | optional | Language and culture code of the customer's preferred language. E.g. `en-US` or `fr-FR`. |
 | `Options` | [Customer options](accounts.md#customer-options) | required | Options of the customer. |
 | `Classifications` | [Customer classifications](accounts.md#customer-classifications) | required | Classifications of the customer. |
