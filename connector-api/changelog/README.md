@@ -1,6 +1,16 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-27" %}
+
+## New webhook events for resource deletions and product changes
+
+- [General Webhooks](../events/wh-general.md):
+  - Added `ResourceDeleted` event, triggered when a resource is deleted. Enabled per integration partner; contact Mews to opt in.
+  - Added `ProductUpdated` and `ProductDeleted` events, triggered when a product is updated or deleted. Requires the product events webhook subscription. Deleting a service does not delete its products, so no `ProductDeleted` events are triggered by service deletion.
+  - Like other General Webhook events, the events carry the entity `Id` only – fetch entity details with [Get all resources](../operations/resources.md#get-all-resources) or [Get all products](../operations/products.md#get-all-products).
+
+{% endupdate %}
 {% update date="2026-08-21" %}
 
 ## New resource category types, customer custom titles
