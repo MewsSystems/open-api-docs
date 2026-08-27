@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-08-24" %}
+{% update date="2026-08-27" %}
 
 ## New webhook events for resource deletions and product changes
 
