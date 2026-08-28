@@ -11,6 +11,7 @@
   * [Pagination](guidelines/pagination.md)
   * [Best practices](guidelines/best-practices.md)
 * [Concepts](concepts/README.md)
+  * [Multi-occupancy availability blocks](concepts/multi-occupancy-availability-blocks.md)
   * [Multi-property](concepts/multi-property.md)
   * [Restrictions](concepts/restrictions.md)
   * [Taxation](concepts/taxation.md)
