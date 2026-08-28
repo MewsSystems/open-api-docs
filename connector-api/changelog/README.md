@@ -1,6 +1,26 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-08-28" %}
+
+## Deletion tracking for loyalty memberships and resources
+
+- [Get all loyalty memberships](../operations/loyaltymemberships.md#get-all-loyalty-memberships):
+- [Add loyalty memberships](../operations/loyaltymemberships.md#add-loyalty-memberships):
+- [Update loyalty memberships](../operations/loyaltymemberships.md#update-loyalty-memberships):
+  - Extended [Loyalty membership](../operations/loyaltymemberships.md#loyalty-membership) response object with required `ActivityState` ([Activity state](../operations/_objects.md#activity-state) enum) and optional `DeletedUtc` properties.
+- [Get all resources](../operations/resources.md#get-all-resources):
+  - Extended [Resource](../operations/resources.md#resource) response object with optional `DeletedUtc` property.
+
+{% endupdate %}
+{% update date="2026-08-28" %}
+
+## Customer association for message threads
+
+- [Add message thread](../operations/messagethreads.md#add-message-thread):
+  - Extended the request with optional `CustomerId` parameter to associate the thread with a customer's guest messaging inbox.
+
+{% endupdate %}
 {% update date="2026-08-27" %}
 
 ## New webhook events for resource deletions and product changes
