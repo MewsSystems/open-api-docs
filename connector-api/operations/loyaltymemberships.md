@@ -94,6 +94,8 @@ Returns all loyalty memberships of the enterprise, optionally filtered by specif
       "ExpirationDate": "2029-11-04T13:00:00Z",
       "Url": "https://rewards.example.com/member/PRV-MBR-9842XKLT",
       "LoyaltyTierId": "69eedfd2-6f25-42fc-b3c8-39df70f85e37",
+      "ActivityState": "Active",
+      "DeletedUtc": null,
       "CreatorProfile": null,
       "UpdaterProfile": null
     }
@@ -123,6 +125,8 @@ Returns all loyalty memberships of the enterprise, optionally filtered by specif
 | `ExpirationDate` | string | optional | Expiration date of the loyalty membership in UTC timezone in ISO 8601 format. |
 | `Url` | string | optional | Url of the loyalty membership. |
 | `LoyaltyTierId` | string | optional | Unique identifier of the loyalty tier. |
+| `ActivityState` | [Activity state](_objects.md#activity-state) | required | Whether the loyalty membership is still active or has been deleted. |
+| `DeletedUtc` | string | optional | Date and time when the loyalty membership was deleted (for inactive ones) in UTC timezone in ISO 8601 format. |
 | `CreatorProfile` | [Profile data](_objects.md#profile-data) | required | The profile data of the user who created or last updated the record. |
 | `UpdaterProfile` | [Profile data](_objects.md#profile-data) | required | The profile data of the user who created or last updated the record. |
 | ~~`Code`~~ | ~~string~~ | ~~optional~~ | ~~Code of the loyalty membership.~~ **Deprecated!** Use `MembershipNumber` instead.|
@@ -207,6 +211,8 @@ Adds loyalty memberships to the enterprise. Note this operation supports [Portfo
       "ExpirationDate": "2029-11-04T13:00:00Z",
       "Url": "https://rewards.example.com/member/PRV-MBR-9842XKLT",
       "LoyaltyTierId": "69eedfd2-6f25-42fc-b3c8-39df70f85e37",
+      "ActivityState": "Active",
+      "DeletedUtc": null,
       "CreatorProfile": null,
       "UpdaterProfile": null
     }
@@ -315,6 +321,8 @@ Updates information about the specified loyalty memberships. Note this operation
       "ExpirationDate": "2029-11-04T13:00:00Z",
       "Url": "https://rewards.example.com/member/PRV-MBR-9842XKLT",
       "LoyaltyTierId": "69eedfd2-6f25-42fc-b3c8-39df70f85e37",
+      "ActivityState": "Active",
+      "DeletedUtc": null,
       "CreatorProfile": null,
       "UpdaterProfile": null
     }
