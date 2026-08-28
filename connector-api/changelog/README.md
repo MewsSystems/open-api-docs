@@ -3,6 +3,15 @@
 {% updates format="full" %}
 {% update date="2026-08-28" %}
 
+## Availability block revenue
+
+- [Get all availability blocks](../operations/availabilityblocks.md#get-all-availability-blocks):
+  - Extended [Availability block extent](../operations/availabilityblocks.md#availability-block-extent) with optional `FinancialMetrics` parameter to request the revenue of the returned blocks.
+  - Extended [Availability block](../operations/availabilityblocks.md#availability-block) response object with optional `ForecastedRevenue`, `ActualisedRevenue` and `ReleasedRevenue` properties ([Availability block revenue](../operations/availabilityblocks.md#availability-block-revenue) object).
+
+{% endupdate %}
+{% update date="2026-08-28" %}
+
 ## Deletion tracking for loyalty memberships and resources
 
 - [Get all loyalty memberships](../operations/loyaltymemberships.md#get-all-loyalty-memberships):

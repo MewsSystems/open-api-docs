@@ -17,6 +17,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
   "Extent": {
     "AvailabilityBlocks": true,
     "Adjustments": true,
+    "FinancialMetrics": true,
     "ServiceOrders": false,
     "Rates": false
   },
@@ -81,6 +82,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 | :-- | :-- | :-- | :-- |
 | `AvailabilityBlocks` | boolean | optional | Whether the response should contain the general availability blocks. |
 | `Adjustments` | boolean | optional | Whether the response should contain individual availability adjustments related to availability blocks. |
+| `FinancialMetrics` | boolean | optional | Whether the returned availability blocks should carry their forecasted, actualised and released revenue. Computing revenue is expensive, so request it only when needed and page conservatively. The values are returned only for an `Enterprise` the feature is enabled for. |
 | ~~`ServiceOrders`~~ | ~~boolean~~ | ~~optional~~ | ~~Whether the response should contain reservations related to availability blocks.~~ **Deprecated!** Use [Get all reservations (ver 2023-06-06)](reservations.md#get-all-reservations-ver-2023-06-06) instead.|
 | ~~`Rates`~~ | ~~boolean~~ | ~~optional~~ | ~~Whether the response should contain rates related to availability blocks.~~ **Deprecated!** Use [Get all rates](rates.md#get-all-rates) instead.|
 
@@ -125,7 +127,49 @@ Returns all availability blocks filtered by services, unique identifiers and oth
       "BusinessSegmentId": "dc9188f6-fb61-412c-b3fd-af32dab082ed",
       "CanceledUtc": null,
       "CancellationReason": null,
-      "CancellationReasonDetail": null
+      "CancellationReasonDetail": null,
+      "ForecastedRevenue": {
+        "WithoutProducts": {
+          "Currency": "USD",
+          "Value": 1080
+        },
+        "ProductsOnly": {
+          "Currency": "USD",
+          "Value": 120
+        },
+        "Total": {
+          "Currency": "USD",
+          "Value": 1200
+        }
+      },
+      "ActualisedRevenue": {
+        "WithoutProducts": {
+          "Currency": "USD",
+          "Value": 405
+        },
+        "ProductsOnly": {
+          "Currency": "USD",
+          "Value": 45
+        },
+        "Total": {
+          "Currency": "USD",
+          "Value": 450
+        }
+      },
+      "ReleasedRevenue": {
+        "WithoutProducts": {
+          "Currency": "USD",
+          "Value": 0
+        },
+        "ProductsOnly": {
+          "Currency": "USD",
+          "Value": 0
+        },
+        "Total": {
+          "Currency": "USD",
+          "Value": 0
+        }
+      }
     },
     {
       "Id": "c32386aa-1cd2-414a-a823-489325842fbe",
@@ -163,7 +207,49 @@ Returns all availability blocks filtered by services, unique identifiers and oth
       "BusinessSegmentId": "dc9188f6-fb61-412c-b3fd-af32dab082ed",
       "CanceledUtc": null,
       "CancellationReason": null,
-      "CancellationReasonDetail": null
+      "CancellationReasonDetail": null,
+      "ForecastedRevenue": {
+        "WithoutProducts": {
+          "Currency": "USD",
+          "Value": 2700
+        },
+        "ProductsOnly": {
+          "Currency": "USD",
+          "Value": 0
+        },
+        "Total": {
+          "Currency": "USD",
+          "Value": 2700
+        }
+      },
+      "ActualisedRevenue": {
+        "WithoutProducts": {
+          "Currency": "USD",
+          "Value": 900
+        },
+        "ProductsOnly": {
+          "Currency": "USD",
+          "Value": 0
+        },
+        "Total": {
+          "Currency": "USD",
+          "Value": 900
+        }
+      },
+      "ReleasedRevenue": {
+        "WithoutProducts": {
+          "Currency": "USD",
+          "Value": 360
+        },
+        "ProductsOnly": {
+          "Currency": "USD",
+          "Value": 0
+        },
+        "Total": {
+          "Currency": "USD",
+          "Value": 360
+        }
+      }
     }
   ],
   "ServiceOrders": null,
@@ -232,6 +318,9 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 | `CanceledUtc` | string | optional | Date and time of the block cancellation in UTC timezone in ISO 8601 format. |
 | `CancellationReason` | [Reservation cancellation reason](reservations.md#reservation-cancellation-reason) | optional | Cancellation reason of the availability block. |
 | `CancellationReasonDetail` | string | optional | Additional details of availability block cancellation. |
+| `ForecastedRevenue` | [Availability block revenue](availabilityblocks.md#availability-block-revenue) | optional | Revenue the block is expected to produce if every blocked unit is picked up at the block's rate. Returned only when the `FinancialMetrics` extent is requested and the feature is enabled for the `Enterprise`, and only for a block in the `Confirmed` state; `null` otherwise. |
+| `ActualisedRevenue` | [Availability block revenue](availabilityblocks.md#availability-block-revenue) | optional | Revenue already posted on the `Reservations` picked up from the block. Returned only when the `FinancialMetrics` extent is requested and the feature is enabled for the `Enterprise`; `null` otherwise. |
+| `ReleasedRevenue` | [Availability block revenue](availabilityblocks.md#availability-block-revenue) | optional | Revenue of the units that were released from the block, priced at the block's rate; `0` while nothing has been released. Returned only when the `FinancialMetrics` extent is requested and the feature is enabled for the `Enterprise`, and only for a block in the `Confirmed` state; `null` otherwise. |
 
 #### Availability block state
 
@@ -250,6 +339,16 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 * `FixedRelease` - The availability block is released at a fixed time.
 * `RollingRelease` - Each availability adjustment is released at a fixed offset from its start.
 * `None` - The availability block is not automatically released.
+
+#### Availability block revenue
+
+All values are net, so they exclude taxes, and are expressed in the default currency of the `Enterprise`. Other `Currency value` properties in the **Mews Connector API** carry gross amounts, so do not compare these values with them directly.
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `WithoutProducts` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Net accommodation revenue of the `Availability block`, excluding any additional `Products`. Expressed in the default currency of the `Enterprise`. |
+| `ProductsOnly` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Net revenue of the additional `Products` of the `Availability block`, excluding accommodation. Expressed in the default currency of the `Enterprise`. |
+| `Total` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Net total revenue of the `Availability block`, the sum of `WithoutProducts` and `ProductsOnly`. Expressed in the default currency of the `Enterprise`. |
 
 ## Add availability blocks
 

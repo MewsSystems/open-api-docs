@@ -1526,6 +1526,9 @@ types:
   releasestrategyenum:
     file: availabilityblocks.md
     anchor: release-strategy
+  availabilityblockrevenue:
+    file: availabilityblocks.md
+    anchor: availability-block-revenue
   availabilityblockparameters:
     file: availabilityblocks.md
     anchor: availabilityblockparameters
