@@ -82,7 +82,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 | :-- | :-- | :-- | :-- |
 | `AvailabilityBlocks` | boolean | optional | Whether the response should contain the general availability blocks. |
 | `Adjustments` | boolean | optional | Whether the response should contain individual availability adjustments related to availability blocks. |
-| `FinancialMetrics` | boolean | optional | Whether the returned availability blocks should carry their forecasted, actualised and released revenue. Computing revenue is expensive, so request it only when needed and page conservatively. The values are returned only for an `Enterprise` the feature is enabled for. |
+| `FinancialMetrics` | boolean | optional | Whether the returned availability blocks should carry their forecasted, actualised and released revenue. Computing revenue is expensive, so request it only when needed and page conservatively. The values are returned only for an `Enterprise` that has the feature enabled – contact Mews to enable it. |
 | ~~`ServiceOrders`~~ | ~~boolean~~ | ~~optional~~ | ~~Whether the response should contain reservations related to availability blocks.~~ **Deprecated!** Use [Get all reservations (ver 2023-06-06)](reservations.md#get-all-reservations-ver-2023-06-06) instead.|
 | ~~`Rates`~~ | ~~boolean~~ | ~~optional~~ | ~~Whether the response should contain rates related to availability blocks.~~ **Deprecated!** Use [Get all rates](rates.md#get-all-rates) instead.|
 
@@ -159,15 +159,15 @@ Returns all availability blocks filtered by services, unique identifiers and oth
       "ReleasedRevenue": {
         "WithoutProducts": {
           "Currency": "USD",
-          "Value": 0
+          "Value": 675
         },
         "ProductsOnly": {
           "Currency": "USD",
-          "Value": 0
+          "Value": 75
         },
         "Total": {
           "Currency": "USD",
-          "Value": 0
+          "Value": 750
         }
       }
     },
@@ -341,8 +341,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 * `None` - The availability block is not automatically released.
 
 #### Availability block revenue
-
-All values are net, so they exclude taxes, and are expressed in the default currency of the `Enterprise`. Other `Currency value` properties in the **Mews Connector API** carry gross amounts, so do not compare these values with them directly.
+All values are net, so they exclude taxes, and are expressed in the default currency of the `Enterprise`. Amounts elsewhere in the **Mews Connector API** are not necessarily net, so do not compare these values with them directly.
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
