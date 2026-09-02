@@ -112,7 +112,7 @@ The allocation of a single availability block is returned by `availabilityBlocks
 
 Clients can therefore read `OccupancyAllocations` without first checking whether a split exists.
 
-The resource category arrays remain the authoritative totals. Every picked-up reservation is attributed to a slot, so the per-slot `PickedUp` values reconcile to the resource category `PickedUp` total.
+The resource category arrays remain the authoritative totals. Every picked-up reservation is attributed to a slot, so the per-slot `PickedUp` values reconcile to the resource category `PickedUp` total. Per-slot `EffectiveAvailable` does not reconcile the same way. It subtracts `OutgoingOffset`, so the per-slot values sum to the resource category `Available` minus the total `OutgoingOffset` across the slots, and match it only while no slot overflows. In the overflow example below, the slots sum to -1 on the third time unit while the resource category reports `Available` of 0. Use the resource category `Available` when you need the remaining capacity of the block.
 
 ### Occupancy allocation
 
