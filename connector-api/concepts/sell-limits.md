@@ -9,7 +9,7 @@ A sell limit is a daily cap on how many spaces may be sold on a given rate. Prop
 - Cap a discounted corporate rate at 10 spaces per night, while the rest of the inventory stays open at public rates
 - Cap a promotional rate during a high demand period so it cannot absorb the whole property
 
-Sell limits are evaluated after availability and restrictions. When a limit is reached, the affected rate closes for that day even though physical inventory remains.
+A sell limit is a separate constraint from availability and from restrictions. When a limit is reached, the affected rate closes for that day even though physical inventory remains.
 
 {% hint style="info" %}
 
@@ -43,7 +43,7 @@ A null `Limit` means the property has not configured a sell limit for that combi
 
 ### `Available` can be negative
 
-A property can lower a sell limit below the number of spaces already sold, and reservations created with an override permission can exceed a limit. In both cases `Available` is negative. Treat any value of `0` or below as closed.
+A property can lower a sell limit below the number of spaces already sold. When that happens `Available` is negative. Treat any value of `0` or below as closed.
 
 ## Which limit is reported
 

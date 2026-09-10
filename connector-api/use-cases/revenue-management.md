@@ -82,7 +82,7 @@ To retrieve information about restrictions, use [Get all restrictions](../operat
 
 ## Sell limits
 
-Sell limits are daily caps on how many spaces may be sold on a given rate, evaluated after availability and restrictions. To read their current state, use [Get all sell limits](../operations/selllimits.md#get-all-sell-limits). It returns, per rate and per day, the effective limit, the number of spaces already sold against it, and the number still available, so an integration can apply the same constraint that Mews applies when a reservation is created. The operation is read only; sell limits are configured in Mews Operations.
+Sell limits are daily caps on how many spaces may be sold on a given rate, applied separately from availability and from restrictions. To read their current state, use [Get all sell limits](../operations/selllimits.md#get-all-sell-limits). It returns, per rate and per day, the effective limit, the number of spaces already sold against it, and the number still available, so an integration can apply the same constraint that Mews applies when a reservation is created. The operation is read only; sell limits are configured in Mews Operations.
 
 | <div style="width:350px">'How to' use case</div> | API Operations                                                            |
 | :----------------------------------------------- | :------------------------------------------------------------------------ |
