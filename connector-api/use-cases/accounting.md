@@ -42,6 +42,23 @@ It is important to understand that in Mews, accounting items are posted directly
 
 > **Accounting item states**: Accounting items will always be assigned one of four [accounting item states](../operations/accountingitems.md#accounting-item-state) (`Open`, `Closed`, `Inactive`, `Canceled`).
 
+## Payout reconciliation
+
+Payments recorded in Mews are settled by a payment service provider and paid out to the property's bank account in batches, so a single bank deposit usually covers many payments, less commissions and fees. An accounting integration that needs to tie the property's bank statement back to Mews data can retrieve those payouts and the transactions that compose them.
+
+Start by retrieving the payouts for the period, which gives you one record per payout with its state, amount, currency, date and, where configured, the descriptor that appears on the bank statement. Then retrieve the constituent transactions for the payouts you need to break down. Each transaction states its type, the related payment where there is one, and any invoice references, which is what lets you post the individual amounts against the right bills.
+
+| <div style="width:350px">'How to' use case</div> | API Operations                                                                        |
+| :----------------------------------------------- | :------------------------------------------------------------------------------------ |
+| How to get payouts over a period                 | [Get all payouts](../operations/payouts.md#get-all-payouts)                           |
+| How to break a payout down into its transactions | [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions)   |
+
+> **Supported providers**: These operations return payouts executed by a supported payment service provider, currently `Stripe` and `Adyen`. Funds settled by other means, such as manual bank transfers, are not included, so for a small number of properties the payouts returned will not account for the whole merchant balance.
+
+> **Amounts are signed**: A payout amount is signed from the perspective of the property's merchant balance, so a payout sending funds to the bank account is negative and a reversing entry is positive. Take the sign into account rather than assuming a fixed direction.
+
+> **Transaction dates**: A payout transaction's `CreatedUtc` is the date of the underlying charge, not of the payout, so it can fall outside the interval used to filter payouts.
+
 ## Working with rebates
 
 If an accounting item is a rebate item, then the ID for the original order item which is rebated will be stored in the item data. Specifically, an [Order item](../operations/orderitems.md#order-item) with `Data` `Discriminator` set to "Rebate" will have `Data` `Rebate` set to the value of the `RebatedItemId`. You can then use [Get all order items](../operations/orderitems.md#get-all-order-items) with the `OrderItemIds` filter parameter set to this ID to fetch the details about the item. Note that a rebate item can rebate another rebate item, so it may be necessary to recursively call [Get all order items](../operations/orderitems.md#get-all-order-items) to find the original order item in the chain.
