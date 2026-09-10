@@ -22,11 +22,21 @@ To implement General Webhooks:
 | -------------- | ---------------------- | ------------------------------------------------ |
 | Service Order  | `ServiceOrderUpdated`  | Event triggered when a service order is updated  |
 | Resource       | `ResourceUpdated`      | Event triggered when a resource is updated       |
+| Resource       | `ResourceDeleted`      | Event triggered when a resource is deleted       |
 | Message        | `MessageAdded`         | Event triggered when a new message is added      |
 | Resource block | `ResourceBlockUpdated` | Event triggered when a resource block is updated |
 | Customer       | `CustomerAdded`        | Event triggered when a customer is added         |
 | Customer       | `CustomerUpdated`      | Event triggered when a customer is updated       |
 | Payment        | `PaymentUpdated`       | Event triggered when a payment is updated        |
+| Product        | `ProductUpdated`       | Event triggered when a product is updated        |
+| Product        | `ProductDeleted`       | Event triggered when a product is deleted        |
+
+{% hint style="warning" %}
+
+### Availability of `ResourceDeleted`
+
+`ResourceDeleted` is being rolled out per integration partner. Subscribing to Resource events is not on its own enough to receive it – contact Mews to have it enabled for your integration. Until then you receive `ResourceUpdated` events only.
+{% endhint %}
 
 {% hint style="info" %}
 
@@ -35,12 +45,13 @@ To implement General Webhooks:
 A _Service Order_ is an order made against a _Service_. A _Service Order_ made against a _Bookable Service_ is called a _Reservation_. In fact only _Reservations_ are currently supported, however this may be extended in future. A _Resource_ can be a bookable space, an object or even the services of a person. _Resource_ normally implies a space, but again this may be extended in future. For a full description of all the terms used, see the [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
 {% endhint %}
 
-## Added vs Updated events
+## Added, Updated and Deleted events
 
-In the context of General Webhooks, the terms Added and Updated describe different types of changes to an entity:
+In the context of General Webhooks, the terms Added, Updated and Deleted describe different types of changes to an entity:
 
 - **Updated** – This indicates any change to an entity, including modifications to its fields or properties; it also encompasses the creation of a new entity, as creating an entity is considered a change to its lifecycle state.
 - **Added** – This specifically refers to the initial creation of an entity at the start of its lifecycle; it represents a subset of Updated events, as every Added event is inherently also an Updated event.
+- **Deleted** – This indicates the entity was deleted; it is sent once, at the time of deletion. A deleted entity produces no further Updated events, so update your local state when you receive the event. You can still fetch a deleted entity to confirm its final state, but the request differs per entity – see [Event discriminator](wh-general.md#event-discriminator).
 
 ## Important considerations
 
@@ -96,6 +107,24 @@ To avoid redundant API calls, ensure that you process each entity only once. For
       "Value": {
         "Id": "a41e2d45-71bc-49b4-9a05-a3ac5f75735c"
       }
+    },
+    {
+      "Discriminator": "ResourceDeleted",
+      "Value": {
+        "Id": "0bc5e0f0-19c4-49b9-be17-27bb9c1355a4"
+      }
+    },
+    {
+      "Discriminator": "ProductUpdated",
+      "Value": {
+        "Id": "76e109b3-9b32-40ad-8ee9-1f31766a51e6"
+      }
+    },
+    {
+      "Discriminator": "ProductDeleted",
+      "Value": {
+        "Id": "d3c53f26-1c15-4351-8d76-71968b7b7de9"
+      }
     }
   ]
 }
@@ -125,6 +154,9 @@ To avoid redundant API calls, ensure that you process each entity only once. For
 | `CustomerAdded`        | A [Customer](../operations/customers.md#customer) was added.                                                  | [Entity updated data](wh-general.md#entity-updated-data) | [Get all customers](../operations/customers.md#get-all-customers)                         |
 | `CustomerUpdated`      | A [Customer](../operations/customers.md#customer) was updated.                                                | [Entity updated data](wh-general.md#entity-updated-data) | [Get all customers](../operations/customers.md#get-all-customers)                         |
 | `PaymentUpdated`       | A [Payment](../operations/payments.md#payment) was updated.                                                   | [Entity updated data](wh-general.md#entity-updated-data) | [Get all payments](../operations/payments.md#get-all-payments)                            |
+| `ResourceDeleted`      | A [Resource](../operations/resources.md#resource) (for example a guest room or other space) was deleted. To fetch the deleted resource, set `Inactive` to `true` in the [Resource extent](../operations/resources.md#resource-extent); otherwise the response omits it. | [Entity updated data](wh-general.md#entity-updated-data) | [Get all resources](../operations/resources.md#get-all-resources)                         |
+| `ProductUpdated`       | A [Product](../operations/products.md#product) was updated.                                                   | [Entity updated data](wh-general.md#entity-updated-data) | [Get all products](../operations/products.md#get-all-products)                            |
+| `ProductDeleted`       | A [Product](../operations/products.md#product) was deleted. The fetch operation returns deleted products with `IsActive` set to `false`. Deleting a service does not delete its products, so no `ProductDeleted` events are triggered by service deletion. | [Entity updated data](wh-general.md#entity-updated-data) | [Get all products](../operations/products.md#get-all-products)                            |
 
 ### Entity updated data
 

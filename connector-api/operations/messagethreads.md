@@ -87,7 +87,8 @@ Creates a new [Message thread](messagethreads.md#message-thread) on behalf of th
   "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
   "Client": "Sample Client 1.0.0",
   "OriginalSender": "John Doe",
-  "Subject": "Example subject"
+  "Subject": "Example subject",
+  "CustomerId": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d"
 }
 ```
 
@@ -98,6 +99,7 @@ Creates a new [Message thread](messagethreads.md#message-thread) on behalf of th
 | `Client` | string | required | Name and version of the client application. |
 | `OriginalSender` | string | required | The sender of the original message in the thread. |
 | `Subject` | string | required | Subject of the message thread. |
+| `CustomerId` | string | optional | Unique identifier of the `Customer` the message thread concerns, used to associate the thread with the customer's guest messaging inbox. Write-only: its value is not included in the response of [Get all message threads](messagethreads.md#get-all-message-threads). |
 
 ### Response
 

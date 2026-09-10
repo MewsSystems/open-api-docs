@@ -282,7 +282,8 @@ Returns all payments in the system, filtered by various parameters. At least one
         "External": null,
         "Ghost": null,
         "Alternative": {
-          "Type": "WireTransfer"
+          "Type": "WireTransfer",
+          "Transaction": null
         }
       },
       "PaymentOrigin": "System"
@@ -470,6 +471,7 @@ Returns all payments in the system, filtered by various parameters. At least one
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `Type` | [Alternative payment method type](payments.md#alternative-payment-method-type) | required | Type of the alternative payment method. |
+| `Transaction` | [Credit card transaction](payments.md#credit-card-transaction) | optional | The payment transaction. |
 
 #### Alternative payment method type
 

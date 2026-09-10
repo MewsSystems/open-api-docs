@@ -492,6 +492,7 @@ Adds rates to the enterprise. Note this operation supports [Portfolio Access Tok
 | `BaseRateId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | required | Unique identifier of the base rate. |
 | `RelativeAdjustment` | number | required | Relative amount which shows the difference between this rate and the base rate. |
 | `AbsoluteAdjustment` | number | required | Specific amount which shows the difference between this rate and the base rate. |
+| `TaxCodes` | array of string | optional | Tax codes applied to the dependent rate. An empty collection is a valid value that sets the rate to have no taxes (zero taxes defined). When omitted or `null`, the rate is created without tax codes. |
 
 ### Response
 
@@ -729,13 +730,28 @@ Adds new Rates or updates existing ones if they are matched by `Id` or `External
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `BaseRatePricing` | [Base rate pricing parameters (without occupancy adjustments)](rates.md#base-rate-pricing-parameters-without-occupancy-adjustments) | optional | Additional data for rates with base rate pricing. Used when `PricingType` is `BaseRatePricing`. Defaults are applied if not specified: amount is set to 10000 in default Enterprise's currency and with its default accommodation tax rate code. |
-| `DependentRatePricing` | [Dependent rate pricing parameters](rates.md#dependent-rate-pricing-parameters) | optional | Additional data for rate with dependent rate pricing. Required when `PricingType` is `DependentRatePricing`. |
+| `DependentRatePricing` | [Dependent rate set pricing parameters](rates.md#dependent-rate-set-pricing-parameters) | optional | Additional data for rate with dependent rate pricing. Required when `PricingType` is `DependentRatePricing`. |
 
 #### Base rate pricing parameters (without occupancy adjustments)
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `Amount` | [Amount parameters](_objects.md#amount-parameters) | required | Price of the product that overrides the price defined in Mews. |
+
+#### Dependent rate set pricing parameters
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `BaseRateId` | string [Hybrid identifier](_objects.md#hybrid-identifier) | required | Unique identifier of the base rate. |
+| `RelativeAdjustment` | number | required | Relative amount which shows the difference between this rate and the base rate. |
+| `AbsoluteAdjustment` | number | required | Specific amount which shows the difference between this rate and the base rate. |
+| `TaxCodes` | [String array update value](rates.md#string-array-update-value) | optional | Tax codes applied to the dependent rate. Omit the property to keep the currently persisted tax codes unchanged. Provide a value to update them: an empty collection sets the rate to have no taxes (zero taxes defined), and `null` removes the previously persisted tax codes. |
+
+#### String array update value
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Value` | array of string | optional | Value which is to be updated. |
 
 ### Response
 

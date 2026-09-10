@@ -10,4 +10,5 @@ The Gitbook site consists of multiple spaces published from a single monorepo.
 - [Booking Engine](booking-engine/)
 - [Channel Manager API](channel-manager-api/)
 - [Connector API](connector-api/)
+- [Mews Payments Checkout](mews-payments-checkout/)
 - [POS API](pos-api/)

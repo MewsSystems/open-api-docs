@@ -98,6 +98,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "Number": "12345",
       "Title": "Mister",
+      "CustomTitleName": null,
       "Sex": "Male",
       "FirstName": "John",
       "LastName": "Smith",
@@ -156,10 +157,62 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       ],
       "CreatorProfileId": "3cd637ef-4728-47f9-8fb1-afb900c9cdcf",
       "UpdaterProfileId": "122fc063-ec6e-4198-b8db-6b168a59ffae"
+    },
+    {
+      "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+      "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "Number": "573204",
+      "Title": null,
+      "CustomTitleName": "Lady",
+      "Sex": "Female",
+      "FirstName": "Eleanor",
+      "LastName": "Windsor",
+      "SecondLastName": null,
+      "NationalityCode": "GB",
+      "PreferredLanguageCode": "en-GB",
+      "LanguageCode": null,
+      "BirthDate": "1961-04-17",
+      "BirthCountryCode": null,
+      "BirthCountrySubdivisionCode": null,
+      "BirthPlace": null,
+      "Occupation": null,
+      "Email": "eleanor.windsor@example.com",
+      "HasOtaEmail": false,
+      "Phone": "+44 20 7946 0958",
+      "TaxIdentificationNumber": null,
+      "LoyaltyCode": null,
+      "AccountingCode": null,
+      "BillingCode": null,
+      "Notes": null,
+      "CarRegistrationNumber": null,
+      "DietaryRequirements": null,
+      "CreatedUtc": "2025-11-05T10:15:00Z",
+      "UpdatedUtc": "2026-02-20T08:30:00Z",
+      "Passport": null,
+      "IdentityCard": null,
+      "Visa": null,
+      "DriversLicense": null,
+      "Address": null,
+      "AddressId": null,
+      "Classifications": [
+        "VeryImportant",
+        "Returning"
+      ],
+      "Options": [],
+      "ItalianDestinationCode": null,
+      "ItalianFiscalCode": null,
+      "ItalianLotteryCode": null,
+      "CompanyId": null,
+      "MergeTargetId": null,
+      "ActivityState": "Active",
+      "IsActive": true,
+      "PreferredSpaceFeatures": [],
+      "CreatorProfileId": "3cd637ef-4728-47f9-8fb1-afb900c9cdcf",
+      "UpdaterProfileId": "122fc063-ec6e-4198-b8db-6b168a59ffae"
     }
   ],
   "Documents": null,
-  "Cursor": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d"
+  "Cursor": "35d4b117-4e60-44a3-9580-c582117eff98"
 }
 ```
 
@@ -176,7 +229,8 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `Id` | string | required | Unique identifier of the customer. |
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
-| `Title` | [Title](customers.md#title) | optional | Title of the customer. |
+| `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -306,6 +360,10 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
     "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
     "bccdafd1-3e44-439d-861f-341526b597a9"
   ],
+  "UpdatedUtc": {
+    "StartUtc": "2023-08-01T00:00:00Z",
+    "EndUtc": "2023-08-30T00:00:00Z"
+  },
   "ChainIds": [
     "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "5fcd1933-22f2-40b9-84da-7db04cbecec2"
@@ -323,6 +381,7 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
 | `Client` | string | required | Name and version of the client application. |
 | `ChainIds` | array of string | optional, max 1000 items | Unique identifiers of `Chain`. If not specified, the operation returns data for all chains within scope of the Access Token. |
 | `CustomerIds` | array of string | required, max 100 items | Unique identifiers of `Customer`. |
+| `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the relationship was updated. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
 ### Response
@@ -333,12 +392,14 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
     {
       "CustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf5",
       "RelatedCustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf6",
-      "Relationship": "Other"
+      "Relationship": "Other",
+      "UpdatedUtc": "2023-08-01T12:00:00Z"
     },
     {
       "CustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf6",
       "RelatedCustomerId": "cbe8a32e-3eb7-4226-baf4-69455a0eeaf5",
-      "Relationship": "Other"
+      "Relationship": "Other",
+      "UpdatedUtc": "2023-08-01T12:00:00Z"
     }
   ],
   "Cursor": null
@@ -347,16 +408,17 @@ Returns relationships between customers (e.g. Spouse, Friend) for the provided u
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `CustomerRelationships` | array of [CustomerRelationship](customers.md#customerrelationship) | required | The relationships for the customers. |
+| `CustomerRelationships` | array of [Customer relationship](customers.md#customer-relationship) | required | The relationships for the customers. |
 | `Cursor` | string | optional | Unique identifier of the item one newer in time order than the items to be returned. If Cursor is not specified, i.e. null, then the latest or most recent items will be returned. |
 
-#### CustomerRelationship
+#### Customer relationship
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `CustomerId` | string | required | Unique identifier of the customer in the relationship. |
 | `RelatedCustomerId` | string | required | Unique identifier of the related customer. |
 | `Relationship` | [Customer relationship type](customers.md#customer-relationship-type) | required | Type of relationship between the two customers (e.g. Child = the related customer is the child of this customer). |
+| `UpdatedUtc` | string | required | Date and time when the relationship was last updated in UTC timezone in ISO 8601 format. |
 
 #### Customer relationship type
 
@@ -586,6 +648,7 @@ Adds a new customer to the system and returns details of the added customer. If 
   "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "Number": "390881",
   "Title": "Miss",
+  "CustomTitleName": null,
   "Sex": null,
   "FirstName": "Thea",
   "LastName": "Carbone",
@@ -651,7 +714,8 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `Id` | string | required | Unique identifier of the customer. |
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
-| `Title` | [Title](customers.md#title) | optional | Title of the customer. |
+| `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -794,6 +858,7 @@ Updates personal information of a customer. Note that if any of the fields is le
   "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "Number": "390881",
   "Title": "Miss",
+  "CustomTitleName": null,
   "Sex": null,
   "FirstName": "Thea",
   "LastName": "Carbone",
@@ -859,7 +924,8 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `Id` | string | required | Unique identifier of the customer. |
 | `ChainId` | string | required | Unique identifier of the chain. |
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
-| `Title` | [Title](customers.md#title) | optional | Title of the customer. |
+| `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
+| `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -994,6 +1060,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
         "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         "Number": "12345",
         "Title": "Mister",
+        "CustomTitleName": null,
         "Sex": "Male",
         "FirstName": "John",
         "LastName": "Smith",

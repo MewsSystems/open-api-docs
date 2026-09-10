@@ -2633,7 +2633,7 @@ types:
     anchor: customerrelationshipresult
   customerrelationship:
     file: customers.md
-    anchor: customerrelationship
+    anchor: customer-relationship
   customerrelationshiptypeenum:
     file: customers.md
     anchor: customer-relationship-type
@@ -2649,6 +2649,123 @@ types:
   cashiertransactiontypeenum:
     file: cashiertransactions.md
     anchor: cashier-transaction-type
+  dependentratesetpricingparameters:
+    file: rates.md
+    anchor: dependent-rate-set-pricing-parameters
+  resourcecategorymodificationresult:
+    file: resourcecategories.md
+    anchor: resource-category-modification-result
+  multipleresourcecategoryaddparameters:
+    file: resourcecategories.md
+    anchor: multiple-resource-category-add-parameters
+  resourcecategoryaddparameters:
+    file: resourcecategories.md
+    anchor: resource-category-add-parameters
+  resourceclassificationenum:
+    file: resourcecategories.md
+    anchor: resource-classification
+  multipleresourcecategoryupdateparameters:
+    file: resourcecategories.md
+    anchor: multiple-resource-category-update-parameters
+  resourcecategoryupdateparameters:
+    file: resourcecategories.md
+    anchor: resource-category-update-parameters
+  localizedstringsupdatevalue:
+    file: resourcecategories.md
+    anchor: localized-text-update-value
+  resourcecategorytypeupdatevalue:
+    file: resourcecategories.md
+    anchor: resource-category-type-update-value
+  resourceclassificationnullableupdatevalue:
+    file: resourcecategories.md
+    anchor: resource-classification-update-value
+  resourcecategorydeleteparameters:
+    file: resourcecategories.md
+    anchor: resource-category-delete-parameters
+  cancellationpolicyresultv20260731:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-result-ver-2026-07-31
+  cancellationpolicymodificationdata:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-modification-data
+  cancellationpolicyfilterparametersv20260731:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-filter-parameters-ver-2026-07-31
+  cancellationpolicymodificationresult:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-modification-result
+  multiplecancellationpolicyaddparameters:
+    file: cancellationpolicies.md
+    anchor: multiple-cancellation-policy-add-parameters
+  cancellationpolicyaddparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-add-parameters
+  multiplecancellationpolicyupdateparameters:
+    file: cancellationpolicies.md
+    anchor: multiple-cancellation-policy-update-parameters
+  cancellationpolicyupdateparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-update-parameters
+  cancellationpolicyapplicabilityupdatevalue:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-applicability-update-value
+  cancellationfeeextentienumerableupdatevalue:
+    file: cancellationpolicies.md
+    anchor: cancellation-fee-extent-array-update-value
+  currencyvalueupdatevalue:
+    file: cancellationpolicies.md
+    anchor: currency-value-ver-2023-02-02-update-value
+  cancellationpolicydeleteparameters:
+    file: cancellationpolicies.md
+    anchor: cancellation-policy-delete-parameters
+  stringireadonlylistupdatevalue:
+    file: rates.md
+    anchor: string-array-update-value
+  guestportallinkresult:
+    file: reservations.md
+    anchor: guestportallinkresult
+  guestportallink:
+    file: reservations.md
+    anchor: guest-portal-link-details
+  guestportalurldetails:
+    file: reservations.md
+    anchor: guest-portal-url-details
+  guestportallinktypeenum:
+    file: reservations.md
+    anchor: guest-portal-link-type
+  multipleguestportallinkparameters:
+    file: reservations.md
+    anchor: multipleguestportallinkparameters
+  guestportallinkparameters:
+    file: reservations.md
+    anchor: guest-portal-link-parameters
+  paymentpolicyresult:
+    file: paymentpolicies.md
+    anchor: payment-policy-result
+  paymentpolicy:
+    file: paymentpolicies.md
+    anchor: payment-policy
+  paymentpolicysettlementactionenum:
+    file: paymentpolicies.md
+    anchor: payment-policy-settlement-action
+  paymentpolicysettlementtriggerenum:
+    file: paymentpolicies.md
+    anchor: payment-policy-settlement-trigger
+  paymentpolicysettlementtypeenum:
+    file: paymentpolicies.md
+    anchor: payment-policy-settlement-type
+  paymentpolicyfilterparameters:
+    file: paymentpolicies.md
+    anchor: payment-policy-filter-parameters
+  paymentpolicyassignmentresult:
+    file: paymentpolicyassignments.md
+    anchor: payment-policy-assignment-result
+  paymentpolicyassignment:
+    file: paymentpolicyassignments.md
+    anchor: payment-policy-assignment
+  paymentpolicyassignmentfilterparameters:
+    file: paymentpolicyassignments.md
+    anchor: payment-policy-assignment-filter-parameters
   payoutresult:
     file: payouts.md
     anchor: payoutresult

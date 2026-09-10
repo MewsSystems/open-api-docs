@@ -11,6 +11,133 @@
   - New operation to retrieve the payment transactions that compose a payout (beta).
 
 {% endupdate %}
+{% update date="2026-08-28" %}
+
+## Deletion tracking for loyalty memberships and resources
+
+- [Get all loyalty memberships](../operations/loyaltymemberships.md#get-all-loyalty-memberships):
+- [Add loyalty memberships](../operations/loyaltymemberships.md#add-loyalty-memberships):
+- [Update loyalty memberships](../operations/loyaltymemberships.md#update-loyalty-memberships):
+  - Extended [Loyalty membership](../operations/loyaltymemberships.md#loyalty-membership) response object with required `ActivityState` ([Activity state](../operations/_objects.md#activity-state) enum) and optional `DeletedUtc` properties.
+- [Get all resources](../operations/resources.md#get-all-resources):
+  - Extended [Resource](../operations/resources.md#resource) response object with optional `DeletedUtc` property.
+
+{% endupdate %}
+{% update date="2026-08-28" %}
+
+## Customer association for message threads
+
+- [Add message thread](../operations/messagethreads.md#add-message-thread):
+  - Extended the request with optional `CustomerId` parameter to associate the thread with a customer's guest messaging inbox.
+
+{% endupdate %}
+{% update date="2026-08-27" %}
+
+## New webhook events for resource deletions and product changes
+
+- [General Webhooks](../events/wh-general.md):
+  - Added `ResourceDeleted` event, triggered when a resource is deleted. Enabled per integration partner; contact Mews to opt in.
+  - Added `ProductUpdated` and `ProductDeleted` events, triggered when a product is updated or deleted. Requires the product events webhook subscription. Deleting a service does not delete its products, so no `ProductDeleted` events are triggered by service deletion.
+  - Like other General Webhook events, the events carry the entity `Id` only – fetch entity details with [Get all resources](../operations/resources.md#get-all-resources) or [Get all products](../operations/products.md#get-all-products).
+
+{% endupdate %}
+{% update date="2026-08-21" %}
+
+## New resource category types, customer custom titles
+
+- [Get all resources](../operations/resources.md#get-all-resources):
+- [Add resource categories](../operations/resourcecategories.md#add-resource-categories) (restricted operation):
+- [Update resource categories](../operations/resourcecategories.md#update-resource-categories) (restricted operation):
+- [Get all restrictions](../operations/restrictions.md#get-all-restrictions):
+- [Set restrictions](../operations/restrictions.md#set-restrictions):
+- [Clear restrictions](../operations/restrictions.md#clear-restrictions):
+  - Extended [Resource category type](../operations/resources.md#resource-category-type) enum with `Cabin`, `Pod` and `SunBed` values.
+- [Get all customers](../operations/customers.md#get-all-customers):
+- [Search customers](../operations/customers.md#search-customers):
+- [Add customer](../operations/customers.md#add-customer):
+- [Update customer](../operations/customers.md#update-customer):
+- [Get all reservations (ver 2017-04-12)](../operations/reservations.md#get-all-reservations-ver-2017-04-12):
+- [Get all companionships](../operations/companionships.md#get-all-companionships):
+  - Extended [Customer](../operations/customers.md#customer) response object with `CustomTitleName` property – name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title`; unlike `Title`, the value is not localized.
+  - The property is also included in exports of the `Customer` [Exported entity type](../operations/exports.md#exported-entity-type).
+- [Update accounts](../operations/accounts.md#update-accounts):
+  - Extended the account's [Customer](../operations/accounts.md#customer) response object with the same `CustomTitleName` property.
+
+{% endupdate %}
+{% update date="2026-08-19" %}
+
+## Payment policy operations
+
+- [Get all payment policies](../operations/paymentpolicies.md#get-all-payment-policies) (restricted operation):
+- [Get all payment policy assignments](../operations/paymentpolicyassignments.md#get-all-payment-policy-assignments) (restricted operation):
+  - New operations to read payment policies and their assignments to rate groups and rates (beta).
+
+{% endupdate %}
+{% update date="2026-08-13" %}
+
+## Transaction details for alternative payments
+
+- [Get all payments](../operations/payments.md#get-all-payments):
+  - Extended [Alternative payment data](../operations/payments.md#alternative-payment-data) response object with optional `Transaction` property, referencing [Credit card transaction](../operations/payments.md#credit-card-transaction).
+
+{% endupdate %}
+{% update date="2026-08-12" %}
+
+## Cancellation policy management operations
+
+- [Get all cancellation policies (ver 2026-07-31)](../operations/cancellationpolicies.md#get-all-cancellation-policies-ver-2026-07-31) (restricted operation):
+- [Add cancellation policies](../operations/cancellationpolicies.md#add-cancellation-policies) (restricted operation):
+- [Update cancellation policies](../operations/cancellationpolicies.md#update-cancellation-policies) (restricted operation):
+- [Delete cancellation policies](../operations/cancellationpolicies.md#delete-cancellation-policies) (restricted operation):
+  - New operations to read, create, update and delete cancellation policies (beta).
+
+{% endupdate %}
+{% update date="2026-08-12" %}
+
+## Guest portal links, tax codes for dependent rates
+
+- [Generate Guest portal links](../operations/reservations.md#generate-guest-portal-links) (restricted operation):
+  - New operation that generates single-use Guest portal links for a reservation and customer.
+- [Add rates](../operations/rates.md#add-rates):
+- [Set rates](../operations/rates.md#set-rates):
+  - Extended [Dependent rate pricing parameters](../operations/rates.md#dependent-rate-pricing-parameters) and [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters) respectively with optional `TaxCodes` request parameter.
+
+{% endupdate %}
+{% update date="2026-08-11" %}
+
+## Billing automation prepayment condition for virtual credit cards
+
+- [Get all billing automations](../operations/billingautomations.md#get-all-billing-automations):
+- [Add billing automations](../operations/billingautomations.md#add-billing-automations):
+- [Update billing automations](../operations/billingautomations.md#update-billing-automations):
+  - Extended [Billing automation prepayment type](../operations/billingautomations.md#billing-automation-prepayment-type) enum with `PrepaidOrVcc` value. A billing automation with this prepayment condition applies to reservations that the OTA flagged as prepaid and to reservations with a virtual credit card attached.
+  - Clarified the `All` and `Prepaid` value descriptions to state which reservations each value applies to. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-07-31" %}
+
+## July 2026 updates
+
+- [Add resource categories](../operations/resourcecategories.md#add-resource-categories) (restricted operation):
+- [Update resource categories](../operations/resourcecategories.md#update-resource-categories) (restricted operation):
+- [Delete resource categories](../operations/resourcecategories.md#delete-resource-categories) (restricted operation):
+  - New operations to create, update and delete resource categories (beta). A resource category cannot be deleted while it still has active resources, overbookings, rate adjustments, channel manager mappings, product rules, promotions, restrictions or active reservations.
+- [Get all identity documents](../operations/identitydocuments.md#get-all-identity-documents):
+- [Add identity documents](../operations/identitydocuments.md#add-identity-documents):
+- [Update identity documents](../operations/identitydocuments.md#update-identity-documents):
+  - Extended [Identity document (ver 2024-10-25)](../operations/identitydocuments.md#identity-document-ver-2024-10-25) response object with `IsVerified` property.
+  - Extended [Identity document parameters](../operations/identitydocuments.md#identity-document-parameters) and [Identity document update parameters](../operations/identitydocuments.md#identity-document-update-parameters) request objects with `IsVerified` parameter. Defaults to `false` when not specified.
+- [Get customers relationships](../operations/customers.md#get-customers-relationships) (restricted operation):
+  - Extended request with optional `UpdatedUtc` time interval filter, with a maximum length of 3 months.
+  - Extended [Customer relationship](../operations/customers.md#customer-relationship) response object with `UpdatedUtc` property.
+- [Get all counters](../operations/counters.md#get-all-counters):
+  - Extended [Counter type discriminator](../operations/counters.md#counter-type-discriminator) enum with `PaymentSplitBillCounter` value.
+- [Get all order items](../operations/orderitems.md#get-all-order-items):
+  - Extended [Tax exemption reason type](../operations/orderitems.md#tax-exemption-reason-type) enum with `IT_N2_1`, `IT_N3_4`, `FR_261_7`, `FR_262_00_BIS`, and `FR_293_B` values.
+- [Set rates](../operations/rates.md#set-rates):
+  - The `DependentRatePricing` parameter now references [Dependent rate set pricing parameters](../operations/rates.md#dependent-rate-set-pricing-parameters). The object has the same structure as before. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-07-29" %}
 
 ## Deprecation of Add credit card payment operation

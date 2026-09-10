@@ -83,6 +83,8 @@
   * [Payments](operations/payments.md)
   * [Payment method requests](operations/paymentmethodrequests.md)
   * [Payment plans](operations/paymentplans.md)
+  * [Payment policies](operations/paymentpolicies.md)
+  * [Payment policy assignments](operations/paymentpolicyassignments.md)
   * [Payment requests](operations/paymentrequests.md)
   * [Payouts](operations/payouts.md)
   * [Preauthorizations](operations/preauthorizations.md)
