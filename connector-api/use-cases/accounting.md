@@ -53,11 +53,29 @@ Start by retrieving the payouts for the period, which gives you one record per p
 | How to get payouts over a period                 | [Get all payouts](../operations/payouts.md#get-all-payouts)                           |
 | How to break a payout down into its transactions | [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions)   |
 
-> **Supported providers**: These operations return payouts executed by a supported payment service provider, currently `Stripe` and `Adyen`. Funds settled by other means, such as manual bank transfers, are not included, so for a small number of properties the payouts returned will not account for the whole merchant balance.
+{% hint style="info" %}
 
-> **Amounts are signed**: A payout amount is signed from the perspective of the property's merchant balance, so a payout sending funds to the bank account is negative and a reversing entry is positive. Take the sign into account rather than assuming a fixed direction.
+### Supported providers
 
-> **Transaction dates**: A payout transaction's `CreatedUtc` is the date of the underlying charge, not of the payout, so it can fall outside the interval used to filter payouts.
+These operations return payouts executed by a supported payment service provider, currently `Stripe` and `Adyen`. Funds settled by other means, such as manual bank transfers, are not included, so for a small number of properties the payouts returned will not account for the whole merchant balance.
+
+{% endhint %}
+
+{% hint style="warning" %}
+
+### Amounts are signed
+
+A payout amount is signed from the perspective of the property's merchant balance, so a payout sending funds to the bank account is negative and a reversing entry is positive. Take the sign into account rather than assuming a fixed direction.
+
+{% endhint %}
+
+{% hint style="info" %}
+
+### Transaction dates
+
+A payout transaction's `CreatedUtc` is the date of the underlying charge, not of the payout, so it can fall outside the interval used to filter payouts.
+
+{% endhint %}
 
 ## Working with rebates
 
