@@ -1,6 +1,16 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-09-10" %}
+
+## Payout operations
+
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+  - New operation to retrieve payouts for reconciling bank deposits against Mews (beta). Only payouts executed by a supported payment service provider are returned, currently `Stripe` and `Adyen`.
+- [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) (restricted operation):
+  - New operation to retrieve the payment transactions that compose a payout (beta).
+
+{% endupdate %}
 {% update date="2026-07-29" %}
 
 ## Deprecation of Add credit card payment operation
