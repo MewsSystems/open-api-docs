@@ -82,13 +82,13 @@ To retrieve information about restrictions, use [Get all restrictions](../operat
 
 ## Sell limits
 
-Sell limits are daily caps on how many spaces may be sold on a given rate, applied separately from availability and from restrictions. To read their current state, use [Get all sell limits](../operations/selllimits.md#get-all-sell-limits). It returns, per rate and per day, the effective limit, the number of spaces already sold against it, and the number still available, so an integration can apply the same constraint that Mews applies when a reservation is created. The operation is read only; sell limits are configured in Mews Operations.
+Sell limits are daily caps on how many spaces may be sold on a given rate, applied separately from availability and from restrictions. To read their current state, use [Get all sell limits](../operations/selllimits.md#get-all-sell-limits). It returns, per rate and resource category, the effective limit, the number of spaces already sold against it, and the number still available, as arrays indexed against the requested days, so an integration can apply the same constraint that Mews applies when a reservation is created. The operation is read only; sell limits are configured in Mews Operations.
 
 | <div style="width:350px">'How to' use case</div> | API Operations                                                            |
 | :----------------------------------------------- | :------------------------------------------------------------------------ |
 | How to get sell limit state for a rate and date range | [Get all sell limits](../operations/selllimits.md#get-all-sell-limits) |
 
-> **Important:** A null `Limit` means no sell limit is configured, which is different from a configured limit of `0`. `Available` can be negative when a limit is lower than the number of spaces already sold, so treat any value of `0` or below as closed. Sell limits apply only to services with a daily time unit, and are consumed per night of stay rather than on the departure date. For the full evaluation rules, including which limit is reported when a rate and its rate group are both capped, see [Concepts > Sell limits](../concepts/sell-limits.md).
+> **Important:** A null element in `Limits` means no sell limit is configured for that day, which is different from a configured limit of `0`. `Available` can be negative when a limit is lower than the number of spaces already sold, so treat any value of `0` or below as closed. Sell limits apply only to services with a daily time unit, and are consumed per night of stay rather than on the departure date. For the full evaluation rules, including which limit is reported when a rate and its rate group are both capped, see [Concepts > Sell limits](../concepts/sell-limits.md).
 
 ## Occupancy
 

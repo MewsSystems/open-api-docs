@@ -7,7 +7,8 @@
 
 - [Get all sell limits](../operations/selllimits.md#get-all-sell-limits) (restricted operation):
   - New operation returning the sell limit state of a daily service per rate, resource category and time unit: the effective limit, the number of spaces already sold against it, and the number still available. This lets an integration apply the same constraint that Mews Operations applies when a reservation is created.
-  - A null `Limit` means no sell limit is configured for that combination, which is different from a configured limit of `0`. `Available` can be negative when a configured limit is lower than the number of spaces already sold.
+  - The response is a time series: `TimeUnitStartsUtc` appears once, and each rate and resource category pair carries `Limits`, `Sold` and `Available` as arrays indexed against it.
+  - A null element in `Limits` means no sell limit is configured for that combination, which is different from a configured limit of `0`. `Available` can be negative when a configured limit is lower than the number of spaces already sold.
   - Where limits are configured at more than one level, for example on both a rate and its rate group, the response reports the one that actually constrains the sale. See [Sell limits](../concepts/sell-limits.md) for the full evaluation rules.
   - Enabled per integration partner; contact Mews to opt in.
 
