@@ -62,7 +62,9 @@ A property can configure a limit on a rate, on the rate group that contains it, 
 
 The operation reports the combination that actually constrains the sale, which is the one leaving the least availability. A rate limit of 9 alongside a rate group limit of 2 is reported as a limit of 2, because the rate group is what closes the rate first. This matches what **Mews Operations** enforces when a reservation is created, so a client does not need to reimplement the precedence rule.
 
-Items where the resource category is null describe the limit that applies across all resource categories. Items with a resource category describe the limit for that category. Request the categories you care about, and the across-all-categories item is always returned alongside them, first.
+Items where the resource category is null describe the limit that applies across all resource categories. Items with a resource category describe the limit for that category. Request the categories you care about, and the across-all-categories item is returned alongside them, first.
+
+The applicable level can differ from one day to the next. On a day where the binding cap sits at a broader level than one resource category, every resource category under that cap reports the same shared numbers. Do not sum `Available` across resource categories: two categories each reporting `2` from one shared rate-level cap of `2` have `2` between them, not `4`. Summing them is the oversell this operation exists to prevent.
 
 ## Which reservations count as sold
 
