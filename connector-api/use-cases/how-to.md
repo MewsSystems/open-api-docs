@@ -42,6 +42,8 @@ This page summarises all of our 'how to' use cases, together with the main use c
 | How to record a general external payment                        | [Add external payment](../operations/payments.md#add-external-payment)                                                                 | [Kiosk](kiosk.md)                                                                   |
 | How to record an alternative external payment                   | [Add alternative payment](../operations/payments.md#add-alternative-payment)                                                           | [Kiosk](kiosk.md)                                                                   |
 | How to post end-of-day accounting items                         | [Add outlet bill](../operations/outletbills.md#add-outlet-bills)                                                                       | [Point of sale](point-of-sale.md)                                                   |
+| How to get payouts over a period                                | [Get all payouts](../operations/payouts.md#get-all-payouts)                                                                            | [Accounting](accounting.md)                                                         |
+| How to break a payout down into its transactions                | [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions)                                                    | [Accounting](accounting.md)                                                         |
 
 ## Allowances
 

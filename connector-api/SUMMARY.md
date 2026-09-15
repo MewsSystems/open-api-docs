@@ -87,6 +87,7 @@
   * [Payment policies](operations/paymentpolicies.md)
   * [Payment policy assignments](operations/paymentpolicyassignments.md)
   * [Payment requests](operations/paymentrequests.md)
+  * [Payouts](operations/payouts.md)
   * [Preauthorizations](operations/preauthorizations.md)
   * [Product categories](operations/productcategories.md)
   * [Product service orders](operations/productserviceorders.md)

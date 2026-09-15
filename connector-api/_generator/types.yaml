@@ -2766,3 +2766,30 @@ types:
   paymentpolicyassignmentfilterparameters:
     file: paymentpolicyassignments.md
     anchor: payment-policy-assignment-filter-parameters
+  payoutresult:
+    file: payouts.md
+    anchor: payoutresult
+  payout:
+    file: payouts.md
+    anchor: payout
+  payoutstateenum:
+    file: payouts.md
+    anchor: payout-state
+  payoutproviderenum:
+    file: payouts.md
+    anchor: payout-provider
+  payoutfilterparameters:
+    file: payouts.md
+    anchor: payoutfilterparameters
+  payouttransactionresult:
+    file: payouts.md
+    anchor: payouttransactionresult
+  payouttransaction:
+    file: payouts.md
+    anchor: payout-transaction
+  payouttransactiontypeenum:
+    file: payouts.md
+    anchor: payout-transaction-type
+  payouttransactionfilterparameters:
+    file: payouts.md
+    anchor: payouttransactionfilterparameters
