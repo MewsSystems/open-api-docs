@@ -1,6 +1,6 @@
 # Sell limits
 
-An explanation of how sell limit state is evaluated, for consumers of [Get all sell limits].
+An explanation of how sell limit state is evaluated, for consumers of [Get sell limit state].
 
 ## What are sell limits?
 
@@ -21,7 +21,7 @@ A sell limit is a separate constraint from availability and from restrictions. W
 
 ## Sell limits in the API
 
-To read sell limit state, use [Get all sell limits]. The operation is read only. Sell limits are configured in **Mews Operations**; there is no API operation to set or clear them.
+To read sell limit state, use [Get sell limit state]. The operation is read only. Sell limits are configured in **Mews Operations**; there is no API operation to set or clear them.
 
 Sell limits apply only to services whose time unit period is `Day`. Requesting state for any other service returns an error. For more information, see [Time units].
 
@@ -81,10 +81,10 @@ A sell limit is consumed on each night of a stay, not on the departure date. A o
 
 ## Related pages
 
-- [Get all sell limits] - the operation reference
+- [Get sell limit state] - the operation reference
 - [Restrictions] - the other mechanism that can close a rate, with its own set of rules
 - [Time units] - why sell limits apply only to daily services
 
-[Get all sell limits]: ../operations/selllimits.md#get-all-sell-limits
+[Get sell limit state]: ../operations/selllimits.md#get-sell-limit-state
 [Restrictions]: restrictions.md
 [Time units]: time-units.md
