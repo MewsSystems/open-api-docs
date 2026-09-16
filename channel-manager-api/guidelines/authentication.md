@@ -15,11 +15,13 @@ Additionally, all operations regarding a specific connection with a property req
 
 To get started using the API, you need to obtain the necessary tokens:
 
-* **Client Token**: This token is provided by Mews and is essential for authenticating your Channel Manager application. You will receive it during the initial setup process.
-* **Connection Token**: This token is specific to each connection with a property. You can obtain it in three ways:
+* **Client Token**: This token is provided by Mews and is essential for authenticating your Channel Manager application. Once we have created your integration profile, you will receive an automatic email containing your clientToken. Look for an email with the subject "Welcome to the partner community".
+* **Connection Token**: This token is specific to each connection with a property. You can obtain it in four ways:
+  * **Using the API**: Automatic (recommended) : If your application supports [Mews: /changeNotification](../channel-manager-operations/notifications), you will receive an API notification to this endpoint when the property first connects, which contains their unique connectionToken.
+  * **Using the API**: Manual : If your application supports [Mews: Get properties](../mews-operations/configuration.md#get-properties), you can recover the Connection Tokens for all connections the property supports for this client application. In this case, an employee email address is used as an authorization token.
   * **From Mews**: When authorized by the property, Mews will provide you with the Connection Token.
   * **Through the property**: The property can also obtain the token via __Mews Operations__.
-  * **Using the API**: If your application supports [Mews: Get properties](../mews-operations/configuration.md#get-properties), you can recover the Connection Tokens for all connections the property supports for this client application. In this case, an employee email address is used as an authorization token.
+
 
 > For detailed steps and additional information, refer to [Your integration journey](../your-journey/README.md).
 
