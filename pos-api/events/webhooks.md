@@ -25,7 +25,7 @@ To implement Webhooks:
 | `orders` | `order.status.updated` | An order status is updated. This includes any modifications to order fulfillment status. |
 | `products` | `product.availability.updated` | A product availability is updated. This includes any modifications to product availability. |
 | `orders` | `order.total.updated` | An order total is updated due to gratuity (tip) or correction amount changes. |
-| `orders` | `orders.payments.added` | A payment has been successfully added to an order. |
+| `orders` | `order.payments.added` | A payment has been successfully added to an order. |
 
 ## Request body
 
@@ -133,7 +133,7 @@ To implement Webhooks:
 | `total` | string | required | The total amount of the order including gratuity and corrections. |
 | `updatedAt` | string | required | Timestamp of when the order total was updated. |
 
-#### orders.payments.added properties:
+#### order.payments.added properties:
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |

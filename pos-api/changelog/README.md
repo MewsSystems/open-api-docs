@@ -1,5 +1,9 @@
 # Changelog
 
+## 16th September 2026
+* [Webhooks:](../events/webhooks.md)
+  * Fixed event name `order.payments.added` (was incorrectly documented as `orders.payments.added`).
+
 ## 4th December 2025
 * [Products:](../operations/products.md#get-product)
   * Added new operation for retrieving a single product by ID.
