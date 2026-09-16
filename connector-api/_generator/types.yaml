@@ -2793,3 +2793,9 @@ types:
   payouttransactionfilterparameters:
     file: payouts.md
     anchor: payouttransactionfilterparameters
+  billreissueresult:
+    file: bills.md
+    anchor: billreissueresult
+  billreissueparameters:
+    file: bills.md
+    anchor: billreissueparameters
