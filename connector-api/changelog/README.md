@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-09-16" %}
+
+## Bill reissuing
+
+- [Reissue bill](../operations/bills.md#reissue-bill) (restricted operation):
+  - New operation to credit a closed bill or issued invoice with a credit note and carry its items over to a new open bill (beta).
+
+{% endupdate %}
 {% update date="2026-09-10" %}
 
 ## Payout operations
