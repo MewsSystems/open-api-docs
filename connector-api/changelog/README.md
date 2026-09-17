@@ -1,6 +1,22 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-09-17" %}
+
+## Custom title group and custom title operations
+
+- [Get all custom title groups](../operations/customtitlegroups.md#get-all-custom-title-groups) (restricted operation):
+- [Add custom title groups](../operations/customtitlegroups.md#add-custom-title-groups) (restricted operation):
+- [Update custom title groups](../operations/customtitlegroups.md#update-custom-title-groups) (restricted operation):
+- [Delete custom title groups](../operations/customtitlegroups.md#delete-custom-title-groups) (restricted operation):
+  - New operations to retrieve, create, rename and delete the chain's custom title groups (beta).
+- [Get all custom titles](../operations/customtitles.md#get-all-custom-titles) (restricted operation):
+- [Add custom titles](../operations/customtitles.md#add-custom-titles) (restricted operation):
+- [Update custom titles](../operations/customtitles.md#update-custom-titles) (restricted operation):
+- [Delete custom titles](../operations/customtitles.md#delete-custom-titles) (restricted operation):
+  - New operations to retrieve, create, update and delete the custom titles within a custom title group (beta). A custom title assigned to a customer is returned as `CustomTitleName` in the [Customer](../operations/customers.md#customer) object.
+
+{% endupdate %}
 {% update date="2026-09-16" %}
 
 ## Bill reissuing

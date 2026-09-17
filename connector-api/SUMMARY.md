@@ -60,6 +60,8 @@
   * [Credit cards](operations/creditcards.md)
   * [Currencies](operations/currencies.md)
   * [Customers](operations/customers.md)
+  * [Custom title groups](operations/customtitlegroups.md)
+  * [Custom titles](operations/customtitles.md)
   * [Departments](operations/departments.md)
   * [Devices](operations/devices.md)
   * [Enterprises](operations/enterprises.md)

@@ -58,6 +58,14 @@ This section describes all operations supported by the API, organised here by th
 | [Update identity documents](../operations/identitydocuments.md#update-identity-documents)   | Updates specified identity documents                                                                                                       |
 | [Delete identity documents](../operations/identitydocuments.md#delete-identity-documents)   | Deletes specified identity documents                                                                                                       |
 | [Clear identity documents](../operations/identitydocuments.md#clear-identity-documents)     | Deletes all identity documents for the specified customers                                                                                 |
+| [Get all custom title groups](customtitlegroups.md#get-all-custom-title-groups)             | **Restricted!** Returns custom title groups configured for the chain                                                                       |
+| [Add custom title groups](customtitlegroups.md#add-custom-title-groups)                     | **Restricted!** Adds new custom title groups to the chain                                                                                  |
+| [Update custom title groups](customtitlegroups.md#update-custom-title-groups)               | **Restricted!** Renames the specified custom title groups                                                                                  |
+| [Delete custom title groups](customtitlegroups.md#delete-custom-title-groups)               | **Restricted!** Deletes custom title groups along with the custom titles within them                                                       |
+| [Get all custom titles](customtitles.md#get-all-custom-titles)                              | **Restricted!** Returns custom titles filtered by custom title groups or identifiers                                                       |
+| [Add custom titles](customtitles.md#add-custom-titles)                                      | **Restricted!** Adds new custom titles to existing custom title groups                                                                     |
+| [Update custom titles](customtitles.md#update-custom-titles)                                | **Restricted!** Updates the specified custom titles                                                                                        |
+| [Delete custom titles](customtitles.md#delete-custom-titles)                                | **Restricted!** Deletes specified custom titles                                                                                            |
 
 ## Device integration
 
