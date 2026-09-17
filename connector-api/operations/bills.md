@@ -839,8 +839,8 @@ Reissues a closed bill or issued invoice. The operation credits the original doc
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `CreditNote` | [Bill](bills.md#bill) | required | The closed credit note crediting the bill that was reissued. Its `CorrectedBillId` is the identifier of that bill. |
-| `Bill` | [Bill](bills.md#bill) | required | The new open bill carrying the items of the bill that was reissued. Its `CorrectedBillId` is the identifier of the credit note. |
+| `CreditNote` | [Bill](bills.md#bill) | required | The closed credit note crediting the reissued bill. Its `CorrectedBillId` is the identifier of the reissued bill. |
+| `Bill` | [Bill](bills.md#bill) | required | The new open bill carrying the items of the reissued bill. Its `CorrectedBillId` is the identifier of the credit note. |
 
 ## Delete bill
 

@@ -2799,3 +2799,69 @@ types:
   billreissueparameters:
     file: bills.md
     anchor: billreissueparameters
+  customtitlegroupresultpage:
+    file: customtitlegroups.md
+    anchor: customtitlegroupresultpage
+  customtitlegroup:
+    file: customtitlegroups.md
+    anchor: custom-title-group
+  customtitlegroupfilterparameters:
+    file: customtitlegroups.md
+    anchor: customtitlegroupfilterparameters
+  customtitlegroupwriteresult:
+    file: customtitlegroups.md
+    anchor: customtitlegroupwriteresult
+  multiplecustomtitlegroupaddparameters:
+    file: customtitlegroups.md
+    anchor: multiplecustomtitlegroupaddparameters
+  customtitlegroupaddparameters:
+    file: customtitlegroups.md
+    anchor: custom-title-group-add-parameters
+  multiplecustomtitlegroupupdateparameters:
+    file: customtitlegroups.md
+    anchor: multiplecustomtitlegroupupdateparameters
+  customtitlegroupupdateparameters:
+    file: customtitlegroups.md
+    anchor: custom-title-group-update-parameters
+  customtitlegroupdeleteparameters:
+    file: customtitlegroups.md
+    anchor: customtitlegroupdeleteparameters
+  customtitleresultpage:
+    file: customtitles.md
+    anchor: customtitleresultpage
+  customtitle:
+    file: customtitles.md
+    anchor: custom-title
+  customtitlefilterparameters:
+    file: customtitles.md
+    anchor: customtitlefilterparameters
+  customtitlewriteresult:
+    file: customtitles.md
+    anchor: customtitlewriteresult
+  multiplecustomtitleaddparameters:
+    file: customtitles.md
+    anchor: multiplecustomtitleaddparameters
+  customtitleaddparameters:
+    file: customtitles.md
+    anchor: custom-title-add-parameters
+  multiplecustomtitleupdateparameters:
+    file: customtitles.md
+    anchor: multiplecustomtitleupdateparameters
+  customtitleupdateparameters:
+    file: customtitles.md
+    anchor: custom-title-update-parameters
+  customtitledeleteparameters:
+    file: customtitles.md
+    anchor: customtitledeleteparameters
+  selllimitresult:
+    file: selllimits.md
+    anchor: selllimitresult
+  rateselllimit:
+    file: selllimits.md
+    anchor: rate-sell-limit
+  resourcecategoryselllimit:
+    file: selllimits.md
+    anchor: resource-category-sell-limit
+  selllimitfilterparameters:
+    file: selllimits.md
+    anchor: selllimitfilterparameters
