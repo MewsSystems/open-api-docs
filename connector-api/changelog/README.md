@@ -1,6 +1,22 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-09-18" %}
+
+## Sell limit state
+
+- [Get sell limit state](../operations/selllimits.md#get-sell-limit-state) (restricted operation):
+  - New operation to retrieve the effective sell limits of a daily service per rate, resource category and time unit, together with the numbers already sold and still available (beta).
+
+{% endupdate %}
+{% update date="2026-09-18" %}
+
+## Recurring payment identification
+
+- [Get all payments](../operations/payments.md#get-all-payments):
+  - Extended the request with optional `Recurring` filter parameter, and [Payment](../operations/payments.md#payment) response object with required `Recurring` property.
+
+{% endupdate %}
 {% update date="2026-09-17" %}
 
 ## Custom title group and custom title operations

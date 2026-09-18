@@ -105,6 +105,7 @@
   * [Restrictions](operations/restrictions.md)
   * [Routing rules](operations/routingrules.md)
   * [Rules](operations/rules.md)
+  * [Sell limits](operations/selllimits.md)
   * [Service order notes](operations/serviceordernotes.md)
   * [Service overbooking limits](operations/serviceoverbookinglimits.md)
   * [Services](operations/services.md)
