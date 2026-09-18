@@ -88,6 +88,7 @@ Returns all payments in the system, filtered by various parameters. At least one
 | `AccountingStates` | array of [Order item accounting state](accountingitems.md#order-item-accounting-state) | optional | Accounting state of the item. |
 | `States` | array of [Payment state](payments.md#payment-state) | optional | Payment state of the item. |
 | `Type` | [Payment type](payments.md#payment-type) | optional | Payment state of the item. |
+| `Recurring` | boolean | optional | Whether to return only payments collected for a payment plan, or only payments that were not. Omit the filter to return both. It narrows the other filters rather than bounding the result set on its own, so it cannot be the only filter provided. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
 #### Payment state
@@ -166,7 +167,8 @@ Returns all payments in the system, filtered by various parameters. At least one
         "Ghost": null,
         "Alternative": null
       },
-      "PaymentOrigin": "Terminal"
+      "PaymentOrigin": "Terminal",
+      "Recurring": false
     },
     {
       "Id": "be922eb7-bc5f-4877-b847-1120c0c2acd2",
@@ -221,7 +223,8 @@ Returns all payments in the system, filtered by various parameters. At least one
       "Type": "CashPayment",
       "Kind": "Payment",
       "Data": null,
-      "PaymentOrigin": "PointOfSales"
+      "PaymentOrigin": "PointOfSales",
+      "Recurring": false
     },
     {
       "Id": "a3e7f291-6c4d-4b8a-9f12-1d3e5c7b9a01",
@@ -286,7 +289,8 @@ Returns all payments in the system, filtered by various parameters. At least one
           "Transaction": null
         }
       },
-      "PaymentOrigin": "System"
+      "PaymentOrigin": "System",
+      "Recurring": false
     }
   ],
   "Cursor": "a3e7f291-6c4d-4b8a-9f12-1d3e5c7b9a01"
@@ -327,6 +331,7 @@ Returns all payments in the system, filtered by various parameters. At least one
 | `Kind` | [Payment kind](payments.md#payment-kind) | optional | Payment kind, e.g. whether payment or refund. Value provided only for payments processed by Mews Payments. |
 | `Data` | [Payment data](payments.md#payment-data) | optional | Additional payment data. |
 | `PaymentOrigin` | [Payment origin](payments.md#payment-origin) | optional | Payment origin indicating how the payment was initiated. |
+| `Recurring` | boolean | required | Whether the payment was collected for a payment plan. |
 
 #### Payment state
 
