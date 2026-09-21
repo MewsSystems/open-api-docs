@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-09-15" %}
+{% update date="2026-09-21" %}
 
 ## Sell limit state available through the Connector API
 

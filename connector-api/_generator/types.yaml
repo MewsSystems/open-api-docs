@@ -2793,3 +2793,15 @@ types:
   payouttransactionfilterparameters:
     file: payouts.md
     anchor: payouttransactionfilterparameters
+  selllimitresult:
+    file: selllimits.md
+    anchor: selllimitresult
+  rateselllimit:
+    file: selllimits.md
+    anchor: rate-sell-limit
+  resourcecategoryselllimit:
+    file: selllimits.md
+    anchor: resource-category-sell-limit
+  selllimitfilterparameters:
+    file: selllimits.md
+    anchor: selllimitfilterparameters
