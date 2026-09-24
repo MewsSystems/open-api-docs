@@ -1,6 +1,20 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-09-24" %}
+
+## Custom title identifier on customers
+
+- [Add customer](../operations/customers.md#add-customer):
+- [Update customer](../operations/customers.md#update-customer):
+  - Extended the request with optional `CustomTitleId` parameter, mutually exclusive with `Title`.
+- [Get all customers](../operations/customers.md#get-all-customers):
+- [Search customers](../operations/customers.md#search-customers):
+  - Extended the [Customer](../operations/customers.md#customer) response object with optional `CustomTitleId` property.
+- [Update accounts](../operations/accounts.md#update-accounts):
+  - Extended [Customer update parameters](../operations/accounts.md#customer-update-parameters) with optional `CustomTitleId` parameter, and the [Customer](../operations/accounts.md#customer) response object with optional `CustomTitleId` property.
+
+{% endupdate %}
 {% update date="2026-09-18" %}
 
 ## Sell limit state
