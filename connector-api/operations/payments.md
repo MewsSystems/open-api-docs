@@ -59,6 +59,7 @@ Returns all payments in the system, filtered by various parameters. At least one
     "Pending"
   ],
   "Type": "Payment",
+  "Recurring": true,
   "EnterpriseIds": [
     "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "4d0201db-36f5-428b-8d11-4f0a65e960cc"
@@ -168,7 +169,7 @@ Returns all payments in the system, filtered by various parameters. At least one
         "Alternative": null
       },
       "PaymentOrigin": "Terminal",
-      "Recurring": false
+      "Recurring": true
     },
     {
       "Id": "be922eb7-bc5f-4877-b847-1120c0c2acd2",
