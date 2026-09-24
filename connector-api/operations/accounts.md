@@ -291,26 +291,27 @@ Updates one or more existing accounts in the system. Note this operation support
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `Email` | [String update value](_objects.md#string-update-value) | optional | Email address (or `null` if the email should not be updated). |
-| `TaxIdentifier` | [String update value](_objects.md#string-update-value) | optional | Tax identification number (or `null` if the tax identification number should not be updated). |
-| `BillingCode` | [String update value](_objects.md#string-update-value) | optional | Billing code (or `null` if the billing code should not be updated). |
-| `AccountingCode` | [String update value](_objects.md#string-update-value) | optional | Accounting code (or `null` if the accounting code should not be updated). |
-| `Notes` | [String update value](_objects.md#string-update-value) | optional | Notes (or `null` if the notes should not be updated). |
-| `LastName` | [String update value](_objects.md#string-update-value) | optional | Last name (or `null` if the last name should not be updated). |
-| `FirstName` | [String update value](_objects.md#string-update-value) | optional | First name (or `null` if the first name should not be updated). |
-| `SecondLastName` | [String update value](_objects.md#string-update-value) | optional | Second last name (or `null` if the second last name should not be updated). |
-| `BirthPlace` | [String update value](_objects.md#string-update-value) | optional | Birth place (or `null` if the birth place should not be updated). |
-| `Telephone` | [String update value](_objects.md#string-update-value) | optional | Telephone number (or `null` if the telephone should not be updated). |
-| `Occupation` | [String update value](_objects.md#string-update-value) | optional | Occupation (or `null` if the occupation should not be updated). |
-| `CarRegistrationNumber` | [String update value](_objects.md#string-update-value) | optional, max length 255 characters | Car registration number (or `null` if the car registration number should not be updated). |
-| `DietaryRequirements` | [String update value](_objects.md#string-update-value) | optional, max length 255 characters | Dietary requirements (or `null` if the dietary requirements should not be updated). |
-| `LoyaltyCode` | [String update value](_objects.md#string-update-value) | optional | Loyalty code (or `null` if the loyalty code should not be updated). |
-| `NationalityCode` | [String update value](_objects.md#string-update-value) | optional | Nationality code (or `null` if the nationality code should not be updated). |
-| `CompanyId` | [String update value](_objects.md#string-update-value) | optional | Unique identifier of the company (or `null` if the company should not be updated). |
-| `BirthDate` | [String update value](_objects.md#string-update-value) | optional | Birth date (or `null` if the birth date should not be updated). |
-| `Sex` | [String update value](_objects.md#string-update-value) | optional | Sex (or `null` if the sex should not be updated). |
-| `Title` | [String update value](_objects.md#string-update-value) | optional | Title (or `null` if the title should not be updated). |
-| `PreferredLanguageCode` | [String update value](_objects.md#string-update-value) | optional | Preferred language code (or `null` if the preferred language code should not be updated). |
+| `Email` | [String update value](_objects.md#string-update-value) | optional | Email address. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `TaxIdentifier` | [String update value](_objects.md#string-update-value) | optional | Tax identification number. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `BillingCode` | [String update value](_objects.md#string-update-value) | optional | Billing code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `AccountingCode` | [String update value](_objects.md#string-update-value) | optional | Accounting code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `Notes` | [String update value](_objects.md#string-update-value) | optional | Notes. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `LastName` | [String update value](_objects.md#string-update-value) | optional | Last name. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `FirstName` | [String update value](_objects.md#string-update-value) | optional | First name. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `SecondLastName` | [String update value](_objects.md#string-update-value) | optional | Second last name. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `BirthPlace` | [String update value](_objects.md#string-update-value) | optional | Birth place. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `Telephone` | [String update value](_objects.md#string-update-value) | optional | Telephone number. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `Occupation` | [String update value](_objects.md#string-update-value) | optional | Occupation. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `CarRegistrationNumber` | [String update value](_objects.md#string-update-value) | optional, max length 255 characters | Car registration number. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `DietaryRequirements` | [String update value](_objects.md#string-update-value) | optional, max length 255 characters | Dietary requirements. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `LoyaltyCode` | [String update value](_objects.md#string-update-value) | optional | Loyalty code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `NationalityCode` | [String update value](_objects.md#string-update-value) | optional | Nationality code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `CompanyId` | [String update value](_objects.md#string-update-value) | optional | Unique identifier of the company. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `BirthDate` | [String update value](_objects.md#string-update-value) | optional | Birth date. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `Sex` | [String update value](_objects.md#string-update-value) | optional | Sex. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `Title` | [String update value](_objects.md#string-update-value) | optional | New title. Set the value to `null` to clear it; omit the property to leave it unchanged. Mutually exclusive with `CustomTitleId`: sending both with a value fails, and setting this removes the custom title the customer already had. |
+| `CustomTitleId` | [String update value](_objects.md#string-update-value) | optional | Unique identifier of the `CustomTitle` to assign to the customer, as configured in the chain's guest titles. Must be a title of the caller's chain that has not been deleted; use [Get all custom titles](customtitles.md#get-all-custom-titles) to discover the available ids. Set the value to `null` to clear it; omit the property to leave it unchanged. Mutually exclusive with `Title`: sending both with a value fails, and setting this removes the title the customer already had. |
+| `PreferredLanguageCode` | [String update value](_objects.md#string-update-value) | optional | Preferred language code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
 | `Options` | [Customer update options](accounts.md#customer-update-options) | optional | Options of the customer. |
 | `Classifications` | [Customer update classifications](accounts.md#customer-update-classifications) | optional | Classifications of the customer. |
 | `LegalEntityIdentifiers` | [Customer update legal entity identifiers](accounts.md#customer-update-legal-entity-identifiers) | optional | Legal entity identifiers of the customer. |
@@ -319,43 +320,43 @@ Updates one or more existing accounts in the system. Note this operation support
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `SendMarketingEmails` | [Bool update value](_objects.md#bool-update-value) | optional | Send marketing email (or `null` if the value should not be updated). |
-| `Invoiceable` | [Bool update value](_objects.md#bool-update-value) | optional | Invoiceable (or `null` if the value should not be updated). |
-| `BillAddressObjection` | [Bool update value](_objects.md#bool-update-value) | optional | Bill address objection (or `null` if the value should not be updated). |
+| `SendMarketingEmails` | [Bool update value](_objects.md#bool-update-value) | optional | Send marketing email. Omit the property to leave it unchanged. |
+| `Invoiceable` | [Bool update value](_objects.md#bool-update-value) | optional | Invoiceable. Omit the property to leave it unchanged. |
+| `BillAddressObjection` | [Bool update value](_objects.md#bool-update-value) | optional | Bill address objection. Omit the property to leave it unchanged. |
 
 #### Customer update classifications
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `PaymasterAccount` | [Bool update value](_objects.md#bool-update-value) | optional | Paymaster account (or `null` if the value should not be updated). |
-| `Blocklist` | [Bool update value](_objects.md#bool-update-value) | optional | Blocklist (or `null` if the value should not be updated). |
-| `Media` | [Bool update value](_objects.md#bool-update-value) | optional | Media (or `null` if the value should not be updated). |
-| `LoyaltyProgram` | [Bool update value](_objects.md#bool-update-value) | optional | Loyalty program (or `null` if the value should not be updated). |
-| `PreviousComplaint` | [Bool update value](_objects.md#bool-update-value) | optional | Previous complaint (or `null` if the value should not be updated). |
-| `Returning` | [Bool update value](_objects.md#bool-update-value) | optional | Returning (or `null` if the value should not be updated). |
-| `Staff` | [Bool update value](_objects.md#bool-update-value) | optional | Staff (or `null` if the value should not be updated). |
-| `FriendOrFamily` | [Bool update value](_objects.md#bool-update-value) | optional | Friend or family (or `null` if the value should not be updated). |
-| `TopManagement` | [Bool update value](_objects.md#bool-update-value) | optional | Top management (or `null` if the value should not be updated). |
-| `Important` | [Bool update value](_objects.md#bool-update-value) | optional | Important (or `null` if the value should not be updated). |
-| `VeryImportant` | [Bool update value](_objects.md#bool-update-value) | optional | Very important (or `null` if the value should not be updated). |
-| `Problematic` | [Bool update value](_objects.md#bool-update-value) | optional | Problematic (or `null` if the value should not be updated). |
-| `Cashlist` | [Bool update value](_objects.md#bool-update-value) | optional | Cashlist (or `null` if the value should not be updated). |
-| `DisabledPerson` | [Bool update value](_objects.md#bool-update-value) | optional | Disabled person (or `null` if the value should not be updated). |
-| `Military` | [Bool update value](_objects.md#bool-update-value) | optional | Military (or `null` if the value should not be updated). |
-| `Airline` | [Bool update value](_objects.md#bool-update-value) | optional | Airline (or `null` if the value should not be updated). |
-| `HealthCompliant` | [Bool update value](_objects.md#bool-update-value) | optional | Health compliant (or `null` if the value should not be updated). |
-| `InRoom` | [Bool update value](_objects.md#bool-update-value) | optional | In room (or `null` if the value should not be updated). |
-| `WaitingForRoom` | [Bool update value](_objects.md#bool-update-value) | optional | Waiting for room (or `null` if the value should not be updated). |
-| `Student` | [Bool update value](_objects.md#bool-update-value) | optional | Student (or `null` if the value should not be updated). |
-| ~~`Blacklist`~~ | ~~[Bool update value](_objects.md#bool-update-value)~~ | ~~optional~~ | ~~Synonym of Blocklist, left for backward compatibility (`null` if the value should not be updated).~~ **Deprecated!** Use Blocklist instead.|
+| `PaymasterAccount` | [Bool update value](_objects.md#bool-update-value) | optional | Paymaster account. Omit the property to leave it unchanged. |
+| `Blocklist` | [Bool update value](_objects.md#bool-update-value) | optional | Blocklist. Omit the property to leave it unchanged. |
+| `Media` | [Bool update value](_objects.md#bool-update-value) | optional | Media. Omit the property to leave it unchanged. |
+| `LoyaltyProgram` | [Bool update value](_objects.md#bool-update-value) | optional | Loyalty program. Omit the property to leave it unchanged. |
+| `PreviousComplaint` | [Bool update value](_objects.md#bool-update-value) | optional | Previous complaint. Omit the property to leave it unchanged. |
+| `Returning` | [Bool update value](_objects.md#bool-update-value) | optional | Returning. Omit the property to leave it unchanged. |
+| `Staff` | [Bool update value](_objects.md#bool-update-value) | optional | Staff. Omit the property to leave it unchanged. |
+| `FriendOrFamily` | [Bool update value](_objects.md#bool-update-value) | optional | Friend or family. Omit the property to leave it unchanged. |
+| `TopManagement` | [Bool update value](_objects.md#bool-update-value) | optional | Top management. Omit the property to leave it unchanged. |
+| `Important` | [Bool update value](_objects.md#bool-update-value) | optional | Important. Omit the property to leave it unchanged. |
+| `VeryImportant` | [Bool update value](_objects.md#bool-update-value) | optional | Very important. Omit the property to leave it unchanged. |
+| `Problematic` | [Bool update value](_objects.md#bool-update-value) | optional | Problematic. Omit the property to leave it unchanged. |
+| `Cashlist` | [Bool update value](_objects.md#bool-update-value) | optional | Cashlist. Omit the property to leave it unchanged. |
+| `DisabledPerson` | [Bool update value](_objects.md#bool-update-value) | optional | Disabled person. Omit the property to leave it unchanged. |
+| `Military` | [Bool update value](_objects.md#bool-update-value) | optional | Military. Omit the property to leave it unchanged. |
+| `Airline` | [Bool update value](_objects.md#bool-update-value) | optional | Airline. Omit the property to leave it unchanged. |
+| `HealthCompliant` | [Bool update value](_objects.md#bool-update-value) | optional | Health compliant. Omit the property to leave it unchanged. |
+| `InRoom` | [Bool update value](_objects.md#bool-update-value) | optional | In room. Omit the property to leave it unchanged. |
+| `WaitingForRoom` | [Bool update value](_objects.md#bool-update-value) | optional | Waiting for room. Omit the property to leave it unchanged. |
+| `Student` | [Bool update value](_objects.md#bool-update-value) | optional | Student. Omit the property to leave it unchanged. |
+| ~~`Blacklist`~~ | ~~[Bool update value](_objects.md#bool-update-value)~~ | ~~optional~~ | ~~Synonym of Blocklist, left for backward compatibility. Omit the property to leave it unchanged.~~ **Deprecated!** Use Blocklist instead.|
 
 #### Customer update legal entity identifiers
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `ItDestinationCode` | [String update value](_objects.md#string-update-value) | optional | Italian destination code (or `null` if the Italian destination code should not be updated). |
-| `ItFiscalCode` | [String update value](_objects.md#string-update-value) | optional | Italian fiscal code (or `null` if the Italian fiscal code should not be updated). |
-| `ItLotteryCode` | [String update value](_objects.md#string-update-value) | optional, max length 15 characters | Italian lottery code (or `null` if the Italian lottery code should not be updated). |
+| `ItDestinationCode` | [String update value](_objects.md#string-update-value) | optional | Italian destination code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `ItFiscalCode` | [String update value](_objects.md#string-update-value) | optional | Italian fiscal code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
+| `ItLotteryCode` | [String update value](_objects.md#string-update-value) | optional, max length 15 characters | Italian lottery code. Set the value to `null` to clear it; omit the property to leave it unchanged. |
 
 #### Company update parameters
 
@@ -566,6 +567,7 @@ Updated customer data.
 | `Sex` | string | optional | Sex of the customer. |
 | `Title` | [Title](customers.md#title) | optional | Title prefix of the customer. Mutually exclusive with `CustomTitleName`. |
 | `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleId` | string | optional | Unique identifier of the `CustomTitle` assigned to the customer, as configured in the chain's guest titles. Mutually exclusive with `Title`. Set whenever the customer has a custom title, even when `CustomTitleName` is `null`. Use [Get all custom titles](customtitles.md#get-all-custom-titles) to resolve the name when custom titles are enabled for the chain. |
 | `PreferredLanguageCode` | string | optional | Language and culture code of the customer's preferred language. E.g. `en-US` or `fr-FR`. |
 | `Options` | [Customer options](accounts.md#customer-options) | required | Options of the customer. |
 | `Classifications` | [Customer classifications](accounts.md#customer-classifications) | required | Classifications of the customer. |

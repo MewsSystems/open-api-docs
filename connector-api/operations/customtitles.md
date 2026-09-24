@@ -244,7 +244,7 @@ Updates the specified custom titles. Note this operation supports [Portfolio Acc
 > ### Restricted!
 > This operation is currently in beta-test and as such it is subject to change.
 
-Deletes custom titles. A `Customer` already assigned a deleted title keeps showing it in `CustomTitleName` until reassigned. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+Deletes custom titles. A `Customer` already assigned a deleted title keeps showing it in `CustomTitleId` and `CustomTitleName` until reassigned, and the title itself stays retrievable through [Get all custom titles](customtitles.md#get-all-custom-titles) with `ActivityStates` set to `Deleted`. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
 ### Request
 
