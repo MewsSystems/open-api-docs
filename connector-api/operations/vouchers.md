@@ -239,7 +239,7 @@ Adds the specified vouchers to the specified [Services](services.md#service). No
 | `Name` | string | required, max length 128 characters | Internal name of the voucher. |
 | `Type` | [Voucher Type](vouchers.md#voucher-type) | required | Type of the voucher. |
 | `CompanyId` | string | optional | Unique identifier of Company. |
-| `AssignedRateIds` | array of string | optional, max 10 items | Unique identifiers of Rates. |
+| `AssignedRateIds` | array of string | optional, max 20 items | Unique identifiers of Rates. |
 | `OccupiableIntervalStartUtc` | string | optional | Start of the interval in which the voucher can be applied. |
 | `OccupiableIntervalEndUtc` | string | optional | End of the interval in which the voucher can be applied. |
 | `ExternalIdentifier` | string | optional, max length 255 characters | Identifier of the voucher from external system. |
@@ -376,7 +376,7 @@ Has same structure as [Array of strings update value](_objects.md#array-of-strin
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `Value` | array of string | optional, max 10 items | Unique identifiers of Rates (or `null` should it not be updated). |
+| `Value` | array of string | optional, max 20 items | Unique identifiers of Rates (or `null` should it not be updated). |
 
 ### Response
 
