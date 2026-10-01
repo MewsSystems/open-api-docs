@@ -1,6 +1,15 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-10-01" %}
+
+## Higher rate assignment limit for vouchers
+
+- [Add vouchers](../operations/vouchers.md#add-vouchers):
+- [Update vouchers](../operations/vouchers.md#update-vouchers):
+  - Raised the maximum number of `AssignedRateIds` from 10 to 20 items in [Voucher Parameters](../operations/vouchers.md#voucher-parameters) and [Assigned rate ids](../operations/vouchers.md#assigned-rate-ids) respectively.
+
+{% endupdate %}
 {% update date="2026-09-24" %}
 
 ## Custom title identifier on customers
