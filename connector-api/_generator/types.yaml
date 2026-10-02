@@ -2775,9 +2775,6 @@ types:
   payoutstateenum:
     file: payouts.md
     anchor: payout-state
-  payoutproviderenum:
-    file: payouts.md
-    anchor: payout-provider
   payoutfilterparameters:
     file: payouts.md
     anchor: payoutfilterparameters
@@ -2787,9 +2784,6 @@ types:
   payouttransaction:
     file: payouts.md
     anchor: payout-transaction
-  payouttransactiontypeenum:
-    file: payouts.md
-    anchor: payout-transaction-type
   payouttransactionfilterparameters:
     file: payouts.md
     anchor: payouttransactionfilterparameters
@@ -2865,3 +2859,9 @@ types:
   selllimitfilterparameters:
     file: selllimits.md
     anchor: selllimitfilterparameters
+  paymentproviderenum:
+    file: payouts.md
+    anchor: payment-provider
+  balancetransactiontypeenum:
+    file: payouts.md
+    anchor: balance-transaction-type

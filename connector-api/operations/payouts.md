@@ -6,7 +6,7 @@
 > ### Restricted!
 > This operation is currently in beta-test and as such it is subject to change.
 
-Returns payouts for reconciling bank deposits against Mews. Only payouts executed by a supported payment service provider are returned, currently `Stripe` and `Adyen`, so the results may not cover an enterprise's full merchant balance. Constituent payment transactions are retrieved separately via [Get all payout transactions](payouts.md#get-all-payout-transactions). Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+Returns payouts for reconciling bank deposits against Mews. Constituent transactions are retrieved separately via [Get all payout transactions](payouts.md#get-all-payout-transactions). Note this operation uses [Pagination](../guidelines/pagination.md) and supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
 ### Request
 
@@ -39,7 +39,7 @@ Returns payouts for reconciling bank deposits against Mews. Only payouts execute
 | `EnterpriseIds` | array of string | optional, max 1000 items | Unique identifiers of the Enterprises. If not specified, the operation returns data for all enterprises within scope of the Access Token. |
 | `PayoutIds` | array of string | optional, max 100 items | Unique identifiers of the requested payouts. |
 | `PayoutDateUtc` | [Time interval](_objects.md#time-interval) | optional, max length 3 months | Interval in which the payout was executed. |
-| `PayoutProviders` | array of [Payout provider](payouts.md#payout-provider) | optional, max 10 items | Payment service providers to filter payouts by. |
+| `PaymentProviders` | array of [Payment provider](payouts.md#payment-provider) | optional | Payment service providers to filter payouts by. |
 | `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
 
 ### Response
@@ -76,7 +76,7 @@ Returns payouts for reconciling bank deposits against Mews. Only payouts execute
 | `Id` | string | required | Unique stable identifier of the payout. |
 | `EnterpriseId` | string | required | Unique identifier of the enterprise that owns the payout. |
 | `State` | [Payout state](payouts.md#payout-state) | required | Current state of the payout. |
-| `Provider` | [Payout provider](payouts.md#payout-provider) | required | Payment service provider that executed the payout. |
+| `Provider` | [Payment provider](payouts.md#payment-provider) | required | Payment service provider that holds the balance the payout was made from. |
 | `PayoutDateUtc` | string | optional | Date and time the payout was recorded in Mews, in UTC timezone in ISO 8601 format. This is not the date the funds arrived in the destination bank account. |
 | `Amount` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Total net amount paid out to the destination bank account, after fees and deductions. The individual fee and deduction transactions are available through the payout's transactions. |
 | `BankDescriptor` | string | optional | Payout descriptor currently configured for the integration, as used on bank statements. Reflects the current configuration and may differ from the descriptor shown on statements of older payouts. |
@@ -87,17 +87,26 @@ Returns payouts for reconciling bank deposits against Mews. Only payouts execute
 * `Paid` - The payout has been paid out to the destination bank account.
 * `Failed` - The payout failed and the funds were not paid out.
 
-#### Payout provider
+#### Payment provider
+
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
 
 * `Adyen` - Adyen
 * `Stripe` - Stripe
+* `PayPal` - PayPal
+* `Braintree` - Braintree
+* `WireTransfer` - Wire transfer
+* `MewsFS` - Mews Financial Services
+* …
 
 ## Get all payout transactions
 
 > ### Restricted!
 > This operation is currently in beta-test and as such it is subject to change.
 
-Returns the payment transactions that compose payouts, filtered by payout. Only payouts executed by a supported payment service provider are covered, currently `Stripe` and `Adyen`. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+Returns the transactions that compose payouts, filtered by payout. Note this operation uses [Pagination](../guidelines/pagination.md) and supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
 ### Request
 
@@ -165,17 +174,24 @@ Returns the payment transactions that compose payouts, filtered by payout. Only 
 | :-- | :-- | :-- | :-- |
 | `Id` | string | required | Unique stable identifier of the transaction, kept stable over time for re-fetch and reconciliation. |
 | `PayoutId` | string | required | Unique identifier of the payout this transaction belongs to. |
-| `Type` | [Payout transaction type](payouts.md#payout-transaction-type) | required | Type of the transaction. |
+| `Type` | [Balance transaction type](payouts.md#balance-transaction-type) | required | Type of the transaction. Never `Payout`, because a payout is not one of its own transactions. |
 | `Amount` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Amount of the transaction. |
 | `PaymentId` | string | optional | Unique identifier of the related payment, when the transaction is backed by one. |
 | `InvoiceReferences` | array of string | optional, max 100 items | Invoice references associated with the transaction, when available. |
-| `CreatedUtc` | string | optional | Date and time the transaction was created, in UTC timezone in ISO 8601 format. This is the date of the underlying transaction rather than of the payout, so it can fall outside the interval used to filter payouts. |
+| `CreatedUtc` | string | required | Date and time the transaction was created, in UTC timezone in ISO 8601 format. This is the date of the underlying transaction rather than of the payout, so it can fall outside the interval used to filter payouts. |
 
-#### Payout transaction type
+#### Balance transaction type
 
-* `Charge` - A payment charge included in the payout.
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
+
+* `Charge` - A payment charged to a guest, or its refund or chargeback.
 * `MerchantCommission` - Commission charged by Mews.
-* `PlatformFee` - Platform fee charged by the payment service provider.
+* `PlatformFee` - Platform fee charged by Mews.
+* `Payout` - A payout to the enterprise's bank account, decreasing the balance.
+* `BalanceTopUp` - A top-up of the balance.
 * `CommissionAdjustment` - An adjustment to a previously charged commission.
 * `ReserveAdjustment` - An adjustment to the chargeback reserve held for the account.
-* `BalanceTopUp` - A top-up of the account balance.
+* `RollingBalanceAdjustment` - The part of a payout cycle's settled funds that the payment service provider did not transfer to the bank, recorded against that payout so its transactions reconcile with the amount paid. Negative when funds were deferred to a later payout, positive when previously deferred funds were released.
+* …
