@@ -16,7 +16,7 @@
   - Changed `CreatedUtc` in the [Payout transaction](../operations/payouts.md#payout-transaction) response object from optional to required.
   - Corrected the `PlatformFee` description in [Balance transaction type](../operations/payouts.md#balance-transaction-type): it is a fee charged by Mews, not by the payment service provider. Documentation-only, no change to API.
 - [Accounting use case](../use-cases/accounting.md#payout-reconciliation):
-  - Documented which payout transaction types carry a `PaymentId` and how to correlate transactions with payments. Documentation-only, no change to API.
+  - Documented which payout transaction types carry a `PaymentId` and how to correlate transactions with payments, and removed the outdated debtor tracking note. Documentation-only, no change to API.
 
 {% endupdate %}
 {% update date="2026-10-01" %}

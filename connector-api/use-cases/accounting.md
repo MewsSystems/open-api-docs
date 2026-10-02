@@ -18,8 +18,6 @@ To ensure accuracy, only data that is no longer editable by the property can be 
 
 > **Editable History Window**: For a full description and links to further information, see the [Mews Glossary for Open API users](https://app.gitbook.com/s/HKZkojyobXIJtRpzALEf/getting-started/glossary).
 
-> **Debtor tracking**: If debtor tracking is to be done in the external system instead of Mews, the property must have the Accounting configuration option "Receivable tracking enabled" unchecked in Mews. See [Receivable tracking - enabled or disabled?](https://help.mews.com/s/article/Receivable-tracking-enabled-or-disabled?language=en_US).
-
 ## Periodic update
 
 An Accounting integration should fetch accounting items and outlet items at regular intervals, at least daily. In both cases, if `Currency` is specified, the cost of the items will be converted to that currency. The integration should also fetch all bills and invoices that must be paid and reconciled within the accounting software. These can be filtered by a specific customer, by date of creation, consumption or payment, or, in the case of invoices, by due date.
