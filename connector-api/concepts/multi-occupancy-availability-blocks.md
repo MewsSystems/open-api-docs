@@ -53,13 +53,15 @@ The request below reserves 10 units of a resource category for a block over thre
 - **Block updates only.** `PaxCounts` applies to updates that set an `AvailabilityBlockId`. On an update without one, it has no effect.
 - **Maximum of 5 entries.** Each `PersonCount` must be unique within the collection, must be positive, and must not exceed the capacity of the resource category.
 - **Totals must reconcile.** The sum of all `UnitCount` values must equal the absolute value of `UnitCountAdjustment.Value`.
-- **No split supplied.** A block adjustment sent without `PaxCounts` is stored as one slot covering the whole adjustment. On the read side it appears as a single combined entry, so the block behaves the same as one with no occupancy split.
+- **No split supplied.** A block adjustment sent without `PaxCounts` is stored as one slot covering the whole adjustment. When no adjustment of the resource category in the block has `PaxCounts`, the read side shows a single combined entry, so the block behaves the same as one with no occupancy split. When other time units of the same resource category do have a split, a time unit without `PaxCounts` is reported as a [time unit without a split](#time-units-without-an-occupancy-split).
 
 {% hint style="warning" %}
 
 ### An update replaces the whole split
 
 [Update service availability] overwrites any existing adjustment for the same resource category, block, and interval. A later call that omits `PaxCounts` therefore collapses a previously defined split back into a single combined allocation.
+
+If that later call covers only part of the interval, only those time units lose their split. They are then reported as [time units without a split](#time-units-without-an-occupancy-split), while the rest of the interval keeps it.
 
 To keep a split in place, re-send the full `PaxCounts` collection on every update that touches the interval.
 
@@ -114,6 +116,10 @@ Clients can therefore read `OccupancyAllocations` without first checking whether
 
 The resource category arrays remain the authoritative totals. Every picked-up reservation is attributed to a slot, so the per-slot `PickedUp` values reconcile to the resource category `PickedUp` total. Per-slot `EffectiveAvailable` does not reconcile the same way. It subtracts `OutgoingOffset`, so the per-slot values sum to the resource category `Available` minus the total `OutgoingOffset` across the slots, and match it only while no slot overflows. In the overflow example below, the slots sum to -1 on the third time unit while the resource category reports `Available` of 0. Use the resource category `Available` when you need the remaining capacity of the block.
 
+### Time units without an occupancy split
+
+A resource category can have a split on some time units of the block and none on others – for example, after a partial update without `PaxCounts`. The response still contains one entry per slot. On a time unit without a split, the slot with the lowest `PersonCount` takes the whole resource category: its `UnitCount` is the resource category `OriginalAvailability` and its `PickedUp` contains all pickups for that time unit. Every other slot reports `0` for that time unit.
+
 ### Occupancy allocation
 
 All array properties contain one integer per time unit covered by the block, aligned to the `TimeUnitStartsUtc` array in the response.
@@ -121,7 +127,7 @@ All array properties contain one integer per time unit covered by the block, ali
 | Property             | Type             | Description                                                                                                                                                                            |
 | :------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `PersonCount`        | integer          | Guest count the slot is defined for. `0` in the combined entry returned when no occupancy split is defined.                                                                            |
-| `UnitCount`          | array of integer | Units blocked for the slot. In the combined entry, mirrors the resource category `OriginalAvailability`.                                                                               |
+| `UnitCount`          | array of integer | Units blocked for the slot. In the combined entry, mirrors the resource category `OriginalAvailability`. On a time unit without a split, the lowest slot shows the resource category `OriginalAvailability` and other slots show `0`. |
 | `PickedUp`           | array of integer | Reservations matched to the slot. In the combined entry, mirrors the resource category `PickedUp`.                                                                                     |
 | `EffectiveAvailable` | array of integer | Remaining capacity of the slot: `UnitCount - PickedUp - OutgoingOffset`. Negative when the slot absorbed more pickups than it blocked. In the combined entry, mirrors `Available`.     |
 | `OutgoingOffset`     | array of integer | Units the slot donates to cover overflow on a sibling slot. Lowers `EffectiveAvailable` without adding reservations. Always `0` in the combined entry.                                 |

@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-10-02" %}
+
+## Multi-occupancy availability blocks
+
+- [Update service availability](../operations/services.md#update-service-availability):
+  - Documented the `PaxCounts` parameter of [Availability update](../operations/services.md#availability-update) in the new [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md) concept page, covering the occupancy split rules, reservation-to-slot matching and cross-slot balancing. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-10-01" %}
 
 ## Higher rate assignment limit for vouchers
@@ -72,14 +80,6 @@
   - New operation to retrieve payouts for reconciling bank deposits against Mews (beta). Only payouts executed by a supported payment service provider are returned, currently `Stripe` and `Adyen`.
 - [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) (restricted operation):
   - New operation to retrieve the payment transactions that compose a payout (beta).
-
-{% endupdate %}
-{% update date="2026-08-28" %}
-
-## Multi-occupancy availability blocks
-
-- [Update service availability](../operations/services.md#update-service-availability):
-  - Documented the `PaxCounts` parameter of [Availability update](../operations/services.md#availability-update) in the new [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md) concept page, covering the occupancy split rules, reservation-to-slot matching and cross-slot balancing. Documentation-only, no change to API.
 
 {% endupdate %}
 {% update date="2026-08-28" %}
