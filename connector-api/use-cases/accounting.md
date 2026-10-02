@@ -53,19 +53,11 @@ Start by retrieving the payouts for the period, which gives you one record per p
 | How to get payouts over a period                 | [Get all payouts](../operations/payouts.md#get-all-payouts)                           |
 | How to break a payout down into its transactions | [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions)   |
 
-{% hint style="info" %}
-
-### Supported providers
-
-These operations return payouts executed by a supported payment service provider, currently `Stripe` and `Adyen`. Funds settled by other means, such as manual bank transfers, are not included, so for a small number of properties the payouts returned will not account for the whole merchant balance.
-
-{% endhint %}
-
 {% hint style="warning" %}
 
 ### Amounts are signed
 
-A payout amount is signed from the perspective of the property's merchant balance, so a payout sending funds to the bank account is negative and a reversing entry is positive. Take the sign into account rather than assuming a fixed direction.
+A payout amount is signed from the perspective of the property's merchant balance, so a payout sending funds to the bank account is negative and a reversing entry is positive. Transaction amounts are signed the same way: a refunded charge is a negative `Charge` and a reversed commission a positive `MerchantCommission`. Take the sign into account rather than assuming a fixed direction.
 
 {% endhint %}
 
@@ -76,6 +68,34 @@ A payout amount is signed from the perspective of the property's merchant balanc
 A payout transaction's `CreatedUtc` is the date of the underlying charge, not of the payout, so it can fall outside the interval used to filter payouts.
 
 {% endhint %}
+
+### Payment-level and account-level transactions
+
+A payout transaction either belongs to a single payment or is a movement on the property's merchant balance as a whole. `PaymentId` is set accordingly:
+
+| Type                       | Level   | `PaymentId` |
+| :------------------------- | :------ | :---------- |
+| `Charge`                   | Payment | Always set  |
+| `MerchantCommission`       | Payment | Always set  |
+| `CommissionAdjustment`     | Payment | Always set  |
+| `PlatformFee`              | Account | Never set   |
+| `ReserveAdjustment`        | Account | Never set   |
+| `BalanceTopUp`             | Account | Never set   |
+| `RollingBalanceAdjustment` | Account | Never set   |
+
+Payment-level transactions reconcile against guest revenue and the fees charged on it. Account-level transactions are not guest revenue – for example, a Mews invoice settled from the balance, a change to the reserve, or funds added to the balance. Which accounts each type is posted to is a decision for the property and their accountant. New transaction types can be added, so base the split on whether `PaymentId` is set rather than on this list.
+
+### Correlating transactions with payments
+
+Group a payout's transactions by `PaymentId` to get the net amount each payment contributed to the payout. For example:
+
+| `Type`               | `Amount` | `PaymentId`                            |
+| :------------------- | :------- | :------------------------------------- |
+| `Charge`             | 200.00   | `c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e6f` |
+| `MerchantCommission` | -8.80    | `c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e6f` |
+| `PlatformFee`        | -15.00   | –                                      |
+
+The payment contributed 191.20. The `PlatformFee` belongs to the payout as a whole, not to the payment, so per-payment sums do not add up to the payout amount when account-level transactions are present. Include all of a payout's transactions to reconcile its full amount.
 
 ## Working with rebates
 
