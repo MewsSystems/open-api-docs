@@ -8,13 +8,13 @@ An [Availability block] holds a guaranteed set of units for a group, event, or c
 
 A **multi-occupancy** availability block divides that allocation by guest count. Instead of "10 units", the block can hold "3 units for single occupancy and 7 units for double occupancy". Each part of the division is an **occupancy slot**: a pairing of a guest count (`PersonCount`) with a number of blocked units (`UnitCount`).
 
-An occupancy split changes how the block is reported and how bookings are evaluated against it. It does not change the total number of units the block holds.
+An occupancy split changes how the block is reported. It does not change the total number of units the block holds, and it does not limit which reservations the block accepts through the Connector API – see [How slots balance each other](#how-slots-balance-each-other).
 
 {% hint style="info" %}
 
 ### Feature availability
 
-Defining more than one occupancy slot per availability adjustment requires the multi-occupancy availability blocks feature to be enabled for the enterprise. When the feature is disabled, an adjustment accepts at most one occupancy slot.
+Defining more than one occupancy slot per availability adjustment requires the multi-occupancy availability blocks feature to be enabled for the enterprise. When the feature is disabled, an adjustment accepts at most one occupancy slot, and the allocation always reports the [combined entry](#reading-the-occupancy-allocation), even when a split is stored.
 
 Both the `PaxCounts` parameter and the occupancy breakdown in the response are additive. Integrations that do not send `PaxCounts` and ignore the new response fields are unaffected.
 
@@ -48,22 +48,26 @@ The request below reserves 10 units of a resource category for a block over thre
 }
 ```
 
+To read the stored split back, use [Get all availability adjustments]. Each [Availability adjustment] returns its `PaxCounts`, including the default slot.
+
 ### Rules
 
 - **Block updates only.** `PaxCounts` applies to updates that set an `AvailabilityBlockId`. On an update without one, it has no effect.
-- **Maximum of 5 entries.** Each `PersonCount` must be unique within the collection, must be positive, and must not exceed the capacity of the resource category.
+- **Maximum of 5 entries.** Each `PersonCount` must be unique within the collection, must be positive, and must not exceed the total capacity of the resource category (`Capacity` plus `ExtraCapacity`). Each `UnitCount` must be zero or positive.
 - **Totals must reconcile.** The sum of all `UnitCount` values must equal the absolute value of `UnitCountAdjustment.Value`.
-- **No split supplied.** A block adjustment sent without `PaxCounts` is stored as one slot covering the whole adjustment. When no adjustment of the resource category in the block has `PaxCounts`, the read side shows a single combined entry, so the block behaves the same as one with no occupancy split. When other time units of the same resource category do have a split, a time unit without `PaxCounts` is reported as a [time unit without a split](#time-units-without-an-occupancy-split).
+- **No split supplied.** A block adjustment sent without `PaxCounts` is stored with one default occupancy slot. Its `PersonCount` is the `Capacity` of the resource category, and its `UnitCount` covers the whole adjustment. When the feature is enabled, the allocation reports this default slot like any other slot.
 
 {% hint style="warning" %}
 
-### An update replaces the whole split
+#### An update replaces the whole split
 
-[Update service availability] overwrites any existing adjustment for the same resource category, block, and interval. A later call that omits `PaxCounts` therefore collapses a previously defined split back into a single combined allocation.
+[Update service availability] overwrites any existing adjustment for the same resource category, block, and interval. The time units in the update get the new `PaxCounts`, or the default slot when `PaxCounts` is omitted or empty.
 
-If that later call covers only part of the interval, only those time units lose their split. They are then reported as [time units without a split](#time-units-without-an-occupancy-split), while the rest of the interval keeps it.
+When the update covers only part of an existing adjustment, the time units outside the update keep their unit count but lose their occupancy split. This happens also when the update itself sends `PaxCounts`. Mews replaces the existing adjustment with new adjustments that have new IDs. These time units are then reported as [time units without an occupancy split](#time-units-without-an-occupancy-split). An update that removes adjustments (`UnitCountAdjustment` without `Value`) ignores `PaxCounts` and has the same effect on the time units it does not cover.
 
-To keep a split in place, re-send the full `PaxCounts` collection on every update that touches the interval.
+To keep a split in place, re-send the full `PaxCounts` collection for the whole interval of the existing adjustment. Time units before the editable history window of the enterprise cannot be updated: the update interval is cut to that window. On a block that has already started, an update therefore removes the split from the past time units.
+
+Some Mews processes also write block adjustments without `PaxCounts` – for example, when a picked-up reservation moves to a different resource category and the block does not hold enough units in the new resource category. These processes write single time units, so the effect is the same as a partial update without `PaxCounts`: the touched time units get the default slot, and the rest of each affected adjustment loses its split.
 
 {% endhint %}
 
@@ -71,7 +75,7 @@ To keep a split in place, re-send the full `PaxCounts` collection on every updat
 
 Reservations need no new field to participate in a multi-occupancy block. [Add reservations] is unchanged: a reservation already carries its guest count in `PersonCounts` and its block in `AvailabilityBlockId`.
 
-A reservation is not bound to a slot when it is created. Its pickup is attributed to the slot with the **largest `PersonCount` that does not exceed the reservation's total guest count**. A reservation with a guest count below every defined slot is attributed to the lowest slot. The matching is recomputed each time the allocation is read, so every picked-up reservation always lands in a defined slot and there is no unmatched bucket.
+A reservation is not bound to a slot when it is created. Its pickup is attributed to the slot with the **largest `PersonCount` that does not exceed the reservation's total guest count**, counted across all age categories. A reservation with a guest count below every defined slot is attributed to the lowest slot. The matching is recomputed each time the allocation is read, so every picked-up reservation always lands in a defined slot and there is no unmatched bucket.
 
 With slots defined at 2 and 4 persons:
 
@@ -87,13 +91,13 @@ Because matching is derived rather than stored, changing a reservation's guest c
 
 ## How slots balance each other
 
-Occupancy slots guide the distribution of a block; they are not separate capacity limits. The total number of units in the block is what constrains bookings.
+Occupancy slots guide the distribution of a block; they are not separate capacity limits.
 
-When a slot picks up more reservations than its blocked count, the excess is reported on that slot as `Overflow`, and spare capacity on a sibling slot is consumed to cover it. The donating slot reports the consumed units as `OutgoingOffset`, which lowers its own remaining availability without adding reservations to it.
+When a slot picks up more reservations than its blocked count, the excess is reported on that slot as `Overflow`. Spare capacity on the other slots is consumed to cover it. The excess is spread over all slots that have spare units, in proportion to their spare units, and each donating slot reports its share as `OutgoingOffset`. This lowers the remaining availability of the donating slot without adding reservations to it. If the total excess is larger than the total spare capacity, all spare capacity is consumed and the rest of the excess stays uncovered.
 
-The result is that an individual slot can report more pickups or less availability than its own `UnitCount` suggests, while the resource category totals stay exact. The remaining availability of the block is never overstated.
+The result is that an individual slot can report more pickups or less availability than its own `UnitCount` suggests. Use the resource category totals for the capacity of the block.
 
-When the multi-occupancy feature is enabled, overbooking checks are evaluated against the matched occupancy slot, with the cross-slot balancing above, rather than against the block total alone. If several availability adjustments overlap on the same resource category and date, the check falls back to the block total for that date. With the feature disabled, overbooking is always evaluated against the block total.
+[Add reservations] checks a new reservation against the units the block holds for the resource category on each time unit, whether or not the multi-occupancy feature is enabled. The occupancy slots are not enforced: the block accepts a reservation of any guest count the resource category allows, while it holds a free unit.
 
 ## Reading the occupancy allocation
 
@@ -109,16 +113,18 @@ The allocation of a single availability block is returned by `availabilityBlocks
 
 `OccupancyAllocations` is never empty:
 
-- When the block defines occupancy slots, it contains one entry per slot, ordered by guest count ascending.
-- When the block has no occupancy split, it contains a single combined entry with `PersonCount` set to `0` that mirrors the resource category totals.
+- When the multi-occupancy feature is enabled and the block has stored occupancy slots for the resource category, it contains one entry per `PersonCount`, ordered by guest count ascending. Every adjustment that [Update service availability] creates for the update interval has stored slots – at least the default slot.
+- In all other cases, it contains a single combined entry with `PersonCount` set to `0` that mirrors the resource category totals. This happens when the feature is disabled for the enterprise, even if a split is stored, and when none of the adjustments of the block for the resource category has stored occupancy data – for example, adjustments created before occupancy splits were available.
 
 Clients can therefore read `OccupancyAllocations` without first checking whether a split exists.
 
-The resource category arrays remain the authoritative totals. Every picked-up reservation is attributed to a slot, so the per-slot `PickedUp` values reconcile to the resource category `PickedUp` total. Per-slot `EffectiveAvailable` does not reconcile the same way. It subtracts `OutgoingOffset`, so the per-slot values sum to the resource category `Available` minus the total `OutgoingOffset` across the slots, and match it only while no slot overflows. In the overflow example below, the slots sum to -1 on the third time unit while the resource category reports `Available` of 0. Use the resource category `Available` when you need the remaining capacity of the block.
+The split can be different on different time units. The response contains one entry for each `PersonCount` used on any time unit. On a time unit that has a split but does not define a given slot, that slot reports `0` in every array. For a time unit with no split at all, see [Time units without an occupancy split](#time-units-without-an-occupancy-split).
+
+The resource category arrays remain the authoritative totals. Every picked-up reservation is attributed to a slot, so the per-slot `PickedUp` values sum to the resource category `PickedUp`. The per-slot `EffectiveAvailable` values do not always sum to the resource category `Available`. They subtract `OutgoingOffset`, and they are not set to `0` on released time units. In the overflow example below, the slots sum to -1 on the third time unit while the resource category reports `Available` of 0. Use the resource category `Available` for the remaining capacity of the block.
 
 ### Time units without an occupancy split
 
-A resource category can have a split on some time units of the block and none on others – for example, after a partial update without `PaxCounts`. The response still contains one entry per slot. On a time unit without a split, the slot with the lowest `PersonCount` takes the whole resource category: its `UnitCount` is the resource category `OriginalAvailability` and its `PickedUp` contains all pickups for that time unit. Every other slot reports `0` for that time unit.
+A resource category can have a split on some time units of the block and none on others. This happens to the part of an existing adjustment that a partial update did not cover (see [An update replaces the whole split](#an-update-replaces-the-whole-split)), and to adjustments created before occupancy splits were available. The response still contains one entry per slot. On a time unit without a split, the slot with the lowest `PersonCount` takes the whole resource category: its `UnitCount` is the resource category `OriginalAvailability` and its `PickedUp` contains all pickups for that time unit. Every other slot reports `0` for that time unit.
 
 ### Occupancy allocation
 
@@ -126,11 +132,11 @@ All array properties contain one integer per time unit covered by the block, ali
 
 | Property             | Type             | Description                                                                                                                                                                            |
 | :------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `PersonCount`        | integer          | Guest count the slot is defined for. `0` in the combined entry returned when no occupancy split is defined.                                                                            |
+| `PersonCount`        | integer          | Guest count the slot is defined for. `0` in the combined entry.                                                                            |
 | `UnitCount`          | array of integer | Units blocked for the slot. In the combined entry, mirrors the resource category `OriginalAvailability`. On a time unit without a split, the lowest slot shows the resource category `OriginalAvailability` and other slots show `0`. |
 | `PickedUp`           | array of integer | Reservations matched to the slot. In the combined entry, mirrors the resource category `PickedUp`.                                                                                     |
-| `EffectiveAvailable` | array of integer | Remaining capacity of the slot: `UnitCount - PickedUp - OutgoingOffset`. Negative when the slot absorbed more pickups than it blocked. In the combined entry, mirrors `Available`.     |
-| `OutgoingOffset`     | array of integer | Units the slot donates to cover overflow on a sibling slot. Lowers `EffectiveAvailable` without adding reservations. Always `0` in the combined entry.                                 |
+| `EffectiveAvailable` | array of integer | Remaining capacity of the slot: `UnitCount - PickedUp - OutgoingOffset`. Negative when the slot absorbed more pickups than it blocked. `0` for every slot of a canceled block. Not set to `0` on released time units, where the resource category `Available` is `0`. In the combined entry, mirrors `Available`.     |
+| `OutgoingOffset`     | array of integer | Units the slot donates to cover overflow on other slots. Lowers `EffectiveAvailable` without adding reservations. Always `0` in the combined entry.                                 |
 | `Overflow`           | array of integer | Pickups beyond the blocked count of the slot: `max(0, PickedUp - UnitCount)`. `0` while the slot stays within its blocked count, and always `0` in the combined entry.                 |
 
 ### Example: block with an occupancy split
@@ -171,9 +177,9 @@ A three-night block holding 10 units of one resource category per night, split i
 }
 ```
 
-### Example: block without an occupancy split
+### Example: combined entry
 
-The same block with no occupancy split returns a single combined entry that mirrors the resource category totals.
+The same block, read when the multi-occupancy feature is disabled for the enterprise, returns a single combined entry that mirrors the resource category totals. With the feature enabled, a block created without `PaxCounts` instead reports its default slot, with `PersonCount` set to the `Capacity` of the resource category.
 
 ```javascript
 {
@@ -247,3 +253,5 @@ On the third night the 2-person slot picked up 8 reservations against 7 blocked 
 [Availability update]: ../operations/services.md#availability-update
 [Pax count]: ../operations/services.md#pax-count
 [Add reservations]: ../operations/reservations.md#add-reservations
+[Get all availability adjustments]: ../operations/availabilityadjustments.md#get-all-availability-adjustments
+[Availability adjustment]: ../operations/availabilityadjustments.md#availability-adjustment
