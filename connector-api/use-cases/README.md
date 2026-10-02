@@ -9,6 +9,7 @@ Even if you are integrating a different type of system, it serves as a good star
 
 ## Business use cases
 
+* [Booking engine](booking-engine.md)
 * [Accounting](accounting.md)
 * [Allowances](allowances.md)
 * [Customer loyalty](loyalty.md)
