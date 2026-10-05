@@ -1,6 +1,24 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-10-02" %}
+
+## Payout operations aligned with balance transactions
+
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+- [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) (restricted operation):
+  - **Breaking:** Replaced the `Payout provider` and `Payout transaction type` enums with [Payment provider](../operations/payouts.md#payment-provider) and [Balance transaction type](../operations/payouts.md#balance-transaction-type) respectively. Existing values keep their names.
+  - Payouts of every payment service provider are now returned, adding `PayPal`, `Braintree`, `WireTransfer` and `MewsFS` to [Payment provider](../operations/payouts.md#payment-provider).
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+  - **Breaking:** Renamed the `PayoutProviders` filter parameter to `PaymentProviders`. A request that still sends `PayoutProviders` is not filtered by provider.
+- [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) (restricted operation):
+  - `RollingBalanceAdjustment` transactions are now returned, so a payout's transactions account for its full amount.
+  - Changed `CreatedUtc` in the [Payout transaction](../operations/payouts.md#payout-transaction) response object from optional to required.
+  - Corrected the `PlatformFee` description in [Balance transaction type](../operations/payouts.md#balance-transaction-type): it is a fee charged by Mews, not by the payment service provider. Documentation-only, no change to API.
+- [Accounting use case](../use-cases/accounting.md#payout-reconciliation):
+  - Documented which payout transaction types carry a `PaymentId` and how to correlate transactions with payments, and removed the outdated debtor tracking note. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-10-01" %}
 
 ## Higher rate assignment limit for vouchers
