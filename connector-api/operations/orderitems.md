@@ -393,6 +393,7 @@ Additional order item data.
 * `IT_N1` - N1 - Escluse ex art.15
 * `IT_N2_1` - N2.1 - Non soggette ad IVA ai sensi degli artt. da 7 a 7-septies del d.P.R. n. 633/72
 * `IT_N2_2` - N2.2 - Non soggette – altri casi
+* `IT_N3_1` - N3.1 - Non imponibili – esportazioni
 * `IT_N3_4` - N3.4 - Non imponibili – operazioni assimilate alle cessioni all’esportazione
 * `IT_N3_5` - N3.5 - Non imponibili – a seguito di dichiarazioni d’intento
 * `IT_N4` - N4 - Esenti
