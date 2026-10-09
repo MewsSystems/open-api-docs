@@ -101,15 +101,7 @@ The result is that an individual slot can report more pickups or less availabili
 
 ## Reading the occupancy allocation
 
-{% hint style="danger" %}
-
-### Restricted operation
-
-The allocation operation described in this section is under development and available on request only. Its contract can still change before general release. Contact Mews before you build against it.
-
-{% endhint %}
-
-The allocation of a single availability block is returned by `availabilityBlocks/getAllocation`. Each resource category entry in the response carries an `OccupancyAllocations` collection describing the occupancy breakdown.
+[Availability block allocation] returns the allocation of a single availability block. Each resource category entry in the response carries an `OccupancyAllocations` collection describing the occupancy breakdown.
 
 `OccupancyAllocations` is never empty:
 
@@ -248,6 +240,7 @@ The same split block. On the third night the block is fully picked up: 8 double-
 On the third night the 2-person slot picked up 8 reservations against 7 blocked units, so it reports an `Overflow` of 1 and an `EffectiveAvailable` of -1. The 1-person slot blocked 3 units and picked up 2, so it donated its single spare unit: an `OutgoingOffset` of 1 and an `EffectiveAvailable` of 0. The resource category totals report 10 picked up and 0 available – all 10 units accounted for.
 
 [Availability block]: ../operations/availabilityblocks.md#availability-block
+[Availability block allocation]: ../operations/availabilityblocks.md#availability-block-allocation
 [Resource category]: ../operations/resources.md#resource-category
 [Update service availability]: ../operations/services.md#update-service-availability
 [Availability update]: ../operations/services.md#availability-update
