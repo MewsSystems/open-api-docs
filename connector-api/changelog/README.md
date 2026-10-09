@@ -1,6 +1,17 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-10-09" %}
+
+## Multi-occupancy availability blocks
+
+- [Availability block allocation](../operations/availabilityblocks.md#availability-block-allocation) (restricted operation):
+  - New operation to retrieve the allocation of an availability block by resource category and occupancy slot.
+- [Update service availability](../operations/services.md#update-service-availability):
+  - Documented the `PaxCounts` parameter of [Availability update](../operations/services.md#availability-update) in the new [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md) concept page, covering the occupancy split rules, reservation-to-slot matching and cross-slot balancing. Documentation-only, no change to API.
+  - Fixed the descriptions of `PaxCounts` and [Pax count](../operations/services.md#pax-count) per OpenAPI Specification. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-10-02" %}
 
 ## Payout operations aligned with balance transactions

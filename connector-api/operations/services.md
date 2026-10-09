@@ -403,7 +403,7 @@ Updates the number of available resources in [Resource category](resources.md#re
 | `ResourceCategoryId` | string | required | Unique identifier of the [Resource category](resources.md#resource-category) whose availability to update. |
 | `UnitCountAdjustment` | [Number update value](_objects.md#number-update-value) | required | Adjustment value to be applied on the interval, can be both positive and negative (relative adjustment, not an absolute number). If specified without `Value` parameter, removes all adjustments within the interval. |
 | `AvailabilityBlockId` | string | optional | Unique identifier of the [Availability block](availabilityblocks.md#availability-block) whose availability to update. |
-| `PaxCounts` | array of [Pax count](services.md#pax-count) | optional, max 5 items | Occupancy splits for the availability block adjustment. Applicable only when `AvailabilityBlockId` is set. Each entry assigns blocked units (`UnitCount`) to a specific guest count (`PersonCount`); `PersonCount` values must be unique within the collection. Sending a new request replaces all existing splits for the interval (last-writer-wins). Omitting this field on a block adjustment resets splits to a single default slot. Requires the multi-occupancy availability blocks feature to be enabled for the enterprise. |
+| `PaxCounts` | array of [Pax count](services.md#pax-count) | optional, max 5 items | Occupancy split of the availability block adjustment; applicable only when `AvailabilityBlockId` is set. Each entry assigns blocked units (`UnitCount`) to a guest count (`PersonCount`). A request replaces the whole existing split for the interval; omitting this field or sending it empty resets it to a single default slot. More than one entry requires the multi-occupancy availability blocks feature to be enabled for the enterprise. See [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md). |
 | ~~`StartUtc`~~ | ~~string~~ | ~~optional~~ | **Deprecated!** |
 | ~~`EndUtc`~~ | ~~string~~ | ~~optional~~ | **Deprecated!** |
 
@@ -411,8 +411,8 @@ Updates the number of available resources in [Resource category](resources.md#re
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `PersonCount` | integer | required | Guest count assigned to the resource. Must not exceed the resource category capacity. Must be unique within the `PaxCounts` collection. |
-| `UnitCount` | integer | required | Number of blocked units assigned to this `PersonCount`. The sum of all `UnitCount` values in `PaxCounts` must equal the absolute value of `UnitCountAdjustment`. |
+| `PersonCount` | integer | required | Guest count of the occupancy slot. Must not exceed the resource category total capacity (`Capacity` plus `ExtraCapacity`), and must be unique within `PaxCounts`. See [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md). |
+| `UnitCount` | integer | required | Number of blocked units assigned to this `PersonCount`; zero or positive. The sum of all `UnitCount` values in `PaxCounts` equals the absolute value of the adjustment's unit count. |
 
 ### Response
 

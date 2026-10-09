@@ -2865,3 +2865,18 @@ types:
   balancetransactiontypeenum:
     file: payouts.md
     anchor: balance-transaction-type
+  availabilityblockallocationresult:
+    file: availabilityblocks.md
+    anchor: availabilityblockallocationresult
+  summarymetrics:
+    file: availabilityblocks.md
+    anchor: summarymetrics
+  resourcecategoryallocation:
+    file: availabilityblocks.md
+    anchor: resourcecategoryallocation
+  occupancyallocation:
+    file: availabilityblocks.md
+    anchor: occupancyallocation
+  availabilityblockallocationparameters:
+    file: availabilityblocks.md
+    anchor: availabilityblockallocationparameters
