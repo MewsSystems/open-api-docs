@@ -67,7 +67,7 @@ When the update covers only part of an existing adjustment, the time units outsi
 
 To keep a split in place, re-send the full `PaxCounts` collection for the whole interval of the existing adjustment. Time units before the editable history window of the enterprise cannot be updated: the update interval is cut to that window. On a block that has already started, an update therefore removes the split from the past time units.
 
-Some Mews processes also write block adjustments without `PaxCounts` – for example, when a picked-up reservation moves to a different resource category and the block does not hold enough units in the new resource category. These processes write single time units, so the effect is the same as a partial update without `PaxCounts`: the touched time units get the default slot, and the rest of each affected adjustment loses its split.
+Some Mews processes also write block adjustments without `PaxCounts` – for example, when a picked-up reservation moves to a different resource category. These processes write single time units, so the effect is the same as a partial update without `PaxCounts`: the touched time units get the default slot, and the rest of each affected adjustment loses its split.
 
 {% endhint %}
 
