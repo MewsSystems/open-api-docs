@@ -261,7 +261,7 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 > ### Restricted!
 > This operation is currently in beta-test and as such it is subject to change.
 
-Returns allocation details for a specified availability block. The data is grouped by time unit and by the resource categories the block allocates against (categories the block does not touch are not included), with a summary provided for the entire block. Each resource category also exposes `OccupancyAllocations` — one entry per defined occupancy slot, or a single combined entry (`PersonCount` = 0) mirroring the aggregate allocation when there is no per-slot breakdown. It always contains at least one entry. Response size scales with the block's interval length (bounded by the environment's `MaxAvailabilityBlockIntervalLength` quota) multiplied by the number of resource categories and occupancy slots.
+Returns allocation details for a specified availability block. The data is grouped by time unit and by the resource categories the block allocates against (categories the block does not touch are not included), with a summary provided for the entire block. Each resource category also exposes `OccupancyAllocations` – one entry per defined occupancy slot, or a single combined entry (`PersonCount` = 0) mirroring the aggregate allocation when there is no per-slot breakdown. It always contains at least one entry. Response size scales with the block's interval length (bounded by the environment's `MaxAvailabilityBlockIntervalLength` quota) multiplied by the number of resource categories and occupancy slots. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
 ### Request
 
@@ -289,7 +289,7 @@ Returns allocation details for a specified availability block. The data is group
 {
   "SummaryMetrics": {
     "Released": 0,
-    "Available": 7,
+    "Available": 6,
     "PickedUp": 17
   },
   "TimeUnitStartsUtc": [
@@ -302,7 +302,7 @@ Returns allocation details for a specified availability block. The data is group
     {
       "ResourceCategoryId": "e17d4afc-25e6-4a8b-8ae9-b1f400a02df0",
       "EnterpriseAvailable": [5, 5, 4, 4],
-      "Available": [0, 0, 1, 0],
+      "Available": [0, 0, 0, 0],
       "OriginalAvailability": [1, 1, 0, 1],
       "PickedUp": [1, 1, 0, 1],
       "OccupancyAllocations": [
@@ -310,7 +310,7 @@ Returns allocation details for a specified availability block. The data is group
           "PersonCount": 0,
           "UnitCount": [1, 1, 0, 1],
           "PickedUp": [1, 1, 0, 1],
-          "EffectiveAvailable": [0, 0, 1, 0],
+          "EffectiveAvailable": [0, 0, 0, 0],
           "OutgoingOffset": [0, 0, 0, 0],
           "Overflow": [0, 0, 0, 0]
         }
