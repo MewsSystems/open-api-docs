@@ -24,7 +24,7 @@ Both the `PaxCounts` parameter and the occupancy breakdown in the response are a
 
 Occupancy splits are created and changed through [Update service availability]. There is no separate operation for them. Each [Availability update] carries an optional `PaxCounts` collection of [Pax count] entries that distributes the adjustment across occupancy slots.
 
-The request below reserves 10 units of a resource category for a block over three nights, split into 3 single-occupancy and 7 double-occupancy units. As with any block allocation, `UnitCountAdjustment` is negative because the units are taken out of general availability.
+The request below reserves 10 units of a resource category for a block over three nights, split into 3 single-occupancy and 7 double-occupancy units. As with any block allocation, `UnitCountAdjustment` is negative because the units are taken out of general availability. The time unit starts in this example and in the examples below are enterprise midnights for an enterprise two hours ahead of UTC, so each night starts at `22:00` UTC on the previous day.
 
 ```javascript
 {
@@ -34,8 +34,8 @@ The request below reserves 10 units of a resource category for a block over thre
   "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
   "AvailabilityUpdates": [
     {
-      "FirstTimeUnitStartUtc": "2026-06-01T00:00:00Z",
-      "LastTimeUnitStartUtc": "2026-06-03T00:00:00Z",
+      "FirstTimeUnitStartUtc": "2026-05-31T22:00:00Z",
+      "LastTimeUnitStartUtc": "2026-06-02T22:00:00Z",
       "AvailabilityBlockId": "aaaa654a-1f36-4cb1-8f9f-3225a4eb52fb",
       "ResourceCategoryId": "a1b2c3d4-0000-0000-0000-000000000001",
       "UnitCountAdjustment": { "Value": -10 },
@@ -118,18 +118,12 @@ The resource category arrays remain the authoritative totals. Every picked-up re
 
 A resource category can have a split on some time units of the block and none on others. This happens to the part of an existing adjustment that a partial update did not cover (see [An update replaces the whole split](#an-update-replaces-the-whole-split)), and to adjustments created before occupancy splits were available. The response still contains one entry per slot. On a time unit without a split, the slot with the lowest `PersonCount` takes the whole resource category: its `UnitCount` is the resource category `OriginalAvailability` and its `PickedUp` contains all pickups for that time unit. Every other slot reports `0` for that time unit.
 
-### Occupancy allocation
+### Occupancy allocation fields
 
-All array properties contain one integer per time unit covered by the block, aligned to the `TimeUnitStartsUtc` array in the response.
+[Availability block allocation] lists every `OccupancyAllocation` property. Two cases are not stated there:
 
-| Property             | Type             | Description                                                                                                                                                                            |
-| :------------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `PersonCount`        | integer          | Guest count the slot is defined for. `0` in the combined entry.                                                                            |
-| `UnitCount`          | array of integer | Units blocked for the slot. In the combined entry, mirrors the resource category `OriginalAvailability`. On a time unit without a split, the lowest slot shows the resource category `OriginalAvailability` and other slots show `0`. |
-| `PickedUp`           | array of integer | Reservations matched to the slot. In the combined entry, mirrors the resource category `PickedUp`.                                                                                     |
-| `EffectiveAvailable` | array of integer | Remaining capacity of the slot: `UnitCount - PickedUp - OutgoingOffset`. Negative when the slot absorbed more pickups than it blocked. `0` for every slot of a canceled block. Not set to `0` on released time units, where the resource category `Available` is `0`. In the combined entry, mirrors `Available`.     |
-| `OutgoingOffset`     | array of integer | Units the slot donates to cover overflow on other slots. Lowers `EffectiveAvailable` without adding reservations. Always `0` in the combined entry.                                 |
-| `Overflow`           | array of integer | Pickups beyond the blocked count of the slot: `max(0, PickedUp - UnitCount)`. `0` while the slot stays within its blocked count, and always `0` in the combined entry.                 |
+- For a canceled block, `EffectiveAvailable` is `0` for every slot.
+- On released time units, `EffectiveAvailable` is not set to `0`, while the resource category `Available` is `0`.
 
 ### Example: block with an occupancy split
 
@@ -138,7 +132,7 @@ A three-night block holding 10 units of one resource category per night, split i
 ```javascript
 {
   "SummaryMetrics": { "Released": 0, "Available": 24, "PickedUp": 6 },
-  "TimeUnitStartsUtc": ["2026-06-01T00:00:00Z", "2026-06-02T00:00:00Z", "2026-06-03T00:00:00Z"],
+  "TimeUnitStartsUtc": ["2026-05-31T22:00:00Z", "2026-06-01T22:00:00Z", "2026-06-02T22:00:00Z"],
   "ResourceCategoryAllocations": [
     {
       "ResourceCategoryId": "a1b2c3d4-0000-0000-0000-000000000001",
@@ -176,7 +170,7 @@ The same block, read when the multi-occupancy feature is disabled for the enterp
 ```javascript
 {
   "SummaryMetrics": { "Released": 0, "Available": 24, "PickedUp": 6 },
-  "TimeUnitStartsUtc": ["2026-06-01T00:00:00Z", "2026-06-02T00:00:00Z", "2026-06-03T00:00:00Z"],
+  "TimeUnitStartsUtc": ["2026-05-31T22:00:00Z", "2026-06-01T22:00:00Z", "2026-06-02T22:00:00Z"],
   "ResourceCategoryAllocations": [
     {
       "ResourceCategoryId": "a1b2c3d4-0000-0000-0000-000000000001",
@@ -206,7 +200,7 @@ The same split block. On the third night the block is fully picked up: 8 double-
 ```javascript
 {
   "SummaryMetrics": { "Released": 0, "Available": 16, "PickedUp": 14 },
-  "TimeUnitStartsUtc": ["2026-06-01T00:00:00Z", "2026-06-02T00:00:00Z", "2026-06-03T00:00:00Z"],
+  "TimeUnitStartsUtc": ["2026-05-31T22:00:00Z", "2026-06-01T22:00:00Z", "2026-06-02T22:00:00Z"],
   "ResourceCategoryAllocations": [
     {
       "ResourceCategoryId": "a1b2c3d4-0000-0000-0000-000000000001",
