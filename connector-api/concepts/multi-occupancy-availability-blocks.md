@@ -118,13 +118,6 @@ The resource category arrays remain the authoritative totals. Every picked-up re
 
 A resource category can have a split on some time units of the block and none on others. This happens to the part of an existing adjustment that a partial update did not cover (see [An update replaces the whole split](#an-update-replaces-the-whole-split)), and to adjustments created before occupancy splits were available. The response still contains one entry per slot. On a time unit without a split, the slot with the lowest `PersonCount` takes the whole resource category: its `UnitCount` is the resource category `OriginalAvailability` and its `PickedUp` contains all pickups for that time unit. Every other slot reports `0` for that time unit.
 
-### Occupancy allocation fields
-
-[Availability block allocation] lists every `OccupancyAllocation` property. Two cases are not stated there:
-
-- For a canceled block, `EffectiveAvailable` is `0` for every slot.
-- On released time units, `EffectiveAvailable` is not set to `0`, while the resource category `Available` is `0`.
-
 ### Example: block with an occupancy split
 
 A three-night block holding 10 units of one resource category per night, split into 3 single-occupancy and 7 double-occupancy units. One single and one double reservation are picked up each night.

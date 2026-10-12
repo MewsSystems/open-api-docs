@@ -2867,16 +2867,16 @@ types:
     anchor: balance-transaction-type
   availabilityblockallocationresult:
     file: availabilityblocks.md
-    anchor: availabilityblockallocationresult
+    anchor: availability-block-allocation-result
   summarymetrics:
     file: availabilityblocks.md
-    anchor: summarymetrics
+    anchor: availability-block-summary-metrics
   resourcecategoryallocation:
     file: availabilityblocks.md
-    anchor: resourcecategoryallocation
+    anchor: resource-category-allocation
   occupancyallocation:
     file: availabilityblocks.md
-    anchor: occupancyallocation
+    anchor: occupancy-allocation
   availabilityblockallocationparameters:
     file: availabilityblocks.md
-    anchor: availabilityblockallocationparameters
+    anchor: availability-block-allocation-parameters
