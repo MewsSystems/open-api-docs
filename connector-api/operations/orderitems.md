@@ -389,20 +389,39 @@ Additional order item data.
 
 #### Tax exemption reason type
 
+{% hint style="info" icon="circle-ellipsis" %}
+**Note** the list of values is not exhaustive. The API may return additional values that are not listed here.
+{% endhint %}
+
 * `Unknown` - Unknown tax exemption reason
 * `IT_N1` - N1 - Escluse ex art.15
 * `IT_N2_1` - N2.1 - Non soggette ad IVA ai sensi degli artt. da 7 a 7-septies del d.P.R. n. 633/72
 * `IT_N2_2` - N2.2 - Non soggette – altri casi
+* `IT_N3_1` - N3.1 - Non imponibili – esportazioni
+* `IT_N3_2` - N3.2 - Non imponibili – cessioni intracomunitarie
+* `IT_N3_3` - N3.3 - Non imponibili – cessioni verso San Marino
 * `IT_N3_4` - N3.4 - Non imponibili – operazioni assimilate alle cessioni all’esportazione
 * `IT_N3_5` - N3.5 - Non imponibili – a seguito di dichiarazioni d’intento
+* `IT_N3_6` - N3.6 - Non imponibili – altre operazioni che non concorrono alla formazione del plafond
 * `IT_N4` - N4 - Esenti
 * `IT_N5` - N5 - Regime del margine / IVA non esposta in fattura
+* `IT_N6_1` - N6.1 - Inversione contabile – cessione di rottami e altri materiali di recupero
+* `IT_N6_2` - N6.2 - Inversione contabile – cessione di oro e argento ai sensi della legge 7/2000 nonché di oreficeria usata ad OPO
+* `IT_N6_3` - N6.3 - Inversione contabile – subappalto nel settore edile
+* `IT_N6_4` - N6.4 - Inversione contabile – cessione di fabbricati
+* `IT_N6_5` - N6.5 - Inversione contabile – cessione di telefoni cellulari
+* `IT_N6_6` - N6.6 - Inversione contabile – cessione di prodotti elettronici
+* `IT_N6_7` - N6.7 - Inversione contabile – prestazioni comparto edile e settori connessi
+* `IT_N6_8` - N6.8 - Inversione contabile – operazioni settore energetico
+* `IT_N6_9` - N6.9 - Inversione contabile – altri casi
+* `IT_N7` - N7 - IVA assolta in altro stato UE ex art. 7-octies lett. a, b, art. 74-sexies DPR 633/72
 * `PL_ZW` - ZW - Zwolniony
 * `PL_NP` - NP - Nie podlega
 * `DE_NATO` - NATO-ZAbk - Umsatzsteuerbefreiung gemäß Artikel 67(3) NATO-Zusatzabkommen
 * `FR_261_7` - Exonération de TVA, article 261, 7 du CGI
 * `FR_262_00_BIS` - Exonération de TVA, article 262-00 bis du CGI
 * `FR_293_B` - TVA non applicable, article 293 B du CGI
+* …
 
 ## Cancel order items
 
