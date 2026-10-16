@@ -411,8 +411,8 @@ Updates the number of available resources in [Resource category](resources.md#re
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `PersonCount` | integer | required | Guest count of the occupancy slot. Must not exceed the resource category total capacity (`Capacity` plus `ExtraCapacity`), and must be unique within `PaxCounts`. See [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md). |
-| `UnitCount` | integer | required | Number of blocked units assigned to this `PersonCount`; zero or positive. The sum of all `UnitCount` values in `PaxCounts` equals the absolute value of the adjustment's unit count. |
+| `PersonCount` | integer | required | Guest count of the occupancy slot. Must be positive. Must not exceed the resource category total capacity (`Capacity` plus `ExtraCapacity`), and must be unique within `PaxCounts`. See [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md). |
+| `UnitCount` | integer | required | Number of blocked units assigned to this `PersonCount`; zero or positive. The sum of all `UnitCount` values in `PaxCounts` must equal the absolute value of `UnitCountAdjustment.Value`. |
 
 ### Response
 
