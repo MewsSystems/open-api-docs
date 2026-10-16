@@ -181,7 +181,12 @@ Returns all availability blocks filtered by services, unique identifiers and oth
       "ReleaseOverrideUtc": "2021-10-13T00:00:00Z",
       "UpdatedUtc": "2021-10-21T13:32:32Z",
       "IsActive": false,
-      "PaxCounts": null,
+      "PaxCounts": [
+        {
+          "PersonCount": 2,
+          "UnitCount": 6
+        }
+      ],
       "FirstTimeUnitReleaseUtc": "2021-10-13T00:00:00Z"
     }
   ],
@@ -250,6 +255,131 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 * `FixedRelease` - The availability block is released at a fixed time.
 * `RollingRelease` - Each availability adjustment is released at a fixed offset from its start.
 * `None` - The availability block is not automatically released.
+
+## Availability block allocation
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Returns allocation details for a specified availability block. The data is grouped by time unit and by the resource categories the block allocates against (categories the block does not touch are not included), with a summary provided for the entire block. Each resource category also exposes `OccupancyAllocations` – one entry per defined occupancy slot, or a single combined entry (`PersonCount` = 0) mirroring the aggregate allocation when there is no per-slot breakdown. It always contains at least one entry. Response size scales with the block's interval length (bounded by the environment's `MaxAvailabilityBlockIntervalLength` quota) multiplied by the number of resource categories and occupancy slots. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/availabilityBlocks/getAllocation`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "AvailabilityBlockId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `AvailabilityBlockId` | string | required | Unique identifier of the requested availability block. |
+
+### Response
+
+```javascript
+{
+  "SummaryMetrics": {
+    "Released": 0,
+    "Available": 6,
+    "PickedUp": 17
+  },
+  "TimeUnitStartsUtc": [
+    "2024-01-31T23:00:00Z",
+    "2024-02-01T23:00:00Z",
+    "2024-02-02T23:00:00Z",
+    "2024-02-03T23:00:00Z"
+  ],
+  "ResourceCategoryAllocations": [
+    {
+      "ResourceCategoryId": "e17d4afc-25e6-4a8b-8ae9-b1f400a02df0",
+      "EnterpriseAvailable": [5, 5, 4, 4],
+      "Available": [0, 0, 0, 0],
+      "OriginalAvailability": [1, 1, 0, 1],
+      "PickedUp": [1, 1, 0, 1],
+      "OccupancyAllocations": [
+        {
+          "PersonCount": 0,
+          "UnitCount": [1, 1, 0, 1],
+          "PickedUp": [1, 1, 0, 1],
+          "EffectiveAvailable": [0, 0, 0, 0],
+          "OutgoingOffset": [0, 0, 0, 0],
+          "Overflow": [0, 0, 0, 0]
+        }
+      ]
+    },
+    {
+      "ResourceCategoryId": "1268c440-21c5-415d-bf58-ac87008b2bda",
+      "EnterpriseAvailable": [10, 7, 9, 10],
+      "Available": [2, 0, 2, 2],
+      "OriginalAvailability": [5, 5, 5, 5],
+      "PickedUp": [3, 5, 3, 3],
+      "OccupancyAllocations": [
+        {
+          "PersonCount": 1,
+          "UnitCount": [2, 2, 2, 2],
+          "PickedUp": [1, 2, 1, 1],
+          "EffectiveAvailable": [1, 0, 1, 1],
+          "OutgoingOffset": [0, 0, 0, 0],
+          "Overflow": [0, 0, 0, 0]
+        },
+        {
+          "PersonCount": 2,
+          "UnitCount": [3, 3, 3, 3],
+          "PickedUp": [2, 3, 2, 2],
+          "EffectiveAvailable": [1, 0, 1, 1],
+          "OutgoingOffset": [0, 0, 0, 0],
+          "Overflow": [0, 0, 0, 0]
+        }
+      ]
+    }
+  ]
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `SummaryMetrics` | [SummaryMetrics](availabilityblocks.md#summarymetrics) | required | Summary metrics for the whole availability block. |
+| `TimeUnitStartsUtc` | array of string | required | Set of all time units covered by the time interval; expressed in UTC timezone ISO 8601 format. |
+| `ResourceCategoryAllocations` | array of [ResourceCategoryAllocation](availabilityblocks.md#resourcecategoryallocation) | required | Summary allocation data by resource category. |
+
+#### SummaryMetrics
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Released` | integer | required | The number of Resources released from the availability block. |
+| `Available` | integer | required | The number of Resources that are still available to be picked-up under this Availability Block. |
+| `PickedUp` | integer | required | The number of Resources that have been picked-up under this Availability Block, and therefore are now associated with a reservation. |
+
+#### ResourceCategoryAllocation
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ResourceCategoryId` | string | required | Unique identifier of the Resource category. |
+| `EnterpriseAvailable` | array of integer | required | The number of available Resources remaining on the Enterprise level under this Resource category. Provides information on how many additional Resources can still be allocated to the Availability block based on the matching date. The array values correspond to time units in `TimeUnitStartsUtc`. |
+| `Available` | array of integer | required | The number of Resources that are still available to be picked-up under this Availability block. The array values correspond to time units in `TimeUnitStartsUtc`. See `OccupancyAllocations[].EffectiveAvailable` for the overflow-aware per-slot remaining capacity. |
+| `OriginalAvailability` | array of integer | required | The number of Resources originally allocated to this Availability block. Can be understood as the sum of all the Resources (available, picked-up and released) under this Availability block. This number remains static regardless of the amount of Resources picked-up or released throughout the Availability block's life cycle. The array values correspond to time units in `TimeUnitStartsUtc`. |
+| `PickedUp` | array of integer | required | The number of Resources that have been picked-up under this Availability block, and therefore are now associated with a reservation. The array values correspond to time units in `TimeUnitStartsUtc`. |
+| `OccupancyAllocations` | array of [OccupancyAllocation](availabilityblocks.md#occupancyallocation) | required | Allocation per occupancy slot, ordered by `PersonCount` ascending. Contains one entry per distinct `PersonCount` defined in the interval or, when there is no per-slot breakdown, a single combined entry with `PersonCount` `0` whose `UnitCount`, `PickedUp` and `EffectiveAvailable` mirror the parent `OriginalAvailability`, `PickedUp` and `Available`, and whose `OutgoingOffset` and `Overflow` are `0`. For how reservations are matched to slots and how slots balance each other, see [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md). |
+
+#### OccupancyAllocation
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `PersonCount` | integer | required | Guest count of the occupancy slot; `0` for the combined entry. |
+| `UnitCount` | array of integer | required | Number of units blocked for this slot, per time unit in `TimeUnitStartsUtc`. For a [time unit without an occupancy split](../concepts/multi-occupancy-availability-blocks.md#time-units-without-an-occupancy-split), the slot with the lowest `PersonCount` shows the parent `OriginalAvailability` and every other slot shows `0`. |
+| `PickedUp` | array of integer | required | Number of reservations picked up against this slot, per time unit in `TimeUnitStartsUtc`. |
+| `EffectiveAvailable` | array of integer | required | Remaining capacity of this slot, per time unit in `TimeUnitStartsUtc`: `UnitCount − PickedUp − OutgoingOffset`. Can be negative when the slot has more pickups than its blocked count. For the combined entry, mirrors the parent `Available`. |
+| `OutgoingOffset` | array of integer | required | Number of units deducted from this slot to cover overflow on other slots, per time unit in `TimeUnitStartsUtc`. |
+| `Overflow` | array of integer | required | Number of reservations picked up beyond this slot's blocked count, per time unit in `TimeUnitStartsUtc`: `max(0, PickedUp − UnitCount)`. |
 
 ## Add availability blocks
 
@@ -428,7 +558,12 @@ Adds availability blocks which are used to group related `Availability updates`.
       "ReleaseOverrideUtc": "2021-10-13T00:00:00Z",
       "UpdatedUtc": "2021-10-21T13:32:32Z",
       "IsActive": false,
-      "PaxCounts": null,
+      "PaxCounts": [
+        {
+          "PersonCount": 2,
+          "UnitCount": 6
+        }
+      ],
       "FirstTimeUnitReleaseUtc": "2021-10-13T00:00:00Z"
     }
   ],
@@ -650,7 +785,12 @@ Updates information about the specified `Availability block`. Note this operatio
       "ReleaseOverrideUtc": "2021-10-13T00:00:00Z",
       "UpdatedUtc": "2021-10-21T13:32:32Z",
       "IsActive": false,
-      "PaxCounts": null,
+      "PaxCounts": [
+        {
+          "PersonCount": 2,
+          "UnitCount": 6
+        }
+      ],
       "FirstTimeUnitReleaseUtc": "2021-10-13T00:00:00Z"
     }
   ],
