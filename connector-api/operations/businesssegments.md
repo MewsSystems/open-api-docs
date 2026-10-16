@@ -61,6 +61,7 @@ Returns all business segments. This operation supports [Portfolio Access Tokens]
       "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
       "IsActive": true,
       "Name": "Business",
+      "ExternalIdentifier": "CR123",
       "CreatedUtc": "2023-10-01T00:00:00Z",
       "UpdatedUtc": "2023-10-01T00:00:00Z"
     },
@@ -69,6 +70,7 @@ Returns all business segments. This operation supports [Portfolio Access Tokens]
       "ServiceId": "8c1bd738-a505-4b29-aa71-9ecc2982b843",
       "IsActive": true,
       "Name": "Leisure",
+      "ExternalIdentifier": null,
       "CreatedUtc": "2023-10-01T00:00:00Z",
       "UpdatedUtc": "2023-10-01T00:00:00Z"
     }
@@ -90,5 +92,6 @@ Returns all business segments. This operation supports [Portfolio Access Tokens]
 | `ServiceId` | string | required | Unique identifier of the `Service`. |
 | `IsActive` | boolean | required | Whether the business segment is still active. |
 | `Name` | string | required | Name of the business segment. |
+| `ExternalIdentifier` | string | optional, max length 255 characters | Identifier of the business segment in an external system. |
 | `CreatedUtc` | string | required | Creation date and time of the business segment in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the business segment in UTC timezone in ISO 8601 format. |
