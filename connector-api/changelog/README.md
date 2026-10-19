@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-10-16" %}
+{% update date="2026-10-19" %}
 
 ## Multi-occupancy availability blocks
 
