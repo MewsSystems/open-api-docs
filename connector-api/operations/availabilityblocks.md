@@ -347,11 +347,11 @@ Returns allocation details for a specified availability block. The data is group
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `SummaryMetrics` | [SummaryMetrics](availabilityblocks.md#summarymetrics) | required | Summary metrics for the whole availability block. |
+| `SummaryMetrics` | [Availability block summary metrics](availabilityblocks.md#availability-block-summary-metrics) | required | Summary metrics for the whole availability block. |
 | `TimeUnitStartsUtc` | array of string | required | Set of all time units covered by the time interval; expressed in UTC timezone ISO 8601 format. |
-| `ResourceCategoryAllocations` | array of [ResourceCategoryAllocation](availabilityblocks.md#resourcecategoryallocation) | required | Summary allocation data by resource category. |
+| `ResourceCategoryAllocations` | array of [Resource category allocation](availabilityblocks.md#resource-category-allocation) | required | Summary allocation data by resource category. |
 
-#### SummaryMetrics
+#### Availability block summary metrics
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
@@ -359,7 +359,7 @@ Returns allocation details for a specified availability block. The data is group
 | `Available` | integer | required | The number of Resources that are still available to be picked-up under this Availability Block. |
 | `PickedUp` | integer | required | The number of Resources that have been picked-up under this Availability Block, and therefore are now associated with a reservation. |
 
-#### ResourceCategoryAllocation
+#### Resource category allocation
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
@@ -368,18 +368,18 @@ Returns allocation details for a specified availability block. The data is group
 | `Available` | array of integer | required | The number of Resources that are still available to be picked-up under this Availability block. The array values correspond to time units in `TimeUnitStartsUtc`. See `OccupancyAllocations[].EffectiveAvailable` for the overflow-aware per-slot remaining capacity. |
 | `OriginalAvailability` | array of integer | required | The number of Resources originally allocated to this Availability block. Can be understood as the sum of all the Resources (available, picked-up and released) under this Availability block. This number remains static regardless of the amount of Resources picked-up or released throughout the Availability block's life cycle. The array values correspond to time units in `TimeUnitStartsUtc`. |
 | `PickedUp` | array of integer | required | The number of Resources that have been picked-up under this Availability block, and therefore are now associated with a reservation. The array values correspond to time units in `TimeUnitStartsUtc`. |
-| `OccupancyAllocations` | array of [OccupancyAllocation](availabilityblocks.md#occupancyallocation) | required | Allocation per occupancy slot, ordered by `PersonCount` ascending. Contains one entry per distinct `PersonCount` defined in the interval or, when there is no per-slot breakdown, a single combined entry with `PersonCount` `0` whose `UnitCount`, `PickedUp` and `EffectiveAvailable` mirror the parent `OriginalAvailability`, `PickedUp` and `Available`, and whose `OutgoingOffset` and `Overflow` are `0`. For how reservations are matched to slots and how slots balance each other, see [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md). |
+| `OccupancyAllocations` | array of [Occupancy allocation](availabilityblocks.md#occupancy-allocation) | required | Allocation per occupancy slot, ordered by `PersonCount` ascending. Contains one entry per distinct `PersonCount` defined in the interval or, when there is no per-slot breakdown, a single combined entry with `PersonCount` `0` whose `UnitCount`, `PickedUp` and `EffectiveAvailable` mirror the parent `OriginalAvailability`, `PickedUp` and `Available`, and whose `OutgoingOffset` and `Overflow` are `0`. For how reservations are matched to slots and how slots balance each other, see [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md). |
 
-#### OccupancyAllocation
+#### Occupancy allocation
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `PersonCount` | integer | required | Guest count of the occupancy slot; `0` for the combined entry. |
 | `UnitCount` | array of integer | required | Number of units blocked for this slot, per time unit in `TimeUnitStartsUtc`. For a [time unit without an occupancy split](../concepts/multi-occupancy-availability-blocks.md#time-units-without-an-occupancy-split), the slot with the lowest `PersonCount` shows the parent `OriginalAvailability` and every other slot shows `0`. |
 | `PickedUp` | array of integer | required | Number of reservations picked up against this slot, per time unit in `TimeUnitStartsUtc`. |
-| `EffectiveAvailable` | array of integer | required | Remaining capacity of this slot, per time unit in `TimeUnitStartsUtc`: `UnitCount − PickedUp − OutgoingOffset`. Can be negative when the slot has more pickups than its blocked count. For the combined entry, mirrors the parent `Available`. |
+| `EffectiveAvailable` | array of integer | required | Remaining capacity of this slot, per time unit in `TimeUnitStartsUtc`: `UnitCount - PickedUp - OutgoingOffset`. Can be negative when the slot has more pickups than its blocked count. `0` for every slot of a canceled block. Not set to `0` on released time units, where the parent `Available` is `0`. For the combined entry, mirrors the parent `Available`. |
 | `OutgoingOffset` | array of integer | required | Number of units deducted from this slot to cover overflow on other slots, per time unit in `TimeUnitStartsUtc`. |
-| `Overflow` | array of integer | required | Number of reservations picked up beyond this slot's blocked count, per time unit in `TimeUnitStartsUtc`: `max(0, PickedUp − UnitCount)`. |
+| `Overflow` | array of integer | required | Number of reservations picked up beyond this slot's blocked count, per time unit in `TimeUnitStartsUtc`: `max(0, PickedUp - UnitCount)`. |
 
 ## Add availability blocks
 
