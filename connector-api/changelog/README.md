@@ -1,6 +1,16 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-10-21" %}
+
+## Customer photos
+
+- [Get all customer photos](../operations/customerphotos.md#get-all-customer-photos):
+  - New operation to retrieve the metadata of customers' photos.
+- [Set customer photo](../operations/customerphotos.md#set-customer-photo):
+  - New operation to set the photo of a customer, as captured during online and kiosk check-in.
+
+{% endupdate %}
 {% update date="2026-10-19" %}
 
 ## Multi-occupancy availability blocks

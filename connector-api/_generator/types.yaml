@@ -2880,3 +2880,18 @@ types:
   availabilityblockallocationparameters:
     file: availabilityblocks.md
     anchor: availability-block-allocation-parameters
+  customerphotoresult:
+    file: customerphotos.md
+    anchor: customerphotoresult
+  customerphoto:
+    file: customerphotos.md
+    anchor: customer-photo
+  customerphotofilterparameters:
+    file: customerphotos.md
+    anchor: customerphotofilterparameters
+  customerphotosetresult:
+    file: customerphotos.md
+    anchor: customerphotosetresult
+  customerphotosetparameters:
+    file: customerphotos.md
+    anchor: customerphotosetparameters
