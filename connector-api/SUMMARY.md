@@ -60,6 +60,7 @@
   * [Countries](operations/countries.md)
   * [Credit cards](operations/creditcards.md)
   * [Currencies](operations/currencies.md)
+  * [Customer photos](operations/customerphotos.md)
   * [Customers](operations/customers.md)
   * [Custom title groups](operations/customtitlegroups.md)
   * [Custom titles](operations/customtitles.md)
