@@ -1,6 +1,16 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-10-30" %}
+
+## Unused permission policy
+
+- Mews now removes a permission from an integration when the integration has not used it for 12 months. This applies to all permissions. The API contract does not change.
+- A request that needs a removed permission returns [403 Forbidden](../guidelines/responses.md#403-forbidden). The message names the permission.
+- To restore a permission, contact [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
+- See [Unused permission policy](../guidelines/unused-permissions.md) for details.
+
+{% endupdate %}
 {% update date="2026-10-21" %}
 
 ## Customer photos

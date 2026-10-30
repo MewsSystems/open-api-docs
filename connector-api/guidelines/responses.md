@@ -39,6 +39,8 @@ An error returned by the server that should be surfaced to the end user of the c
 
 Report the response message to the enterprise to cross-check their settings in Mews with the action they tried to complete. They should make a decision on which version should change.
 
+Mews also returns `403 Forbidden` when the request needs a permission that Mews removed because the integration did not use it for 12 months. The message names the removed permission. See [Unused permission policy](unused-permissions.md) to restore it.
+
 ### 404 Not found
 
 The server cannot find the resource requested by the client app. Verify the URL and request method.

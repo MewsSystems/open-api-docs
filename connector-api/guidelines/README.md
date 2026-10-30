@@ -22,3 +22,5 @@ This section provides important guidelines on how to use the **Mews Connector AP
   An explanation of the pagination feature and how to use it to fetch data.
 * [Best practices](best-practices.md)\
   Advice on best practices for using the API.
+* [Unused permission policy](unused-permissions.md)\
+  When Mews removes a permission that an integration does not use, and how to restore it.
