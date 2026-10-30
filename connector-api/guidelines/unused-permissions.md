@@ -1,55 +1,49 @@
 # Unused permission policy
 
-An integration keeps only the permissions that it uses. This protects the personal and business data of Mews customers and their guests. Mews removes a permission from an integration when the integration has not used it for 12 months.
+Mews removes a **Mews Connector API** permission if an integration has not used it for 12 months. This reduces the data an integration can access if its credentials are compromised and supports data minimization.
 
 ## Scope
 
-This policy applies to all **Mews Connector API** permissions, for all integrations.
+This policy applies to all **Mews Connector API** permissions and all integrations.
 
 ## What counts as use
 
-An integration uses a permission when it makes a successful request that needs that permission. This includes:
+A permission counts as used when an integration makes a successful request that requires it. This includes requests to operations controlled by the permission and requests that load data through an extent controlled by it. For example:
 
-- A request to an API operation that the permission controls. For example, a request to [Get all customers](../operations/customers.md#get-all-customers) uses the `Customer` permission.
-- A request that loads data through an extent that the permission controls. For example, a request to [Get all accounting items](../operations/accountingitems.md#get-all-accounting-items) with the `CreditCardTransactions` extent uses the `CreditCard` permission.
+- A successful request to [Get all customers](../operations/customers.md#get-all-customers) uses the `Customer` permission.
+- A successful request to [Get all accounting items](../operations/accountingitems.md#get-all-accounting-items) with the `CreditCardTransactions` extent uses the `CreditCard` permission.
 
-Deprecated operations and deprecated extents also count. While a deprecated operation or extent still works, a successful request to it is use of the permission that controls it.
+Requests to deprecated operations or extents also count while they still work. Failed requests — for example, those that return a validation error — do not count.
 
-Mews counts use across all enterprises that the integration is connected to. If the integration uses a permission for one enterprise, it keeps that permission for all enterprises.
-
-Requests that fail, for example because of a validation error, do not count as use.
+Mews counts use across all enterprises connected to the integration. If the integration uses a permission for one enterprise, it keeps that permission for all enterprises.
 
 ## When Mews removes a permission
 
-Mews reviews permission use at regular intervals. Mews removes a permission when both of these conditions are true:
+Mews reviews permission use at regular intervals. A permission may be removed when both of these conditions are met:
 
 - The integration has not used the permission in the last 12 months.
 - The integration was created at least 12 months ago.
 
-The second condition protects new integrations. They always get 12 months to start to use their permissions.
+The age requirement gives each new integration at least 12 months to begin using its permissions.
 
-When Mews removes a permission:
+## What happens when a permission is removed
 
-- The integration keeps all its other permissions.
-- The access tokens of the integration stay valid.
-- Mews does not send a separate notice. This page is the notice.
+The integration keeps its other permissions, and its access tokens remain valid. Mews does not send a separate notice; this policy page is the notice.
 
-If an integration does not use any of its permissions for 12 months, Mews removes all of them. The integration can then not read or change data until Mews restores a permission.
+If the integration has not used any of its permissions for 12 months, Mews removes all of them. Until a permission is restored, the integration cannot read or change data.
 
-## How to know that a permission was removed
-
-When the integration makes a request that needs a removed permission, the API returns `403 Forbidden`. The error message names the removed permission and refers to this policy. See [403 Forbidden](responses.md#403-forbidden).
+A request that requires a removed permission returns `403 Forbidden`. The response message names the permission and refers to this policy. See [403 Forbidden](responses.md#403-forbidden).
 
 ## How to restore a permission
 
-Contact the Partner Success team at [partnersuccess@mews.com](mailto:partnersuccess@mews.com) and give:
+Contact the Partner Success team at [partnersuccess@mews.com](mailto:partnersuccess@mews.com) and provide:
 
-- The name of the integration.
-- The permission that you need.
+- The integration's name.
+- The permission you need.
 - What the integration uses the permission for.
 
-Partner Success reviews the request and restores the permission. This policy applies again to a restored permission. The 12-month period starts again on the date that Mews restores it.
+Partner Success reviews the request and restores the permission. This policy applies to restored permissions too: the 12-month period starts again on the date the permission is restored.
 
-## Why Mews does this
+## Why Mews removes unused permissions
 
-Each permission gives access to data. If the credentials of an integration are leaked, an attacker gets access to all data that the permissions of the integration allow. When an integration keeps only the permissions that it uses, less data is at risk. This also supports the data minimization principle of data protection law.
+Each permission grants access to data. If an integration's credentials are leaked, an attacker could access the data allowed by its permissions. Removing permissions the integration does not use reduces that exposure and supports the data minimization principle of data protection law.
