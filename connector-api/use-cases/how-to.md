@@ -44,6 +44,9 @@ This page summarises all of our 'how to' use cases, together with the main use c
 | How to post end-of-day accounting items                         | [Add outlet bill](../operations/outletbills.md#add-outlet-bills)                                                                       | [Point of sale](point-of-sale.md)                                                   |
 | How to get payouts over a period                                | [Get all payouts](../operations/payouts.md#get-all-payouts)                                                                            | [Accounting](accounting.md)                                                         |
 | How to break a payout down into its transactions                | [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions)                                                    | [Accounting](accounting.md)                                                         |
+| How to get all balance transactions over a period               | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `CreatedUtc` or `SettledUtc`)   | [Accounting](accounting.md)                                                         |
+| How to get the transactions not yet paid out                    | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `States` with `Unsettled`)      | [Accounting](accounting.md)                                                         |
+| How to follow a payment through to its payout                   | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `PaymentIds`)                   | [Accounting](accounting.md)                                                         |
 
 ## Allowances
 

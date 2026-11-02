@@ -1,6 +1,16 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-11-02" %}
+
+## Balance transactions
+
+- [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (restricted operation):
+  - New operation to retrieve the transactions that make up an enterprise's Mews Payments balance – charges, commissions, fees, payouts and adjustments – whether or not they have been paid out yet (beta).
+- [Accounting use case](../use-cases/accounting.md#balance-transactions):
+  - Added guidance on balance transactions: the booked and settled date filters, payouts merged into another payout, and how they relate to the payout operations. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-10-21" %}
 
 ## Customer photos
