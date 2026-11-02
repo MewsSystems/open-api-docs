@@ -1,64 +1,45 @@
 # Booking engine
 
-A booking engine, or Internet Booking Engine (IBE), is the online funnel a property uses to take direct reservations: the guest picks dates and a room, sees live availability and pricing, adds extras and pays.
+A booking engine, or Internet Booking Engine (IBE), is the online funnel a property uses to take direct reservations: the guest picks dates and a room, sees live availability and prices, adds extras and pays.
 Building your own booking engine on the **Mews Connector API** gives you full control over availability, pricing, upsells and payment.
 The sections below follow the guest journey in order.
 
-## Choosing the right option
+## Choosing an API
 
-|                     | Mews Booking Engine       | Mews Booking Engine API        | Mews Connector API (this guide) |
-| :------------------ | :------------------------ | :----------------------------- | :------------------------------ |
-| **Front-end**       | Built and hosted by Mews  | You build it                   | You build it                    |
-| **Calls made from** | Mews-hosted               | Guest's browser                | Your server                     |
-| **Customization**   | Limited                   | Moderate                       | Unlimited                       |
-| **Dev effort**      | Minimal                   | Moderate                       | High                            |
-| **Best for**        | Ready-made direct channel | Custom UI on Mews' booking API | Fully bespoke funnel            |
+Mews offers three ways to take direct bookings.
 
-{% hint style="info" %}
+|                        | Mews Booking Engine         | Mews Booking Engine API           | Mews Connector API (this guide) |
+| :--------------------- | :-------------------------- | :-------------------------------- | :------------------------------ |
+| **Front-end**          | Built and hosted by Mews    | You build it                      | You build it                    |
+| **Calls made from**    | Mews-hosted pages           | The guest's browser               | Your server                     |
+| **Customization**      | Limited                     | Moderate                          | Full                            |
+| **Development effort** | Minimal                     | Moderate                          | High                            |
+| **Best for**           | A ready-made direct channel | A custom UI on Mews booking logic | A fully bespoke funnel          |
 
-### Front-end vs server-to-server
-
-The Mews Booking Engine API is called directly by the guest's browser and has anti-scraping protection, so it is not suited to server-side polling.
-For server-to-server integrations, use the Mews Connector API.
-See [The Mews APIs] and the [Booking Engine Guide].
-
-{% endhint %}
+The Mews Booking Engine API is called directly from the guest's browser and has anti-scraping protection, so requests from a single server can fail.
+If your booking engine calls Mews from your backend, use the Mews Connector API.
+For more detail, see [The Mews APIs] and the [Booking Engine Guide].
 
 ## Before you start
 
-{% hint style="info" %}
-
-### Please note
-
-This is a recommended starting point, not an exhaustive list.
-Depending on your product – deposits, multi-property, loyalty, extra services, tax or payment setups – you may need more operations.
-
-{% endhint %}
+* The property must be on the Enterprise tier or have the Connectivity add-on.
+* All requests use your `ClientToken` and the property's `AccessToken`.
+* The operations in this guide are a recommended starting point, not an exhaustive list. Deposits, multiple properties, loyalty, extra services, tax setups and payment setups can each need more operations.
 
 {% hint style="warning" %}
 
 ### Server-to-server only
 
-Never call the Connector API from the browser – card data and credentials stay on your backend.
-See the [Usage guidelines].
-
-{% endhint %}
-
-{% hint style="info" %}
-
-### Prerequisite
-
-The property must be on the Enterprise tier or have the Connectivity add-on.
-All requests use your `ClientToken` and `AccessToken`.
+Never call the Connector API from the browser. Your credentials and the guest's card data must stay on your backend. See the [Usage guidelines].
 
 {% endhint %}
 
 ## Displaying the property and rooms
 
-1. Get the bookable "Stay" service (filter `ServiceType` = `Bookable`) and store its `ServiceId` – every later call needs it.
-2. Get the room categories, with `Capacity` and `ExtraCapacity` (maximum occupancy), names and type.
+1. Get the bookable "Stay" service with [Get all services], filtering by `ServiceType` = `Bookable`. Store its `ServiceId` – every later call needs it.
+2. Get the room categories with [Get all resource categories]. `Capacity` plus `ExtraCapacity` gives the maximum occupancy.
 3. Get each category's images and features.
-4. Get the age categories – their IDs are needed to create the reservation.
+4. Get the age categories. You need their IDs to price and create the reservation.
 
 | 'How to' use case               | API Operations                                                       |
 | :------------------------------ | :------------------------------------------------------------------- |
@@ -70,41 +51,37 @@ All requests use your `ClientToken` and `AccessToken`.
 
 ## Checking availability
 
-1. Get the service availability per category for the date range.
-2. Get the restrictions to catch close-outs and minimum or maximum length-of-stay rules.
+1. Get availability per room category for the requested dates with [Get service availability (ver 2024-01-22)]. This version returns availability metrics rather than a single count – request the metrics you need and derive the number of bookable rooms per category.
+2. Get restrictions with [Get all restrictions] to catch close-outs and minimum or maximum length-of-stay rules. Restrictions can apply to a rate, a rate group or a room category.
+
+Availability and pricing operations accept only timestamps at the start of a [time unit](../concepts/time-units.md) – for a nightly service, midnight in the property's time zone, converted to UTC.
 
 | 'How to' use case                              | API Operations                              |
 | :--------------------------------------------- | :------------------------------------------ |
-| How to get availability per category           | [Get service availability (ver 2024-01-22)] |
+| How to get availability per room category      | [Get service availability (ver 2024-01-22)] |
 | How to get close-outs and length-of-stay rules | [Get all restrictions]                      |
-
-{% hint style="info" %}
-
-### Use the latest version
-
-`services/getAvailability/2024-01-22` returns richer availability metrics and is the recommended version.
-
-{% endhint %}
 
 ## Pricing the stay
 
-1. Get the rates; keep only those where `IsPublic`, `IsEnabled` and `IsActive` are all `true`.
-2. Price each rate per category across the dates. Prices come as a list – sum them.
-3. Validate any promo code and unlock the rates it grants.
-4. For rates that bundle a product (e.g. breakfast), use the rules to find the `ProductId`, then add its `GrossValue` according to the `PostingMode`.
+1. Get the rates with [Get all rates]. Show only rates where `IsEnabled` and `IsActive` are `true`. Show rates where `IsPublic` is `false` only when the guest has a promo code that unlocks them.
+2. To validate a promo code, call [Get all vouchers] with the code in `VoucherCodeValues` and `VoucherAssignments` set to `true`. The voucher assignments list the rates the code unlocks. Check that the code is active and within its validity dates. Keep the code – you must send it when creating the reservation.
+3. To show prices while the guest browses, call [Get rate pricing] for each rate. It returns base prices per room category per night, plus separate adjustments for age categories and extra or empty beds.
+4. For rates that include a product (for example, breakfast), call [Get all rules] with `RuleActions` set to `true` to find the `ProductId` the rate adds. Get its price from [Get all products]. The product's `ChargingMode` decides how its `GrossValue` multiplies (once, per night, per person or per person per night).
+5. Before creating the reservation, call [Price reservations] with the exact dates, room category, rate, person counts, extras and promo code. It returns the `TotalAmount` to show the guest and to charge.
 
-| 'How to' use case                           | API Operations     |
-| :------------------------------------------ | :----------------- |
-| How to get bookable rates                   | [Get all rates]    |
-| How to price a rate                         | [Get rate pricing] |
-| How to validate a promo code                | [Get all vouchers] |
-| How to find products bundled into a rate    | [Get all rules]    |
-| How to get product prices and posting modes | [Get all products] |
+| 'How to' use case                            | API Operations       |
+| :------------------------------------------- | :------------------- |
+| How to get bookable rates                    | [Get all rates]      |
+| How to validate a promo code                 | [Get all vouchers]   |
+| How to price a rate per night                | [Get rate pricing]   |
+| How to find products included in a rate     | [Get all rules]      |
+| How to get product prices and charging modes | [Get all products]   |
+| How to get the total price of a stay         | [Price reservations] |
 
 ## Adding extras
 
-1. Reuse [Get all products] for optional add-ons; filter out items already bundled into the rate.
-2. Store any day-specific choices with their dates for the reservation.
+1. Use [Get all products] for optional add-ons. Leave out products the rate already includes.
+2. Send the chosen extras in `ProductOrders` when you create the reservation. For an extra on specific days, set its `StartUtc` and `EndUtc`.
 
 | 'How to' use case          | API Operations     |
 | :------------------------- | :----------------- |
@@ -112,36 +89,38 @@ All requests use your `ClientToken` and `AccessToken`.
 
 ## Creating the reservation
 
-1. Create the guest profile to get a `CustomerId`. If the email already exists, fetch the existing customer instead.
-2. Create the reservation in the `Optional` state (`ServiceId`, `CustomerId`, category, rate, dates, age-category counts), pending payment.
+1. Find or create the guest profile. Search by email with [Get all customers] first. If there is no match, create the profile with [Add customer] and `OverwriteExisting` set to `false`. Don't use `OverwriteExisting` set to `true` from a public booking form – anyone who enters a guest's email could overwrite that guest's details.
+2. Create the reservation with [Add reservations] in the `Optional` state. Send the `ServiceId`, `CustomerId`, room category, rate, dates, `PersonCounts` per age category, `ProductOrders` and any `VoucherCode`. Set `SendConfirmationEmail` to `false` so the guest gets one email, sent at confirmation.
+
+Payments post to the customer profile, not to the reservation, so keep the `CustomerId` for the payment steps.
 
 | 'How to' use case                | API Operations      |
 | :------------------------------- | :------------------ |
-| How to create a customer         | [Add customer]      |
 | How to find an existing customer | [Get all customers] |
+| How to create a customer         | [Add customer]      |
 | How to create the reservation    | [Add reservations]  |
 
-{% hint style="info" %}
+{% hint style="warning" %}
 
-### Billing is at the profile level
+### Optional reservations hold rooms
 
-Payments post to the customer profile, not the reservation, so the `CustomerId` is needed throughout payment.
+An `Optional` reservation holds the room until it is confirmed, released or canceled. Set `ReleasedUtc` so that abandoned bookings release automatically, and cancel the reservation with [Cancel reservation] if payment fails.
 
 {% endhint %}
 
 ## Taking payment
 
-Payment goes through Mews Payments via the PCI Proxy.
-The guest types their card into PCI Proxy iframes, not your page, so card data never touches your server.
-You get a short-lived `transactionId`, hand it to Mews, and Mews charges the card.
+Payment goes through Mews Payments using PCI Proxy.
+The guest enters card details into PCI Proxy iframes on your page, so card data never reaches your server.
+PCI Proxy returns a short-lived `transactionId`, your backend passes it to Mews, and Mews charges the card.
 For how Mews handles card data, see [Mews PCI compliance].
 
-1. **Your backend** – [Get configuration]; read `PaymentCardStorage.PublicKey`. This is your PCI Proxy `merchantId`.
-2. **Your frontend** – set up the [PCI Proxy Secure Fields] form to collect card number, CVV and expiry (iframes are injected, so card data bypasses your server).
-3. **Your frontend** – call `initTokenize(merchantId, …)`, then `submit({expm, expy})`; on success you get a `transactionId`.
-4. **Your frontend** – send the `transactionId` (plus cardholder name and expiry) to your backend.
-5. **Your backend** – [Add tokenized credit card] with `CustomerId`, the `transactionId` and obfuscated card details in `CreditCardData`, plus `Expiration`. Returns a `CreditCardId`.
-6. **Your backend** – [Charge credit card] with the `CreditCardId` and amount.
+1. **Backend** – call [Get configuration] and read `PaymentCardStorage.PublicKey`. Use it as your PCI Proxy `merchantId`.
+2. **Frontend** – set up the [PCI Proxy Secure Fields] form for card number, CVV and expiry date.
+3. **Frontend** – call `initTokenize(merchantId, …)`, then `submit({expm, expy})`. On success, PCI Proxy returns a `transactionId`.
+4. **Frontend** – send the `transactionId`, cardholder name and expiry date to your backend.
+5. **Backend** – store the card with [Add tokenized credit card]. Send the `CustomerId`, the `transactionId`, the obfuscated card details in `CreditCardData` and the `Expiration`. The operation returns a `CreditCardId`.
+6. **Backend** – charge the card with [Charge credit card], using the `CreditCardId` and the `TotalAmount` from [Price reservations].
 
 | 'How to' use case                 | API Operations              |
 | :-------------------------------- | :-------------------------- |
@@ -150,75 +129,19 @@ For how Mews handles card data, see [Mews PCI compliance].
 | How to store a tokenized card     | [Add tokenized credit card] |
 | How to charge a card              | [Charge credit card]        |
 
-{% hint style="info" %}
+### Payment pitfalls
 
-### Use the public key
-
-Use the `PublicKey` from [Get configuration] as your PCI Proxy `merchantId`.
-
-{% endhint %}
-
-{% hint style="warning" %}
-
-### Transaction IDs expire
-
-A `transactionId` is valid for 30 minutes only – charge promptly.
-
-{% endhint %}
-
-{% hint style="info" %}
-
-### Mews does the token exchange
-
-Don't follow the PCI Proxy "Obtain the tokens" step – Mews does that server-to-server inside [Add tokenized credit card].
-
-{% endhint %}
-
-{% hint style="info" %}
-
-### Obfuscated number
-
-In [Add tokenized credit card], `ObfuscatedNumber` should hold at most the first six and last four digits, or 16 asterisks.
-
-{% endhint %}
-
-{% hint style="info" %}
-
-### Expiration date
-
-Cache the expiry from your form and pass it to [Add tokenized credit card].
-It isn't sent to PCI Proxy, but it shows on the profile and flags expired cards.
-
-{% endhint %}
-
-{% hint style="warning" %}
-
-### Only gateway cards can be charged
-
-Only cards with `Kind` = `Gateway` can be charged via the API. Check with [Get all credit cards].
-
-{% endhint %}
-
-{% hint style="warning" %}
-
-### Store, then charge
-
-[Add tokenized credit card] only stores the card; [Charge credit card] actually charges it. Both are required, in that order.
-
-{% endhint %}
-
-{% hint style="info" %}
-
-### Cards aren't shared across a chain
-
-Customer profiles are shared across a chain's properties, but stored credit cards are not.
-
-{% endhint %}
+* **Transaction IDs expire after 30 minutes.** Store and charge the card promptly.
+* **Skip the PCI Proxy "Obtain the tokens" step.** Mews exchanges the token server-to-server inside [Add tokenized credit card].
+* **Obfuscate the card number.** `ObfuscatedNumber` must contain at most the first six and last four digits, or 16 asterisks.
+* **Send the expiry date yourself.** PCI Proxy doesn't pass it to Mews. Cache it from your form and send it in `Expiration` – Mews shows it on the profile and uses it to flag expired cards.
+* **Storing a card doesn't charge it.** Call [Charge credit card] after [Add tokenized credit card].
+* **Only gateway cards can be charged.** When reusing a stored card, check with [Get all credit cards] that its `Kind` is `Gateway`.
+* **Cards aren't shared across a chain.** Customer profiles are shared across a chain's properties, but stored credit cards are not.
 
 ## Confirming the reservation
 
-Once payment is posted, change the reservation from `Optional` to `Confirmed`.
-This order means unpaid holds don't block inventory.
+After the charge succeeds, confirm the reservation with [Confirm reservation]. This changes its state from `Optional` to `Confirmed` and, by default, sends the guest a confirmation email.
 
 | 'How to' use case              | API Operations        |
 | :----------------------------- | :-------------------- |
@@ -226,19 +149,18 @@ This order means unpaid holds don't block inventory.
 
 ## Testing your integration
 
-Follow our general [Usage guidelines].
-Build against a demo environment – IDs can be read from the demo Mews Operations or fetched with the operations above.
-Create a booking end to end and confirm it lands in Mews with the correct room, rate, extras and payment.
-Before onboarding a live property, check they've finished their rate, availability and payment configuration.
+Follow the general [Usage guidelines].
+Build against a demo environment. You can read IDs in the demo Mews Operations or fetch them with the operations above.
+Make a booking end to end – including a promo code, an extra and a failed payment – and check that it appears in Mews with the correct room, rate, extras and payment.
+Before going live with a property, check that it has completed its rate, availability and payment configuration.
 
-### Additional help for working with the demo environment
-
-- Help guide: [Set up a bookable service]
+For setting up the demo environment, see the help guide [Set up a bookable service].
 
 [Add customer]: ../operations/customers.md#add-customer
 [Add reservations]: ../operations/reservations.md#add-reservations
 [Add tokenized credit card]: ../operations/creditcards.md#add-tokenized-credit-card
 [Booking Engine Guide]: https://docs.mews.com/booking-engine-guide
+[Cancel reservation]: ../operations/reservations.md#cancel-reservation
 [Charge credit card]: ../operations/creditcards.md#charge-credit-card
 [Confirm reservation]: ../operations/reservations.md#confirm-reservation
 [Get all age categories]: ../operations/agecategories.md#get-all-age-categories
@@ -260,6 +182,7 @@ Before onboarding a live property, check they've finished their rate, availabili
 [Get service availability (ver 2024-01-22)]: ../operations/services.md#get-service-availability-ver-2024-01-22
 [Mews PCI compliance]: https://help.mews.com/s/article/pci-compliance?language=en_US
 [PCI Proxy Secure Fields]: https://docs.pci-proxy.com/docs/secure-fields
+[Price reservations]: ../operations/reservations.md#price-reservations
 [Set up a bookable service]: https://help.mews.com/s/article/set-up-a-bookable-service?language=en_US
 [The Mews APIs]: https://docs.mews.com/getting-started/the-mews-apis
 [Usage guidelines]: ../guidelines/README.md
