@@ -50,6 +50,7 @@ Start by retrieving the payouts for the period, which gives you one record per p
 | :----------------------------------------------- | :------------------------------------------------------------------------------------ |
 | How to get payouts over a period                 | [Get all payouts](../operations/payouts.md#get-all-payouts)                           |
 | How to break a payout down into its transactions | [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions)   |
+| How to reconcile a bank feed against the balance | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) |
 
 {% hint style="warning" %}
 

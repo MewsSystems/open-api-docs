@@ -1,6 +1,29 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-11-06" %}
+
+## Balance transactions
+
+- [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (restricted operation):
+  - New operation to retrieve the transactions that make up an enterprise's Mews Payments balance, for reconciling a bank feed against Mews (beta).
+- [Accounting use case](../use-cases/accounting.md#payout-reconciliation):
+  - Linked [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) as the way to reconcile a bank feed against the balance. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-11-06" %}
+
+## Company purchase order numbers and voucher rate limit
+
+- [Get all companies](../operations/companies.md#get-all-companies):
+- [Add company](../operations/companies.md#add-company):
+- [Update company](../operations/companies.md#update-company):
+  - Extended [Company Options](../operations/companies.md#company-options) response object with `PurchaseOrderNumberRequired` property.
+- [Add vouchers](../operations/vouchers.md#add-vouchers):
+- [Update vouchers](../operations/vouchers.md#update-vouchers):
+  - Raised the maximum number of `AssignedRateIds` from 20 to 25 items in [Voucher Parameters](../operations/vouchers.md#voucher-parameters) and [Assigned rate ids](../operations/vouchers.md#assigned-rate-ids) respectively.
+
+{% endupdate %}
 {% update date="2026-10-21" %}
 
 ## Customer photos

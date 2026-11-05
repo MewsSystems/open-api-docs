@@ -158,6 +158,7 @@ This section describes all operations supported by the API, organised here by th
 | [Refund payment](payments.md#refund-payment)                                                              | Refunds a specified payment                                                                                                                       |
 | [Add billing automation payment plan](paymentplans.md#add-billing-automation-payment-plan)                | Adds a payment plan connected to a billing automation                                                                                             |
 | [Get all ledger balances](ledgerbalances.md#get-all-ledger-balances)                                      | Returns balances of specified ledgers for each day                                                                                                |
+| [Get all balance transactions](balancetransactions.md#get-all-balance-transactions)                       | **Restricted!** Returns the transactions that make up an enterprise's Mews Payments balance                                                       |
 
 ## Loyalty
 
