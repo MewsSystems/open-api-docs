@@ -105,7 +105,7 @@ Payouts only cover money that has already been paid out. To see everything on th
 | How to get the transactions not yet paid out      | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `States` with `Unsettled`)    |
 | How to follow a payment through to its payout     | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `PaymentIds`)                 |
 
-Filtering by `PayoutIds` returns the same transactions as [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) for those payouts, plus those of any payout merged into them. The `Payout` balance transaction itself carries the same `Id` and `Amount` as the payout returned by [Get all payouts](../operations/payouts.md#get-all-payouts).
+Filtering by `PayoutIds` returns the same transactions as [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) for those payouts, plus those of any payout merged into them. The `Payout` balance transaction itself carries the same `Id` and `Amount` as the payout returned by [Get all payouts](../operations/payouts.md#get-all-payouts), including the sign: a payout that sends funds to the bank account is negative in both, see [Amounts are signed](#amounts-are-signed).
 
 {% hint style="info" %}
 
@@ -114,7 +114,7 @@ Filtering by `PayoutIds` returns the same transactions as [Get all payout transa
 A balance transaction is booked when Mews records it, and settled when a payout includes it. Choose the date filter by what you post:
 
 - `CreatedUtc` returns every transaction booked in the interval, settled or not. An unsettled transaction has no `PayoutId` or `SettledUtc` yet, and gains both when a payout settles it, so its `UpdatedUtc` changes. Use it for a daily audit trail, and read the unsettled transactions again later to pick up their payout.
-- `SettledUtc` returns only transactions settled in the interval, each with its `PayoutId`. Use it when an accounting entry must not change after you post it.
+- `SettledUtc` returns only transactions settled in the interval, each with the `PayoutId` of the payout that settled it. The exception is a `Payout` transaction that was not merged into another payout: it is the payout itself, so its `PayoutId` is null and its own `Id` identifies the payout. Use it when an accounting entry must not change after you post it.
 
 `SettledUtc` is when the payout was recorded in Mews, not when the funds reached the bank account.
 
