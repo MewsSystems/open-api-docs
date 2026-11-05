@@ -2895,3 +2895,15 @@ types:
   customerphotosetparameters:
     file: customerphotos.md
     anchor: customerphotosetparameters
+  balancetransactionresult:
+    file: balancetransactions.md
+    anchor: balancetransactionresult
+  balancetransaction:
+    file: balancetransactions.md
+    anchor: balance-transaction
+  paymentsettlementstateenum:
+    file: balancetransactions.md
+    anchor: payment-settlement-state
+  balancetransactionfilterparameters:
+    file: balancetransactions.md
+    anchor: balancetransactionfilterparameters

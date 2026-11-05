@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-11-02" %}
+{% update date="2026-11-05" %}
 
 ## Balance transactions
 
