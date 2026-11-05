@@ -1,6 +1,14 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-11-05" %}
+
+## Company purchase order number requirement
+
+- [Get all companies](../operations/companies.md#get-all-companies):
+  - Extended the [Company options](../operations/companies.md#company-options) response object with `PurchaseOrderNumberRequired` property.
+
+{% endupdate %}
 {% update date="2026-10-21" %}
 
 ## Customer photos
