@@ -9,6 +9,8 @@
   - New operation to retrieve the transactions that make up an enterprise's Mews Payments balance – charges, commissions, fees, payouts and adjustments – whether or not they have been paid out yet (beta).
 - [Accounting use case](../use-cases/accounting.md#balance-transactions):
   - Added guidance on balance transactions: the booked and settled date filters, payouts merged into another payout, and how they relate to the payout operations. Documentation-only, no change to API.
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+  - Fixed the sign of `Amount` in the response example and stated it in the [Payout](../operations/payouts.md#payout) description: a payout to the bank account is negative. Documentation-only, no change to API.
 
 {% endupdate %}
 {% update date="2026-11-06" %}
