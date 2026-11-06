@@ -55,7 +55,7 @@ Returns payouts for reconciling bank deposits against Mews. Constituent transact
       "PayoutDateUtc": "2023-08-15T00:00:00Z",
       "Amount": {
         "Currency": "EUR",
-        "Value": 1250
+        "Value": -1250
       },
       "BankDescriptor": "MEWS PAYOUT 12345"
     }
@@ -78,7 +78,7 @@ Returns payouts for reconciling bank deposits against Mews. Constituent transact
 | `State` | [Payout state](payouts.md#payout-state) | required | Current state of the payout. |
 | `Provider` | [Payment provider](payouts.md#payment-provider) | required | Payment service provider that holds the balance the payout was made from. |
 | `PayoutDateUtc` | string | optional | Date and time the payout was recorded in Mews, in UTC timezone in ISO 8601 format. This is not the date the funds arrived in the destination bank account. |
-| `Amount` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Total net amount paid out to the destination bank account, after fees and deductions. The individual fee and deduction transactions are available through the payout's transactions. |
+| `Amount` | [Currency value (ver 2023-02-02)](_objects.md#currency-value-ver-2023-02-02) | required | Total net amount paid out to the destination bank account, after fees and deductions, signed by its effect on the balance: a payout that sends funds to the bank account is negative. The individual fee and deduction transactions are available through the payout's transactions. |
 | `BankDescriptor` | string | optional | Payout descriptor currently configured for the integration, as used on bank statements. Reflects the current configuration and may differ from the descriptor shown on statements of older payouts. |
 
 #### Payout state

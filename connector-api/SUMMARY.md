@@ -45,6 +45,7 @@
   * [Age categories](operations/agecategories.md)
   * [Availability adjustments](operations/availabilityadjustments.md)
   * [Availability blocks](operations/availabilityblocks.md)
+  * [Balance transactions](operations/balancetransactions.md)
   * [Billing automations](operations/billingautomations.md)
   * [Bills](operations/bills.md)
   * [Business segments](operations/businesssegments.md)
