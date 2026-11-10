@@ -2,9 +2,11 @@
 
 ## Get properties
 
-This operation is used to get the list of available properties and their connection details, based on your `Client Token` and an employee email address.
-A valid email address must be supplied which corresponds to an employee of the enterprise to which the properties belong.
-The system will verify the email address and return the list of properties and connections (including `Connection Tokens`) for which the owner of the email address has access.
+Use this operation to see which properties belong to a given enterprise and retrieve their `Connection Tokens`, typically as the first step when setting up an integration for that enterprise.
+
+An enterprise is a single Mews customer, which may be one individual property or a group of several properties managed together, such as a hotel chain. This operation returns properties and connection details for that single enterprise only. It never returns properties belonging to a different enterprise.
+
+To call it, supply your `Client Token` and the email address of an employee of the enterprise (or of one of its properties). The system verifies that the email address belongs to the enterprise, and returns only the properties and connections (including `Connection Tokens`) that this employee has access to.
 
 ### Request
 
