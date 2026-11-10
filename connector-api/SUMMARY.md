@@ -10,6 +10,7 @@
   * [Serialization](guidelines/serialization.md)
   * [Pagination](guidelines/pagination.md)
   * [Best practices](guidelines/best-practices.md)
+  * [Unused permission policy](guidelines/unused-permissions.md)
 * [Concepts](concepts/README.md)
   * [Multi-occupancy availability blocks](concepts/multi-occupancy-availability-blocks.md)
   * [Multi-property](concepts/multi-property.md)
