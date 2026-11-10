@@ -30,6 +30,8 @@ To use data from the Data Layer in your tags, in the GTM configuration set up a 
 
 The [Custom events](#custom-events) reference below describes which Data Layer Variables are relevant to which custom events.
 
+> **Values don't persist between events:** The Booking Engine resets the GTM data model before and after each event it pushes. A Data Layer Variable only has a value on the event that carries it – it isn't kept from an earlier event. Read each value from the event you're tracking, and don't design tags that rely on values from earlier events.
+
 > **Prices:** Note all prices currently presented via the Data Layer are gross prices, i.e. including taxes and fees.
 
 ## Custom events
@@ -53,6 +55,7 @@ The [Custom events](#custom-events) reference below describes which Data Layer V
 
 * [select_promotion](#select_promotion)
 * [view_item_list](#view_item_list)
+* [view_item](#view_item)
 * [add_to_cart](#add_to_cart)
 * [remove_from_cart](#remove_from_cart)
 * [begin_checkout](#begin_checkout)
@@ -184,6 +187,17 @@ Some events expose additional DLVs. These are described separately for each even
 Please follow the [Google guide for tracking eCommerce in GA4](https://developers.google.com/analytics/devguides/collection/ga4/ecommerce). You need to set up events with all mandatory parameters so they are tracked correctly.
 We are pushing all available variables into the eCommerce tracking for more advanced setups as well.
 
+Every GA4 eCommerce event also carries the selected hotel or property and the stay dates:
+
+| Data Layer Variable Name | Description |
+| :-- | :-- |
+| hotelName | Name of the hotel or property, if one is selected |
+| hotelId | Unique identifier of the hotel or property, if one is selected |
+| startDate | Start of stay date selected by user, in `YYYY-MM-DD` format |
+| endDate | End of stay date selected by user, in `YYYY-MM-DD` format |
+
+On the [purchase](#purchase) event, `startDate` and `endDate` come from the booked reservations instead.
+
 ### select_promotion
 
 * Voucher has been added to the booking
@@ -199,6 +213,16 @@ We are pushing all available variables into the eCommerce tracking for more adva
 | Data Layer Variable Name | Description |
 | :-- | :-- |
 | items | Array of items (rooms / categories) shown to user |
+
+### view_item
+
+* Details of a room category shown to user
+
+| Data Layer Variable Name | Description |
+| :-- | :-- |
+| currency | Currency of the price |
+| value | Price of the room category |
+| items | Array with the room category shown to user |
 
 ### add_to_cart
 
@@ -294,8 +318,10 @@ The Purchase event is triggered on the booking confirmation screen under the fol
 
 | Data Layer Variable Name | Description |
 | :-- | :-- |
-| startDate | Start of stay date selected by user |
-| endDate | End of stay date selected by user |
+| startDate | Earliest check-in date of the booked reservations, in `YYYY-MM-DD` format |
+| endDate | Latest check-out date of the booked reservations, in `YYYY-MM-DD` format. Not set if any reservation has no end date |
+| hotelName | Name of the hotel or property |
+| hotelId | Unique identifier of the hotel or property |
 | currency | Currency in which the payment will be done |
 | value | Amount of the reservation |
 | tax | Amount of tax for the reservation |
@@ -356,6 +382,10 @@ The Purchase event is triggered on the booking confirmation screen under the fol
     reservationOwnerEmail: "guest@example.com" // Email address of the reservation owner (when enabled in booking engine configuration)
   },
   affiliation: "Kaer Trolde",
+  hotelName: "Kaer Trolde",
+  hotelId: "3edbe1b4-6739-40b7-81b3-d369d9469c48",
+  startDate: "2025-10-31", // Earliest check-in date of the reservation group
+  endDate: "2025-11-02", // Latest check-out date of the reservation group
   transaction_id: "d4166ad6d39856ae206cf0f48738d63fbe864fb3",
   currency: "EUR",
   value: 160, // Total price of reservation group
