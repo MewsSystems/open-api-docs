@@ -193,8 +193,8 @@ Every GA4 eCommerce event also carries the selected hotel or property and the st
 | :-- | :-- |
 | hotelName | Name of the hotel or property, if one is selected |
 | hotelId | Unique identifier of the hotel or property, if one is selected |
-| startDate | Start of stay date selected by user, in `YYYY-MM-DD` format |
-| endDate | End of stay date selected by user, in `YYYY-MM-DD` format |
+| startDate | Start of stay date selected by user, in `YYYY-MM-DD` format, if stay dates are selected |
+| endDate | End of stay date selected by user, in `YYYY-MM-DD` format, if stay dates are selected |
 
 On the [purchase](#purchase) event, `startDate` and `endDate` come from the booked reservations instead.
 
