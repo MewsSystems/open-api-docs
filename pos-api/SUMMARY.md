@@ -15,6 +15,7 @@
   * [Inventory management](use-cases/inventory.md)
   * [Table booking](use-cases/table-booking.md)
   * [Digital ordering](use-cases/digital-ordering.md)
+  * [Payment reconciliation](use-cases/payment-reconciliation.md)
 * [API Operations](operations/README.md)
   * ```yaml
     props:

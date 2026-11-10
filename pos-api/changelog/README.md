@@ -1,5 +1,12 @@
 # Changelog
 
+## 10th November 2026
+
+* [Get payments:](../operations/payments.md#get-payments)
+  * New operation for retrieving a paginated list of payments, including refunds, voided and cancelled payments. Supports filtering by creation and update time, register, payment method, `state` and `transactionType`, and the `include` parameter for related resources.
+* [Get payment:](../operations/payments.md#get-payment)
+  * New operation for retrieving a single payment by ID, for example the `paymentId` received in the `orders.payments.added` webhook.
+
 ## 4th December 2025
 * [Products:](../operations/products.md#get-product)
   * Added new operation for retrieving a single product by ID.
