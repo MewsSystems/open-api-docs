@@ -95,6 +95,39 @@ Group a payout's transactions by `PaymentId` to get the net amount each payment 
 
 The payment contributed 191.20. The `PlatformFee` belongs to the payout as a whole, not to the payment, so per-payment sums do not add up to the payout amount when account-level transactions are present. Include all of a payout's transactions to reconcile its full amount.
 
+### Balance transactions
+
+Payouts only cover money that has already been paid out. To see everything on the property's Mews Payments balance, including charges, refunds and fees that no payout has settled yet, use [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions). It returns the same transactions as the payout operations, plus the unsettled ones, and each transaction states whether it is settled and which payout settled it.
+
+| <div style="width:350px">'How to' use case</div>  | API Operations                                                                                                                      |
+| :------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------- |
+| How to get all balance transactions over a period | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `CreatedUtc` or `SettledUtc`) |
+| How to get the transactions not yet paid out      | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `States` with `Unsettled`)    |
+| How to follow a payment through to its payout     | [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (use `PaymentIds`)                 |
+
+Filtering by `PayoutIds` returns the same transactions as [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) for those payouts, plus those of any payout merged into them. The `Payout` balance transaction itself carries the same `Id` and `Amount` as the payout returned by [Get all payouts](../operations/payouts.md#get-all-payouts), including the sign: a payout that sends funds to the bank account is negative in both, see [Amounts are signed](#amounts-are-signed).
+
+{% hint style="info" %}
+
+#### Booked and settled dates
+
+A balance transaction is booked when Mews records it, and settled when a payout includes it. Choose the date filter by what you post:
+
+- `CreatedUtc` returns every transaction booked in the interval, settled or not. An unsettled transaction has no `PayoutId` or `SettledUtc` yet, and gains both when a payout settles it, so its `UpdatedUtc` changes. Use it for a daily audit trail, and read the unsettled transactions again later to pick up their payout.
+- `SettledUtc` returns only transactions settled in the interval, each with the `PayoutId` of the payout that settled it. The exception is a `Payout` transaction that was not merged into another payout: it is the payout itself, so its `PayoutId` is null and its own `Id` identifies the payout. Use it when an accounting entry must not change after you post it.
+
+`SettledUtc` is when the payout was recorded in Mews, not when the funds reached the bank account.
+
+{% endhint %}
+
+#### Payouts merged into another payout
+
+Occasionally a payout is merged into a later payout. The later payout then settles both: its transactions and those of the merged payout all report it as `PayoutId` and share its `SettledUtc`, and filtering by its id returns both sets. The merged payout still appears as a `Payout` balance transaction whose `PayoutId` is the later payout, but filtering by the merged payout's id returns nothing, because every `PayoutId` refers to a payout that [Get all payouts](../operations/payouts.md#get-all-payouts) returns.
+
+#### Identifiers
+
+`PaymentId` is set on balance transactions exactly as on payout transactions, see [Payment-level and account-level transactions](#payment-level-and-account-level-transactions). `GatewayIdentifier` is the payment service provider's own identifier, where Mews has one, such as the provider's payout identifier on a `Payout`. It is not set on charges, so match charges through `PaymentId`.
+
 ## Working with rebates
 
 If an accounting item is a rebate item, then the ID for the original order item which is rebated will be stored in the item data. Specifically, an [Order item](../operations/orderitems.md#order-item) with `Data` `Discriminator` set to "Rebate" will have `Data` `Rebate` set to the value of the `RebatedItemId`. You can then use [Get all order items](../operations/orderitems.md#get-all-order-items) with the `OrderItemIds` filter parameter set to this ID to fetch the details about the item. Note that a rebate item can rebate another rebate item, so it may be necessary to recursively call [Get all order items](../operations/orderitems.md#get-all-order-items) to find the original order item in the chain.

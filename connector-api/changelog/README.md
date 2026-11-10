@@ -1,13 +1,38 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-10-30" %}
+{% update date="2026-11-10" %}
 
 ## Unused permission policy
 
 - Published the [Unused permission policy](../guidelines/unused-permissions.md): Mews removes a permission from an integration when the integration has not used it for 12 months. This applies to all permissions. The API contract does not change.
 - A request that needs a removed permission returns [403 Forbidden](../guidelines/responses.md#403-forbidden). The message names the permission.
 - To restore a permission, contact [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
+
+{% endupdate %}
+{% update date="2026-11-06" %}
+
+## Balance transactions
+
+- [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (restricted operation):
+  - New operation to retrieve the transactions that make up an enterprise's Mews Payments balance – charges, commissions, fees, payouts and adjustments – whether or not they have been paid out yet (beta).
+- [Accounting use case](../use-cases/accounting.md#balance-transactions):
+  - Added guidance on balance transactions: the booked and settled date filters, payouts merged into another payout, and how they relate to the payout operations. Documentation-only, no change to API.
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+  - Fixed the sign of `Amount` in the response example and stated it in the [Payout](../operations/payouts.md#payout) description: a payout to the bank account is negative. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-11-06" %}
+
+## Company purchase order numbers and voucher rate limit
+
+- [Get all companies](../operations/companies.md#get-all-companies):
+- [Add company](../operations/companies.md#add-company):
+- [Update company](../operations/companies.md#update-company):
+  - Extended [Company Options](../operations/companies.md#company-options) response object with `PurchaseOrderNumberRequired` property.
+- [Add vouchers](../operations/vouchers.md#add-vouchers):
+- [Update vouchers](../operations/vouchers.md#update-vouchers):
+  - Raised the maximum number of `AssignedRateIds` from 20 to 25 items in [Voucher Parameters](../operations/vouchers.md#voucher-parameters) and [Assigned rate ids](../operations/vouchers.md#assigned-rate-ids) respectively.
 
 {% endupdate %}
 {% update date="2026-10-21" %}

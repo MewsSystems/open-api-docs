@@ -386,6 +386,7 @@ Options of the company.
 | `Invoiceable` | boolean | required | Whether the company is invoiceable or not. |
 | `AddFeesToInvoices` | boolean | required | Whether the company has an additional fee applied for invoicing or not. |
 | `AddTaxDeductedPaymentToInvoices` | boolean | required | Whether tax-deducted payments should be automatically added to invoices. |
+| `PurchaseOrderNumberRequired` | boolean | required | Whether the company requires a purchase order number on reservations where it is the partner company. [Add reservations](reservations.md#add-reservations) does not enforce it. |
 
 #### Credit Rating
 Credit rating to define creditworthiness of the company.
