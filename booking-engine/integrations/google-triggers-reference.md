@@ -220,8 +220,8 @@ On the [purchase](#purchase) event, `startDate` and `endDate` come from the book
 
 | Data Layer Variable Name | Description |
 | :-- | :-- |
-| currency | Currency of the price |
-| value | Price of the room category |
+| ecommerce.currency | Currency of the price |
+| ecommerce.value | Price of the room category |
 | items | Array with the room category shown to user |
 
 ### add_to_cart
