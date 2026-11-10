@@ -7,6 +7,10 @@
 * [Get payment:](../operations/payments.md#get-payment)
   * New operation for retrieving a single payment by ID, for example the `paymentId` received in the `orders.payments.added` webhook.
 
+## 16th September 2026
+* [Webhooks:](../events/webhooks.md)
+  * Fixed event name `order.payments.added` (was incorrectly documented as `orders.payments.added`).
+
 ## 4th December 2025
 * [Products:](../operations/products.md#get-product)
   * Added new operation for retrieving a single product by ID.
@@ -23,7 +27,7 @@
 ## 25th November 2025
 * [Webhooks:](../events/webhooks.md)
   * Added `order.total.updated` event for changes to order totals due to gratuity (tip) or correction amount updates.
-  * Added `orders.payments.added` event when a payment is successfully added to an order.
+  * Added `order.payments.added` event when a payment is successfully added to an order.
 
 ## 24th November 2025
 * [Get menus:](../operations/menus.md#get-menus)

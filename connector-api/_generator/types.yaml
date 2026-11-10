@@ -2775,9 +2775,6 @@ types:
   payoutstateenum:
     file: payouts.md
     anchor: payout-state
-  payoutproviderenum:
-    file: payouts.md
-    anchor: payout-provider
   payoutfilterparameters:
     file: payouts.md
     anchor: payoutfilterparameters
@@ -2787,9 +2784,126 @@ types:
   payouttransaction:
     file: payouts.md
     anchor: payout-transaction
-  payouttransactiontypeenum:
-    file: payouts.md
-    anchor: payout-transaction-type
   payouttransactionfilterparameters:
     file: payouts.md
     anchor: payouttransactionfilterparameters
+  billreissueresult:
+    file: bills.md
+    anchor: billreissueresult
+  billreissueparameters:
+    file: bills.md
+    anchor: billreissueparameters
+  customtitlegroupresultpage:
+    file: customtitlegroups.md
+    anchor: customtitlegroupresultpage
+  customtitlegroup:
+    file: customtitlegroups.md
+    anchor: custom-title-group
+  customtitlegroupfilterparameters:
+    file: customtitlegroups.md
+    anchor: customtitlegroupfilterparameters
+  customtitlegroupwriteresult:
+    file: customtitlegroups.md
+    anchor: customtitlegroupwriteresult
+  multiplecustomtitlegroupaddparameters:
+    file: customtitlegroups.md
+    anchor: multiplecustomtitlegroupaddparameters
+  customtitlegroupaddparameters:
+    file: customtitlegroups.md
+    anchor: custom-title-group-add-parameters
+  multiplecustomtitlegroupupdateparameters:
+    file: customtitlegroups.md
+    anchor: multiplecustomtitlegroupupdateparameters
+  customtitlegroupupdateparameters:
+    file: customtitlegroups.md
+    anchor: custom-title-group-update-parameters
+  customtitlegroupdeleteparameters:
+    file: customtitlegroups.md
+    anchor: customtitlegroupdeleteparameters
+  customtitleresultpage:
+    file: customtitles.md
+    anchor: customtitleresultpage
+  customtitle:
+    file: customtitles.md
+    anchor: custom-title
+  customtitlefilterparameters:
+    file: customtitles.md
+    anchor: customtitlefilterparameters
+  customtitlewriteresult:
+    file: customtitles.md
+    anchor: customtitlewriteresult
+  multiplecustomtitleaddparameters:
+    file: customtitles.md
+    anchor: multiplecustomtitleaddparameters
+  customtitleaddparameters:
+    file: customtitles.md
+    anchor: custom-title-add-parameters
+  multiplecustomtitleupdateparameters:
+    file: customtitles.md
+    anchor: multiplecustomtitleupdateparameters
+  customtitleupdateparameters:
+    file: customtitles.md
+    anchor: custom-title-update-parameters
+  customtitledeleteparameters:
+    file: customtitles.md
+    anchor: customtitledeleteparameters
+  selllimitresult:
+    file: selllimits.md
+    anchor: selllimitresult
+  rateselllimit:
+    file: selllimits.md
+    anchor: rate-sell-limit
+  resourcecategoryselllimit:
+    file: selllimits.md
+    anchor: resource-category-sell-limit
+  selllimitfilterparameters:
+    file: selllimits.md
+    anchor: selllimitfilterparameters
+  paymentproviderenum:
+    file: payouts.md
+    anchor: payment-provider
+  balancetransactiontypeenum:
+    file: payouts.md
+    anchor: balance-transaction-type
+  availabilityblockallocationresult:
+    file: availabilityblocks.md
+    anchor: availability-block-allocation-result
+  summarymetrics:
+    file: availabilityblocks.md
+    anchor: availability-block-summary-metrics
+  resourcecategoryallocation:
+    file: availabilityblocks.md
+    anchor: resource-category-allocation
+  occupancyallocation:
+    file: availabilityblocks.md
+    anchor: occupancy-allocation
+  availabilityblockallocationparameters:
+    file: availabilityblocks.md
+    anchor: availability-block-allocation-parameters
+  customerphotoresult:
+    file: customerphotos.md
+    anchor: customerphotoresult
+  customerphoto:
+    file: customerphotos.md
+    anchor: customer-photo
+  customerphotofilterparameters:
+    file: customerphotos.md
+    anchor: customerphotofilterparameters
+  customerphotosetresult:
+    file: customerphotos.md
+    anchor: customerphotosetresult
+  customerphotosetparameters:
+    file: customerphotos.md
+    anchor: customerphotosetparameters
+  balancetransactionresult:
+    file: balancetransactions.md
+    anchor: balancetransactionresult
+  balancetransaction:
+    file: balancetransactions.md
+    anchor: balance-transaction
+  paymentsettlementstateenum:
+    file: balancetransactions.md
+    anchor: payment-settlement-state
+  balancetransactionfilterparameters:
+    file: balancetransactions.md
+    anchor: balancetransactionfilterparameters

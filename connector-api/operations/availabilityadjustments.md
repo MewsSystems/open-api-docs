@@ -66,7 +66,12 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       "ReleaseOverrideUtc": "2021-10-13T00:00:00Z",
       "UpdatedUtc": "2021-10-21T13:32:32Z",
       "IsActive": false,
-      "PaxCounts": null,
+      "PaxCounts": [
+        {
+          "PersonCount": 2,
+          "UnitCount": 6
+        }
+      ],
       "FirstTimeUnitReleaseUtc": "2021-10-13T00:00:00Z"
     },
     {
@@ -82,7 +87,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       "ReleaseOverrideUtc": null,
       "UpdatedUtc": "2023-02-28T23:00:00Z",
       "IsActive": false,
-      "PaxCounts": null,
+      "PaxCounts": [],
       "FirstTimeUnitReleaseUtc": null
     }
   ],

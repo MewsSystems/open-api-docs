@@ -58,6 +58,16 @@ This section describes all operations supported by the API, organised here by th
 | [Update identity documents](../operations/identitydocuments.md#update-identity-documents)   | Updates specified identity documents                                                                                                       |
 | [Delete identity documents](../operations/identitydocuments.md#delete-identity-documents)   | Deletes specified identity documents                                                                                                       |
 | [Clear identity documents](../operations/identitydocuments.md#clear-identity-documents)     | Deletes all identity documents for the specified customers                                                                                 |
+| [Get all customer photos](customerphotos.md#get-all-customer-photos)                        | Returns the photos of the specified customers as metadata, not the image                                                                   |
+| [Set customer photo](customerphotos.md#set-customer-photo)                                  | Sets a customer's photo for an enterprise, adding a new one or replacing the existing one                                                  |
+| [Get all custom title groups](customtitlegroups.md#get-all-custom-title-groups)             | **Restricted!** Returns custom title groups configured for the chain                                                                       |
+| [Add custom title groups](customtitlegroups.md#add-custom-title-groups)                     | **Restricted!** Adds new custom title groups to the chain                                                                                  |
+| [Update custom title groups](customtitlegroups.md#update-custom-title-groups)               | **Restricted!** Renames the specified custom title groups                                                                                  |
+| [Delete custom title groups](customtitlegroups.md#delete-custom-title-groups)               | **Restricted!** Deletes custom title groups along with the custom titles within them                                                       |
+| [Get all custom titles](customtitles.md#get-all-custom-titles)                              | **Restricted!** Returns custom titles filtered by custom title groups or identifiers                                                       |
+| [Add custom titles](customtitles.md#add-custom-titles)                                      | **Restricted!** Adds new custom titles to existing custom title groups                                                                     |
+| [Update custom titles](customtitles.md#update-custom-titles)                                | **Restricted!** Updates the specified custom titles                                                                                        |
+| [Delete custom titles](customtitles.md#delete-custom-titles)                                | **Restricted!** Deletes specified custom titles                                                                                            |
 
 ## Device integration
 
@@ -148,6 +158,7 @@ This section describes all operations supported by the API, organised here by th
 | [Refund payment](payments.md#refund-payment)                                                              | Refunds a specified payment                                                                                                                       |
 | [Add billing automation payment plan](paymentplans.md#add-billing-automation-payment-plan)                | Adds a payment plan connected to a billing automation                                                                                             |
 | [Get all ledger balances](ledgerbalances.md#get-all-ledger-balances)                                      | Returns balances of specified ledgers for each day                                                                                                |
+| [Get all balance transactions](balancetransactions.md#get-all-balance-transactions)                       | **Restricted!** Returns the transactions that make up an enterprise's Mews Payments balance                                                       |
 
 ## Loyalty
 
@@ -270,3 +281,4 @@ This section describes all operations supported by the API, organised here by th
 | [Get all service overbooking limits](serviceoverbookinglimits.md#get-all-service-overbooking-limits)           | **Restricted!** Returns all service overbooking limits                                                                   |
 | [Set service overbooking limits](serviceoverbookinglimits.md#set-service-overbooking-limits)                   | **Restricted!** Adds new service overbooking limits with the specified conditions                                        |
 | [Clear service overbooking limits](serviceoverbookinglimits.md#clear-service-overbooking-limits)               | **Restricted!** Clears service overbooking limits which meet specified conditions over a specified time interval         |
+| [Get sell limit state](selllimits.md#get-sell-limit-state)                                                     | **Restricted!** Returns the sell limit state of a daily service for the specified rates, resource categories and interval |

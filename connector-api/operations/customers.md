@@ -99,6 +99,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       "Number": "12345",
       "Title": "Mister",
       "CustomTitleName": null,
+      "CustomTitleId": null,
       "Sex": "Male",
       "FirstName": "John",
       "LastName": "Smith",
@@ -163,7 +164,8 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
       "ChainId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "Number": "573204",
       "Title": null,
-      "CustomTitleName": "Lady",
+      "CustomTitleName": "Sergeant",
+      "CustomTitleId": "9c6b3e2d-2a7f-4c1b-9e5a-3d8f6b2c1a4e",
       "Sex": "Female",
       "FirstName": "Eleanor",
       "LastName": "Windsor",
@@ -231,6 +233,7 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
 | `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
 | `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleId` | string | optional | Unique identifier of the `CustomTitle` assigned to the customer, as configured in the chain's guest titles. Mutually exclusive with `Title`. Set whenever the customer has a custom title, even when `CustomTitleName` is `null`. Use [Get all custom titles](customtitles.md#get-all-custom-titles) to resolve the name when custom titles are enabled for the chain. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -579,7 +582,8 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `Title` | [Title](customers.md#title) | optional | Title prefix of the customer. |
+| `Title` | [Title](customers.md#title) | optional | Title prefix of the customer. Mutually exclusive with `CustomTitleId`. When `OverwriteExisting` is `true` and a duplicate customer is matched, this replaces the custom title that customer already had. |
+| `CustomTitleId` | string | optional | Unique identifier of the `CustomTitle` to assign to the customer, as configured in the chain's guest titles. Must be a title of the caller's chain that has not been deleted; use [Get all custom titles](customtitles.md#get-all-custom-titles) to discover the available ids. Mutually exclusive with `Title`. When `OverwriteExisting` is `true` and a duplicate customer is matched, this replaces the title that customer already had. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
 | `SecondLastName` | string | optional | Second last name of the customer. |
@@ -603,7 +607,7 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `Classifications` | array of [Customer classification](customers.md#customer-classification) | optional | Classifications of the customer. |
 | `Options` | array of [Customer option](customers.md#customer-option) | optional | Options of the customer. |
 | `ChainId` | string | optional | Unique identifier of the chain. Required when using `PortfolioAccessTokens`, ignored otherwise. |
-| `OverwriteExisting` | boolean | required | Whether an existing customer should be overwritten in case of duplicity. This applies only to basic personal information (`Title`, `FirstName`, `LastName`, ...). |
+| `OverwriteExisting` | boolean | required | Whether an existing customer should be overwritten in case of duplicity. This applies only to basic personal information (`Title`, `CustomTitleId`, `FirstName`, `LastName`, ...). A customer has either a title or a custom title, so supplying one of them removes the other. |
 | `ItalianDestinationCode` | string | optional | Value of Italian destination code. |
 | `ItalianFiscalCode` | string | optional | Value of Italian fiscal code. |
 | `ItalianLotteryCode` | string | optional, max length 15 characters | Value of Italian lottery code. |
@@ -649,6 +653,7 @@ Adds a new customer to the system and returns details of the added customer. If 
   "Number": "390881",
   "Title": "Miss",
   "CustomTitleName": null,
+  "CustomTitleId": null,
   "Sex": null,
   "FirstName": "Thea",
   "LastName": "Carbone",
@@ -716,6 +721,7 @@ Adds a new customer to the system and returns details of the added customer. If 
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
 | `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
 | `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleId` | string | optional | Unique identifier of the `CustomTitle` assigned to the customer, as configured in the chain's guest titles. Mutually exclusive with `Title`. Set whenever the customer has a custom title, even when `CustomTitleName` is `null`. Use [Get all custom titles](customtitles.md#get-all-custom-titles) to resolve the name when custom titles are enabled for the chain. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -819,7 +825,8 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `Client` | string | required | Name and version of the client application. |
 | `ChainId` | string | optional | Unique identifier of the chain. Required when using `PortfolioAccessTokens`, ignored otherwise. |
 | `CustomerId` | string | required | Unique identifier of the `Customer` to be updated. |
-| `Title` | [Title](customers.md#title) | optional | New title. |
+| `Title` | [Title](customers.md#title) | optional | New title. Mutually exclusive with `CustomTitleId`: sending both fails, and setting this removes the custom title the customer already had. |
+| `CustomTitleId` | [String update value](_objects.md#string-update-value) | optional | Unique identifier of the `CustomTitle` to assign to the customer, as configured in the chain's guest titles. Must be a title of the caller's chain that has not been deleted; use [Get all custom titles](customtitles.md#get-all-custom-titles) to discover the available ids. Set the value to `null` to clear it; omit the property to leave it unchanged. Mutually exclusive with `Title`: sending both fails, and setting this removes the title the customer already had. |
 | `FirstName` | string | optional | New first name. |
 | `LastName` | string | optional | New last name. |
 | `SecondLastName` | string | optional | New second last name. |
@@ -859,6 +866,7 @@ Updates personal information of a customer. Note that if any of the fields is le
   "Number": "390881",
   "Title": "Miss",
   "CustomTitleName": null,
+  "CustomTitleId": null,
   "Sex": null,
   "FirstName": "Thea",
   "LastName": "Carbone",
@@ -926,6 +934,7 @@ Updates personal information of a customer. Note that if any of the fields is le
 | `Number` | string | required, max length 19 characters | Unique number of the customer (max 19 digits). |
 | `Title` | [Title](customers.md#title) | optional | Title of the customer. Mutually exclusive with `CustomTitleName`. |
 | `CustomTitleName` | string | optional | Name of the customer's custom title, as configured in the chain's guest titles. Mutually exclusive with `Title` – a customer has either a standard title or a custom title. Unlike `Title`, the value is not localized; display it as returned. |
+| `CustomTitleId` | string | optional | Unique identifier of the `CustomTitle` assigned to the customer, as configured in the chain's guest titles. Mutually exclusive with `Title`. Set whenever the customer has a custom title, even when `CustomTitleName` is `null`. Use [Get all custom titles](customtitles.md#get-all-custom-titles) to resolve the name when custom titles are enabled for the chain. |
 | `Sex` | [Sex](customers.md#sex) | optional | Sex of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -1061,6 +1070,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
         "Number": "12345",
         "Title": "Mister",
         "CustomTitleName": null,
+        "CustomTitleId": null,
         "Sex": "Male",
         "FirstName": "John",
         "LastName": "Smith",

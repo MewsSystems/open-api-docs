@@ -664,6 +664,184 @@ Additional information about the enterprise issuing the bill, including bank acc
 * `Reinstatement`
 * `ReceivablePaymentsBalance`
 
+## Reissue bill
+
+> ### Restricted!
+> This operation is currently in beta-test and as such it is subject to change.
+
+Reissues a closed bill or issued invoice. The operation credits the original document with a credit note and carries its items over to a new open bill, which can then be corrected and closed again. A bill can be reissued only once, and the operation rejects payment confirmations, split audit bills, corrective documents other than previously reissued bills, bills with rebated items and – at enterprises that track receivables – paid invoices. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/bills/reissue`
+
+```javascript
+{
+  "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+  "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+  "Client": "Sample Client 1.0.0",
+  "BillId": "ea087d64-3901-4eee-b0b7-9fce4c58a005",
+  "Reason": "Guest disputed the minibar charge",
+  "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `EnterpriseId` | string | optional | Unique identifier of the enterprise. Required when using [Portfolio Access Tokens](../concepts/multi-property.md), ignored otherwise. |
+| `BillId` | string | required | Unique identifier of the closed `Bill` to reissue. |
+| `Reason` | string | required, max length 255 characters | Reason for reissuing the bill. |
+| `CreditNoteCounterId` | string | optional | Unique identifier of the `Counter` used to number the credit note. Required when the enterprise's legal environment mandates a dedicated credit note counter, and must be omitted otherwise. Retrieve the available counters with [Get all counters](counters.md#get-all-counters) using `Type` set to `CreditNoteBillCounter` – when the enterprise requires one but has none configured, it must first be added in **Mews Operations**. |
+
+### Response
+
+```javascript
+{
+  "CreditNote": {
+    "Id": "6b3d5a2f-1c48-4f0e-9a7d-b1e2c3d4f5a6",
+    "Name": "Accommodation Charges",
+    "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "AccountId": "c6f5c82d-621a-4c8a-903b-1b0a9a23b71f",
+    "AccountType": "Company",
+    "CustomerId": null,
+    "CompanyId": null,
+    "AssociatedAccountIds": [
+      "fadd5bb6-b428-45d5-94f8-fd0d89fece6d"
+    ],
+    "CounterId": null,
+    "State": "Closed",
+    "Type": "Invoice",
+    "Number": "CN-4",
+    "VariableSymbol": null,
+    "CreatedUtc": "2017-02-03T09:12:44Z",
+    "IssuedUtc": "2017-02-03T09:12:44Z",
+    "TaxedUtc": null,
+    "PaidUtc": null,
+    "DueUtc": null,
+    "LastReminderDateUtc": null,
+    "UpdatedUtc": "2017-02-03T09:12:44Z",
+    "PurchaseOrderNumber": null,
+    "Notes": null,
+    "Options": null,
+    "Revenue": [],
+    "Payments": [],
+    "OrderItems": [],
+    "PaymentItems": [],
+    "AssigneeData": null,
+    "OwnerData": {
+      "Discriminator": "BillCompanyData",
+      "Value": {
+        "Id": "26afba60-06c3-455b-92db-0e3983be0b1d",
+        "Address": {
+          "Line1": "I.P. Pavlova 5",
+          "Line2": null,
+          "City": "Prague",
+          "PostalCode": "12000",
+          "SubdivisionCode": "CZ-PR",
+          "CountryCode": "CZ"
+        },
+        "LegalIdentifiers": {
+          "TaxIdentifier": "CZ24227781",
+          "CityOfRegistration": "Prague"
+        },
+        "BillingCode": "Billing code value",
+        "Name": "Acme, Inc.",
+        "FiscalIdentifier": "Fiscal identifier",
+        "AdditionalTaxIdentifier": "Additional tax identifier",
+        "DUNS": "150483782",
+        "Telephone": "+420123456789",
+        "TaxIdentifier": "CZ24227781",
+        "InvoicingEmail": "billing@acme.example",
+        "Department": "Billing"
+      }
+    },
+    "CompanyDetails": null,
+    "AssociatedAccountData": [
+      {
+        "Discriminator": "BillCustomerData",
+        "BillCustomerData": {
+          "Id": "fadd5bb6-b428-45d5-94f8-fd0d89fece6d",
+          "Address": {
+            "Line1": "I.P. Pavlova 5",
+            "Line2": null,
+            "City": "Prague",
+            "PostalCode": "12000",
+            "SubdivisionCode": "CZ-PR",
+            "CountryCode": "CZ"
+          },
+          "LegalIdentifiers": null,
+          "BillingCode": null,
+          "LastName": "Doe",
+          "FirstName": "John",
+          "SecondLastName": null,
+          "TitlePrefix": null,
+          "TaxIdentifier": "CZ7801011234"
+        },
+        "BillCompanyData": null
+      }
+    ],
+    "EnterpriseData": {
+      "AdditionalTaxIdentifier": "XY00112233445",
+      "CompanyName": "The Sample Hotel Group AS",
+      "BankAccount": "CZ3808000000000012345678",
+      "BankName": "CESKA SPORITELNA A.S.",
+      "Iban": "CZ6508000000192000145399",
+      "Bic": "GIBACZPX"
+    },
+    "CorrectionState": "Bill",
+    "CorrectionType": "CreditNote",
+    "CorrectedBillId": "ea087d64-3901-4eee-b0b7-9fce4c58a005"
+  },
+  "Bill": {
+    "Id": "1f2e3d4c-5b6a-4798-8c9d-0e1f2a3b4c5d",
+    "Name": "Accommodation Charges",
+    "EnterpriseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "AccountId": "c6f5c82d-621a-4c8a-903b-1b0a9a23b71f",
+    "AccountType": "Company",
+    "CustomerId": null,
+    "CompanyId": null,
+    "AssociatedAccountIds": [
+      "fadd5bb6-b428-45d5-94f8-fd0d89fece6d"
+    ],
+    "CounterId": null,
+    "State": "Open",
+    "Type": "Receipt",
+    "Number": null,
+    "VariableSymbol": null,
+    "CreatedUtc": "2017-02-03T09:12:44Z",
+    "IssuedUtc": null,
+    "TaxedUtc": null,
+    "PaidUtc": null,
+    "DueUtc": null,
+    "LastReminderDateUtc": null,
+    "UpdatedUtc": "2017-02-03T09:12:44Z",
+    "PurchaseOrderNumber": null,
+    "Notes": null,
+    "Options": null,
+    "Revenue": [],
+    "Payments": [],
+    "OrderItems": [],
+    "PaymentItems": [],
+    "AssigneeData": null,
+    "OwnerData": null,
+    "CompanyDetails": null,
+    "AssociatedAccountData": null,
+    "EnterpriseData": null,
+    "CorrectionState": "Bill",
+    "CorrectionType": "Reinstatement",
+    "CorrectedBillId": "6b3d5a2f-1c48-4f0e-9a7d-b1e2c3d4f5a6"
+  }
+}
+```
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `CreditNote` | [Bill](bills.md#bill) | required | The closed credit note crediting the bill that was reissued. Its `CorrectedBillId` is the identifier of that bill. |
+| `Bill` | [Bill](bills.md#bill) | required | The new open bill carrying the items of the bill that was reissued. Its `CorrectedBillId` is the identifier of the credit note. |
+
 ## Delete bill
 
 Removes selected bills. Bill must be empty, otherwise it's not possible to delete it. Note this operation supports [Portfolio Access Tokens](../concepts/multi-property.md).

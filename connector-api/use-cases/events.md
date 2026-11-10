@@ -111,6 +111,8 @@ Now that you have created an availability block, you can allocate capacity for d
 
 - _Example: Original adjustment was -5 to reserve 5 units of availability for 1st of May. User now wishes to increase inventory for the availability block for that date by 2 (to 7 total). In this case, send adjustment -7 to override the original adjustment._
 
+You can also divide the allocated inventory by guest count, for example 3 units for single occupancy and 7 for double occupancy, using the `PaxCounts` parameter of the [availability update](../operations/services.md#availability-update). See [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md) for the split rules and how reservations are matched to each occupancy slot.
+
 | <div style="width:350px">'How to' use case</div> | API Operations                                                                       |
 | :----------------------------------------------- | :----------------------------------------------------------------------------------- |
 | How to update or amend service availability      | [Update service availability](../operations/services.md#update-service-availability) |

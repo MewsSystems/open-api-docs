@@ -1,6 +1,160 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-11-10" %}
+
+## Unused permission policy
+
+- Published the [Unused permission policy](../guidelines/unused-permissions.md): Mews removes a permission from an integration when the integration has not used it for 12 months. This applies to all permissions. The API contract does not change.
+- A request that needs a removed permission returns [403 Forbidden](../guidelines/responses.md#403-forbidden). The message names the permission.
+- To restore a permission, contact [partnersuccess@mews.com](mailto:partnersuccess@mews.com).
+
+{% endupdate %}
+{% update date="2026-11-06" %}
+
+## Balance transactions
+
+- [Get all balance transactions](../operations/balancetransactions.md#get-all-balance-transactions) (restricted operation):
+  - New operation to retrieve the transactions that make up an enterprise's Mews Payments balance – charges, commissions, fees, payouts and adjustments – whether or not they have been paid out yet (beta).
+- [Accounting use case](../use-cases/accounting.md#balance-transactions):
+  - Added guidance on balance transactions: the booked and settled date filters, payouts merged into another payout, and how they relate to the payout operations. Documentation-only, no change to API.
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+  - Fixed the sign of `Amount` in the response example and stated it in the [Payout](../operations/payouts.md#payout) description: a payout to the bank account is negative. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-11-06" %}
+
+## Company purchase order numbers and voucher rate limit
+
+- [Get all companies](../operations/companies.md#get-all-companies):
+- [Add company](../operations/companies.md#add-company):
+- [Update company](../operations/companies.md#update-company):
+  - Extended [Company Options](../operations/companies.md#company-options) response object with `PurchaseOrderNumberRequired` property.
+- [Add vouchers](../operations/vouchers.md#add-vouchers):
+- [Update vouchers](../operations/vouchers.md#update-vouchers):
+  - Raised the maximum number of `AssignedRateIds` from 20 to 25 items in [Voucher Parameters](../operations/vouchers.md#voucher-parameters) and [Assigned rate ids](../operations/vouchers.md#assigned-rate-ids) respectively.
+
+{% endupdate %}
+{% update date="2026-10-21" %}
+
+## Customer photos
+
+- [Get all customer photos](../operations/customerphotos.md#get-all-customer-photos):
+  - New operation to retrieve the metadata of customers' photos.
+- [Set customer photo](../operations/customerphotos.md#set-customer-photo):
+  - New operation to set the photo of a customer, as captured during online and kiosk check-in.
+
+{% endupdate %}
+{% update date="2026-10-19" %}
+
+## Multi-occupancy availability blocks
+
+- [Availability block allocation](../operations/availabilityblocks.md#availability-block-allocation) (restricted operation):
+  - New operation to retrieve the allocation of an availability block per time unit, resource category and occupancy slot (beta).
+- [Update service availability](../operations/services.md#update-service-availability):
+  - Documented the `PaxCounts` parameter of [Availability update](../operations/services.md#availability-update) in the new [Multi-occupancy availability blocks](../concepts/multi-occupancy-availability-blocks.md) concept page, covering the occupancy split rules, reservation-to-slot matching and cross-slot balancing. Documentation-only, no change to API.
+  - Fixed the descriptions of `PaxCounts` and [Pax count](../operations/services.md#pax-count) per OpenAPI Specification. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-10-16" %}
+
+## Business segment external identifier
+
+- [Get all business segments](../operations/businesssegments.md#get-all-business-segments):
+  - Extended the [Business segment](../operations/businesssegments.md#business-segment) response object with optional `ExternalIdentifier` property.
+
+{% endupdate %}
+{% update date="2026-10-16" %}
+
+## Italian tax exemption reasons
+
+- [Get all order items](../operations/orderitems.md#get-all-order-items):
+- [Get all products](../operations/products.md#get-all-products):
+- [Get all rates](../operations/rates.md#get-all-rates):
+  - Extended [Tax exemption reason type](../operations/orderitems.md#tax-exemption-reason-type) with the remaining Italian `IT_N3_*`, `IT_N6_*` and `IT_N7` values, and marked the list as not exhaustive.
+
+{% endupdate %}
+{% update date="2026-10-02" %}
+
+## Payout operations aligned with balance transactions
+
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+- [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) (restricted operation):
+  - **Breaking:** Replaced the `Payout provider` and `Payout transaction type` enums with [Payment provider](../operations/payouts.md#payment-provider) and [Balance transaction type](../operations/payouts.md#balance-transaction-type) respectively. Existing values keep their names.
+  - Payouts of every payment service provider are now returned, adding `PayPal`, `Braintree`, `WireTransfer` and `MewsFS` to [Payment provider](../operations/payouts.md#payment-provider).
+- [Get all payouts](../operations/payouts.md#get-all-payouts) (restricted operation):
+  - **Breaking:** Renamed the `PayoutProviders` filter parameter to `PaymentProviders`. A request that still sends `PayoutProviders` is not filtered by provider.
+- [Get all payout transactions](../operations/payouts.md#get-all-payout-transactions) (restricted operation):
+  - `RollingBalanceAdjustment` transactions are now returned, so a payout's transactions account for its full amount.
+  - Changed `CreatedUtc` in the [Payout transaction](../operations/payouts.md#payout-transaction) response object from optional to required.
+  - Corrected the `PlatformFee` description in [Balance transaction type](../operations/payouts.md#balance-transaction-type): it is a fee charged by Mews, not by the payment service provider. Documentation-only, no change to API.
+- [Accounting use case](../use-cases/accounting.md#payout-reconciliation):
+  - Documented which payout transaction types carry a `PaymentId` and how to correlate transactions with payments, and removed the outdated debtor tracking note. Documentation-only, no change to API.
+
+{% endupdate %}
+{% update date="2026-10-01" %}
+
+## Higher rate assignment limit for vouchers
+
+- [Add vouchers](../operations/vouchers.md#add-vouchers):
+- [Update vouchers](../operations/vouchers.md#update-vouchers):
+  - Raised the maximum number of `AssignedRateIds` from 10 to 20 items in [Voucher Parameters](../operations/vouchers.md#voucher-parameters) and [Assigned rate ids](../operations/vouchers.md#assigned-rate-ids) respectively.
+
+{% endupdate %}
+{% update date="2026-09-24" %}
+
+## Custom title identifier on customers
+
+- [Add customer](../operations/customers.md#add-customer):
+- [Update customer](../operations/customers.md#update-customer):
+  - Extended the request with optional `CustomTitleId` parameter, mutually exclusive with `Title`.
+- [Get all customers](../operations/customers.md#get-all-customers):
+- [Search customers](../operations/customers.md#search-customers):
+  - Extended the [Customer](../operations/customers.md#customer) response object with optional `CustomTitleId` property.
+- [Update accounts](../operations/accounts.md#update-accounts):
+  - Extended [Customer update parameters](../operations/accounts.md#customer-update-parameters) with optional `CustomTitleId` parameter, and the [Customer](../operations/accounts.md#customer) response object with optional `CustomTitleId` property.
+
+{% endupdate %}
+{% update date="2026-09-18" %}
+
+## Sell limit state
+
+- [Get sell limit state](../operations/selllimits.md#get-sell-limit-state) (restricted operation):
+  - New operation to retrieve the effective sell limits of a daily service per rate, resource category and time unit, together with the numbers already sold and still available (beta).
+
+{% endupdate %}
+{% update date="2026-09-18" %}
+
+## Recurring payment identification
+
+- [Get all payments](../operations/payments.md#get-all-payments):
+  - Extended the request with optional `Recurring` filter parameter, and [Payment](../operations/payments.md#payment) response object with required `Recurring` property.
+
+{% endupdate %}
+{% update date="2026-09-17" %}
+
+## Custom title group and custom title operations
+
+- [Get all custom title groups](../operations/customtitlegroups.md#get-all-custom-title-groups) (restricted operation):
+- [Add custom title groups](../operations/customtitlegroups.md#add-custom-title-groups) (restricted operation):
+- [Update custom title groups](../operations/customtitlegroups.md#update-custom-title-groups) (restricted operation):
+- [Delete custom title groups](../operations/customtitlegroups.md#delete-custom-title-groups) (restricted operation):
+  - New operations to retrieve, create, rename and delete the chain's custom title groups (beta).
+- [Get all custom titles](../operations/customtitles.md#get-all-custom-titles) (restricted operation):
+- [Add custom titles](../operations/customtitles.md#add-custom-titles) (restricted operation):
+- [Update custom titles](../operations/customtitles.md#update-custom-titles) (restricted operation):
+- [Delete custom titles](../operations/customtitles.md#delete-custom-titles) (restricted operation):
+  - New operations to retrieve, create, update and delete the custom titles within a custom title group (beta). A custom title assigned to a customer is returned as `CustomTitleName` in the [Customer](../operations/customers.md#customer) object.
+
+{% endupdate %}
+{% update date="2026-09-16" %}
+
+## Bill reissuing
+
+- [Reissue bill](../operations/bills.md#reissue-bill) (restricted operation):
+  - New operation to credit a closed bill or issued invoice with a credit note and carry its items over to a new open bill (beta).
+
+{% endupdate %}
 {% update date="2026-09-10" %}
 
 ## Payout operations
