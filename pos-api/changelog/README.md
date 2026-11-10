@@ -5,7 +5,7 @@
 * [Get payments:](../operations/payments.md#get-payments)
   * New operation for retrieving a paginated list of payments, including refunds, voided and cancelled payments. Supports filtering by creation and update time, register, payment method, `state` and `transactionType`, and the `include` parameter for related resources.
 * [Get payment:](../operations/payments.md#get-payment)
-  * New operation for retrieving a single payment by ID, for example the `paymentId` received in the `orders.payments.added` webhook.
+  * New operation for retrieving a single payment by ID, for example the `paymentId` received in the `order.payments.added` webhook.
 
 ## 16th September 2026
 * [Webhooks:](../events/webhooks.md)

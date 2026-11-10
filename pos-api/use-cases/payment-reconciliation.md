@@ -4,7 +4,7 @@ This use case is aimed at integration partners that reconcile payments taken in 
 
 ## Retrieving payments
 
-Use [Get payments](../operations/payments.md#get-payments) to list the payments of the merchant that the access token belongs to. Use [Get payment](../operations/payments.md#get-payment) to retrieve a single payment by ID, for example the `paymentId` received in the [`orders.payments.added`](../events/webhooks.md) webhook.
+Use [Get payments](../operations/payments.md#get-payments) to list the payments of the merchant that the access token belongs to. Use [Get payment](../operations/payments.md#get-payment) to retrieve a single payment by ID, for example the `paymentId` received in the [`order.payments.added`](../events/webhooks.md) webhook.
 
 By default, the operation returns payments of every `state` and `transactionType`, oldest first. Nothing is filtered out, so filter on the client or use the filters below to select the payments you need.
 
