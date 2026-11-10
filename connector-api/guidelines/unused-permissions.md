@@ -1,6 +1,6 @@
 # Unused permission policy
 
-Mews removes a **Mews Connector API** permission if an integration has not used it for 12 months. This reduces the data an integration can access if its credentials are compromised and supports data minimization.
+Mews removes a **Mews Connector API** permission if an integration has not used it for 12 months. This reduces the data an integration can expose if its credentials are leaked or stolen.
 
 ## Scope
 
