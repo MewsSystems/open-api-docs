@@ -46,4 +46,4 @@ Partner Success reviews the request and restores the permission. This policy app
 
 ## Why Mews removes unused permissions
 
-Each permission grants access to data. If an integration's credentials are leaked, an attacker could access the data allowed by its permissions. Removing permissions the integration does not use reduces that exposure and supports the data minimization principle of data protection law.
+Each permission grants access to data. If an integration's credentials are leaked, an attacker could access the data allowed by its permissions. Removing permissions the integration does not use reduces that exposure.
