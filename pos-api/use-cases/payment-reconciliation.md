@@ -4,7 +4,7 @@ This use case is aimed at integration partners that reconcile payments taken in 
 
 ## Retrieving payments
 
-Use [Get payments](../operations/payments.md#get-payments) to list the payments of the merchant that the access token belongs to. Use [Get payment](../operations/payments.md#get-payment) to retrieve a single payment by ID, for example the `paymentId` received in the [`order.payments.added`](../events/webhooks.md) webhook.
+Use [Get payments](../operations/payments.md#get-v1-payments) to list the payments of the merchant that the access token belongs to. Use [Get payment](../operations/payments.md#get-v1-payments-id) to retrieve a single payment by ID, for example the `paymentId` received in the [`order.payments.added`](../events/webhooks.md) webhook.
 
 By default, the operation returns payments of every `state` and `transactionType`, oldest first. Nothing is filtered out, so filter on the client or use the filters below to select the payments you need.
 
@@ -80,4 +80,6 @@ GET [PlatformAddress]/v1/payments?filter[updatedAtGteq]=2026-11-07T00:00:00Z&pag
 
 ### Pagination
 
-The default page size is 10. For the first, one-off load of historical payments, use a larger `page[size]`, up to 1000, and follow the `links.next` URL until it is no longer returned.
+The default page size is 10. Use a larger `page[size]`, up to 1000, to reduce the number of requests. This applies to the one-off load of historical payments and to the recurring polling requests.
+
+Every response returns at most one page. In every polling cycle, and in the historical load, follow the `links.next` URL until it is no longer returned. If you read only the first page, you miss payments beyond `page[size]`, and your stored states and totals become out of date.

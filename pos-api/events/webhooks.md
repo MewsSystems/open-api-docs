@@ -141,4 +141,4 @@ To implement Webhooks:
 | `paymentId` | string (UUID) | required | The unique identifier of the payment that was added. |
 | `updatedAt` | string | required | Timestamp of when the payment was added. |
 
-To retrieve the payment, use [Get payment](../operations/payments.md#get-payment) with the `paymentId`.
+To retrieve the payment, use [Get payment](../operations/payments.md#get-v1-payments-id) with the `paymentId`.
