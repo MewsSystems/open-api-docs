@@ -1484,6 +1484,7 @@ Marks a reservation as `Processed` (= checked out). Succeeds only if all process
 ## Price reservations
 
 Returns prices of reservations with the specified parameters.
+Additional expenses, such as a city tax excluded from the price, are not part of `TotalAmount` and are returned separately in `AdditionalExpenses`.
 Note that the operation doesn't check the maximum capacity of requested resource category. Requesting person counts above the capacity will return prices for the maximum available capacity.
 
 This operation supports [Portfolio Access Tokens](../concepts/multi-property.md).
@@ -1596,17 +1597,47 @@ This operation supports [Portfolio Access Tokens](../concepts/multi-property.md)
   "ReservationPrices": [
     {
       "Identifier": "1234",
-      "Total": {
+      "TotalAmount": {
         "Currency": "GBP",
-        "NetValue": 20,
-        "GrossValue": 23,
+        "NetValue": 500,
+        "GrossValue": 600,
         "TaxValues": [
           {
             "Code": "UK-S",
-            "Value": 3
+            "Value": 100
           }
-        ]
-      }
+        ],
+        "Breakdown": {
+          "Items": [
+            {
+              "TaxRateCode": "UK-S",
+              "NetValue": 500,
+              "TaxValue": 100
+            }
+          ]
+        }
+      },
+      "AdditionalExpenses": [
+        {
+          "Type": "CityTax",
+          "Amount": {
+            "Currency": "GBP",
+            "NetValue": 30,
+            "GrossValue": 30,
+            "TaxValues": [],
+            "Breakdown": {
+              "Items": [
+                {
+                  "TaxRateCode": null,
+                  "NetValue": 30,
+                  "TaxValue": 0
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "Total": null
     }
   ]
 }
@@ -1622,7 +1653,15 @@ This operation supports [Portfolio Access Tokens](../concepts/multi-property.md)
 | :-- | :-- | :-- | :-- |
 | `Identifier` | string | optional | Identifier of the reservation within the transaction. |
 | `TotalAmount` | [Amount](_objects.md#amount) | required | Total price of the reservation. |
+| `AdditionalExpenses` | array of [Reservation price additional expense](reservations.md#reservation-price-additional-expense) | required, max 20 items | Additional expenses of the reservation that are not included in `TotalAmount`, one item per type. The price the customer pays is `TotalAmount` plus the sum of these amounts. If the city tax is included in the price, the `CityTax` and `CityTaxDiscount` items cancel each other out. |
 | ~~`Total`~~ | ~~[Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07)~~ | ~~optional~~ | ~~Total price of the reservation.~~ **Deprecated!** Use `TotalAmount` instead.|
+
+#### Reservation price additional expense
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Type` | [Order item type](orderitems.md#order-item-type) | required | Type of the additional expense, for example `CityTax` or `CityTaxDiscount`. |
+| `Amount` | [Amount](_objects.md#amount) | required | Total amount of all additional expenses of this type for the whole reservation. |
 
 ## Generate Guest portal links
 
