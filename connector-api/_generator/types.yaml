@@ -2907,3 +2907,6 @@ types:
   balancetransactionfilterparameters:
     file: balancetransactions.md
     anchor: balancetransactionfilterparameters
+  reservationpriceadditionalexpense:
+    file: reservations.md
+    anchor: reservation-price-additional-expense
