@@ -1653,14 +1653,14 @@ This operation supports [Portfolio Access Tokens](../concepts/multi-property.md)
 | :-- | :-- | :-- | :-- |
 | `Identifier` | string | optional | Identifier of the reservation within the transaction. |
 | `TotalAmount` | [Amount](_objects.md#amount) | required | Total price of the reservation. |
-| `AdditionalExpenses` | array of [Reservation price additional expense](reservations.md#reservation-price-additional-expense) | required, max 20 items | Additional expenses of the reservation that are not included in `TotalAmount`, one item per type. The price the customer pays is `TotalAmount` plus the sum of these amounts. If the city tax is included in the price, the `CityTax` and `CityTaxDiscount` items cancel each other out. |
+| `AdditionalExpenses` | array of [Reservation price additional expense](reservations.md#reservation-price-additional-expense) | required, max 20 items | Additional expenses of the reservation that are not included in `TotalAmount`, one item per type. The price the customer pays is `TotalAmount` plus the sum of these amounts. If the city tax is included in the price, the gross values of the `CityTax` and `CityTaxDiscount` items add up to zero. Empty if the reservation has no additional expenses. |
 | ~~`Total`~~ | ~~[Currency value (ver 2018-06-07)](_objects.md#currency-value-ver-2018-06-07)~~ | ~~optional~~ | ~~Total price of the reservation.~~ **Deprecated!** Use `TotalAmount` instead.|
 
 #### Reservation price additional expense
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `Type` | [Order item type](orderitems.md#order-item-type) | required | Type of the additional expense, for example `CityTax` or `CityTaxDiscount`. |
+| `Type` | [Order item type](orderitems.md#order-item-type) | required | Type of the additional expense, for example `CityTax` or `CityTaxDiscount`. Other order item types can be returned, so do not assume a fixed set of values. |
 | `Amount` | [Amount](_objects.md#amount) | required | Total amount of all additional expenses of this type for the whole reservation. |
 
 ## Generate Guest portal links

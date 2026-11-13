@@ -1,6 +1,15 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-11-13" %}
+
+## Additional expenses in reservation prices
+
+- [Price reservations](../operations/reservations.md#price-reservations):
+  - Extended [Reservation price](../operations/reservations.md#reservation-price) response object with `AdditionalExpenses` property, a list of [Reservation price additional expense](../operations/reservations.md#reservation-price-additional-expense) objects.
+  - Fixed the response example to show `TotalAmount` and `AdditionalExpenses`. Documentation-only, no change to API.
+
+{% endupdate %}
 {% update date="2026-11-10" %}
 
 ## Unused permission policy
