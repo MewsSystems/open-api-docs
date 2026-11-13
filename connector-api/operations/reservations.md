@@ -1637,7 +1637,13 @@ This operation supports [Portfolio Access Tokens](../concepts/multi-property.md)
           }
         }
       ],
-      "Total": null
+      "Total": {
+        "Currency": "GBP",
+        "Value": 600,
+        "Net": 500,
+        "Tax": 100,
+        "TaxRate": 20
+      }
     }
   ]
 }
