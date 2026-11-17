@@ -1,5 +1,12 @@
 # Changelog
 
+## 13th November 2026
+
+* [Get merchant:](../operations/merchants.md#get-v1-merchant)
+  * New operation for retrieving the read-only settings of the authenticated merchant: `name`, `currency` (ISO 4217), `timezone` (IANA), `workdayStart` (seconds after midnight), `pricingMode` (`gross` or `net`), `pricesInclTaxProvided`, `hasSalesTax` and `country` (ISO 3166-1 alpha-2). `pricingMode` is `net` when product prices are tax-exclusive, that is for tax-manager merchants configured as net.
+* [Get products:](../operations/products.md#get-v1-products), [Get product:](../operations/products.md#get-v1-products-id)
+  * Product variants (`productVariants`) in responses now include a `product` relationship, a resource identifier of the parent product.
+
 ## 10th November 2026
 
 * [Get payments:](../operations/payments.md#get-v1-payments)
