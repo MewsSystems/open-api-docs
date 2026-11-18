@@ -284,8 +284,6 @@ Thus any existing restrictions with the same scope and time period are overridde
 | `to` | `string` | required | Inclusive end date of the restriction period in `"yyyy-MM-dd"` format. |
 | `minLos` | `int` | optional | Minimum length of stay applicable during the period. Must be at least `1` if specified. Set to `null` if no minimum applies. |
 | `maxLos` | `int` | optional | Maximum length of stay applicable during the period. Must be at least equal to `minLos` if specified. Set to `null` if no maximum applies. |
-
-If `minLengthOfStay` is greater than `maxLengthOfStay`, no length of stay is allowed – the restriction applies to every stay.
 | `state` | `int` collection | required | [Restriction State](#restriction-state). |
 | `states` | [`Expanded restriction states`](#expanded-restriction-states) | optional | Arrival, departure and stay restrictions expressed separately, with length-of-stay conditions as exceptions. Contains the same restriction as `state`, `minLos` and `maxLos`. Sent only if Mews has enabled it for your channel manager. Otherwise it is `null` or missing – ignore it. |
 
