@@ -350,6 +350,8 @@ Only restrictions created through the API are affected by this operation, *not* 
 * `Cabin`
 * `Pod`
 * `SunBed`
+* `Boat`
+* `Treehouse`
 
 #### Days parameters
 

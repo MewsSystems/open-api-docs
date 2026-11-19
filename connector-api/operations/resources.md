@@ -276,6 +276,8 @@ Note this operation uses [Pagination](../guidelines/pagination.md) and supports 
 * `Cabin`
 * `Pod`
 * `SunBed`
+* `Boat`
+* `Treehouse`
 
 ## Get resources&#x27; occupancy state
 
