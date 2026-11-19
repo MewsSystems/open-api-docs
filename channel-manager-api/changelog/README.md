@@ -1,5 +1,12 @@
 # Changelog
 
+## 18th November 2026
+
+* [CHM: Update availability](../channel-manager-operations/inventory.md#update-availability):
+  * Documented the informational `availabilityAdjustment`, `resources`, `outOfOrderResources` and `overbookedReservations` properties of the [Availability](../channel-manager-operations/inventory.md#availability) object. Documentation-only, no change to API.
+* [CHM: Update restrictions](../channel-manager-operations/inventory.md#update-restrictions):
+  * Documented the optional `states` property of the [Restriction](../channel-manager-operations/inventory.md#restriction) object. Documentation-only, no change to API.
+
 ## 25th July 2025
 
 * [CHM: Process group](../channel-manager-operations/reservations.md#process-group):

@@ -164,13 +164,21 @@ This method is used when Mews updates availability of space types.
             "spaceTypeCode": "QD",
             "from": "2020-01-01",
             "to": "2020-01-31",
-            "availability": 10
+            "availability": 10,
+            "availabilityAdjustment": 0,
+            "resources": 12,
+            "outOfOrderResources": 1,
+            "overbookedReservations": 0
         },
         {
             "spaceTypeCode": "KD",
             "from": "2020-01-01",
             "to": "2020-01-30",
-            "availability": 5
+            "availability": 5,
+            "availabilityAdjustment": -2,
+            "resources": 8,
+            "outOfOrderResources": 0,
+            "overbookedReservations": 0
         }
     ]
 }
@@ -191,9 +199,21 @@ This method is used when Mews updates availability of space types.
 | `spaceTypeCode` | `string` | required | Mapping code of the space type. |
 | `from` | `string` | required | Start date of the updated interval in `"yyyy-MM-dd"` format. |
 | `to` | `string` | required | End date \(included\) of the updated interval in `"yyyy-MM-dd"` format. |
-| `availability` | `int` | required | The availability of the space type in the updated interval. |
+| `availability` | `int` | required | The availability of the space type in the updated interval. This is the number of spaces to sell. |
+| `availabilityAdjustment` | `int` | required | Manual availability adjustment for the space type, set by the property in **Mews Operations** or through an integration. A positive value releases extra spaces (for example, to allow controlled overbooking). A negative value withholds spaces from sale. `0` means no adjustment. Already included in `availability`. Does not include adjustments from availability blocks. |
+| `resources` | `int` | required | Total number of spaces of the space type, including spaces that are out of order. |
+| `outOfOrderResources` | `int` | required | Number of spaces of the space type that are out of order and can't be sold. Already deducted from `availability`. |
+| `overbookedReservations` | `int` | required | Number of spaces by which the space type is overbooked, beyond what a positive `availabilityAdjustment` allows. `0` means there is no overbooking beyond the adjustment. |
 
 > **Dates**: `from` and `to` represent the first and last date on which the availability applies. The availiablity is the same for each date between `from` and `to`. So `"from": "2021-12-24", "to": "2021-12-25"` means, the availability applies on nights 2021-12-24/25 and 2021-12-25/26, but not anymore for night 2021-12-26/27.
+
+{% hint style="info" %}
+#### Which value to use
+
+Use `availability` as the number of spaces to sell. Mews has already applied the availability adjustment, out-of-order spaces, existing reservations and availability blocks to it. The other properties are informational. They give context for the value, for example for display or troubleshooting, and you don't need to process them. `availability` isn't always a simple sum of the other properties, so don't recompute it from them.
+
+Mews groups consecutive dates into one interval only when all properties are equal. So you may receive two consecutive intervals with the same `availability`, for example when only `outOfOrderResources` changes.
+{% endhint %}
 
 ### Response
 
@@ -265,6 +285,7 @@ Thus any existing restrictions with the same scope and time period are overridde
 | `minLos` | `int` | optional | Minimum length of stay applicable during the period. Must be at least `1` if specified. Set to `null` if no minimum applies. |
 | `maxLos` | `int` | optional | Maximum length of stay applicable during the period. Must be at least equal to `minLos` if specified. Set to `null` if no maximum applies. |
 | `state` | `int` collection | required | [Restriction State](#restriction-state). |
+| `states` | [`Expanded restriction states`](#expanded-restriction-states) | optional | Arrival, departure and stay restrictions expressed separately, with length-of-stay conditions as exceptions. Contains the same restriction as `state`, `minLos` and `maxLos`. Sent only if Mews has enabled it for your channel manager. Otherwise it is `null` or missing – ignore it. |
 
 > **Dates**: `from` and `to` represent the first and last date on which the restriction applies. The restriction is the same for each date between `from` and `to`. So `"from": "2021-12-24", "to": "2021-12-25"` means the restriction applies on nights Dec 24/25 and Dec 25/26, but not any more for night Dec 26/27.
 
@@ -278,6 +299,51 @@ Thus any existing restrictions with the same scope and time period are overridde
 | `6` | Closed to arrival |
 | `7` | Closed to departure |
 | `8` | Closed to stay |
+
+#### Expanded restriction states
+
+An alternative view of the same restriction that is closer to how restrictions work in **Mews Operations**. Each restriction type has its own object, and length-of-stay conditions are _exceptions_ – the restriction applies **unless** the length of stay is within the given range. For background, see [Concepts > Restrictions](../concepts/restrictions.md).
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `arrival` | [`Expanded restriction type`](#expanded-restriction-type) | required | Closed to arrival restriction. |
+| `departure` | [`Expanded restriction type`](#expanded-restriction-type) | required | Closed to departure restriction. |
+| `stay` | [`Expanded restriction type`](#expanded-restriction-type) | required | Closed to stay restriction. |
+
+#### Expanded restriction type
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `isClosed` | `bool` | required | Whether the restriction type applies. If `false`, arrival, departure or stay is open. If `true` and `exceptions` has no limits, it is closed for any length of stay. If `true` and `exceptions` has limits, it is closed unless the length of stay is within the limits. |
+| `exceptions` | [`Restriction exceptions`](#restriction-exceptions) | required | Length-of-stay exceptions to the restriction. |
+
+#### Restriction exceptions
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `minLengthOfStay` | `int` | optional | The restriction doesn't apply to stays of at least this many nights. `null` if no minimum applies. |
+| `maxLengthOfStay` | `int` | optional | The restriction doesn't apply to stays of at most this many nights. `null` if no maximum applies. |
+
+If `minLengthOfStay` is greater than `maxLengthOfStay`, no length of stay is allowed – the restriction applies to every stay.
+
+For example, the following means: arrival is allowed only for stays of 3 to 7 nights, and departure and stay are open.
+
+```json
+"states": {
+    "arrival": {
+        "isClosed": true,
+        "exceptions": { "minLengthOfStay": 3, "maxLengthOfStay": 7 }
+    },
+    "departure": {
+        "isClosed": false,
+        "exceptions": { "minLengthOfStay": null, "maxLengthOfStay": null }
+    },
+    "stay": {
+        "isClosed": false,
+        "exceptions": { "minLengthOfStay": null, "maxLengthOfStay": null }
+    }
+}
+```
 
 ### Response
 
