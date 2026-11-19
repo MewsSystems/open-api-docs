@@ -1,5 +1,10 @@
 # Changelog
 
+## 19th November 2026
+* Integrations: [Google Triggers Reference](../integrations/google-triggers-reference.md):
+  * **Deprecated** `reservationGroupName` in the [purchase](../integrations/google-triggers-reference.md#purchase) and [ga4_ConfirmationLoaded](../integrations/google-triggers-reference.md#ga4_confirmationloaded) events, effective immediately. The value contains the guest's last name. It will be removed starting on 25 November 2026. Use `reservationGroupId` instead. See [Deprecations](../booking-engine-api/deprecations/README.md).
+  * Added `reservationGroupId` to the list of [purchase](../integrations/google-triggers-reference.md#purchase) variables, and removed `reservationGroupName` from the example.
+
 ## 10th November 2026
 * Integrations: [Google Triggers Reference](../integrations/google-triggers-reference.md):
   * Extended all [GA4 eCommerce events](../integrations/google-triggers-reference.md#ga4-ecommerce-events) with `hotelName`, `hotelId`, `startDate` and `endDate`.

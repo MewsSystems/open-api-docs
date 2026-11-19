@@ -321,6 +321,10 @@ The Purchase event is triggered on the booking confirmation screen under the fol
 > 
 > **Reminder:** Only use guest email addresses as permitted by your privacy policy and T&Cs.
 
+> **Deprecated: `reservationGroupName`**
+> 
+> `reservationGroupName` is deprecated and will be removed from the `purchase` and `ga4_ConfirmationLoaded` events starting on 25 November 2026. The value contains the guest’s last name, which is personally identifiable information (PII), and Google Analytics and Google Ads policies prohibit sending PII to Google. Use `reservationGroupId` to identify the reservation group instead. If your GTM tags, triggers or variables read `reservationGroupName`, switch them to `reservationGroupId` before that date.
+
 * The most important variables are:
 
 | Data Layer Variable Name | Description |
@@ -332,7 +336,8 @@ The Purchase event is triggered on the booking confirmation screen under the fol
 | currency | Currency in which the payment will be done |
 | value | Amount of the reservation |
 | tax | Amount of tax for the reservation |
-| reservationGroupName | ID / Name of the reservation group created in Mews |
+| reservationGroupId | Unique identifier of the reservation group created in Mews |
+| reservationGroupName | **Deprecated** – will be removed starting on 25 November 2026. Use `reservationGroupId` instead |
 | netValue | Value of reservation without taxes |
 | grossValue | Value of reservation with all taxes |
 | pricingMode | either `gross` for US style of pricing, `net` for EU style of pricing |
@@ -374,7 +379,6 @@ The Purchase event is triggered on the booking confirmation screen under the fol
         pricingMode: "Gross", // Pricing mode (Gross mainly Europe = tax is included in price, Net mainly US = tax non included in price)
         quantity: 1, // Count of rooms of room category
         reservationGroupId: "f94a4f53-ab9c-4847-8e4e-b38700d31923",
-        reservationGroupName: "ff-31-10-C35D", // Reservation Group name – can be mapped to export from mews Operations for each reservation
         tax: 17.14, // Tax of reservation
         item_variant: "Non refundable", // Selected rate
         confirmationNumber: "87", // Confirmation number of each reservation to be mapped with Mews operations
@@ -398,7 +402,6 @@ The Purchase event is triggered on the booking confirmation screen under the fol
   value: 160, // Total price of reservation group
   tax: 17.14, // Total tax of reservation group
   reservationGroupId: "f94a4f53-ab9c-4847-8e4e-b38700d31923", // Reservation Group ID – will be added to export in Mews Operation to identify each reservation group
-  reservationGroupName: "ff-31-10-C35D", // Reservation Group name – can be mapped to export from mews Operations for each reservation
   reservationIds: "d089a328-2876-47a8-9dca-b38700d3193a", // Comma separated list of all reservation (item) IDs
   chainName: "Witcher", // Chain name
   netValue: 142.86, // Price without taxes
@@ -433,7 +436,6 @@ The Purchase event is triggered on the booking confirmation screen under the fol
       pricingMode: "Gross",
       quantity: 1,
       reservationGroupId: "f94a4f53-ab9c-4847-8e4e-b38700d31923",
-      reservationGroupName: "ff-31-10-C35D",
       tax: 17.14,
       item_variant: "Non refundable",
       confirmationNumber: "87",
