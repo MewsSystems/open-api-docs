@@ -19,7 +19,7 @@ The table columns have the following meanings:
 
 | Object | Property | Replaced by | Context | Deprecated | Discontinued |
 | :-- | :-- | :-- | :-- | :-- | :-- |
-| GTM Data Layer event | `reservationGroupName` | `reservationGroupId` | [purchase](../../integrations/google-triggers-reference.md#purchase), [ga4_ConfirmationLoaded](../../integrations/google-triggers-reference.md#ga4_confirmationloaded) ([Google Triggers Reference](../../integrations/google-triggers-reference.md)) | 19 Nov 2026 | 07 Dec 2026 |
+| GTM Data Layer event | `reservationGroupName` | `reservationGroupId` | [purchase](../../integrations/google-triggers-reference.md#purchase), [ga4_ConfirmationLoaded](../../integrations/google-triggers-reference.md#ga4_confirmationloaded) ([Google Triggers Reference](../../integrations/google-triggers-reference.md)) | 19 Nov 2026 | 25 Nov 2026 |
 | [Room occupancy availability](../operations/hotels.md#room-occupancy-availability) | `AdultCount`, `ChildCount` | [OccupancyData](../operations/hotels.md#room-occupancy-availability) | [Get availability](../operations/hotels.md#get-availability) | 18 Mar 2024 | - |
 | Request object | `AdultCount`, `ChildCount` | [OccupancyData](../operations/hotels.md#get-availability) | [Get availability](../operations/hotels.md#get-availability) | 18 Mar 2024 | - |
 | [Occupancy](../operations/reservations.md#occupancy) | `AdultCount`, `ChildCount` | [OccupancyData](../operations/reservations.md#occupancy) | [Get reservations pricing](../operations/reservations.md#get-reservations-pricing) | 18 Mar 2024 | - |

@@ -323,7 +323,7 @@ The Purchase event is triggered on the booking confirmation screen under the fol
 
 > **Deprecated: `reservationGroupName`**
 > 
-> `reservationGroupName` is deprecated and will be removed from the `purchase` and `ga4_ConfirmationLoaded` events by 7 December 2026. The value contains the guest's last name, and Google Analytics and Google Ads policies don't allow personal data like this. Use `reservationGroupId` to identify the reservation group instead. If your GTM tags, triggers or variables read `reservationGroupName`, switch them to `reservationGroupId` before that date. See [Deprecations](../booking-engine-api/deprecations/README.md).
+> `reservationGroupName` is deprecated and will be removed from the `purchase` and `ga4_ConfirmationLoaded` events starting on 25 November 2026. The value contains the guest’s last name, which is personally identifiable information (PII), and Google Analytics and Google Ads policies prohibit sending PII to Google. Use `reservationGroupId` to identify the reservation group instead. If your GTM tags, triggers or variables read `reservationGroupName`, switch them to `reservationGroupId` before that date.
 
 * The most important variables are:
 
@@ -337,7 +337,7 @@ The Purchase event is triggered on the booking confirmation screen under the fol
 | value | Amount of the reservation |
 | tax | Amount of tax for the reservation |
 | reservationGroupId | Unique identifier of the reservation group created in Mews |
-| reservationGroupName | **Deprecated** – will be removed by 7 December 2026. Use `reservationGroupId` instead |
+| reservationGroupName | **Deprecated** – will be removed starting on 25 November 2026. Use `reservationGroupId` instead |
 | netValue | Value of reservation without taxes |
 | grossValue | Value of reservation with all taxes |
 | pricingMode | either `gross` for US style of pricing, `net` for EU style of pricing |
