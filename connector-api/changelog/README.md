@@ -1,7 +1,7 @@
 # Changelog
 
 {% updates format="full" %}
-{% update date="2026-11-17" %}
+{% update date="2026-11-19" %}
 
 ## New resource category types
 
