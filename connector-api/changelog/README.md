@@ -1,6 +1,20 @@
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-11-19" %}
+
+## New resource category types
+
+- [Get all resources](../operations/resources.md#get-all-resources):
+- [Get all resource categories](../operations/resourcecategories.md#get-all-resource-categories):
+- [Add resource categories](../operations/resourcecategories.md#add-resource-categories) (restricted operation):
+- [Update resource categories](../operations/resourcecategories.md#update-resource-categories) (restricted operation):
+- [Get all restrictions](../operations/restrictions.md#get-all-restrictions):
+- [Set restrictions](../operations/restrictions.md#set-restrictions):
+- [Clear restrictions](../operations/restrictions.md#clear-restrictions):
+  - Extended [Resource category type](../operations/resources.md#resource-category-type) enum with `Boat` and `Treehouse` values.
+
+{% endupdate %}
 {% update date="2026-11-13" %}
 
 ## Additional expenses in reservation prices
