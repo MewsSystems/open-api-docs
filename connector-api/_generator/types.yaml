@@ -2910,3 +2910,6 @@ types:
   reservationpriceadditionalexpense:
     file: reservations.md
     anchor: reservation-price-additional-expense
+  opaquecursorlimitation:
+    file: sourceassignments.md
+    anchor: opaque-cursor-limitation
