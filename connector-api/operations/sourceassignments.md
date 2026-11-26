@@ -6,7 +6,7 @@
 > ### Restricted!
 > This operation is currently in beta-test and as such it is subject to change.
 
-Returns all Sources assigned to Reservations. Each reservation can have multiple sources. Note this operation uses [Pagination](../guidelines/pagination.md) and supports [Portfolio Access Tokens](../concepts/multi-property.md).
+Returns all assignments of a `Source` to a `Reservation`. A reservation can have multiple sources. When a channel manager sent the same reservation in more than one booking, only the sources of the first booking are returned. Note this operation uses [Pagination](../guidelines/pagination.md) and supports [Portfolio Access Tokens](../concepts/multi-property.md).
 
 ### Request
 
@@ -17,6 +17,10 @@ Returns all Sources assigned to Reservations. Each reservation can have multiple
   "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
   "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
   "Client": "Sample Client 1.0.0",
+  "Limitation": {
+    "Count": 100,
+    "Cursor": "5411ffd5-72c6-4ab3-b179-708bcac73d08"
+  },
   "ReservationIds": [
     "9b59b50d-bd32-4ce5-add8-09ea0e1300e7"
   ],
@@ -26,10 +30,7 @@ Returns all Sources assigned to Reservations. Each reservation can have multiple
   },
   "EnterpriseIds": [
     "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-  ],
-  "Limitation": {
-    "Count": 100
-  }
+  ]
 }
 ```
 
@@ -41,7 +42,14 @@ Returns all Sources assigned to Reservations. Each reservation can have multiple
 | `ReservationIds` | array of string | optional, max 100 items | Unique identifiers of `Reservation`. |
 | `UpdatedUtc` | [Time interval](_objects.md#time-interval) | optional, max length 1 month | Interval of source assignment last update date and time. |
 | `EnterpriseIds` | array of string | optional, max 1 item | Unique identifiers of the Enterprises. Required when using Portfolio Access Tokens, ignored otherwise. |
-| `Limitation` | [Limitation](../guidelines/pagination.md#limitation) | required | Limitation on the quantity of data returned and optional Cursor for the starting point of data. |
+| `Limitation` | [Opaque cursor limitation](sourceassignments.md#opaque-cursor-limitation) | required | Limits the number of source assignments to return. The optional Cursor sets the point where the next page starts. |
+
+#### Opaque cursor limitation
+
+| Property | Type | Contract | Description |
+| :-- | :-- | :-- | :-- |
+| `Count` | integer | required | Maximum number of items to return. |
+| `Cursor` | string | optional, max length 512 characters | Opaque pagination cursor from a previous response. Do not build or change it. |
 
 ### Response
 
@@ -70,17 +78,17 @@ Returns all Sources assigned to Reservations. Each reservation can have multiple
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
 | `SourceAssignments` | array of [Source assignments (ver 2024-09-20)](sourceassignments.md#source-assignments-ver-2024-09-20) | required | Assignments between `Reservation` and `Source`. |
-| `Cursor` | string | optional | Opaque pagination cursor which can be used in `Limitation` to fetch newer source assignments. |
+| `Cursor` | string | optional | Opaque pagination cursor which can be used in `Limitation` to fetch the next page. |
 
 #### Source assignments (ver 2024-09-20)
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `Id` | string | required | Unique identifier of the source assignment. |
+| `Id` | string | required | Identifier of the source assignment. Reservations that a channel manager sends in one booking share the same `Id` for the same source, so the pair of `Id` and `ReservationId` identifies a source assignment. |
 | `ReservationId` | string | required | Unique identifier of the `Reservation`. |
 | `SourceId` | string | required | Unique identifier of the `Source`. |
-| `IsPrimary` | boolean | required | Specifies whether the source is primary for the `Reservation`. |
-| `UpdatedUtc` | string | required | Date and time of the source assignment last update in UTC timezone in ISO 8601 format. |
+| `IsPrimary` | boolean | required | Whether the channel manager marked the `Source` as primary. A reservation can have zero, one or more primary sources. |
+| `UpdatedUtc` | string | required | Date and time of the last update of the source assignment in UTC timezone in ISO 8601 format. A source assignment that is no longer returned does not show as an update. |
 
 ## Get all source assignments
 
