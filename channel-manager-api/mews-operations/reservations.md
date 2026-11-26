@@ -21,6 +21,7 @@
 >     1. If the `reservation.state` is set to [Reservation State](#reservation-states) 'Canceled'.
 >     2. If the reservation is not included in the group definition message.
 > * When **cancelling** a whole group, the `reservations` collection can be empty of all reservations provided as canceled \(as per case 1 above\).
+> * When a reservation is canceled with `reservation.state`, send its full definition. `spaceTypeCode`, `ratePlanCode`, `from` and `to` are still required, and so are `customer` and `currencyCode` on the group. Only the amounts can be left out. To cancel a whole group without these details, send an empty `reservations` collection.
 
 ### Request 
 
@@ -271,11 +272,11 @@ The third `reservation` definition shows the partial cancellation - canceling th
 | `channelId` | `string` | required | Unique identification of the booking in the channel \(i.e. OTA\). |
 | `channelManagerId` | `string` | required | Unique identification of the booking in the channel manager. |
 | `availabilityBlockCode` | `string` | optional | Unique identification of the availability block in the channel manager. |
-| `currencyCode` | `string` | required \(exc. Cancellation\) | 3 letter code of currency of all prices within the booking. |
+| `currencyCode` | `string` | required \(exc. whole-group cancellation\) | 3 letter code of currency of all prices within the booking. Can be left out only when the whole group is canceled with an empty `reservations` collection. |
 | `totalAmount` | [`Amount`](#amount) object | required \(exc. Cancellation\) | Total amount of the whole booking. |
 | `paymentType` | `int` | required \(exc. Cancellation\) | [Payment Type](configuration.md#payment-types) code - determines whether the booking is prepaid or not. |
 | `booker` | [`Customer`](#customer) object | optional | The person who booked the reservation, in case this is different to the main Customer. |
-| `customer` | [`Customer`](#customer) object | required \(exc. Cancellation\) | The customer who owns the reservation, i.e. the main guest linked to the reservation. |
+| `customer` | [`Customer`](#customer) object | required \(exc. whole-group cancellation\) | The customer who owns the reservation, i.e. the main guest linked to the reservation. Can be left out only when the whole group is canceled with an empty `reservations` collection. |
 | `paymentCard` | [`Payment Card`](#payment-card) object | optional | Represents the payment card of the [`Customer`](#customer) to cover for the booking. |
 | ~~`channel`~~ | ~~[`Channel`](#channel) object~~ | ~~optional~~ | ~~Represents the channel \(i.e. Travel Agency\).~~ **[Deprecated!](../deprecations/README.md)** |
 | `sources` | [`Source`](#source) collection | optional | Represents the sources for the booking. |
@@ -396,10 +397,10 @@ The third `reservation` definition shows the partial cancellation - canceling th
 | :-- | :-- | :-- | :-- |
 | `code` | `string` | required \(exc. Mews to ChM.\) | Unique code of the reservation within the whole booking. Any value but `_` accepted. No characters limit. |
 | `confirmationNumber` | `string` | required \(exc. ChM to Mews.\) | Unique code of the reservation within the whole booking in Mews. No characters limit. |
-| `spaceTypeCode` | `string` | required \(exc. Cancellation\) | Space type code of the reservation. |
-| `ratePlanCode` | `string` | required \(exc. Cancellation\) | Rate type code of the reservation. |
-| `from` | `string` | required \(exc. Cancellation\) | Start date in format `"yyyy-MM-dd"` \(e.g. `"2021-12-24"` for Christmas Eve\). |
-| `to` | `string` | required \(exc. Cancellation\) | End date  \(exclusive\) in format `"yyyy-MM-dd"` \(e.g. `"2021-12-31"` for New Year's Eve\). This is the date of resrvation departure. |
+| `spaceTypeCode` | `string` | required | Space type code of the reservation. |
+| `ratePlanCode` | `string` | required | Rate type code of the reservation. |
+| `from` | `string` | required | Start date in format `"yyyy-MM-dd"` \(e.g. `"2021-12-24"` for Christmas Eve\). |
+| `to` | `string` | required | End date  \(exclusive\) in format `"yyyy-MM-dd"` \(e.g. `"2021-12-31"` for New Year's Eve\). This is the date of resrvation departure. |
 | `totalAmount` | [`Amount`](#amount) object | required \(exc. Cancellation\) | Total amount of the reservation. |
 | `guestCounts` | array of [`Guest Count`](#guest-count) | required | Number of guests in the reservation for each age category. |
 | `state` | `int` | optional | [Reservation State](#reservation-states) code of reservation state. _If not provided, Mews will handle the reservation as `Created` or `Modified`._ |
