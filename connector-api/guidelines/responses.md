@@ -69,6 +69,8 @@ Error caused by too many requests sent in a given amount of time. Response conta
 
 Follow the suggestions in [Request limits](../guidelines/requests.md#request-limits).
 
+Operations that write prices and restrictions also return `429 Too Many Requests` when a request goes over the [inventory write limit](inventory-write-limit.md). In that case, `Details.Policy` is `inventory-writes`, and `Details.Pairs` lists the rate and resource category pairs over the limit. See [Rejected requests](inventory-write-limit.md#rejected-requests).
+
 ### 500 Internal Server Error and other 5xx response codes
 
 Unexpected error on the Mews side. This may be due to a software fault. If such a situation occurs, the error will be logged and the development team notified.
@@ -83,4 +85,4 @@ In case of any error, the returned JSON object describes the error and has the f
 | --- | --- | --- | --- |
 | `Message` | string | required | Description of the error. |
 | `RequestId` | string | optional | Unique identifier of the request. Provide this unique identifier when [contacting support](../contact-support/README.md) for quick identification of the request.|
-| `Details` | string | optional | Additional details about the error \(request, headers, server stack trace, inner exceptions etc.\). Only available on development environment. |
+| `Details` | string or object | optional | Additional details about the error. On the development environment, contains debugging information \(request, headers, server stack trace, inner exceptions etc.\). For some errors, contains structured details on all environments, for example [Rejected requests](inventory-write-limit.md#rejected-requests) of the inventory write limit. |

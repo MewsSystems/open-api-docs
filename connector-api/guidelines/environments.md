@@ -100,6 +100,7 @@ Partners who are already enrolled in the Certification Process or Certified and 
 ### Request limits
 
 * 200 requests per AccessToken within 30 seconds
+* 200 writes per rate and resource category pair within 1 hour, for operations that write prices and restrictions – see [Inventory write limit](inventory-write-limit.md)
 
 > **IMPORTANT** Number of requests and time window can be changed without prior notice. Your application must be prepared to handle `429 Too Many Requests` responses. See [Request limits](requests.md#request-limits) for more information.
 
@@ -131,6 +132,7 @@ See [Request limits](requests.md#request-limits) for more information.
 ### Request limits
 
 * 200 requests per `AccessToken` within 30 seconds
+* 200 writes per rate and resource category pair within 1 hour, for operations that write prices and restrictions – see [Inventory write limit](inventory-write-limit.md)
 
 > **IMPORTANT** Number of requests and time window can be changed without prior notice. Your application must be prepared to handle `429 Too Many Requests` responses. See [Request limits](requests.md#request-limits) for more information.
 

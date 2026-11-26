@@ -84,6 +84,10 @@ To retrieve information about restrictions, use [Get all restrictions](../operat
 
 When calculating occupancy, it is important to take the hierarchy of resources into account. For example, if there is a reservation against a dormitory (or dorm), then not only is the dormitory occupied but also the beds which are child resources of the dormitory. And vice versa, if a bed in a dorm is occupied, then the dorm is also occupied.
 
+## Inventory write limit
+
+[Update rate price](../operations/rates.md#update-rate-price), [Set restrictions](../operations/restrictions.md#set-restrictions) and [Clear restrictions](../operations/restrictions.md#clear-restrictions) have an [inventory write limit](../guidelines/inventory-write-limit.md) of 200 writes per rate and resource category pair in one hour. Send a date range in one request, not one request per day, and send only the prices and restrictions that changed. For the rollout timeline, see [Migration guide: Inventory write limit](../deprecations/migration-guide-inventory-write-limit.md).
+
 ## Testing your integration
 
 Once your integration is completed, all operations should be tested prior to initiating the [Certification process](../your-journey/README.md) with the **Mews Marketplace** team. Testing your solution is done directly in the Connector API Demo environment. You should use the credentials found in [Environments](../guidelines/environments.md) to sign in as an end-user. This allows you to understand how both your system and the Mews system will be used by the property and gives you additional information to ensure you can provide a seamless on-boarding experience for our customers.
