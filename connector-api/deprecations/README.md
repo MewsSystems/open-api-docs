@@ -17,6 +17,7 @@ The table columns have the following meanings:
 
 * [Migration guide: Restrictions (add/delete to set/clear)][mg-restrictions]
 * [Migration guide: Get all reservations](migration-guide-get-reservations.md)
+* [Migration guide: Inventory write limit](migration-guide-inventory-write-limit.md)
 
 ## Deprecated operations
 

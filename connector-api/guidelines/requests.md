@@ -40,6 +40,8 @@ Additionally, all API operations can optionally accept `LanguageCode` and `Cultu
 Mews implements API request limits in order to protect our systems against an excessive volume of calls which could compromise the service for all its users.
 The limits are dependent on circumstances and on the environment - see [Environments](environments.md#request-limits).
 
+Operations that write prices and restrictions also have an [inventory write limit](inventory-write-limit.md). It counts writes per rate and resource category, not requests. Both limits apply.
+
 Request limits are enforced using a sliding window, not fixed time buckets. This means the 30-second window is anchored to the first request in a burst, not to clock boundaries such as `:00` or `:30`.
 If your system measures its own request rate using fixed intervals, it may undercount requests and still receive `429 Too Many Requests` responses even when it appears to be below the documented limit.
 
