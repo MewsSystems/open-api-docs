@@ -30,7 +30,7 @@ The age requirement gives each new integration at least 12 months to begin using
 
 The integration keeps its other permissions, and its access tokens remain valid. Mews does not send a separate notice; this policy page is the notice.
 
-If the integration has not used any of its permissions for 12 months, Mews removes all of them. Until a permission is restored, the integration cannot read or change data.
+If the integration has not made any requests for 12 months, Mews keeps its permissions. Mews may disable the integration instead.
 
 A request that requires a removed permission returns `403 Forbidden`. The response message names the permission and refers to this policy. See [403 Forbidden](responses.md#403-forbidden).
 
