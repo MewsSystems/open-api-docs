@@ -1,5 +1,12 @@
 # Changelog
 
+## 26th November 2026
+
+* [Mews: Process group](../mews-operations/reservations.md#process-group):
+  * Corrected `customer` and `currencyCode` to be optional only when the whole group is canceled with an empty `reservations` collection. Documentation-only, no change to API.
+* [Mews: Process group](../mews-operations/reservations.md#process-group) and [CHM: Process group](../channel-manager-operations/reservations.md#process-group):
+  * Corrected `spaceTypeCode`, `ratePlanCode`, `from` and `to` in the [Reservation](../mews-operations/reservations.md#reservation) object to be required for canceled reservations too. Documentation-only, no change to API.
+
 ## 18th November 2026
 
 * [CHM: Update availability](../channel-manager-operations/inventory.md#update-availability):
