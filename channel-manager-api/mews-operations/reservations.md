@@ -21,7 +21,7 @@
 >     1. If the `reservation.state` is set to [Reservation State](#reservation-states) 'Canceled'.
 >     2. If the reservation is not included in the group definition message.
 > * When **cancelling** a whole group, the `reservations` collection can be empty of all reservations provided as canceled \(as per case 1 above\).
-> * When a reservation is canceled with `reservation.state`, send its full definition. `spaceTypeCode`, `ratePlanCode`, `from` and `to` are still required, and so are `customer` and `currencyCode` on the group. Only the amounts can be left out. To cancel a whole group without these details, send an empty `reservations` collection.
+> * When a reservation is canceled with `reservation.state`, its `spaceTypeCode`, `ratePlanCode`, `from` and `to` are still required, and so are `customer` and `currencyCode` on the group. The reservation's `totalAmount` and `amounts` can be left out. To cancel a whole group without these details, send an empty `reservations` collection.
 
 ### Request 
 
