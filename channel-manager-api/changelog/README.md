@@ -1,5 +1,10 @@
 # Changelog
 
+## 27th November 2026
+
+* [Mews: Process group](../mews-operations/reservations.md#process-group) and [Mews: Process availability block](../mews-operations/availabilityBlock.md#process-availability-block):
+  * Corrected `programCode` in the [Loyalty Info](../mews-operations/reservations.md#loyalty-info) object to be required. Mews ignores the whole `loyaltyInfo` object without it. Documentation-only, no change to API.
+
 ## 26th November 2026
 
 * [Mews: Process group](../mews-operations/reservations.md#process-group):
