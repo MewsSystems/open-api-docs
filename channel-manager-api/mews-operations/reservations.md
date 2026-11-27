@@ -304,8 +304,8 @@ The third `reservation` definition shows the partial cancellation - canceling th
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `membershipId` | `string` | required | Loyalty membership identifier of the Customer. |
-| `programCode` | `string` | optional | Loyalty program code. |
+| `membershipId` | `string` | required | Loyalty membership identifier of the Customer. If it's missing, Mews ignores the whole `loyaltyInfo` object. |
+| `programCode` | `string` | required | Loyalty program code. If it's missing, Mews ignores the whole `loyaltyInfo` object. |
 | `tierCode` | `string` | optional | Loyalty tier code. |
 
 #### Title
